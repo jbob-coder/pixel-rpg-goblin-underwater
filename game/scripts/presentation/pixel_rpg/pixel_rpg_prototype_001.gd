@@ -1,6 +1,7 @@
 extends Node
 
 const WorldBase001 := preload("res://scripts/presentation/pixel_rpg/world_base_001.gd")
+const WorldPaths001 := preload("res://scripts/presentation/pixel_rpg/world_paths_001.gd")
 const WorldPack001 := preload("res://scripts/presentation/pixel_rpg/world_pack_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
@@ -10,8 +11,6 @@ const TrailPineScene: PackedScene = preload("res://assets/environment/starting_a
 const TrailRockVisualScene: PackedScene = preload("res://assets/environment/starting_area/trail_rock_visual_01.tscn")
 const GateWardenVisualScene: PackedScene = preload("res://assets/characters/gate_warden_visual_01.tscn")
 const SettlementBuildingDetailsScene: PackedScene = preload("res://assets/environment/starting_area/settlement_building_details_01.tscn")
-const StreetSurfaceDetailsScene: PackedScene = preload("res://assets/environment/starting_area/street_surface_details_01.tscn")
-const TrailSurfaceDetailsScene: PackedScene = preload("res://assets/environment/starting_area/trail_surface_details_01.tscn")
 const ConceptPhotoReconstruction011 := preload("res://scripts/presentation/pixel_rpg/concept_photo_reconstruction_011.gd")
 
 const MOVE_SPEED_MPS := 5.2
@@ -682,10 +681,7 @@ func _build_prototype_world() -> void:
 	WorldBase001.add_world_base(world_geometry)
 	var concept_photo_reconstruction := ConceptPhotoReconstruction011.new() as Node3D
 	world_geometry.add_child(concept_photo_reconstruction)
-	_add_box("Street", Vector3(0, 0.03, 2), Vector3(6.2, 0.10, 34), Color(0.38, 0.30, 0.20), false)
-	_add_box("Trail", Vector3(0, 0.04, -31), Vector3(4.2, 0.11, 34), Color(0.29, 0.24, 0.16), false)
-	_add_path_surface_detail(StreetSurfaceDetailsScene, "StreetSurfaceDetails", Vector3(0, 0.03, 2))
-	_add_path_surface_detail(TrailSurfaceDetailsScene, "TrailSurfaceDetails", Vector3(0, 0.04, -31))
+	WorldPaths001.add_paths(world_geometry)
 
 	_add_building(Vector3(-7.0, 1.7, 8.5), Vector3(7.0, 3.4, 7.0), Color(0.34, 0.22, 0.13))
 	WorldPack001.add_market_stall(world_geometry, Vector3(7.0, 0.0, 6.0), -90.0)
@@ -727,15 +723,6 @@ func _build_prototype_world() -> void:
 	world_geometry.add_child(_monster_anchor)
 	_add_monster_proxy(_monster_anchor)
 	_add_domain_monster_body_alias(_monster_anchor.position)
-
-func _add_path_surface_detail(scene: PackedScene, node_name: String, position: Vector3) -> void:
-	var detail := scene.instantiate() as Node3D
-	if detail == null:
-		push_error("Pixel RPG Pack 007 failed to instantiate " + node_name)
-		return
-	detail.name = node_name
-	detail.position = position
-	world_geometry.add_child(detail)
 
 func _add_building(position: Vector3, size: Vector3, color: Color) -> void:
 	_add_box("Building", position, size, color, true)
