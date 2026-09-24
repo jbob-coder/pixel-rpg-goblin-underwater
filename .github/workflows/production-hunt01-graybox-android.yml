@@ -3,7 +3,7 @@ name: Production Hunt 01 Android
 on:
   push:
     branches:
-      - worldlife-reference-docs
+      - main
     paths:
       - ".github/workflows/production-hunt01-graybox-android.yml"
       - "game/**"
@@ -22,6 +22,7 @@ on:
       - "tests/quality/hunt01/hunt01_mudcrest_anatomy_preflight.py"
       - "tests/quality/hunt01/hunt01_basic_runtime_autorun_preflight.py"
       - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json"
+  workflow_dispatch:
 
 permissions:
   contents: read
