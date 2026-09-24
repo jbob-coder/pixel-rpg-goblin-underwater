@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3]
 
-[ext_resource type="Texture2D" path="res://assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001_runtime.svg" id="1_hands"]
+[ext_resource type="Texture2D" path="res://assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001.png" id="1_hands"]
 
 [sub_resource type="StandardMaterial3D" id="Leather"]
 albedo_color = Color(0.27, 0.155, 0.065, 1)
