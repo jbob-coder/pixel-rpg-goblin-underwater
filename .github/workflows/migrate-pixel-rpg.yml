@@ -12,15 +12,27 @@ jobs:
   migrate:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout destination repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Clone canonical Pixel RPG source branch
         run: |
-          git clone --branch pixel-rpg --single-branch https://github.com/jbob-coder/Chatgptjuegolpcal.git source
+          git clone --branch pixel-rpg --single-branch https://github.com/jbob-coder/Chatgptjuegolpcal.git /tmp/pixel-rpg-source
 
-      - name: Push exact Pixel RPG branch to destination main
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEST_REPO: ${{ github.repository }}
+      - name: Copy complete current snapshot while preserving temporary migration workflow
         run: |
-          cd source
-          git remote add destination "https://x-access-token:${GH_TOKEN}@github.com/${DEST_REPO}.git"
-          git push --force destination HEAD:main
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.github/workflows/' \
+            /tmp/pixel-rpg-source/ ./
+          git config user.name "Pixel RPG Migration"
+          git config user.email "migration@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit"
+          else
+            git commit -m "migrate: Pixel RPG snapshot from b2021e043db88fac31beacfdca843c310e68bbee"
+            git push origin HEAD:main
+          fi
