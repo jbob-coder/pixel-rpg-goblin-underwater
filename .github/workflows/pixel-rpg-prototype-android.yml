@@ -3,7 +3,7 @@ name: Pixel RPG Prototype Android
 on:
   push:
     branches:
-      - pixel-rpg
+      - main
     paths:
       - ".github/workflows/pixel-rpg-prototype-android.yml"
       - "game/**"
