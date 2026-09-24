@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 TEST = ROOT / "game/tests/hunt01_basic_runtime_autorun_test.gd"
 DOC = ROOT / "game/docs/HUNT01_BASIC_RUNTIME_AUTORUN_REGRESSION.md"
-WORKFLOW = ROOT / ".github/workflows/production-hunt01-graybox-android.yml"
+WORKFLOW = ROOT / ".github/workflows/pixel-rpg-ci.yml"
 SCENE = ROOT / "game/scenes/regions/region_01_hunt01_graybox.tscn"
 
 
@@ -91,9 +91,9 @@ def main() -> int:
     check("Hunter-defeat terminal verification gate is explicit", "Gate: HUNT01_BASIC_RUNTIME_AUTORUN_HUNTER_DEFEAT_TERMINAL_VERIFIED" in test)
     check("documentation marks this as CI verification rather than autoplay", "not player-facing autoplay" in doc.lower() and "fresh-instance" in doc.lower() and "combat exchange" in doc.lower() and "hunter attack" in doc.lower() and "real status lifecycle" in doc.lower() and "hunter defeat terminal" in doc.lower())
     check("documentation preserves recovery as out of scope", "forced recovery" in doc.lower() and "not" in doc.lower())
-    check("workflow watches autorun static gate", "hunt01_basic_runtime_autorun_preflight.py" in workflow)
-    check("workflow runs autorun static gate", "HUNT01_BASIC_RUNTIME_AUTORUN_SOURCE_STATIC_VERIFIED" in workflow)
-    check("workflow runs autorun headless gate", "hunt01_basic_runtime_autorun_test.gd" in workflow and "HUNT01_BASIC_RUNTIME_AUTORUN_VERIFIED" in workflow)
+    check("canonical workflow discovers Hunt-01 static preflights", 'find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py"' in workflow and 'python3 "$test_file"' in workflow)
+    check("canonical workflow discovers all Pixel RPG GDScript tests", 'find game/tests -maxdepth 1 -type f -name "*_test.gd"' in workflow and 'godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file"' in workflow)
+    check("canonical workflow keeps verification ahead of Android export", "needs: verify" in workflow and "Export Pixel RPG Android APK" in workflow)
 
     print()
     print(f"Checks: {checks} | Passed: {checks - len(failures)} | Failed: {len(failures)}")
