@@ -3,12 +3,14 @@
 Status: ACTIVE / FIRST-PERSON / CURRENT AUTHORITY ONLY
 Last reconciled: 2026-09-24
 
-Repository: `jbob-coder/Chatgptjuegolpcal`
-Active branch: `pixel-rpg`
+Repository: `jbob-coder/pixel-rpg-goblin-underwater`
+Active branch: `main`
+
+See `REPOSITORY_AUTHORITY.md` for migration provenance. The former repository/branch are historical provenance only and are not an active development target.
 
 ## Canonical authority barrier
 
-Pixel RPG is the only active game authority for this branch.
+Pixel RPG is the only active game authority for this repository.
 
 Do not use any archived, quarantined, superseded, unrelated, or historical project document, prompt, asset package, camera direction, gameplay identity, or handoff as design authority for Pixel RPG.
 
@@ -16,9 +18,9 @@ Historical material may be consulted only for provenance or for a technical depe
 
 ## Mandatory bootstrap
 
-1. Fetch live `pixel-rpg` HEAD and record the exact SHA before doing work.
+1. Fetch live `main` HEAD from `jbob-coder/pixel-rpg-goblin-underwater` and record the exact SHA before doing work.
 2. Read this file first.
-3. Then read `EVOLVE_ALIGNMENT.md`, `PROJECT_HANDOFF.md`, `DOCUMENTATION_INDEX.md`, `PIXEL_RPG_VISUAL_DIRECTION.md`, the newest relevant Pixel RPG handoff under `docs/70_handoff/`, and the exact owning source/tests/workflow for the bounded task.
+3. Then read `REPOSITORY_AUTHORITY.md`, `EVOLVE_ALIGNMENT.md`, `PROJECT_HANDOFF.md`, `DOCUMENTATION_INDEX.md`, `PIXEL_RPG_VISUAL_DIRECTION.md`, the newest relevant Pixel RPG handoff under `docs/70_handoff/`, and the exact owning source/tests/workflow for the bounded task.
 4. Re-check HEAD after reconstruction; never mix revisions.
 5. Authority order is: current explicit creator instruction → current source/tests/build/device evidence → current Pixel RPG presentation authority → current handoff/alignment docs → narrow owner/package docs.
 6. Archived or quarantined material is outside that authority chain.
@@ -39,15 +41,14 @@ User-supplied and approved image-derived assets are presentation authority when 
 
 Gameplay/collision geometry may remain as invisible technical support while approved image-derived art becomes the visible presentation layer. Do not expose duplicated procedural placeholder visuals after an equivalent approved asset has passed parity verification.
 
-The current first-person hands integration task uses the canonical Pixel RPG asset `pixel_rpg_hunter_fp_hands_neutral_r001.png`. It is presentation-only and must not own physics, collision, input, targeting, combat, persistence, or durable state.
+The canonical first-person hands asset is `pixel_rpg_hunter_fp_hands_neutral_r001.png`. It is presentation-only and must not own physics, collision, input, targeting, combat, persistence, or durable state.
 
-## Current work split
+## Repository work policy
 
-- Issue #28 is the master task for canonical first-person hands integration plus authority cleanup.
-- Issue #29 is documentation/authority only.
-- Issue #30 is sprite/viewmodel integration and technical verification only.
-
-The two work tracks must remain independent and auditable.
+- New source, documentation, CI, issues, and build evidence belong in `jbob-coder/pixel-rpg-goblin-underwater` unless the creator explicitly says otherwise.
+- `main` is the canonical development branch. Any compatibility branch is secondary and must not become an independent authority line.
+- Historical issue numbers, branch names, repository paths, and migration artifacts do not control current work merely because they remain in Git history.
+- Keep documentation/authority changes and gameplay/runtime changes independently auditable whenever practical.
 
 ## Verification law
 
