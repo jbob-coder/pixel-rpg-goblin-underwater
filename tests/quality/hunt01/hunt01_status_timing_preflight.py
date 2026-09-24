@@ -10,7 +10,7 @@ CLASSIFIER = ROOT / "game/scripts/gameplay/monsters/monster_01/hunt01_mudcrest_w
 TEST = ROOT / "game/tests/hunt01_status_timing_runtime_test.gd"
 DOC = ROOT / "game/docs/HUNT01_GENERIC_STATUS_TIMING_RUNTIME.md"
 README = ROOT / "game/scripts/gameplay/combat/README.md"
-WORKFLOW = ROOT / ".github/workflows/production-hunt01-graybox-android.yml"
+WORKFLOW = ROOT / ".github/workflows/pixel-rpg-ci.yml"
 
 def main() -> int:
     failures=[]; checks=0
@@ -51,7 +51,7 @@ def main() -> int:
     check("test proves duplicate round-end idempotency", "duplicate Round-4 hook is idempotent" in test)
     check("runtime doc keeps Bleeding HP downstream", "PENDING_BLEEDING_PERIODIC_HEALTH_CONSEQUENCE" in doc and "not select" in doc.lower())
     check("combat README records timing owner", "hunt01_status_timing_runtime.gd" in readme)
-    check("workflow runs timing source/headless gates", "hunt01_status_timing_preflight.py" in workflow and "HUNT01_GENERIC_STATUS_TIMING_SOURCE_STATIC_VERIFIED" in workflow and "hunt01_status_timing_runtime_test.gd" in workflow and "HUNT01_GENERIC_STATUS_TIMING_RUNTIME_VERIFIED" in workflow)
+    check("canonical workflow discovers timing source/headless gates", 'find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py"' in workflow and 'python3 "$test_file"' in workflow and 'find game/tests -maxdepth 1 -type f -name "*_test.gd"' in workflow and 'godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file"' in workflow)
     print(); print(f"Checks: {checks} | Passed: {checks-len(failures)} | Failed: {len(failures)}")
     print("Gate: " + ("HUNT01_GENERIC_STATUS_TIMING_SOURCE_STATIC_VERIFIED" if not failures else "HUNT01_GENERIC_STATUS_TIMING_SOURCE_STATIC_FAILED"))
     print("This gate covers generic Staggered conversion plus existing Bleeding/Off-Balance timing and accepts the Tail Sweep CLEAN producer route; it does not claim Bleeding HP magnitude, Braced/Guarded runtime, structural damage, phone acceptance or performance verification.")
