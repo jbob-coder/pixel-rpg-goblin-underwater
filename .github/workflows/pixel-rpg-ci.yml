@@ -1,0 +1,196 @@
+name: Pixel RPG CI + Android APK
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/pixel-rpg-ci.yml"
+      - "game/**"
+      - "tests/**"
+      - "ci/**"
+      - "probes/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "game/**"
+      - "tests/**"
+      - "ci/**"
+      - "probes/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pixel-rpg-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_PATH: game
+  APK_PATH: game/build/android/PixelRPG-debug.apk
+
+jobs:
+  verify-and-build:
+    name: Verify Pixel RPG and export Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout tested revision
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android export tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35"
+
+      - name: Set up Godot 4.7.2 with export templates
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+
+      - name: Configure Android export environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.android" "$HOME/.config/godot" build-evidence game/build/android
+          if [ ! -f "$HOME/.android/debug.keystore" ]; then
+            keytool -keyalg RSA -genkeypair \
+              -alias androiddebugkey \
+              -keypass android \
+              -keystore "$HOME/.android/debug.keystore" \
+              -storepass android \
+              -dname "CN=Android Debug,O=Pixel RPG,C=US" \
+              -validity 10000
+          fi
+          cat > "$HOME/.config/godot/editor_settings-4.7.tres" <<EOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/java_sdk_path = "$JAVA_HOME"
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/debug_keystore = "$HOME/.android/debug.keystore"
+          export/android/debug_keystore_user = "androiddebugkey"
+          export/android/debug_keystore_pass = "android"
+          export/android/timestamping_authority_url = ""
+          EOF
+
+      - name: Record build identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "repository=${GITHUB_REPOSITORY}"
+            echo "branch=${GITHUB_REF_NAME}"
+            echo "commit=${GITHUB_SHA}"
+            echo "project=${PROJECT_PATH}"
+            godot --version
+            python3 --version
+            java -version 2>&1 | head -n 1
+          } | tee build-evidence/build-identity.txt
+
+      - name: Run Python static preflights
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t tests < <(
+            {
+              find probes/android_stage1/tests -maxdepth 1 -type f -name "*.py" 2>/dev/null
+              find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py" 2>/dev/null
+            } | sort -u
+          )
+          if [ "${#tests[@]}" -eq 0 ]; then
+            echo "No Python preflight tests found" >&2
+            exit 1
+          fi
+          for test_file in "${tests[@]}"; do
+            safe_name=$(echo "$test_file" | tr '/.' '__')
+            echo "=== $test_file ==="
+            python3 "$test_file" 2>&1 | tee "build-evidence/${safe_name}.log"
+          done
+
+      - name: Godot import and parse gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --verbose --editor --path "$PROJECT_PATH" --quit 2>&1 | tee build-evidence/godot-import-parse.log
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|ERROR:.*(parse|load|resource)" build-evidence/godot-import-parse.log; then
+            exit 1
+          fi
+
+      - name: App shell smoke gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 8s godot --headless --verbose --path "$PROJECT_PATH" > build-evidence/app-shell-smoke.log 2>&1
+          code=$?
+          set -e
+          cat build-evidence/app-shell-smoke.log
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then exit "$code"; fi
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" build-evidence/app-shell-smoke.log; then exit 1; fi
+
+      - name: Run all Pixel RPG GDScript tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t gd_tests < <(find game/tests -maxdepth 1 -type f -name "*_test.gd" | sort)
+          if [ "${#gd_tests[@]}" -eq 0 ]; then
+            echo "No GDScript tests found" >&2
+            exit 1
+          fi
+          for test_file in "${gd_tests[@]}"; do
+            safe_name=$(basename "$test_file" .gd)
+            log="build-evidence/${safe_name}.log"
+            echo "=== $test_file ==="
+            godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file" 2>&1 | tee "$log"
+            if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" "$log"; then
+              echo "Blocking Godot error detected in $test_file" >&2
+              exit 1
+            fi
+          done
+
+      - name: Export Android debug APK
+        shell: bash
+        env:
+          GODOT_ANDROID_KEYSTORE_DEBUG_PATH: /home/runner/.android/debug.keystore
+          GODOT_ANDROID_KEYSTORE_DEBUG_USER: androiddebugkey
+          GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD: android
+        run: |
+          set -euo pipefail
+          godot --headless --verbose --path "$PROJECT_PATH" --export-debug "Android Debug" "$GITHUB_WORKSPACE/$APK_PATH" 2>&1 | tee build-evidence/android-export.log
+          test -s "$APK_PATH"
+          unzip -t "$APK_PATH" | tee build-evidence/apk-integrity.txt
+          sha256sum "$APK_PATH" | tee build-evidence/apk-sha256.txt
+          stat -c 'bytes=%s' "$APK_PATH" | tee build-evidence/apk-size.txt
+
+      - name: Upload APK and verification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PixelRPG-debug-${{ github.sha }}
+          path: |
+            game/build/android/PixelRPG-debug.apk
+            build-evidence/
+          if-no-files-found: error
+          retention-days: 7
