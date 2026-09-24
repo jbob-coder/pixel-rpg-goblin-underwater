@@ -1,0 +1,270 @@
+name: Production Hunt 01 Android
+
+on:
+  push:
+    branches:
+      - worldlife-reference-docs
+    paths:
+      - ".github/workflows/production-hunt01-graybox-android.yml"
+      - "game/**"
+      - "tests/quality/hunt01/hunt01_production_projection_preflight.py"
+      - "tests/quality/hunt01/hunt01_combat_turn_shell_preflight.py"
+      - "tests/quality/hunt01/hunt01_reaction_window_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_head_sweep_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_tail_sweep_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_defense_consequence_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_health_injury_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_wound_contact_preflight.py"
+      - "tests/quality/hunt01/hunt01_status_application_preflight.py"
+      - "tests/quality/hunt01/hunt01_status_timing_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_downed_encounter_outcome_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_attack_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_anatomy_preflight.py"
+      - "tests/quality/hunt01/hunt01_basic_runtime_autorun_preflight.py"
+      - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-hunt01-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_PATH: game
+  APK_NAME: UnnamedHuntRPG-Hunt01-MudcrestTailSweep-debug.apk
+  MAX_PLAYER_REQUIRED_GAME_STORAGE_BYTES: "2000000000"
+
+jobs:
+  build-production-hunt01:
+    name: Verify production Hunt-01 gameplay and export Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout tested revision
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+      - name: Install Android SDK 35 export tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35"
+      - name: Set up Godot 4.7.2 and export templates
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+      - name: Configure Godot Android editor settings and debug keystore
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.android" "$HOME/.config/godot" build-evidence
+          if [ ! -f "$HOME/.android/debug.keystore" ]; then keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore "$HOME/.android/debug.keystore" -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 10000; fi
+          cat > "$HOME/.config/godot/editor_settings-4.7.tres" <<EOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/java_sdk_path = "$JAVA_HOME"
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/debug_keystore = "$HOME/.android/debug.keystore"
+          export/android/debug_keystore_user = "androiddebugkey"
+          export/android/debug_keystore_pass = "android"
+          export/android/timestamping_authority_url = ""
+          EOF
+      - name: Record production build identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          { echo "branch=${GITHUB_REF_NAME}"; echo "commit=${GITHUB_SHA}"; echo "project=${PROJECT_PATH}"; godot --version; java -version 2>&1 | head -n 1; } | tee build-evidence/build-identity.txt
+      - name: Verify authoritative manifest and production projection
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/quality/hunt01/hunt01_graybox_manifest_validator.py --manifest docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json --fixture tests/quality/hunt01/hunt01_stable_coordinate_fixture.json --repo-root . --json-out build-evidence/hunt01-authority-static.json | tee build-evidence/hunt01-authority-static.log
+          python3 tests/quality/hunt01/hunt01_production_projection_preflight.py | tee build-evidence/hunt01-production-projection.log
+          grep -q "Gate: HUNT01_PRODUCTION_GRAYBOX_STATIC_VERIFIED" build-evidence/hunt01-production-projection.log
+          python3 tests/quality/hunt01/hunt01_combat_turn_shell_preflight.py | tee build-evidence/hunt01-combat-turn-shell-static.log
+          grep -q "Gate: HUNT01_COMBAT_TURN_SHELL_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-combat-turn-shell-static.log
+          python3 tests/quality/hunt01/hunt01_reaction_window_preflight.py | tee build-evidence/hunt01-reaction-window-static.log
+          grep -q "Gate: HUNT01_HUNTER_REACTION_WINDOW_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-reaction-window-static.log
+          python3 tests/quality/hunt01/hunt01_mudcrest_head_sweep_preflight.py | tee build-evidence/hunt01-mudcrest-head-sweep-static.log
+          grep -q "Gate: HUNT01_MUDCREST_HEAD_SWEEP_ATTACK_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-mudcrest-head-sweep-static.log
+          python3 tests/quality/hunt01/hunt01_mudcrest_tail_sweep_preflight.py | tee build-evidence/hunt01-mudcrest-tail-sweep-static.log
+          grep -q "Gate: HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-mudcrest-tail-sweep-static.log
+          python3 tests/quality/hunt01/hunt01_hunter_defense_consequence_preflight.py | tee build-evidence/hunt01-hunter-defense-consequence-static.log
+          grep -q "Gate: HUNT01_HUNTER_DEFENSE_CONSEQUENCE_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-hunter-defense-consequence-static.log
+          python3 tests/quality/hunt01/hunt01_hunter_health_injury_preflight.py | tee build-evidence/hunt01-hunter-health-injury-static.log
+          grep -q "Gate: HUNT01_HUNTER_HEALTH_INJURY_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-hunter-health-injury-static.log
+          python3 tests/quality/hunt01/hunt01_mudcrest_wound_contact_preflight.py | tee build-evidence/hunt01-mudcrest-wound-contact-static.log
+          grep -q "Gate: HUNT01_MUDCREST_WOUND_CONTACT_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-mudcrest-wound-contact-static.log
+          python3 tests/quality/hunt01/hunt01_status_application_preflight.py | tee build-evidence/hunt01-status-application-static.log
+          grep -q "Gate: HUNT01_GENERIC_STATUS_APPLICATION_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-status-application-static.log
+          python3 tests/quality/hunt01/hunt01_status_timing_preflight.py | tee build-evidence/hunt01-status-timing-static.log
+          grep -q "Gate: HUNT01_GENERIC_STATUS_TIMING_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-status-timing-static.log
+          python3 tests/quality/hunt01/hunt01_hunter_downed_encounter_outcome_preflight.py | tee build-evidence/hunt01-hunter-downed-outcome-static.log
+          grep -q "Gate: HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-hunter-downed-outcome-static.log
+          python3 tests/quality/hunt01/hunt01_hunter_attack_preflight.py | tee build-evidence/hunt01-hunter-attack-static.log
+          grep -q "Gate: HUNT01_FIRST_HUNTER_ATTACK_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-hunter-attack-static.log
+          python3 tests/quality/hunt01/hunt01_mudcrest_anatomy_preflight.py | tee build-evidence/hunt01-mudcrest-anatomy-static.log
+          grep -q "Gate: HUNT01_MUDCREST_ANATOMY_INTEGRITY_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-mudcrest-anatomy-static.log
+          python3 tests/quality/hunt01/hunt01_basic_runtime_autorun_preflight.py | tee build-evidence/hunt01-basic-runtime-autorun-static.log
+          grep -q "Gate: HUNT01_BASIC_RUNTIME_AUTORUN_SOURCE_STATIC_VERIFIED" build-evidence/hunt01-basic-runtime-autorun-static.log
+      - name: Godot import and parse gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --verbose --editor --path "$PROJECT_PATH" --quit 2>&1 | tee build-evidence/godot-import-parse.log
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|ERROR:.*(parse|load|resource)" build-evidence/godot-import-parse.log; then exit 1; fi
+      - name: Production AppShell smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e; timeout 7s godot --headless --verbose --path "$PROJECT_PATH" > build-evidence/app-shell-smoke.log 2>&1; code=$?; set -e; cat build-evidence/app-shell-smoke.log
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then exit "$code"; fi
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" build-evidence/app-shell-smoke.log; then exit 1; fi
+      - name: Production Region-01 scene smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e; timeout 7s godot --headless --verbose --path "$PROJECT_PATH" res://scenes/regions/region_01_hunt01_graybox.tscn > build-evidence/region01-smoke.log 2>&1; code=$?; set -e; cat build-evidence/region01-smoke.log
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then exit "$code"; fi
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" build-evidence/region01-smoke.log; then exit 1; fi
+      - name: Headless Hunt-01 production integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/region01_hunt01_graybox_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-production-integration.log
+          grep -q "Gate: HUNT01_PRODUCTION_GRAYBOX_HEADLESS_INTEGRATION_VERIFIED" build-evidence/hunt01-production-integration.log
+      - name: Headless Hunt-01 basic runtime autorun
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_basic_runtime_autorun_test.gd" 2>&1 | tee build-evidence/hunt01-basic-runtime-autorun.log
+          grep -q "Gate: HUNT01_BASIC_RUNTIME_AUTORUN_VERIFIED" build-evidence/hunt01-basic-runtime-autorun.log
+      - name: Headless Hunt-01 combat turn shell
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_combat_turn_shell_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-combat-turn-shell-runtime.log
+          grep -q "Gate: HUNT01_COMBAT_TURN_SHELL_RUNTIME_VERIFIED" build-evidence/hunt01-combat-turn-shell-runtime.log
+          grep -q "Gate: HUNT01_TACTICAL_MOVEMENT_RUNTIME_VERIFIED" build-evidence/hunt01-combat-turn-shell-runtime.log
+      - name: Headless Hunt-01 Hunter reaction window
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_reaction_window_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-reaction-window-runtime.log
+          grep -q "Gate: HUNT01_HUNTER_REACTION_WINDOW_RUNTIME_VERIFIED" build-evidence/hunt01-reaction-window-runtime.log
+      - name: Headless Hunt-01 Mudcrest Head Sweep attack
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_mudcrest_head_sweep_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-mudcrest-head-sweep-runtime.log
+          grep -q "Gate: HUNT01_MUDCREST_HEAD_SWEEP_ATTACK_RUNTIME_VERIFIED" build-evidence/hunt01-mudcrest-head-sweep-runtime.log
+      - name: Headless Hunt-01 Mudcrest Tail Sweep attack
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_mudcrest_tail_sweep_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-mudcrest-tail-sweep-runtime.log
+          grep -q "Gate: HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_RUNTIME_VERIFIED" build-evidence/hunt01-mudcrest-tail-sweep-runtime.log
+      - name: Headless Hunt-01 Hunter defense consequence
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_hunter_defense_consequence_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-hunter-defense-consequence-runtime.log
+          grep -q "Gate: HUNT01_HUNTER_DEFENSE_CONSEQUENCE_RUNTIME_VERIFIED" build-evidence/hunt01-hunter-defense-consequence-runtime.log
+      - name: Headless Hunt-01 Hunter health injury
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_hunter_health_injury_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-hunter-health-injury-runtime.log
+          grep -q "Gate: HUNT01_HUNTER_HEALTH_INJURY_RUNTIME_VERIFIED" build-evidence/hunt01-hunter-health-injury-runtime.log
+      - name: Headless Hunt-01 Mudcrest wound contact classification
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_mudcrest_wound_contact_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-mudcrest-wound-contact-runtime.log
+          grep -q "Gate: HUNT01_MUDCREST_WOUND_CONTACT_RUNTIME_VERIFIED" build-evidence/hunt01-mudcrest-wound-contact-runtime.log
+      - name: Headless Hunt-01 generic status application
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_status_application_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-status-application-runtime.log
+          grep -q "Gate: HUNT01_GENERIC_STATUS_APPLICATION_RUNTIME_VERIFIED" build-evidence/hunt01-status-application-runtime.log
+      - name: Headless Hunt-01 generic status timing
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_status_timing_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-status-timing-runtime.log
+          grep -q "Gate: HUNT01_GENERIC_STATUS_TIMING_RUNTIME_VERIFIED" build-evidence/hunt01-status-timing-runtime.log
+      - name: Headless Hunt-01 Hunter Downed encounter outcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_hunter_downed_encounter_outcome_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-hunter-downed-outcome-runtime.log
+          grep -q "Gate: HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_RUNTIME_VERIFIED" build-evidence/hunt01-hunter-downed-outcome-runtime.log
+      - name: Headless Hunt-01 Mudcrest anatomy integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_mudcrest_anatomy_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-mudcrest-anatomy-runtime.log
+          grep -q "Gate: HUNT01_MUDCREST_ANATOMY_INTEGRITY_RUNTIME_VERIFIED" build-evidence/hunt01-mudcrest-anatomy-runtime.log
+      - name: Headless Hunt-01 first Hunter attack
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_hunter_attack_runtime_test.gd" 2>&1 | tee build-evidence/hunt01-hunter-attack-runtime.log
+          grep -q "Gate: HUNT01_FIRST_HUNTER_ATTACK_RUNTIME_VERIFIED" build-evidence/hunt01-hunter-attack-runtime.log
+      - name: Export production Android debug APK
+        shell: bash
+        env:
+          GODOT_ANDROID_KEYSTORE_DEBUG_PATH: /home/runner/.android/debug.keystore
+          GODOT_ANDROID_KEYSTORE_DEBUG_USER: androiddebugkey
+          GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD: android
+        run: |
+          set -euo pipefail
+          mkdir -p build/android
+          godot --headless --verbose --path "$PROJECT_PATH" --export-debug "Android Debug" "$GITHUB_WORKSPACE/build/android/$APK_NAME" 2>&1 | tee build-evidence/android-export.log
+          test -s "build/android/$APK_NAME"
+          unzip -t "build/android/$APK_NAME" | tee build-evidence/apk-integrity.txt
+          sha256sum "build/android/$APK_NAME" | tee build-evidence/apk-sha256.txt
+          stat -c 'bytes=%s' "build/android/$APK_NAME" | tee build-evidence/apk-size.txt
+      - name: Verify Android package under 2 GB storage cap
+        shell: bash
+        run: |
+          set -euo pipefail
+          package_path="build/android/$APK_NAME"
+          package_bytes=$(stat -c '%s' "$package_path")
+          cap_bytes="$MAX_PLAYER_REQUIRED_GAME_STORAGE_BYTES"
+          {
+            echo "scope=ANDROID_APK_PACKAGE_ONLY"
+            echo "package=$APK_NAME"
+            echo "package_bytes=$package_bytes"
+            echo "cap_bytes=$cap_bytes"
+            echo "installed_footprint_verified=NO"
+          } | tee build-evidence/android-package-storage-cap.txt
+          if [ "$package_bytes" -gt "$cap_bytes" ]; then
+            echo "Gate: ANDROID_PACKAGE_2GB_STORAGE_CAP_FAILED" | tee -a build-evidence/android-package-storage-cap.txt
+            exit 1
+          fi
+          echo "Gate: ANDROID_PACKAGE_2GB_STORAGE_CAP_VERIFIED" | tee -a build-evidence/android-package-storage-cap.txt
+      - name: Upload production APK and evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnnamedHuntRPG-Hunt01-MudcrestTailSweep-debug
+          path: |
+            build/android/UnnamedHuntRPG-Hunt01-MudcrestTailSweep-debug.apk
+            build-evidence/
+          if-no-files-found: error
+          retention-days: 2
