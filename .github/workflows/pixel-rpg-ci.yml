@@ -53,13 +53,12 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install Android export tools
+      - name: Install Android export tools from runner SDK
         shell: bash
         run: |
           set -euo pipefail
+          echo "ANDROID_HOME=${ANDROID_HOME}"
+          command -v sdkmanager
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35"
 
@@ -105,6 +104,7 @@ jobs:
             echo "branch=${GITHUB_REF_NAME}"
             echo "commit=${GITHUB_SHA}"
             echo "project=${PROJECT_PATH}"
+            echo "ANDROID_HOME=${ANDROID_HOME}"
             godot --version
             python3 --version
             java -version 2>&1 | head -n 1
