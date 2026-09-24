@@ -3,6 +3,7 @@ extends SceneTree
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const STREET_DETAILS: PackedScene = preload("res://assets/environment/starting_area/street_surface_details_01.tscn")
 const TRAIL_DETAILS: PackedScene = preload("res://assets/environment/starting_area/trail_surface_details_01.tscn")
+const WORLD_PATHS := preload("res://scripts/presentation/pixel_rpg/world_paths_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -33,7 +34,13 @@ func _box_size(holder: Node3D) -> Vector3:
 	return Vector3.ZERO
 
 func _run() -> void:
-	print("Pixel RPG Starting Area Asset Pack 007 path surface details runtime gate")
+	print("Pixel RPG Starting Area Asset Pack 007 + extracted path-owner parity gate")
+
+	_check("extracted path owner schema is stable", String(WORLD_PATHS.get_schema()) == "pixel_rpg.world_paths_001.v1")
+	_check("extracted Street position contract is exact", WORLD_PATHS.STREET_POSITION.is_equal_approx(Vector3(0.0, 0.03, 2.0)))
+	_check("extracted Street size contract is exact", WORLD_PATHS.STREET_SIZE.is_equal_approx(Vector3(6.2, 0.10, 34.0)))
+	_check("extracted Trail position contract is exact", WORLD_PATHS.TRAIL_POSITION.is_equal_approx(Vector3(0.0, 0.04, -31.0)))
+	_check("extracted Trail size contract is exact", WORLD_PATHS.TRAIL_SIZE.is_equal_approx(Vector3(4.2, 0.11, 34.0)))
 
 	var street_asset := STREET_DETAILS.instantiate() as Node3D
 	_check("street detail scene instantiates", street_asset != null)
@@ -99,5 +106,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_007_PATH_SURFACE_DETAILS_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_007_PATH_SURFACE_DETAILS_FAILED")
-	print("This gate proves presentation-only Street/Trail detail, exact base mesh parity, Ground collision authority, and first-person/world-anchor preservation. Device acceptance remains open.")
+	print("This gate proves the extracted Street/Trail owner preserves exact base-mesh contracts, presentation-only detail, Ground collision authority, first-person camera, and world anchors. Device acceptance remains open.")
 	quit(0 if failures.is_empty() else 1)
