@@ -3,11 +3,12 @@ name: Stage 1 Android Probe APK
 on:
   push:
     branches:
-      - worldlife-reference-docs
+      - main
     paths:
       - ".github/workflows/stage1-android-probe-apk.yml"
       - "probes/android_stage1/**"
       - "ci/stage1/**"
+  workflow_dispatch:
 
 permissions:
   contents: read
