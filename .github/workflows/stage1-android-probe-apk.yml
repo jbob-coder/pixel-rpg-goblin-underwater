@@ -3,11 +3,19 @@ name: Stage 1 Android Probe APK
 on:
   push:
     branches:
-      - worldlife-reference-docs
+      - main
     paths:
       - ".github/workflows/stage1-android-probe-apk.yml"
       - "probes/android_stage1/**"
       - "ci/stage1/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/stage1-android-probe-apk.yml"
+      - "probes/android_stage1/**"
+      - "ci/stage1/**"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -197,6 +205,7 @@ jobs:
           stat -c 'bytes=%s' "build/android/$APK_NAME" | tee build-evidence/apk-size.txt
 
       - name: Upload APK and build evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: UnnamedHuntRPG-Stage1Probe-debug

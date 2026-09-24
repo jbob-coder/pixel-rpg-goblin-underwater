@@ -3,8 +3,10 @@
 Status: ACTIVE / FIRST-PERSON / CURRENT AUTHORITY ONLY
 Last reconciled: 2026-09-24
 
-Repository: `jbob-coder/Chatgptjuegolpcal`
-Active branch: `pixel-rpg`
+Repository: `jbob-coder/pixel-rpg-goblin-underwater`
+Active branch: `main`
+
+See `REPOSITORY_AUTHORITY.md` for migration provenance. The old repository and branch are historical only.
 
 ## Canonical authority barrier
 
@@ -16,7 +18,7 @@ Historical material may be consulted only for provenance or for a technical depe
 
 ## Mandatory bootstrap
 
-1. Fetch live `pixel-rpg` HEAD and record the exact SHA before doing work.
+1. Fetch live `main` HEAD from `jbob-coder/pixel-rpg-goblin-underwater` and record the exact SHA before doing work.
 2. Read this file first.
 3. Then read `EVOLVE_ALIGNMENT.md`, `PROJECT_HANDOFF.md`, `DOCUMENTATION_INDEX.md`, `PIXEL_RPG_VISUAL_DIRECTION.md`, the newest relevant Pixel RPG handoff under `docs/70_handoff/`, and the exact owning source/tests/workflow for the bounded task.
 4. Re-check HEAD after reconstruction; never mix revisions.
