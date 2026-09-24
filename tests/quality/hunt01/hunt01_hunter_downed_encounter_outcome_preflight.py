@@ -10,7 +10,7 @@ ATTACK = ROOT / "game/scripts/gameplay/monsters/monster_01/hunt01_mudcrest_attac
 TEST = ROOT / "game/tests/hunt01_hunter_downed_encounter_outcome_runtime_test.gd"
 DOC = ROOT / "game/docs/HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_RUNTIME.md"
 README = ROOT / "game/scripts/gameplay/combat/README.md"
-WORKFLOW = ROOT / ".github/workflows/production-hunt01-graybox-android.yml"
+WORKFLOW = ROOT / ".github/workflows/pixel-rpg-ci.yml"
 
 
 def main() -> int:
@@ -51,7 +51,7 @@ def main() -> int:
     check("test proves replay idempotency", 'defeat replay cannot commit twice' in test)
     check("runtime doc records verified evidence and exclusions", 'Status: IMPLEMENTED / STATIC VERIFIED / HEADLESS VERIFIED / ANDROID BUILD VERIFIED' in doc and 'HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_SOURCE_STATIC_VERIFIED' in doc and 'HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_RUNTIME_VERIFIED' in doc and 'structural' in doc.lower() and 'Bleeding periodic HP' in doc)
     check("combat README records outcome owner", 'hunt01_encounter_outcome_runtime.gd' in readme)
-    check("workflow runs outcome source/headless gates", 'hunt01_hunter_downed_encounter_outcome_preflight.py' in workflow and 'HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_SOURCE_STATIC_VERIFIED' in workflow and 'hunt01_hunter_downed_encounter_outcome_runtime_test.gd' in workflow and 'HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_RUNTIME_VERIFIED' in workflow)
+    check("canonical workflow discovers source and headless gates", 'find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py"' in workflow and 'python3 "$test_file"' in workflow and 'find game/tests -maxdepth 1 -type f -name "*_test.gd"' in workflow and 'godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file"' in workflow)
 
     print(); print(f"Checks: {checks} | Passed: {checks-len(failures)} | Failed: {len(failures)}")
     print("Gate: " + ("HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_SOURCE_STATIC_VERIFIED" if not failures else "HUNT01_HUNTER_DOWNED_ENCOUNTER_OUTCOME_SOURCE_STATIC_FAILED"))
