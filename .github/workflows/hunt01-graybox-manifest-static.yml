@@ -3,13 +3,15 @@ name: Hunt 01 Graybox Manifest Static Validation
 on:
   push:
     branches:
-      - worldlife-reference-docs
+      - main
     paths:
+      - ".gitattributes"
       - ".github/workflows/hunt01-graybox-manifest-static.yml"
       - "tests/quality/hunt01/**"
       - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json"
       - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_VALIDATION_SPECIFICATION.md"
       - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_SPATIAL_LAYOUT_REGISTRY.md"
+  workflow_dispatch:
 
 permissions:
   contents: read
