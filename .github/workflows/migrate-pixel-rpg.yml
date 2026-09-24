@@ -1,0 +1,26 @@
+name: One-time Pixel RPG migration
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone canonical Pixel RPG source branch
+        run: |
+          git clone --branch pixel-rpg --single-branch https://github.com/jbob-coder/Chatgptjuegolpcal.git source
+
+      - name: Push exact Pixel RPG branch to destination main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEST_REPO: ${{ github.repository }}
+        run: |
+          cd source
+          git remote add destination "https://x-access-token:${GH_TOKEN}@github.com/${DEST_REPO}.git"
+          git push --force destination HEAD:main
