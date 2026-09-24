@@ -9,7 +9,7 @@ CLASSIFIER = ROOT / "game/scripts/gameplay/monsters/monster_01/hunt01_mudcrest_w
 TEST = ROOT / "game/tests/hunt01_status_application_runtime_test.gd"
 DOC = ROOT / "game/docs/HUNT01_GENERIC_STATUS_APPLICATION_RUNTIME.md"
 README = ROOT / "game/scripts/gameplay/combat/README.md"
-WORKFLOW = ROOT / ".github/workflows/production-hunt01-graybox-android.yml"
+WORKFLOW = ROOT / ".github/workflows/pixel-rpg-ci.yml"
 
 
 def main() -> int:
@@ -71,8 +71,8 @@ def main() -> int:
     check("production test proves persistence rehydrate boundary", "rehydration runs no ON_APPLY trace" in test)
     check("runtime documentation keeps scheduler downstream", "PENDING_STATUS_TIMING_RUNTIME" in doc and "does not execute" in doc.lower())
     check("combat README records generic status owner", "hunt01_status_application_runtime.gd" in readme and "status application" in readme.lower())
-    check("workflow runs status static gate", "hunt01_status_application_preflight.py" in workflow and "HUNT01_GENERIC_STATUS_APPLICATION_SOURCE_STATIC_VERIFIED" in workflow)
-    check("workflow runs status headless gate", "hunt01_status_application_runtime_test.gd" in workflow and "HUNT01_GENERIC_STATUS_APPLICATION_RUNTIME_VERIFIED" in workflow)
+    check("canonical workflow discovers status static gate", 'find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py"' in workflow and 'python3 "$test_file"' in workflow)
+    check("canonical workflow discovers status headless gate", 'find game/tests -maxdepth 1 -type f -name "*_test.gd"' in workflow and 'godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file"' in workflow)
 
     print()
     print(f"Checks: {checks} | Passed: {checks - len(failures)} | Failed: {len(failures)}")
