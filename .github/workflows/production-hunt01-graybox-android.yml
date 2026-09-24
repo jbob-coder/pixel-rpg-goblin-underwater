@@ -3,7 +3,7 @@ name: Production Hunt 01 Android
 on:
   push:
     branches:
-      - worldlife-reference-docs
+      - main
     paths:
       - ".github/workflows/production-hunt01-graybox-android.yml"
       - "game/**"
@@ -22,6 +22,28 @@ on:
       - "tests/quality/hunt01/hunt01_mudcrest_anatomy_preflight.py"
       - "tests/quality/hunt01/hunt01_basic_runtime_autorun_preflight.py"
       - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/production-hunt01-graybox-android.yml"
+      - "game/**"
+      - "tests/quality/hunt01/hunt01_production_projection_preflight.py"
+      - "tests/quality/hunt01/hunt01_combat_turn_shell_preflight.py"
+      - "tests/quality/hunt01/hunt01_reaction_window_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_head_sweep_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_tail_sweep_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_defense_consequence_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_health_injury_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_wound_contact_preflight.py"
+      - "tests/quality/hunt01/hunt01_status_application_preflight.py"
+      - "tests/quality/hunt01/hunt01_status_timing_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_downed_encounter_outcome_preflight.py"
+      - "tests/quality/hunt01/hunt01_hunter_attack_preflight.py"
+      - "tests/quality/hunt01/hunt01_mudcrest_anatomy_preflight.py"
+      - "tests/quality/hunt01/hunt01_basic_runtime_autorun_preflight.py"
+      - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -260,6 +282,7 @@ jobs:
           fi
           echo "Gate: ANDROID_PACKAGE_2GB_STORAGE_CAP_VERIFIED" | tee -a build-evidence/android-package-storage-cap.txt
       - name: Upload production APK and evidence
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: UnnamedHuntRPG-Hunt01-MudcrestTailSweep-debug
