@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_packed_dirt_01.svg" id="1_dirt"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_stone_block_01.svg" id="2_stone"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_foliage_01.svg" id="3_foliage"]
+
+[sub_resource type="StandardMaterial3D" id="PackedDirt"]
+albedo_color = Color(0.235, 0.185, 0.115, 1)
+albedo_texture = ExtResource("1_dirt")
+texture_filter = 0
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="DryDirt"]
+albedo_color = Color(0.38, 0.29, 0.17, 1)
+albedo_texture = ExtResource("1_dirt")
+texture_filter = 0
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.31, 0.32, 0.29, 1)
+albedo_texture = ExtResource("2_stone")
+texture_filter = 0
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="Moss"]
+albedo_color = Color(0.16, 0.28, 0.12, 1)
+albedo_texture = ExtResource("3_foliage")
+texture_filter = 0
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="SphereMesh" id="Pebble"]
+radius = 0.5
+height = 1.0
+radial_segments = 6
+rings = 3
+
+[node name="TrailSurfaceDetails01" type="Node3D"]
+
+[node name="CenterWearA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.12, 0.068, -10.0)
+rotation_degrees = Vector3(0, 1.6, 0)
+scale = Vector3(1.30, 0.026, 10.0)
+mesh = SubResource("Box")
+material_override = SubResource("PackedDirt")
+
+[node name="CenterWearB" type="MeshInstance3D" parent="."]
+position = Vector3(0.12, 0.068, 9.5)
+rotation_degrees = Vector3(0, -1.9, 0)
+scale = Vector3(1.24, 0.026, 10.5)
+mesh = SubResource("Box")
+material_override = SubResource("PackedDirt")
+
+[node name="DryPatchA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 0.071, -4.8)
+rotation_degrees = Vector3(0, 22, 0)
+scale = Vector3(1.18, 0.030, 0.76)
+mesh = SubResource("Box")
+material_override = SubResource("DryDirt")
+
+[node name="DryPatchB" type="MeshInstance3D" parent="."]
+position = Vector3(0.48, 0.071, 6.5)
+rotation_degrees = Vector3(0, -29, 0)
+scale = Vector3(1.02, 0.030, 0.68)
+mesh = SubResource("Box")
+material_override = SubResource("DryDirt")
+
+[node name="EdgeStoneA" type="MeshInstance3D" parent="."]
+position = Vector3(-1.72, 0.11, -12.6)
+rotation_degrees = Vector3(0, 28, 0)
+scale = Vector3(0.48, 0.16, 0.34)
+mesh = SubResource("Pebble")
+material_override = SubResource("Stone")
+
+[node name="EdgeStoneB" type="MeshInstance3D" parent="."]
+position = Vector3(1.68, 0.10, -5.4)
+rotation_degrees = Vector3(0, -18, 0)
+scale = Vector3(0.36, 0.14, 0.46)
+mesh = SubResource("Pebble")
+material_override = SubResource("Stone")
+
+[node name="EdgeStoneC" type="MeshInstance3D" parent="."]
+position = Vector3(-1.62, 0.105, 3.7)
+rotation_degrees = Vector3(0, 17, 0)
+scale = Vector3(0.40, 0.15, 0.34)
+mesh = SubResource("Pebble")
+material_override = SubResource("Stone")
+
+[node name="EdgeStoneD" type="MeshInstance3D" parent="."]
+position = Vector3(1.70, 0.10, 12.0)
+rotation_degrees = Vector3(0, 36, 0)
+scale = Vector3(0.42, 0.14, 0.32)
+mesh = SubResource("Pebble")
+material_override = SubResource("Stone")
+
+[node name="MossEdgeA" type="MeshInstance3D" parent="."]
+position = Vector3(-1.82, 0.075, 8.0)
+rotation_degrees = Vector3(0, 12, 0)
+scale = Vector3(0.52, 0.026, 1.18)
+mesh = SubResource("Box")
+material_override = SubResource("Moss")

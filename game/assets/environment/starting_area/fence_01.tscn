@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="WoodMid"]
+albedo_color = Color(0.38, 0.235, 0.115, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.53, 0.34, 0.16, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="Rope"]
+albedo_color = Color(0.47, 0.37, 0.20, 1)
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.29, 0.30, 0.27, 1)
+roughness = 0.99
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="WorldPack001Fence" type="Node3D"]
+
+[node name="PostLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-1.5, 0.78, 0)
+scale = Vector3(0.22, 1.55, 0.22)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="PostRight" type="MeshInstance3D" parent="."]
+position = Vector3(1.5, 0.78, 0)
+scale = Vector3(0.22, 1.55, 0.22)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="RailLow" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.55, 0)
+rotation_degrees = Vector3(0, 0, 1.5)
+scale = Vector3(3.2, 0.18, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodMid")
+
+[node name="RailHigh" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.15, 0)
+rotation_degrees = Vector3(0, 0, -1.5)
+scale = Vector3(3.2, 0.18, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodMid")
+
+[node name="PostCapLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-1.5, 1.61, 0)
+rotation_degrees = Vector3(0, 0, 45)
+scale = Vector3(0.26, 0.26, 0.25)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="PostCapRight" type="MeshInstance3D" parent="."]
+position = Vector3(1.5, 1.61, 0)
+rotation_degrees = Vector3(0, 0, 45)
+scale = Vector3(0.26, 0.26, 0.25)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="RopeTieLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-1.48, 1.05, 0.14)
+scale = Vector3(0.32, 0.08, 0.08)
+mesh = SubResource("Box")
+material_override = SubResource("Rope")
+
+[node name="RopeTieRight" type="MeshInstance3D" parent="."]
+position = Vector3(1.48, 1.05, 0.14)
+scale = Vector3(0.32, 0.08, 0.08)
+mesh = SubResource("Box")
+material_override = SubResource("Rope")
+
+[node name="FootingLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-1.5, 0.10, 0)
+scale = Vector3(0.46, 0.20, 0.46)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="FootingRight" type="MeshInstance3D" parent="."]
+position = Vector3(1.5, 0.10, 0)
+scale = Vector3(0.46, 0.20, 0.46)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")

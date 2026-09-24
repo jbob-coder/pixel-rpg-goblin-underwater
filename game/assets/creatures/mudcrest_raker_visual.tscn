@@ -1,0 +1,170 @@
+[gd_scene load_steps=12 format=3]
+
+[sub_resource type="StandardMaterial3D" id="HideMat"]
+albedo_color = Color(0.17, 0.19, 0.16, 1)
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="PlateMat"]
+albedo_color = Color(0.31, 0.24, 0.12, 1)
+metallic = 0.08
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="HornMat"]
+albedo_color = Color(0.57, 0.45, 0.25, 1)
+roughness = 0.82
+
+[sub_resource type="StandardMaterial3D" id="MudMat"]
+albedo_color = Color(0.19, 0.14, 0.09, 1)
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="EyeMat"]
+albedo_color = Color(0.62, 0.34, 0.09, 1)
+emission_enabled = true
+emission = Color(0.25, 0.08, 0.01, 1)
+emission_energy_multiplier = 0.35
+roughness = 0.65
+
+[sub_resource type="SphereMesh" id="SphereMesh"]
+radius = 1.0
+height = 2.0
+radial_segments = 24
+rings = 12
+
+[sub_resource type="CylinderMesh" id="LegMesh"]
+top_radius = 0.28
+bottom_radius = 0.38
+height = 1.55
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="TailMesh"]
+top_radius = 0.16
+bottom_radius = 0.34
+height = 2.3
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="HornMesh"]
+top_radius = 0.03
+bottom_radius = 0.22
+height = 1.35
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="PlateMesh"]
+top_radius = 0.02
+bottom_radius = 0.36
+height = 0.92
+radial_segments = 14
+
+[sub_resource type="SphereMesh" id="EyeMesh"]
+radius = 0.08
+height = 0.16
+radial_segments = 14
+rings = 6
+
+[node name="MudcrestRakerVisual" type="Node3D"]
+rotation_degrees = Vector3(0, -78, 0)
+
+[node name="Body" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.55, 0.25)
+scale = Vector3(1.45, 0.92, 2.25)
+mesh = SubResource("SphereMesh")
+material_override = SubResource("HideMat")
+
+[node name="ShoulderMass" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.72, -1.35)
+scale = Vector3(1.62, 1.02, 1.15)
+mesh = SubResource("SphereMesh")
+material_override = SubResource("PlateMat")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.48, -2.55)
+scale = Vector3(1.0, 0.72, 1.05)
+mesh = SubResource("SphereMesh")
+material_override = SubResource("HideMat")
+
+[node name="Snout" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.30, -3.30)
+scale = Vector3(0.72, 0.42, 0.66)
+mesh = SubResource("SphereMesh")
+material_override = SubResource("MudMat")
+
+[node name="HornL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.48, 2.14, -3.0)
+rotation_degrees = Vector3(72, 0, -18)
+mesh = SubResource("HornMesh")
+material_override = SubResource("HornMat")
+
+[node name="HornR" type="MeshInstance3D" parent="."]
+position = Vector3(0.48, 2.14, -3.0)
+rotation_degrees = Vector3(72, 0, 18)
+mesh = SubResource("HornMesh")
+material_override = SubResource("HornMat")
+
+[node name="EyeL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 1.68, -3.05)
+mesh = SubResource("EyeMesh")
+material_override = SubResource("EyeMat")
+
+[node name="EyeR" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 1.68, -3.05)
+mesh = SubResource("EyeMesh")
+material_override = SubResource("EyeMat")
+
+[node name="ForeLegL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.92, 0.74, -1.25)
+rotation_degrees = Vector3(4, 0, -7)
+mesh = SubResource("LegMesh")
+material_override = SubResource("HideMat")
+
+[node name="ForeLegR" type="MeshInstance3D" parent="."]
+position = Vector3(0.92, 0.74, -1.25)
+rotation_degrees = Vector3(4, 0, 7)
+mesh = SubResource("LegMesh")
+material_override = SubResource("HideMat")
+
+[node name="HindLegL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.82, 0.68, 1.45)
+rotation_degrees = Vector3(-5, 0, -5)
+mesh = SubResource("LegMesh")
+material_override = SubResource("HideMat")
+
+[node name="HindLegR" type="MeshInstance3D" parent="."]
+position = Vector3(0.82, 0.68, 1.45)
+rotation_degrees = Vector3(-5, 0, 5)
+mesh = SubResource("LegMesh")
+material_override = SubResource("HideMat")
+
+[node name="TailBase" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.15, 2.75)
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("TailMesh")
+material_override = SubResource("HideMat")
+
+[node name="TailTip" type="MeshInstance3D" parent="."]
+position = Vector3(0.10, 0.95, 4.55)
+rotation_degrees = Vector3(78, 0, -5)
+scale = Vector3(0.72, 0.95, 0.72)
+mesh = SubResource("TailMesh")
+material_override = SubResource("PlateMat")
+
+[node name="Plate01" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.55, -1.15)
+mesh = SubResource("PlateMesh")
+material_override = SubResource("PlateMat")
+
+[node name="Plate02" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.62, -0.25)
+scale = Vector3(1.12, 1.18, 1.12)
+mesh = SubResource("PlateMesh")
+material_override = SubResource("PlateMat")
+
+[node name="Plate03" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.48, 0.75)
+scale = Vector3(0.95, 1.08, 0.95)
+mesh = SubResource("PlateMesh")
+material_override = SubResource("PlateMat")
+
+[node name="Plate04" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.27, 1.55)
+scale = Vector3(0.78, 0.88, 0.78)
+mesh = SubResource("PlateMesh")
+material_override = SubResource("PlateMat")

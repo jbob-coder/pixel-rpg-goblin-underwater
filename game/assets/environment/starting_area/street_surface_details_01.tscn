@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_packed_dirt_01.svg" id="1_dirt"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_stone_block_01.svg" id="2_stone"]
+
+[sub_resource type="StandardMaterial3D" id="PackedDirt"]
+albedo_color = Color(0.30, 0.225, 0.14, 1)
+albedo_texture = ExtResource("1_dirt")
+texture_filter = 0
+roughness = 1.0
+
+[sub_resource type="StandardMaterial3D" id="DirtLight"]
+albedo_color = Color(0.48, 0.36, 0.22, 1)
+albedo_texture = ExtResource("1_dirt")
+texture_filter = 0
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.36, 0.35, 0.31, 1)
+albedo_texture = ExtResource("2_stone")
+texture_filter = 0
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="StoneLight"]
+albedo_color = Color(0.46, 0.43, 0.35, 1)
+albedo_texture = ExtResource("2_stone")
+texture_filter = 0
+roughness = 0.98
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="StreetSurfaceDetails01" type="Node3D"]
+
+[node name="RutLeftA" type="MeshInstance3D" parent="."]
+position = Vector3(-1.45, 0.065, -9.5)
+scale = Vector3(0.24, 0.025, 10.4)
+mesh = SubResource("Box")
+material_override = SubResource("PackedDirt")
+
+[node name="RutRightA" type="MeshInstance3D" parent="."]
+position = Vector3(1.45, 0.065, -9.5)
+scale = Vector3(0.24, 0.025, 10.4)
+mesh = SubResource("Box")
+material_override = SubResource("PackedDirt")
+
+[node name="RutLeftB" type="MeshInstance3D" parent="."]
+position = Vector3(-1.45, 0.065, 9.0)
+rotation_degrees = Vector3(0, 1.4, 0)
+scale = Vector3(0.24, 0.025, 10.8)
+mesh = SubResource("Box")
+material_override = SubResource("PackedDirt")
+
+[node name="RutRightB" type="MeshInstance3D" parent="."]
+position = Vector3(1.45, 0.065, 9.0)
+rotation_degrees = Vector3(0, -1.1, 0)
+scale = Vector3(0.24, 0.025, 10.8)
+mesh = SubResource("Box")
+material_override = SubResource("PackedDirt")
+
+[node name="DirtPatchA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.25, 0.068, -4.2)
+rotation_degrees = Vector3(0, 18, 0)
+scale = Vector3(1.55, 0.028, 1.05)
+mesh = SubResource("Box")
+material_override = SubResource("DirtLight")
+
+[node name="DirtPatchB" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 0.068, 5.8)
+rotation_degrees = Vector3(0, -22, 0)
+scale = Vector3(1.30, 0.028, 0.88)
+mesh = SubResource("Box")
+material_override = SubResource("DirtLight")
+
+[node name="StoneA" type="MeshInstance3D" parent="."]
+position = Vector3(-2.25, 0.09, -12.2)
+rotation_degrees = Vector3(0, 24, 0)
+scale = Vector3(0.46, 0.08, 0.34)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="StoneB" type="MeshInstance3D" parent="."]
+position = Vector3(2.05, 0.085, -2.0)
+rotation_degrees = Vector3(0, -13, 0)
+scale = Vector3(0.36, 0.07, 0.52)
+mesh = SubResource("Box")
+material_override = SubResource("StoneLight")
+
+[node name="StoneC" type="MeshInstance3D" parent="."]
+position = Vector3(-2.15, 0.082, 11.6)
+rotation_degrees = Vector3(0, 32, 0)
+scale = Vector3(0.40, 0.065, 0.30)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")

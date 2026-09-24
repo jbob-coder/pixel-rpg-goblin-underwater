@@ -1,0 +1,94 @@
+{
+  "schema": "uhr.hunt01.tracking_evidence.v1",
+  "scenario": "R01_HUNT01_M01_TRACK_TO_MEADOW",
+  "hunt": "hunt_r01_m01_proof_01",
+  "monster": "monster_r01_m01_0001",
+  "no_gps": true,
+  "audio_required": false,
+  "evidence": [
+    {
+      "id": "R01_H01_EV01_OUTER_PRINTS",
+      "display_name": "Heavy Outer Prints",
+      "evidence_class": "DIRECTION",
+      "freshness": "FRESH",
+      "confidence": "STRONG",
+      "activity": "TRAVEL",
+      "landmark": "River Ford",
+      "route_id": "R01_S01",
+      "rough_direction": "west / downhill toward River Ford",
+      "summary": "Deep paired prints from a very large quadruped leave the outer trail and favor the River Ford route."
+    },
+    {
+      "id": "R01_H01_EV02_BANK_REEDS",
+      "display_name": "Bent Bank Reeds",
+      "evidence_class": "DIRECTION",
+      "freshness": "FRESH",
+      "confidence": "STRONG",
+      "activity": "RIVER_ENTRY",
+      "landmark": "River Ford",
+      "route_id": "R01_S01",
+      "rough_direction": "into the River Ford",
+      "summary": "Freshly bent reeds and bank damage show that a heavy body entered the ford recently."
+    },
+    {
+      "id": "R01_H01_EV03_FRESH_WALLOW",
+      "display_name": "Fresh Wallow",
+      "evidence_class": "ACTIVITY",
+      "freshness": "FRESH",
+      "confidence": "STRONG",
+      "activity": "WALLOWING / DRINKING",
+      "landmark": "River Ford",
+      "route_id": "",
+      "rough_direction": "local Ford activity; search the exits",
+      "summary": "Churned mud and pooled water confirm very recent Mudcrest activity at the ford, but not which exit it used."
+    },
+    {
+      "id": "R01_H01_EV04_WATER_EXIT",
+      "display_name": "Water-Exit Prints",
+      "evidence_class": "DIRECTION",
+      "freshness": "FRESH",
+      "confidence": "STRONG",
+      "activity": "TRAVEL AFTER WALLOW",
+      "landmark": "Feeding Meadow",
+      "route_id": "R01_S03",
+      "rough_direction": "south / southeast toward Feeding Meadow",
+      "summary": "Wet, sharply defined prints leave the ford on the Feeding Meadow side. This is the strongest current route evidence."
+    },
+    {
+      "id": "R01_H01_EV05_OLD_ROOT_SCRAPE",
+      "display_name": "Old Root Scrape",
+      "evidence_class": "DIRECTION_HISTORY",
+      "freshness": "OLD",
+      "confidence": "WEAK",
+      "activity": "OLDER TERRITORY PASSAGE",
+      "landmark": "Rootwood Thicket",
+      "route_id": "R01_S02",
+      "rough_direction": "east / rootward toward Rootwood Thicket",
+      "summary": "A weathered scrape proves the Raker has used the Rootwood side before, but it is older than the fresh Ford trail."
+    },
+    {
+      "id": "R01_H01_EV06_FEEDING_REMAINS",
+      "display_name": "Feeding Remains",
+      "evidence_class": "ACTIVITY",
+      "freshness": "FRESH",
+      "confidence": "STRONG",
+      "activity": "FEEDING",
+      "landmark": "Feeding Meadow",
+      "route_id": "R01_S03",
+      "rough_direction": "within Feeding Meadow",
+      "summary": "Fresh feeding damage and remains confirm that the same large creature has been active in the meadow recently."
+    },
+    {
+      "id": "R01_H01_EV07_FLATTENED_GRASS_AUDIO",
+      "display_name": "Flattened Meadow Grass",
+      "evidence_class": "DIRECTION_ACTIVITY",
+      "freshness": "FRESH",
+      "confidence": "STRONG",
+      "activity": "VERY RECENT MOVEMENT",
+      "landmark": "Meadow observation edge",
+      "route_id": "R01_S03",
+      "rough_direction": "deeper into the Feeding Meadow",
+      "summary": "Recently flattened grass carries the trail toward the observation edge. Visual evidence alone is sufficient; audio is optional."
+    }
+  ]
+}

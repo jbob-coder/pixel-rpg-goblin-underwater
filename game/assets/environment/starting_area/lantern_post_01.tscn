@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_wood_beam_01.svg" id="1_wood"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_metal_dark_01.svg" id="2_metal"]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="Metal"]
+albedo_color = Color(0.22, 0.235, 0.22, 1)
+metallic = 0.22
+albedo_texture = ExtResource("2_metal")
+texture_filter = 0
+roughness = 0.78
+
+[sub_resource type="StandardMaterial3D" id="Glow"]
+albedo_color = Color(0.95, 0.55, 0.12, 1)
+emission_enabled = true
+emission = Color(0.92, 0.34, 0.06, 1)
+emission_energy_multiplier = 1.4
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Cap"]
+albedo_color = Color(0.12, 0.13, 0.12, 1)
+metallic = 0.12
+albedo_texture = ExtResource("2_metal")
+texture_filter = 0
+roughness = 0.88
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="RingMesh"]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 8
+
+[node name="WorldPack001Lantern" type="Node3D"]
+
+[node name="Pole" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.35, 0)
+scale = Vector3(0.18, 2.7, 0.18)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="Arm" type="MeshInstance3D" parent="."]
+position = Vector3(0.35, 2.55, 0)
+scale = Vector3(0.9, 0.14, 0.14)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="ArmBrace" type="MeshInstance3D" parent="."]
+position = Vector3(0.18, 2.29, 0)
+rotation_degrees = Vector3(0, 0, -42)
+scale = Vector3(0.11, 0.62, 0.11)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+position = Vector3(0.7, 2.28, 0)
+scale = Vector3(0.38, 0.55, 0.38)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Metal")
+
+[node name="Glow" type="MeshInstance3D" parent="."]
+position = Vector3(0.7, 2.28, 0)
+scale = Vector3(0.22, 0.34, 0.22)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Glow")
+
+[node name="LanternCap" type="MeshInstance3D" parent="."]
+position = Vector3(0.7, 2.61, 0)
+scale = Vector3(0.48, 0.12, 0.48)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Cap")
+
+[node name="LanternRing" type="MeshInstance3D" parent="."]
+position = Vector3(0.7, 2.72, 0)
+rotation_degrees = Vector3(90, 0, 0)
+scale = Vector3(0.20, 0.08, 0.20)
+mesh = SubResource("RingMesh")
+material_override = SubResource("Metal")

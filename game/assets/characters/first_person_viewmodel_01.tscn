@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001_runtime.svg" id="1_hands"]
+
+[sub_resource type="StandardMaterial3D" id="Leather"]
+albedo_color = Color(0.27, 0.155, 0.065, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="Steel"]
+albedo_color = Color(0.34, 0.36, 0.34, 1)
+metallic = 0.28
+roughness = 0.72
+
+[sub_resource type="CylinderMesh" id="ShaftMesh"]
+top_radius = 0.016
+bottom_radius = 0.021
+height = 0.74
+radial_segments = 6
+
+[sub_resource type="BoxMesh" id="BladeMesh"]
+size = Vector3(0.10, 0.27, 0.035)
+
+[node name="FirstPersonViewmodel01" type="Node3D"]
+
+[node name="CanonicalHandsSprite" type="Sprite3D" parent="."]
+position = Vector3(0, -0.18, -0.56)
+pixel_size = 0.0065
+texture = ExtResource("1_hands")
+shaded = false
+no_depth_test = true
+texture_filter = 0
+cast_shadow = 0
+
+[node name="PolebladeShaft" type="MeshInstance3D" parent="."]
+position = Vector3(0.29, -0.10, -0.66)
+rotation_degrees = Vector3(74, 0, -12)
+mesh = SubResource("ShaftMesh")
+material_override = SubResource("Leather")
+cast_shadow = 0
+
+[node name="PolebladeHead" type="MeshInstance3D" parent="."]
+position = Vector3(0.21, -0.01, -0.96)
+rotation_degrees = Vector3(8, 0, -17)
+mesh = SubResource("BladeMesh")
+material_override = SubResource("Steel")
+cast_shadow = 0
+
+[node name="PolebladeHook" type="MeshInstance3D" parent="."]
+position = Vector3(0.12, 0.01, -0.91)
+rotation_degrees = Vector3(8, 0, 28)
+scale = Vector3(0.70, 0.48, 0.92)
+mesh = SubResource("BladeMesh")
+material_override = SubResource("Steel")
+cast_shadow = 0

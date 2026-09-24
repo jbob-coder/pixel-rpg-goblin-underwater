@@ -1,0 +1,122 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_wood_beam_01.svg" id="1_wood"]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="WoodMid"]
+albedo_color = Color(0.38, 0.235, 0.115, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.54, 0.35, 0.17, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="ClothBlue"]
+albedo_color = Color(0.12, 0.235, 0.37, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="ClothTrim"]
+albedo_color = Color(0.62, 0.48, 0.19, 1)
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="Produce"]
+albedo_color = Color(0.32, 0.43, 0.17, 1)
+roughness = 0.98
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="BasketMesh"]
+top_radius = 0.42
+bottom_radius = 0.50
+height = 0.62
+radial_segments = 8
+
+[node name="WorldPack001Market" type="Node3D"]
+
+[node name="Counter" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.9, 0)
+scale = Vector3(3.2, 1, 1.15)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodMid")
+
+[node name="CounterTop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.43, 0)
+scale = Vector3(3.45, 0.12, 1.35)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="PostLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-1.45, 1.55, 0)
+scale = Vector3(0.18, 3.1, 0.18)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="PostRight" type="MeshInstance3D" parent="."]
+position = Vector3(1.45, 1.55, 0)
+scale = Vector3(0.18, 3.1, 0.18)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="RearCrossbeam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.45, -0.72)
+scale = Vector3(3.2, 0.16, 0.16)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="Canopy" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.75, 0)
+scale = Vector3(3.6, 0.22, 2.5)
+mesh = SubResource("UnitBox")
+material_override = SubResource("ClothBlue")
+
+[node name="CanopyTrimFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.60, 1.16)
+scale = Vector3(3.55, 0.22, 0.12)
+mesh = SubResource("UnitBox")
+material_override = SubResource("ClothTrim")
+
+[node name="Shelf" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.82, -0.68)
+scale = Vector3(2.75, 0.12, 0.52)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="CrateA" type="MeshInstance3D" parent="."]
+position = Vector3(-1, 0.35, -1)
+scale = Vector3(0.7, 0.7, 0.7)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="CrateB" type="MeshInstance3D" parent="."]
+position = Vector3(0.9, 0.28, -0.95)
+scale = Vector3(0.55, 0.55, 0.55)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="Basket" type="MeshInstance3D" parent="."]
+position = Vector3(-0.78, 1.78, -0.58)
+scale = Vector3(0.64, 0.55, 0.64)
+mesh = SubResource("BasketMesh")
+material_override = SubResource("WoodMid")
+
+[node name="ProduceBlockA" type="MeshInstance3D" parent="."]
+position = Vector3(0.18, 1.74, -0.55)
+scale = Vector3(0.42, 0.24, 0.38)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Produce")
+
+[node name="ProduceBlockB" type="MeshInstance3D" parent="."]
+position = Vector3(0.68, 1.70, -0.48)
+scale = Vector3(0.34, 0.20, 0.32)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Produce")

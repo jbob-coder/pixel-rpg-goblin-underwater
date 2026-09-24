@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="TrunkMat"]
+albedo_color = Color(0.22, 0.14, 0.08, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="NeedleDark"]
+albedo_color = Color(0.08, 0.22, 0.12, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="NeedleLight"]
+albedo_color = Color(0.13, 0.31, 0.16, 1)
+roughness = 0.9
+
+[sub_resource type="CylinderMesh" id="TrunkMesh"]
+top_radius = 0.22
+bottom_radius = 0.34
+height = 2.8
+radial_segments = 14
+
+[sub_resource type="CylinderMesh" id="CrownLarge"]
+top_radius = 0.05
+bottom_radius = 1.45
+height = 3.0
+radial_segments = 18
+
+[sub_resource type="CylinderMesh" id="CrownSmall"]
+top_radius = 0.03
+bottom_radius = 1.05
+height = 2.3
+radial_segments = 18
+
+[node name="StylizedPine" type="Node3D"]
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.4, 0)
+mesh = SubResource("TrunkMesh")
+material_override = SubResource("TrunkMat")
+
+[node name="CrownLower" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.15, 0)
+mesh = SubResource("CrownLarge")
+material_override = SubResource("NeedleDark")
+
+[node name="CrownUpper" type="MeshInstance3D" parent="."]
+position = Vector3(0, 4.55, 0)
+mesh = SubResource("CrownSmall")
+material_override = SubResource("NeedleLight")

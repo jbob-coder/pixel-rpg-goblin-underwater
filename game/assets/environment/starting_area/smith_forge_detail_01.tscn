@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_stone_block_01.svg" id="1_stone"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_metal_dark_01.svg" id="2_metal"]
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.235, 0.235, 0.215, 1)
+albedo_texture = ExtResource("1_stone")
+texture_filter = 0
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="Metal"]
+albedo_color = Color(0.31, 0.325, 0.31, 1)
+metallic = 0.28
+albedo_texture = ExtResource("2_metal")
+texture_filter = 0
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Ember"]
+albedo_color = Color(0.82, 0.25, 0.055, 1)
+emission_enabled = true
+emission = Color(0.9, 0.12, 0.025, 1)
+emission_energy_multiplier = 1.7
+roughness = 0.75
+
+[sub_resource type="StandardMaterial3D" id="Coal"]
+albedo_color = Color(0.07, 0.06, 0.05, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="SmithForgeDetail01" type="Node3D"]
+
+[node name="HearthApron" type="MeshInstance3D" parent="."]
+position = Vector3(1.95, 0.18, -0.78)
+scale = Vector3(1.95, 0.16, 0.56)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="CoalBed" type="MeshInstance3D" parent="."]
+position = Vector3(1.95, 1.10, -1.48)
+scale = Vector3(1.16, 0.12, 0.78)
+mesh = SubResource("Box")
+material_override = SubResource("Coal")
+
+[node name="EmberCore" type="MeshInstance3D" parent="."]
+position = Vector3(1.95, 1.18, -1.48)
+scale = Vector3(0.78, 0.08, 0.42)
+mesh = SubResource("Box")
+material_override = SubResource("Ember")
+
+[node name="ForgeBackplate" type="MeshInstance3D" parent="."]
+position = Vector3(1.95, 1.62, -2.04)
+scale = Vector3(1.72, 1.18, 0.14)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="ChimneyStack" type="MeshInstance3D" parent="."]
+position = Vector3(1.95, 2.42, -2.03)
+scale = Vector3(0.92, 1.42, 0.92)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="ToolBar" type="MeshInstance3D" parent="."]
+position = Vector3(2.52, 1.20, -1.08)
+rotation_degrees = Vector3(0, 18, 72)
+scale = Vector3(0.08, 0.74, 0.08)
+mesh = SubResource("Box")
+material_override = SubResource("Metal")

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_wood_beam_01.svg" id="1_wood"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_metal_dark_01.svg" id="2_metal"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_banner_red_01.svg" id="3_banner"]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.19, 0.105, 0.05, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.51, 0.32, 0.15, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="Metal"]
+albedo_color = Color(0.30, 0.32, 0.31, 1)
+metallic = 0.28
+albedo_texture = ExtResource("2_metal")
+texture_filter = 0
+roughness = 0.70
+
+[sub_resource type="StandardMaterial3D" id="Cloth"]
+albedo_color = Color(0.45, 0.14, 0.105, 1)
+albedo_texture = ExtResource("3_banner")
+texture_filter = 0
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="SmithFrontageDetail01" type="Node3D"]
+
+[node name="DoorHeaderBeam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.72, 3.16)
+scale = Vector3(2.35, 0.22, 0.24)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="LeftBrace" type="MeshInstance3D" parent="."]
+position = Vector3(-1.28, 2.34, 3.18)
+rotation_degrees = Vector3(0, 0, -38)
+scale = Vector3(0.15, 1.05, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="RightBrace" type="MeshInstance3D" parent="."]
+position = Vector3(1.28, 2.34, 3.18)
+rotation_degrees = Vector3(0, 0, 38)
+scale = Vector3(0.15, 1.05, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="SmithBanner" type="MeshInstance3D" parent="."]
+position = Vector3(-2.15, 2.36, 3.34)
+scale = Vector3(0.78, 1.15, 0.08)
+mesh = SubResource("Box")
+material_override = SubResource("Cloth")
+
+[node name="MarkBase" type="MeshInstance3D" parent="."]
+position = Vector3(-2.15, 2.42, 3.39)
+scale = Vector3(0.46, 0.15, 0.04)
+mesh = SubResource("Box")
+material_override = SubResource("Metal")
+
+[node name="MarkTip" type="MeshInstance3D" parent="."]
+position = Vector3(-1.91, 2.49, 3.39)
+rotation_degrees = Vector3(0, 0, -18)
+scale = Vector3(0.30, 0.10, 0.04)
+mesh = SubResource("Box")
+material_override = SubResource("Metal")

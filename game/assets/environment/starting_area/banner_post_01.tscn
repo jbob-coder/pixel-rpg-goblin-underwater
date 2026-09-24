@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.53, 0.34, 0.16, 1)
+roughness = 0.93
+
+[sub_resource type="StandardMaterial3D" id="Cloth"]
+albedo_color = Color(0.43, 0.13, 0.10, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="Mark"]
+albedo_color = Color(0.67, 0.50, 0.20, 1)
+metallic = 0.08
+roughness = 0.86
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.29, 0.30, 0.27, 1)
+roughness = 0.99
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="WorldPack001Banner" type="Node3D"]
+
+[node name="StoneFoot" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.13, 0)
+scale = Vector3(0.55, 0.26, 0.55)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="Post" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.5, 0)
+scale = Vector3(0.22, 3.0, 0.22)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="TopBar" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 2.85, 0)
+scale = Vector3(1.35, 0.15, 0.15)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="TopCap" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.05, 0)
+rotation_degrees = Vector3(0, 0, 45)
+scale = Vector3(0.27, 0.27, 0.25)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="Banner" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 1.85, 0)
+scale = Vector3(1.0, 1.8, 0.08)
+mesh = SubResource("Box")
+material_override = SubResource("Cloth")
+
+[node name="BannerLowerCut" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 0.91, 0.01)
+rotation_degrees = Vector3(0, 0, 45)
+scale = Vector3(0.38, 0.38, 0.09)
+mesh = SubResource("Box")
+material_override = SubResource("Cloth")
+
+[node name="BannerMarkVertical" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 1.94, 0.06)
+scale = Vector3(0.12, 0.88, 0.04)
+mesh = SubResource("Box")
+material_override = SubResource("Mark")
+
+[node name="BannerMarkCross" type="MeshInstance3D" parent="."]
+position = Vector3(0.55, 1.98, 0.06)
+scale = Vector3(0.60, 0.12, 0.04)
+mesh = SubResource("Box")
+material_override = SubResource("Mark")

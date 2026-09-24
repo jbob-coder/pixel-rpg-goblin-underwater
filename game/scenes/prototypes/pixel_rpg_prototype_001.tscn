@@ -1,0 +1,501 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://assets/characters/hunter_visual.tscn" id="2_hunter"]
+[ext_resource type="Script" path="res://scripts/presentation/pixel_rpg/pixel_rpg_world_combat_compat.gd" id="3_world_compat"]
+[ext_resource type="PackedScene" path="res://assets/characters/first_person_viewmodel_01.tscn" id="4_fp_viewmodel"]
+
+[sub_resource type="CapsuleShape3D" id="HunterShape"]
+radius = 0.32
+height = 1.75
+
+[sub_resource type="StyleBoxFlat" id="StatusPanel"]
+bg_color = Color(0.055, 0.06, 0.045, 0.86)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.36, 0.16, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="ObjectivePanel"]
+bg_color = Color(0.055, 0.06, 0.045, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.40, 0.31, 0.15, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="WatchPanel"]
+bg_color = Color(0.035, 0.04, 0.032, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.56, 0.43, 0.18, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+content_margin_left = 20.0
+content_margin_top = 18.0
+content_margin_right = 20.0
+content_margin_bottom = 18.0
+
+[sub_resource type="StyleBoxFlat" id="JoystickPanel"]
+bg_color = Color(0.05, 0.06, 0.045, 0.52)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.58, 0.52, 0.34, 0.65)
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+
+[sub_resource type="StyleBoxFlat" id="ActionButton"]
+bg_color = Color(0.16, 0.13, 0.08, 0.88)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.76, 0.57, 0.22, 0.95)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="PixelRPGPrototype001" type="Node"]
+script = ExtResource("1_script")
+
+[node name="WorldDisplay" type="SubViewportContainer" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+stretch = true
+
+[node name="WorldViewport" type="SubViewport" parent="WorldDisplay"]
+size = Vector2i(800, 360)
+render_target_update_mode = 4
+own_world_3d = true
+
+[node name="World" type="Node3D" parent="WorldDisplay/WorldViewport"]
+script = ExtResource("3_world_compat")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldDisplay/WorldViewport/World"]
+rotation_degrees = Vector3(-48, -34, 0)
+light_color = Color(1, 0.88, 0.70, 1)
+light_energy = 1.15
+shadow_enabled = true
+directional_shadow_max_distance = 90.0
+
+[node name="WorldGeometry" type="Node3D" parent="WorldDisplay/WorldViewport/World"]
+
+[node name="Hunter" type="CharacterBody3D" parent="WorldDisplay/WorldViewport/World"]
+position = Vector3(0, 0.9, 13)
+collision_layer = 1
+collision_mask = 1
+floor_snap_length = 0.4
+floor_max_angle = 0.785398
+
+[node name="Visual" parent="WorldDisplay/WorldViewport/World/Hunter" instance=ExtResource("2_hunter")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WorldDisplay/WorldViewport/World/Hunter"]
+shape = SubResource("HunterShape")
+
+[node name="CameraYaw" type="Node3D" parent="WorldDisplay/WorldViewport/World/Hunter"]
+
+[node name="CameraPitch" type="Node3D" parent="WorldDisplay/WorldViewport/World/Hunter/CameraYaw"]
+position = Vector3(0, 0.65, 0)
+rotation_degrees = Vector3(0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="WorldDisplay/WorldViewport/World/Hunter/CameraYaw/CameraPitch"]
+spring_length = 5.8
+margin = 0.18
+collision_mask = 1
+
+[node name="Camera3D" type="Camera3D" parent="WorldDisplay/WorldViewport/World/Hunter/CameraYaw/CameraPitch"]
+current = true
+fov = 70.0
+near = 0.04
+far = 180.0
+
+[node name="FirstPersonViewmodel" parent="WorldDisplay/WorldViewport/World/Hunter/CameraYaw/CameraPitch/Camera3D" instance=ExtResource("4_fp_viewmodel")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="TopLeft" type="PanelContainer" parent="HUD"]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 274.0
+offset_bottom = 104.0
+theme_override_styles/panel = SubResource("StatusPanel")
+
+[node name="Status" type="Label" parent="HUD/TopLeft"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.72, 1)
+theme_override_font_sizes/font_size = 18
+text = "HP 100   ST 100\nX 0  Z 13"
+
+[node name="ObjectivePanel" type="PanelContainer" parent="HUD"]
+offset_left = 24.0
+offset_top = 118.0
+offset_right = 494.0
+offset_bottom = 196.0
+theme_override_styles/panel = SubResource("ObjectivePanel")
+
+[node name="Objective" type="Label" parent="HUD/ObjectivePanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90, 0.84, 0.68, 1)
+theme_override_font_sizes/font_size = 17
+text = "Leave through the north gate and investigate the trail."
+autowrap_mode = 2
+
+[node name="InteractionPrompt" type="Label" parent="HUD"]
+visible = false
+layout_mode = 0
+anchor_left = 0.32
+anchor_top = 1.0
+anchor_right = 0.68
+anchor_bottom = 1.0
+offset_top = -142.0
+offset_bottom = -96.0
+theme_override_colors/font_color = Color(1, 0.87, 0.47, 1)
+theme_override_font_sizes/font_size = 20
+text = "Talk"
+horizontal_alignment = 1
+
+[node name="Touch" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MoveJoystick" type="PanelContainer" parent="HUD/Touch"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -228.0
+offset_right = 238.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("JoystickPanel")
+
+[node name="Knob" type="ColorRect" parent="HUD/Touch/MoveJoystick"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 68.0
+offset_right = 136.0
+offset_bottom = 136.0
+mouse_filter = 2
+color = Color(0.78, 0.68, 0.40, 0.85)
+
+[node name="ActionButton" type="Button" parent="HUD/Touch"]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -174.0
+offset_right = -24.0
+offset_bottom = -80.0
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("ActionButton")
+text = "ACTION"
+
+[node name="SettingsButton" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 22.0
+offset_right = 86.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ActionButton")
+text = "SETTINGS"
+
+[node name="MinimapPanel" type="PanelContainer" parent="HUD"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -246.0
+offset_top = 22.0
+offset_right = -24.0
+offset_bottom = 188.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("ObjectivePanel")
+
+[node name="Map" type="Control" parent="HUD/MinimapPanel"]
+custom_minimum_size = Vector2(210, 150)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="HUD/MinimapPanel/Map"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.055, 0.075, 0.05, 0.92)
+
+[node name="Settlement" type="ColorRect" parent="HUD/MinimapPanel/Map"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 93.0
+offset_right = 163.0
+offset_bottom = 139.0
+mouse_filter = 2
+color = Color(0.24, 0.18, 0.10, 1)
+
+[node name="Street" type="ColorRect" parent="HUD/MinimapPanel/Map"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 63.0
+offset_right = 116.0
+offset_bottom = 145.0
+mouse_filter = 2
+color = Color(0.48, 0.36, 0.20, 1)
+
+[node name="Trail" type="ColorRect" parent="HUD/MinimapPanel/Map"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 12.0
+offset_right = 112.0
+offset_bottom = 72.0
+mouse_filter = 2
+color = Color(0.36, 0.29, 0.17, 1)
+
+[node name="Gate" type="ColorRect" parent="HUD/MinimapPanel/Map"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 70.0
+offset_right = 135.0
+offset_bottom = 75.0
+mouse_filter = 2
+color = Color(0.69, 0.52, 0.24, 1)
+
+[node name="North" type="Label" parent="HUD/MinimapPanel/Map"]
+layout_mode = 0
+offset_left = 91.0
+offset_top = -2.0
+offset_right = 121.0
+offset_bottom = 24.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.93, 0.84, 0.59, 1)
+theme_override_font_sizes/font_size = 15
+text = "N ↑"
+horizontal_alignment = 1
+
+[node name="PlayerMarker" type="ColorRect" parent="HUD/MinimapPanel/Map"]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(0.96, 0.76, 0.26, 1)
+
+[node name="WatchButton" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -204.0
+offset_top = 22.0
+offset_right = -24.0
+offset_bottom = 86.0
+theme_override_font_sizes/font_size = 18
+text = "DIAMOND WATCH"
+
+[node name="TargetingPanel" type="PanelContainer" parent="HUD"]
+visible = false
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -390.0
+offset_top = -205.0
+offset_right = -24.0
+offset_bottom = 205.0
+theme_override_styles/panel = SubResource("WatchPanel")
+
+[node name="Layout" type="VBoxContainer" parent="HUD/TargetingPanel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="HUD/TargetingPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.76, 0.30, 1)
+theme_override_font_sizes/font_size = 24
+text = "MUDCREST TARGETING"
+horizontal_alignment = 1
+
+[node name="Mode" type="Label" parent="HUD/TargetingPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.80, 0.70, 1)
+theme_override_font_sizes/font_size = 15
+text = "FIRST-PERSON TARGET PREVIEW\nNo AP, Stamina, damage, or actor teleport."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TargetGroup" type="OptionButton" parent="HUD/TargetingPanel/Layout"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+
+[node name="TargetStatus" type="Label" parent="HUD/TargetingPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.89, 0.72, 1)
+theme_override_font_sizes/font_size = 17
+text = "SELECTED • DORSAL PLATES • preview only"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="LockTarget" type="Button" parent="HUD/TargetingPanel/Layout"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("ActionButton")
+text = "LOCK TARGET"
+
+[node name="StartCombatDomain" type="Button" parent="HUD/TargetingPanel/Layout"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+disabled = true
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("ActionButton")
+text = "START COMBAT DOMAIN"
+
+[node name="Close" type="Button" parent="HUD/TargetingPanel/Layout"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "EXIT TARGETING"
+
+[node name="SettingsPanel" type="PanelContainer" parent="HUD"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -170.0
+offset_right = 260.0
+offset_bottom = 170.0
+theme_override_styles/panel = SubResource("WatchPanel")
+
+[node name="Layout" type="VBoxContainer" parent="HUD/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="HUD/SettingsPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.76, 0.30, 1)
+theme_override_font_sizes/font_size = 26
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="SessionNote" type="Label" parent="HUD/SettingsPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.80, 0.70, 1)
+theme_override_font_sizes/font_size = 16
+text = "Prototype settings apply for this session."
+horizontal_alignment = 1
+
+[node name="SensitivityLabel" type="Label" parent="HUD/SettingsPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.86, 0.70, 1)
+theme_override_font_sizes/font_size = 18
+text = "CAMERA SENSITIVITY  0.105"
+horizontal_alignment = 1
+
+[node name="CameraSensitivity" type="HSlider" parent="HUD/SettingsPanel/Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+min_value = 0.06
+max_value = 0.18
+step = 0.005
+value = 0.105
+
+[node name="Close" type="Button" parent="HUD/SettingsPanel/Layout"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "CLOSE"
+
+[node name="WatchPanel" type="PanelContainer" parent="HUD"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -230.0
+offset_right = 330.0
+offset_bottom = 230.0
+theme_override_styles/panel = SubResource("WatchPanel")
+
+[node name="Layout" type="VBoxContainer" parent="HUD/WatchPanel"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="HUD/WatchPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.76, 0.30, 1)
+theme_override_font_sizes/font_size = 26
+text = "DIAMOND WATCH"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="HUD/WatchPanel/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.86, 0.75, 1)
+theme_override_font_sizes/font_size = 20
+text = "07:42 • Day 12\n\nOBJECTIVE\nLeave through the north gate.\n\nHUNTER JOURNAL\nNo creature observations recorded yet."
+autowrap_mode = 2
+
+[node name="Close" type="Button" parent="HUD/WatchPanel/Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "CLOSE"
+
+[connection signal="item_selected" from="HUD/TargetingPanel/Layout/TargetGroup" to="." method="_on_target_group_selected"]
+[connection signal="pressed" from="HUD/TargetingPanel/Layout/LockTarget" to="." method="_on_lock_target_pressed"]
+[connection signal="pressed" from="HUD/TargetingPanel/Layout/StartCombatDomain" to="." method="_on_start_combat_domain_pressed"]
+[connection signal="pressed" from="HUD/TargetingPanel/Layout/Close" to="." method="_on_targeting_close_pressed"]
+[connection signal="pressed" from="HUD/Touch/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="HUD/SettingsPanel/Layout/CameraSensitivity" to="." method="_on_camera_sensitivity_changed"]
+[connection signal="pressed" from="HUD/SettingsPanel/Layout/Close" to="." method="_on_settings_close_pressed"]
+[connection signal="pressed" from="HUD/Touch/ActionButton" to="." method="_on_action_button_pressed"]
+[connection signal="pressed" from="HUD/Touch/WatchButton" to="." method="_on_watch_button_pressed"]
+[connection signal="pressed" from="HUD/WatchPanel/Layout/Close" to="." method="_on_watch_close_pressed"]

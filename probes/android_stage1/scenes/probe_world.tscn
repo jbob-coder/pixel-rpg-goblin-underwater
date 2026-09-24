@@ -1,0 +1,261 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://scripts/probe_world.gd" id="1_probe"]
+
+[sub_resource type="StandardMaterial3D" id="Mat_floor"]
+albedo_color = Color(0.18, 0.27, 0.16, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="Mesh_floor"]
+material = SubResource("Mat_floor")
+size = Vector3(120, 0.5, 120)
+
+[sub_resource type="BoxShape3D" id="Shape_floor"]
+size = Vector3(120, 0.5, 120)
+
+[sub_resource type="StandardMaterial3D" id="Mat_hunter"]
+albedo_color = Color(0.46, 0.36, 0.24, 1)
+roughness = 0.9
+
+[sub_resource type="CapsuleMesh" id="Mesh_hunter"]
+material = SubResource("Mat_hunter")
+radius = 0.32
+height = 1.75
+
+[sub_resource type="CapsuleShape3D" id="Shape_hunter"]
+radius = 0.32
+height = 1.75
+
+[sub_resource type="StandardMaterial3D" id="Mat_monster"]
+albedo_color = Color(0.31, 0.24, 0.16, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="Mesh_monster"]
+material = SubResource("Mat_monster")
+size = Vector3(2.5, 2.4, 5.8)
+
+[sub_resource type="BoxShape3D" id="Shape_monster"]
+size = Vector3(2.5, 2.4, 5.8)
+
+[node name="ProbeWorld" type="Node3D"]
+script = ExtResource("1_probe")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -28, 0)
+light_energy = 1.05
+shadow_enabled = true
+directional_shadow_max_distance = 55.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.25, 0)
+mesh = SubResource("Mesh_floor")
+
+[node name="FloorCollider" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorCollider"]
+shape = SubResource("Shape_floor")
+
+[node name="Hunter" type="CharacterBody3D" parent="."]
+position = Vector3(0, 0.875, 2.5)
+
+[node name="Body" type="MeshInstance3D" parent="Hunter"]
+mesh = SubResource("Mesh_hunter")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hunter"]
+shape = SubResource("Shape_hunter")
+
+[node name="FirstPersonCamera" type="Camera3D" parent="Hunter"]
+position = Vector3(0, 0.68, -0.08)
+current = false
+fov = 115.0
+near = 0.05
+far = 140.0
+
+[node name="Monster" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.2, -5.5)
+mesh = SubResource("Mesh_monster")
+
+[node name="MonsterCollider" type="StaticBody3D" parent="."]
+position = Vector3(0, 1.2, -5.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterCollider"]
+shape = SubResource("Shape_monster")
+
+[node name="AerialCamera" type="Camera3D" parent="."]
+position = Vector3(0, 9.5, 10.5)
+current = true
+fov = 52.0
+near = 0.1
+far = 160.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MetricsPanel" type="PanelContainer" parent="HUD"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 540.0
+offset_bottom = 168.0
+
+[node name="Metrics" type="VBoxContainer" parent="HUD/MetricsPanel"]
+layout_mode = 2
+
+[node name="Probe" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+text = "STAGE 1 / GALAXY A03s PROBE"
+
+[node name="FPS" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+text = "FPS: --"
+
+[node name="Renderer" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+text = "Renderer: --"
+
+[node name="Memory" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+text = "Debug static memory: --"
+
+[node name="Mode" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+text = "View: AERIAL"
+
+[node name="Touch" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoveJoystick" type="ColorRect" parent="HUD/Touch"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -255.0
+offset_right = 255.0
+offset_bottom = -35.0
+color = Color(0.06, 0.07, 0.07, 0.5)
+
+[node name="Knob" type="ColorRect" parent="HUD/Touch/MoveJoystick"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 74.0
+offset_right = 146.0
+offset_bottom = 146.0
+mouse_filter = 2
+color = Color(0.82, 0.84, 0.82, 0.82)
+
+[node name="MoveLabel" type="Label" parent="HUD/Touch/MoveJoystick"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 52.0
+offset_right = 42.0
+offset_bottom = 78.0
+mouse_filter = 2
+text = "MOVE"
+horizontal_alignment = 1
+
+[node name="ToggleView" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -120.0
+offset_right = -24.0
+offset_bottom = -40.0
+text = "AERIAL / FIRST PERSON"
+
+[node name="SettingsButton" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 84.0
+text = "SETTINGS"
+
+[node name="Help" type="Label" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -48.0
+offset_right = 360.0
+offset_bottom = -16.0
+text = "Move: left stick • Look: drag right side • Settings: Look Speed • View toggle preserves position"
+horizontal_alignment = 1
+
+[node name="SettingsOverlay" type="PanelContainer" parent="HUD"]
+visible = false
+offset_left = 470.0
+offset_top = 145.0
+offset_right = 1130.0
+offset_bottom = 600.0
+
+[node name="Layout" type="VBoxContainer" parent="HUD/SettingsOverlay"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HUD/SettingsOverlay/Layout"]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Tabs" type="TabContainer" parent="HUD/SettingsOverlay/Layout"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Controls" type="VBoxContainer" parent="HUD/SettingsOverlay/Layout/Tabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Description" type="Label" parent="HUD/SettingsOverlay/Layout/Tabs/Controls"]
+layout_mode = 2
+text = "Camera / Control"
+
+[node name="LookSpeedValue" type="Label" parent="HUD/SettingsOverlay/Layout/Tabs/Controls"]
+layout_mode = 2
+text = "Look Speed: 35%"
+
+[node name="LookSpeed" type="HSlider" parent="HUD/SettingsOverlay/Layout/Tabs/Controls"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 5.0
+value = 35.0
+
+[node name="LookSpeedHelp" type="Label" parent="HUD/SettingsOverlay/Layout/Tabs/Controls"]
+layout_mode = 2
+text = "Lower = slower right-side look. Higher = faster view rotation. Movement speed is unchanged. Saved automatically."
+autowrap_mode = 2
+
+[node name="Display" type="VBoxContainer" parent="HUD/SettingsOverlay/Layout/Tabs"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="DisplayInfo" type="Label" parent="HUD/SettingsOverlay/Layout/Tabs/Display"]
+layout_mode = 2
+text = "Display controls will be added only when a tested Stage-1 need exists."
+autowrap_mode = 2
+
+[node name="Close" type="Button" parent="HUD/SettingsOverlay/Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "CLOSE"
+
+[connection signal="pressed" from="HUD/Touch/ToggleView" to="." method="_on_toggle_view_pressed"]
+[connection signal="pressed" from="HUD/Touch/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="value_changed" from="HUD/SettingsOverlay/Layout/Tabs/Controls/LookSpeed" to="." method="_on_look_speed_changed"]
+[connection signal="pressed" from="HUD/SettingsOverlay/Layout/Close" to="." method="_on_settings_close_pressed"]

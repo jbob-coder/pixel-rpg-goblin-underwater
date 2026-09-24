@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_stone_block_01.svg" id="1_stone"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_foliage_01.svg" id="2_foliage"]
+
+[sub_resource type="StandardMaterial3D" id="Rock"]
+albedo_color = Color(0.28, 0.29, 0.27, 1)
+albedo_texture = ExtResource("1_stone")
+texture_filter = 0
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="RockLight"]
+albedo_color = Color(0.37, 0.37, 0.33, 1)
+albedo_texture = ExtResource("1_stone")
+texture_filter = 0
+roughness = 0.98
+
+[sub_resource type="StandardMaterial3D" id="Moss"]
+albedo_color = Color(0.15, 0.28, 0.12, 1)
+albedo_texture = ExtResource("2_foliage")
+texture_filter = 0
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="MainRock"]
+size = Vector3(2.4, 1.5, 2.0)
+
+[sub_resource type="BoxMesh" id="DetailBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="SphereMesh" id="Pebble"]
+radius = 0.5
+height = 1.0
+radial_segments = 6
+rings = 3
+
+[node name="TrailRockVisual01" type="MeshInstance3D"]
+mesh = SubResource("MainRock")
+material_override = SubResource("Rock")
+
+[node name="FacetA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.58, 0.63, 0.18)
+rotation_degrees = Vector3(0, 18, 8)
+scale = Vector3(0.82, 0.12, 0.62)
+mesh = SubResource("DetailBox")
+material_override = SubResource("RockLight")
+
+[node name="FacetB" type="MeshInstance3D" parent="."]
+position = Vector3(0.54, 0.48, -0.62)
+rotation_degrees = Vector3(12, -24, -5)
+scale = Vector3(0.62, 0.14, 0.42)
+mesh = SubResource("DetailBox")
+material_override = SubResource("RockLight")
+
+[node name="MossPatchA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.32, 0.78, -0.08)
+rotation_degrees = Vector3(0, 14, 0)
+scale = Vector3(0.92, 0.06, 0.64)
+mesh = SubResource("DetailBox")
+material_override = SubResource("Moss")
+
+[node name="PebbleA" type="MeshInstance3D" parent="."]
+position = Vector3(-1.05, -0.58, 0.72)
+scale = Vector3(0.42, 0.22, 0.36)
+mesh = SubResource("Pebble")
+material_override = SubResource("RockLight")
+
+[node name="PebbleB" type="MeshInstance3D" parent="."]
+position = Vector3(1.02, -0.60, -0.52)
+scale = Vector3(0.34, 0.18, 0.30)
+mesh = SubResource("Pebble")
+material_override = SubResource("Rock")

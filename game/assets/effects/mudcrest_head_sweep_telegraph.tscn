@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_head_sweep"]
+transparency = 1
+shading_mode = 0
+cull_mode = 2
+albedo_color = Color(0.72, 0.29, 0.08, 0.34)
+roughness = 0.82
+
+[sub_resource type="QuadMesh" id="QuadMesh_head_sweep"]
+material = SubResource("StandardMaterial3D_head_sweep")
+size = Vector2(9, 5)
+
+[node name="MudcrestHeadSweepTelegraph" type="Node3D"]
+
+[node name="ThreatBand" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.02, 0)
+rotation_degrees = Vector3(-90, 0, 0)
+cast_shadow = 0
+mesh = SubResource("QuadMesh_head_sweep")

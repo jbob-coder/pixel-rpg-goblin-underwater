@@ -1,0 +1,1 @@
+Runtime integration note: binary source verified by SHA-256 7c310f85978f300a0be4f2fe4ab6a9e0439bbf2daf1c0883e014f6179ff509a4. The active viewmodel must use the canonical neutral hands visual and must not treat placeholder forearm/hand geometry as final presentation.

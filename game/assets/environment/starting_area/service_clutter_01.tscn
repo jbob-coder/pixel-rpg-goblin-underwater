@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="WoodMid"]
+albedo_color = Color(0.38, 0.235, 0.115, 1)
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.54, 0.35, 0.17, 1)
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Rope"]
+albedo_color = Color(0.46, 0.36, 0.19, 1)
+roughness = 0.98
+
+[sub_resource type="StandardMaterial3D" id="Sack"]
+albedo_color = Color(0.39, 0.31, 0.19, 1)
+roughness = 1.0
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="BarrelMesh"]
+top_radius = 0.43
+bottom_radius = 0.45
+height = 1.15
+radial_segments = 8
+
+[node name="WorldPack001Clutter" type="Node3D"]
+
+[node name="Crate" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 0.5, 0)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodMid")
+
+[node name="CrateLid" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 1.02, 0)
+scale = Vector3(1.08, 0.10, 1.08)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="CrateBandA" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 0.5, 0.51)
+scale = Vector3(0.10, 0.95, 0.04)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="CrateBandB" type="MeshInstance3D" parent="."]
+position = Vector3(-0.55, 0.5, -0.51)
+scale = Vector3(0.10, 0.95, 0.04)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+position = Vector3(0.65, 0.58, 0)
+mesh = SubResource("BarrelMesh")
+material_override = SubResource("WoodDark")
+
+[node name="BarrelBandLow" type="MeshInstance3D" parent="."]
+position = Vector3(0.65, 0.30, 0)
+scale = Vector3(1.02, 0.08, 1.02)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Rope")
+
+[node name="BarrelBandHigh" type="MeshInstance3D" parent="."]
+position = Vector3(0.65, 0.86, 0)
+scale = Vector3(1.02, 0.08, 1.02)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Rope")
+
+[node name="SackA" type="MeshInstance3D" parent="."]
+position = Vector3(0.15, 0.22, 0.78)
+scale = Vector3(0.48, 0.42, 0.34)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Sack")
+
+[node name="SackB" type="MeshInstance3D" parent="."]
+position = Vector3(0.48, 0.18, 0.82)
+rotation_degrees = Vector3(0, 22, -8)
+scale = Vector3(0.38, 0.34, 0.30)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Sack")

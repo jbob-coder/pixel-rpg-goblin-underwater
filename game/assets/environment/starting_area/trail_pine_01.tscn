@@ -1,0 +1,96 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_wood_beam_01.svg" id="1_wood"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_foliage_01.svg" id="2_foliage"]
+
+[sub_resource type="StandardMaterial3D" id="Trunk"]
+albedo_color = Color(0.20, 0.12, 0.06, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.98
+
+[sub_resource type="StandardMaterial3D" id="TrunkLight"]
+albedo_color = Color(0.30, 0.18, 0.08, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="NeedleDark"]
+albedo_color = Color(0.075, 0.22, 0.105, 1)
+albedo_texture = ExtResource("2_foliage")
+texture_filter = 0
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="NeedleMid"]
+albedo_color = Color(0.12, 0.31, 0.14, 1)
+albedo_texture = ExtResource("2_foliage")
+texture_filter = 0
+roughness = 0.95
+
+[sub_resource type="CylinderMesh" id="TrunkMesh"]
+top_radius = 0.22
+bottom_radius = 0.32
+height = 3.2
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="CrownLarge"]
+top_radius = 0.05
+bottom_radius = 1.35
+height = 1.65
+radial_segments = 8
+
+[sub_resource type="CylinderMesh" id="CrownSmall"]
+top_radius = 0.04
+bottom_radius = 0.96
+height = 1.30
+radial_segments = 8
+
+[sub_resource type="BoxMesh" id="Branch"]
+size = Vector3(1, 1, 1)
+
+[node name="TrailPineVisual01" type="Node3D"]
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.6, 0)
+mesh = SubResource("TrunkMesh")
+material_override = SubResource("Trunk")
+
+[node name="RootFlareA" type="MeshInstance3D" parent="."]
+position = Vector3(0.24, 0.20, 0)
+rotation_degrees = Vector3(0, 28, -34)
+scale = Vector3(0.10, 0.58, 0.10)
+mesh = SubResource("Branch")
+material_override = SubResource("TrunkLight")
+
+[node name="RootFlareB" type="MeshInstance3D" parent="."]
+position = Vector3(-0.18, 0.18, 0.18)
+rotation_degrees = Vector3(18, -32, 31)
+scale = Vector3(0.10, 0.52, 0.10)
+mesh = SubResource("Branch")
+material_override = SubResource("TrunkLight")
+
+[node name="CrownLower" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.18, 0)
+scale = Vector3(1, 1.20, 1)
+mesh = SubResource("CrownLarge")
+material_override = SubResource("NeedleDark")
+
+[node name="CrownUpper" type="MeshInstance3D" parent="."]
+position = Vector3(0, 4.02, 0)
+scale = Vector3(0.92, 1.05, 0.92)
+mesh = SubResource("CrownSmall")
+material_override = SubResource("NeedleMid")
+
+[node name="BranchStubA" type="MeshInstance3D" parent="."]
+position = Vector3(0.42, 2.18, 0.08)
+rotation_degrees = Vector3(0, 12, -58)
+scale = Vector3(0.08, 0.82, 0.08)
+mesh = SubResource("Branch")
+material_override = SubResource("Trunk")
+
+[node name="BranchStubB" type="MeshInstance3D" parent="."]
+position = Vector3(-0.36, 2.38, -0.10)
+rotation_degrees = Vector3(0, -22, 54)
+scale = Vector3(0.08, 0.72, 0.08)
+mesh = SubResource("Branch")
+material_override = SubResource("Trunk")

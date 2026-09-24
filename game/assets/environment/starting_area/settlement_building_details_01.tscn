@@ -1,0 +1,141 @@
+[gd_scene load_steps=7 format=3]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.50, 0.31, 0.14, 1)
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="Window"]
+albedo_color = Color(0.10, 0.18, 0.21, 1)
+metallic = 0.05
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.31, 0.32, 0.29, 1)
+roughness = 0.99
+
+[sub_resource type="StandardMaterial3D" id="Accent"]
+albedo_color = Color(0.49, 0.23, 0.10, 1)
+roughness = 0.95
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="SettlementBuildingDetails01" type="Node3D"]
+
+[node name="FoundationFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.52, 3.52)
+scale = Vector3(6.65, 0.28, 0.20)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="DoorPanel" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.56, 3.53)
+scale = Vector3(1.12, 2.12, 0.13)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="DoorFrameLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-0.66, -0.50, 3.60)
+scale = Vector3(0.14, 2.35, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="DoorFrameRight" type="MeshInstance3D" parent="."]
+position = Vector3(0.66, -0.50, 3.60)
+scale = Vector3(0.14, 2.35, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="DoorFrameTop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.71, 3.60)
+scale = Vector3(1.46, 0.14, 0.16)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="DoorMark" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.18, 3.61)
+scale = Vector3(0.22, 0.38, 0.05)
+mesh = SubResource("Box")
+material_override = SubResource("Accent")
+
+[node name="WindowLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-2.15, 0.03, 3.54)
+scale = Vector3(1.05, 1.02, 0.10)
+mesh = SubResource("Box")
+material_override = SubResource("Window")
+
+[node name="WindowRight" type="MeshInstance3D" parent="."]
+position = Vector3(2.15, 0.03, 3.54)
+scale = Vector3(1.05, 1.02, 0.10)
+mesh = SubResource("Box")
+material_override = SubResource("Window")
+
+[node name="WindowBarLeftV" type="MeshInstance3D" parent="."]
+position = Vector3(-2.15, 0.03, 3.61)
+scale = Vector3(0.10, 1.08, 0.06)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="WindowBarLeftH" type="MeshInstance3D" parent="."]
+position = Vector3(-2.15, 0.03, 3.61)
+scale = Vector3(1.10, 0.10, 0.06)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="WindowBarRightV" type="MeshInstance3D" parent="."]
+position = Vector3(2.15, 0.03, 3.61)
+scale = Vector3(0.10, 1.08, 0.06)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="WindowBarRightH" type="MeshInstance3D" parent="."]
+position = Vector3(2.15, 0.03, 3.61)
+scale = Vector3(1.10, 0.10, 0.06)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="FrontBeam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.38, 3.53)
+scale = Vector3(6.35, 0.18, 0.18)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="CornerPostLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-3.30, 0, 3.52)
+scale = Vector3(0.20, 3.12, 0.20)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="CornerPostRight" type="MeshInstance3D" parent="."]
+position = Vector3(3.30, 0, 3.52)
+scale = Vector3(0.20, 3.12, 0.20)
+mesh = SubResource("Box")
+material_override = SubResource("WoodDark")
+
+[node name="EaveFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.12, 3.53)
+scale = Vector3(7.15, 0.18, 0.24)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="EaveBack" type="MeshInstance3D" parent="."]
+position = Vector3(0, 2.12, -3.53)
+scale = Vector3(7.15, 0.18, 0.24)
+mesh = SubResource("Box")
+material_override = SubResource("WoodLight")
+
+[node name="Chimney" type="MeshInstance3D" parent="."]
+position = Vector3(2.15, 2.68, -1.45)
+scale = Vector3(0.52, 1.25, 0.52)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")
+
+[node name="ChimneyCap" type="MeshInstance3D" parent="."]
+position = Vector3(2.15, 3.34, -1.45)
+scale = Vector3(0.68, 0.14, 0.68)
+mesh = SubResource("Box")
+material_override = SubResource("Stone")

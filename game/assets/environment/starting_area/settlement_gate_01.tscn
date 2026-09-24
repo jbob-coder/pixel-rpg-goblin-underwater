@@ -1,0 +1,147 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_wood_beam_01.svg" id="1_wood"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_stone_block_01.svg" id="2_stone"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_roof_shingle_01.svg" id="3_roof"]
+[ext_resource type="Texture2D" path="res://assets/textures/concept_derived/concept_banner_red_01.svg" id="4_banner"]
+
+[sub_resource type="StandardMaterial3D" id="WoodDark"]
+albedo_color = Color(0.18, 0.105, 0.055, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="WoodMid"]
+albedo_color = Color(0.34, 0.205, 0.105, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="WoodLight"]
+albedo_color = Color(0.50, 0.315, 0.15, 1)
+albedo_texture = ExtResource("1_wood")
+texture_filter = 0
+roughness = 0.92
+
+[sub_resource type="StandardMaterial3D" id="Stone"]
+albedo_color = Color(0.30, 0.31, 0.285, 1)
+albedo_texture = ExtResource("2_stone")
+texture_filter = 0
+roughness = 0.98
+
+[sub_resource type="StandardMaterial3D" id="Roof"]
+albedo_color = Color(0.14, 0.075, 0.04, 1)
+albedo_texture = ExtResource("3_roof")
+texture_filter = 0
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="Cloth"]
+albedo_color = Color(0.43, 0.13, 0.105, 1)
+albedo_texture = ExtResource("4_banner")
+texture_filter = 0
+roughness = 0.94
+
+[sub_resource type="BoxMesh" id="UnitBox"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="PegMesh"]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 1.0
+radial_segments = 6
+
+[node name="WorldPack001Gate" type="Node3D"]
+
+[node name="LeftTower" type="MeshInstance3D" parent="."]
+position = Vector3(-5, 2.4, 0)
+scale = Vector3(2.1, 4.8, 2.4)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="RightTower" type="MeshInstance3D" parent="."]
+position = Vector3(5, 2.4, 0)
+scale = Vector3(2.1, 4.8, 2.4)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodDark")
+
+[node name="StoneFootingLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-5, 0.35, 0)
+scale = Vector3(2.5, 0.7, 2.8)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Stone")
+
+[node name="StoneFootingRight" type="MeshInstance3D" parent="."]
+position = Vector3(5, 0.35, 0)
+scale = Vector3(2.5, 0.7, 2.8)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Stone")
+
+[node name="UpperBeam" type="MeshInstance3D" parent="."]
+position = Vector3(0, 4.45, 0)
+scale = Vector3(8.2, 0.55, 1.2)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodMid")
+
+[node name="GateLintelTrim" type="MeshInstance3D" parent="."]
+position = Vector3(0, 4.05, 0.66)
+scale = Vector3(7.8, 0.16, 0.18)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="LeftCap" type="MeshInstance3D" parent="."]
+position = Vector3(-5, 4.95, 0)
+scale = Vector3(2.6, 0.45, 2.8)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Roof")
+
+[node name="RightCap" type="MeshInstance3D" parent="."]
+position = Vector3(5, 4.95, 0)
+scale = Vector3(2.6, 0.45, 2.8)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Roof")
+
+[node name="BraceLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-2.75, 3.35, 0)
+rotation_degrees = Vector3(0, 0, -48)
+scale = Vector3(0.24, 3, 0.22)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="BraceRight" type="MeshInstance3D" parent="."]
+position = Vector3(2.75, 3.35, 0)
+rotation_degrees = Vector3(0, 0, 48)
+scale = Vector3(0.24, 3, 0.22)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="GateBanner" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.55, 0.68)
+scale = Vector3(1.55, 0.78, 0.08)
+mesh = SubResource("UnitBox")
+material_override = SubResource("Cloth")
+
+[node name="BannerMarkVertical" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.58, 0.73)
+scale = Vector3(0.15, 0.55, 0.04)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="BannerMarkCross" type="MeshInstance3D" parent="."]
+position = Vector3(0, 3.58, 0.73)
+scale = Vector3(0.62, 0.13, 0.04)
+mesh = SubResource("UnitBox")
+material_override = SubResource("WoodLight")
+
+[node name="PegLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-3.65, 4.45, 0.68)
+rotation_degrees = Vector3(90, 0, 0)
+scale = Vector3(0.11, 0.28, 0.11)
+mesh = SubResource("PegMesh")
+material_override = SubResource("Stone")
+
+[node name="PegRight" type="MeshInstance3D" parent="."]
+position = Vector3(3.65, 4.45, 0.68)
+rotation_degrees = Vector3(90, 0, 0)
+scale = Vector3(0.11, 0.28, 0.11)
+mesh = SubResource("PegMesh")
+material_override = SubResource("Stone")

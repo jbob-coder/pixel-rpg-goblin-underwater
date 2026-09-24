@@ -1,0 +1,13 @@
+# Godot editor/cache state
+.godot/
+
+# Probe build outputs
+builds/
+*.apk
+*.aab
+
+# Sensitive export credentials
+.godot/export_credentials.cfg
+
+# Optional generated Gradle build tree if a later bounded experiment enables it
+android/build/

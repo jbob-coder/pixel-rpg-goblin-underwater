@@ -1,0 +1,319 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/presentation/exploration/region_01_hunt01_graybox.gd" id="1_region"]
+[ext_resource type="PackedScene" path="res://assets/characters/hunter_visual.tscn" id="2_hunter"]
+[ext_resource type="Script" path="res://scripts/gameplay/tracking/hunt01_tracking_runtime.gd" id="3_tracking"]
+[ext_resource type="Script" path="res://scripts/gameplay/encounter/hunt01_encounter_trigger_runtime.gd" id="4_encounter"]
+
+[sub_resource type="CapsuleShape3D" id="HunterShape"]
+radius = 0.32
+height = 1.75
+
+[sub_resource type="StyleBoxFlat" id="HudPanel"]
+bg_color = Color(0.045, 0.055, 0.045, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.39, 0.30, 0.14, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="EvidencePanel"]
+bg_color = Color(0.07, 0.075, 0.055, 0.86)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.56, 0.39, 0.16, 0.82)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="SettingsPanel"]
+bg_color = Color(0.035, 0.04, 0.035, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.42, 0.32, 0.16, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 18.0
+content_margin_top = 18.0
+content_margin_right = 18.0
+content_margin_bottom = 18.0
+
+[node name="Region01Hunt01Graybox" type="Node3D"]
+script = ExtResource("1_region")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -31, 0)
+light_color = Color(1, 0.92, 0.78, 1)
+light_energy = 1.28
+shadow_enabled = true
+directional_shadow_max_distance = 120.0
+
+[node name="WorldGeometry" type="Node3D" parent="."]
+
+[node name="DebugGeometry" type="Node3D" parent="."]
+
+[node name="TrackingRuntime" type="Node" parent="."]
+script = ExtResource("3_tracking")
+
+[node name="EncounterRuntime" type="Node" parent="."]
+script = ExtResource("4_encounter")
+
+[node name="Hunter" type="CharacterBody3D" parent="."]
+position = Vector3(0, 0.875, -45)
+collision_layer = 1
+collision_mask = 1
+floor_snap_length = 0.45
+floor_max_angle = 0.785398
+
+[node name="Visual" parent="Hunter" instance=ExtResource("2_hunter")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hunter"]
+shape = SubResource("HunterShape")
+
+[node name="FirstPersonCamera" type="Camera3D" parent="Hunter"]
+position = Vector3(0, 0.68, -0.08)
+current = false
+fov = 115.0
+near = 0.05
+far = 600.0
+
+[node name="AerialCamera" type="Camera3D" parent="."]
+position = Vector3(0, 10.2, -34.0)
+current = true
+fov = 54.0
+near = 0.1
+far = 600.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MetricsPanel" type="PanelContainer" parent="HUD"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 505.0
+offset_bottom = 205.0
+theme_override_styles/panel = SubResource("HudPanel")
+
+[node name="Metrics" type="VBoxContainer" parent="HUD/MetricsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Title" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.72, 0.35, 1)
+theme_override_font_sizes/font_size = 22
+text = "REGION 01 • HUNT TRAIL"
+
+[node name="Objective" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.87, 0.79, 1)
+text = "Trail Read • SEARCHING • Lead: NO COMMITTED ROUTE"
+
+[node name="EvidenceCount" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.62, 0.28, 1)
+text = "Trail Evidence 0 / 7"
+
+[node name="Coordinates" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.66, 0.60, 1)
+text = "XYZ --"
+
+[node name="FPS" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.66, 0.60, 1)
+text = "FPS --"
+
+[node name="Mode" type="Label" parent="HUD/MetricsPanel/Metrics"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.75, 0.69, 1)
+text = "View AERIAL"
+
+[node name="EvidencePanel" type="PanelContainer" parent="HUD"]
+offset_left = 520.0
+offset_top = 18.0
+offset_right = 1195.0
+offset_bottom = 178.0
+theme_override_styles/panel = SubResource("EvidencePanel")
+
+[node name="EvidenceStatus" type="Label" parent="HUD/EvidencePanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.84, 0.70, 1)
+text = "Investigate physical signs. Trail interpretation uses freshness, confidence and activity; audio is optional."
+autowrap_mode = 2
+vertical_alignment = 1
+
+[node name="Touch" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoveJoystick" type="ColorRect" parent="HUD/Touch"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = -255.0
+offset_right = 255.0
+offset_bottom = -35.0
+color = Color(0.04, 0.055, 0.045, 0.62)
+
+[node name="Knob" type="ColorRect" parent="HUD/Touch/MoveJoystick"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 74.0
+offset_right = 146.0
+offset_bottom = 146.0
+mouse_filter = 2
+color = Color(0.66, 0.61, 0.45, 0.86)
+
+[node name="MoveLabel" type="Label" parent="HUD/Touch/MoveJoystick"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = 52.0
+offset_right = 42.0
+offset_bottom = 78.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.84, 0.82, 0.69, 1)
+text = "MOVE"
+horizontal_alignment = 1
+
+[node name="EngageEncounter" type="Button" parent="HUD/Touch"]
+visible = false
+disabled = true
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -295.0
+offset_right = -24.0
+offset_bottom = -220.0
+text = "ENGAGE"
+
+[node name="ToggleView" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -120.0
+offset_right = -24.0
+offset_bottom = -40.0
+text = "AERIAL / FIRST PERSON"
+
+[node name="ResetToStart" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -205.0
+offset_right = -24.0
+offset_bottom = -135.0
+text = "RESET TO S00"
+
+[node name="SettingsButton" type="Button" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 84.0
+text = "SETTINGS"
+
+[node name="Help" type="Label" parent="HUD/Touch"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -430.0
+offset_top = -48.0
+offset_right = 430.0
+offset_bottom = -16.0
+theme_override_colors/font_color = Color(0.88, 0.86, 0.75, 1)
+text = "Left stick move • Right drag look • Investigate physical signs • ENGAGE only appears at a legal Meadow encounter position"
+horizontal_alignment = 1
+
+[node name="SettingsOverlay" type="PanelContainer" parent="HUD"]
+visible = false
+offset_left = 470.0
+offset_top = 145.0
+offset_right = 1130.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("SettingsPanel")
+
+[node name="Layout" type="VBoxContainer" parent="HUD/SettingsOverlay"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HUD/SettingsOverlay/Layout"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.72, 0.35, 1)
+theme_override_font_sizes/font_size = 24
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Controls" type="VBoxContainer" parent="HUD/SettingsOverlay/Layout"]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="HUD/SettingsOverlay/Layout/Controls"]
+layout_mode = 2
+text = "Camera / Control"
+
+[node name="LookSpeedValue" type="Label" parent="HUD/SettingsOverlay/Layout/Controls"]
+layout_mode = 2
+text = "Look Speed: 35%"
+
+[node name="LookSpeed" type="HSlider" parent="HUD/SettingsOverlay/Layout/Controls"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+step = 5.0
+value = 35.0
+
+[node name="LookSpeedHelp" type="Label" parent="HUD/SettingsOverlay/Layout/Controls"]
+layout_mode = 2
+text = "Controls right-side view sensitivity. Saved automatically."
+autowrap_mode = 2
+
+[node name="Close" type="Button" parent="HUD/SettingsOverlay/Layout"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "CLOSE"
+
+[connection signal="pressed" from="HUD/Touch/ToggleView" to="." method="_on_toggle_view_pressed"]
+[connection signal="pressed" from="HUD/Touch/ResetToStart" to="." method="_on_reset_to_start_pressed"]
+[connection signal="pressed" from="HUD/Touch/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="value_changed" from="HUD/SettingsOverlay/Layout/Controls/LookSpeed" to="." method="_on_look_speed_changed"]
+[connection signal="pressed" from="HUD/SettingsOverlay/Layout/Close" to="." method="_on_settings_close_pressed"]

@@ -1,0 +1,40 @@
+{
+  "canonical_route_anchors": {
+    "s00_s01": [-45, -1, -82],
+    "s01_s03": [-62, 0, -188],
+    "s03_s05": [23, 0, -255]
+  },
+  "evidence": {
+    "R01_H01_EV01_OUTER_PRINTS": [-24, 0, -68],
+    "R01_H01_EV02_BANK_REEDS": [-70, -2, -110],
+    "R01_H01_EV03_FRESH_WALLOW": [-100, -4, -140],
+    "R01_H01_EV04_WATER_EXIT": [-78, -3, -168],
+    "R01_H01_EV05_OLD_ROOT_SCRAPE": [-35, -1, -145],
+    "R01_H01_EV06_FEEDING_REMAINS": [-59, 4, -220],
+    "R01_H01_EV07_FLATTENED_GRASS_AUDIO": [-67, 4, -232]
+  },
+  "monster": {
+    "escape": [[-8, 4, -258], [23, 0, -255], [35, 0, -260], [58, -3, -268]],
+    "ma01": [-18, 4, -252]
+  },
+  "nodes": {
+    "R01_EF02_N01": [-70, 4, -238],
+    "R01_EF02_N02": [-66, 5, -252],
+    "R01_EF02_N03": [-66, 4, -270],
+    "R01_EF02_N04": [-54, 4, -238],
+    "R01_EF02_N05": [-50, 4, -252],
+    "R01_EF02_N06": [-52, 4, -270],
+    "R01_EF02_N07": [-36, 4, -242],
+    "R01_EF02_N08": [-36, 4, -264],
+    "R01_EF02_N09": [-22, 4, -238],
+    "R01_EF02_N10": [-22, 5, -270]
+  },
+  "non_authoritative_build_controls": {
+    "ramp_mid": [-74.0, 4.62, -237.5],
+    "west_brush": [-74, 4, -250]
+  },
+  "schema": "uhr_hunt01_stable_coordinate_fixture@1",
+  "source_spatial_registry_git_blob_sha": "10c072a74c22324fd3dc2ffd4b95dcb682b15f5f",
+  "source_spatial_registry_path": "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_SPATIAL_LAYOUT_REGISTRY.md",
+  "space_id": "space_region_01"
+}

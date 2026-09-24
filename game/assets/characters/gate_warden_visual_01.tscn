@@ -1,0 +1,178 @@
+[gd_scene load_steps=12 format=3]
+
+[sub_resource type="StandardMaterial3D" id="ClothDark"]
+albedo_color = Color(0.12, 0.13, 0.105, 1)
+roughness = 0.97
+
+[sub_resource type="StandardMaterial3D" id="ClothMid"]
+albedo_color = Color(0.24, 0.26, 0.18, 1)
+roughness = 0.96
+
+[sub_resource type="StandardMaterial3D" id="Leather"]
+albedo_color = Color(0.31, 0.18, 0.08, 1)
+roughness = 0.95
+
+[sub_resource type="StandardMaterial3D" id="Metal"]
+albedo_color = Color(0.33, 0.35, 0.32, 1)
+metallic = 0.22
+roughness = 0.78
+
+[sub_resource type="StandardMaterial3D" id="Skin"]
+albedo_color = Color(0.56, 0.39, 0.27, 1)
+roughness = 0.94
+
+[sub_resource type="StandardMaterial3D" id="Accent"]
+albedo_color = Color(0.50, 0.31, 0.10, 1)
+roughness = 0.94
+
+[sub_resource type="CapsuleMesh" id="Torso"]
+radius = 0.28
+height = 1.08
+radial_segments = 8
+rings = 4
+
+[sub_resource type="SphereMesh" id="Head"]
+radius = 0.18
+height = 0.36
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="Limb"]
+top_radius = 0.065
+bottom_radius = 0.08
+height = 0.58
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id="Spear"]
+top_radius = 0.022
+bottom_radius = 0.030
+height = 2.15
+radial_segments = 6
+
+[sub_resource type="BoxMesh" id="Box"]
+size = Vector3(1, 1, 1)
+
+[node name="GateWardenVisual01" type="Node3D"]
+rotation_degrees = Vector3(0, 18, 0)
+
+[node name="Torso" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.96, 0)
+scale = Vector3(1.0, 1.0, 0.78)
+mesh = SubResource("Torso")
+material_override = SubResource("ClothDark")
+
+[node name="ChestGuard" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.05, -0.22)
+scale = Vector3(0.42, 0.42, 0.08)
+mesh = SubResource("Box")
+material_override = SubResource("Leather")
+
+[node name="ShoulderL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.32, 1.22, 0)
+rotation_degrees = Vector3(0, 0, -8)
+scale = Vector3(0.26, 0.12, 0.30)
+mesh = SubResource("Box")
+material_override = SubResource("Metal")
+
+[node name="ShoulderR" type="MeshInstance3D" parent="."]
+position = Vector3(0.32, 1.22, 0)
+rotation_degrees = Vector3(0, 0, 8)
+scale = Vector3(0.26, 0.12, 0.30)
+mesh = SubResource("Box")
+material_override = SubResource("Metal")
+
+[node name="ArmL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.35, 0.91, 0)
+rotation_degrees = Vector3(0, 0, -5)
+mesh = SubResource("Limb")
+material_override = SubResource("ClothMid")
+
+[node name="ArmR" type="MeshInstance3D" parent="."]
+position = Vector3(0.35, 0.91, 0)
+rotation_degrees = Vector3(0, 0, 5)
+mesh = SubResource("Limb")
+material_override = SubResource("ClothMid")
+
+[node name="BracerL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.35, 0.72, -0.01)
+scale = Vector3(0.11, 0.18, 0.11)
+mesh = SubResource("Box")
+material_override = SubResource("Leather")
+
+[node name="BracerR" type="MeshInstance3D" parent="."]
+position = Vector3(0.35, 0.72, -0.01)
+scale = Vector3(0.11, 0.18, 0.11)
+mesh = SubResource("Box")
+material_override = SubResource("Leather")
+
+[node name="Belt" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.68, 0)
+scale = Vector3(0.34, 0.06, 0.25)
+mesh = SubResource("Box")
+material_override = SubResource("Leather")
+
+[node name="BeltBadge" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.68, -0.27)
+scale = Vector3(0.10, 0.10, 0.04)
+mesh = SubResource("Box")
+material_override = SubResource("Accent")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.58, 0)
+mesh = SubResource("Head")
+material_override = SubResource("Skin")
+
+[node name="HoodBack" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.60, 0.08)
+scale = Vector3(0.25, 0.26, 0.18)
+mesh = SubResource("Box")
+material_override = SubResource("ClothDark")
+
+[node name="HoodBrow" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.73, -0.13)
+scale = Vector3(0.23, 0.07, 0.12)
+mesh = SubResource("Box")
+material_override = SubResource("ClothDark")
+
+[node name="LegL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.13, 0.36, 0)
+scale = Vector3(1.08, 1.04, 1.08)
+mesh = SubResource("Limb")
+material_override = SubResource("ClothDark")
+
+[node name="LegR" type="MeshInstance3D" parent="."]
+position = Vector3(0.13, 0.36, 0)
+scale = Vector3(1.08, 1.04, 1.08)
+mesh = SubResource("Limb")
+material_override = SubResource("ClothDark")
+
+[node name="BootL" type="MeshInstance3D" parent="."]
+position = Vector3(-0.13, 0.10, -0.04)
+scale = Vector3(0.16, 0.15, 0.24)
+mesh = SubResource("Box")
+material_override = SubResource("Leather")
+
+[node name="BootR" type="MeshInstance3D" parent="."]
+position = Vector3(0.13, 0.10, -0.04)
+scale = Vector3(0.16, 0.15, 0.24)
+mesh = SubResource("Box")
+material_override = SubResource("Leather")
+
+[node name="SpearShaft" type="MeshInstance3D" parent="."]
+position = Vector3(0.52, 1.05, 0.12)
+rotation_degrees = Vector3(0, 0, -5)
+mesh = SubResource("Spear")
+material_override = SubResource("Leather")
+
+[node name="SpearHead" type="MeshInstance3D" parent="."]
+position = Vector3(0.62, 2.16, 0.12)
+rotation_degrees = Vector3(0, 0, -5)
+scale = Vector3(0.12, 0.34, 0.05)
+mesh = SubResource("Box")
+material_override = SubResource("Metal")
+
+[node name="WardenMark" type="MeshInstance3D" parent="."]
+position = Vector3(-0.18, 1.05, -0.31)
+scale = Vector3(0.12, 0.12, 0.03)
+mesh = SubResource("Box")
+material_override = SubResource("Accent")
