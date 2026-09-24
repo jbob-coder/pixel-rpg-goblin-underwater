@@ -1,0 +1,3 @@
+# The Hunt-01 manifest fixture validates this document's exact Git blob bytes.
+# Preserve LF on Windows too; do not weaken the source-provenance hash check.
+docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_SPATIAL_LAYOUT_REGISTRY.md text eol=lf
