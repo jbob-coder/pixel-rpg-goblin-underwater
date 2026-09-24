@@ -3,7 +3,7 @@ name: Stage 1 Shooter-Style Joystick Camera Regression
 on:
   push:
     branches:
-      - worldlife-reference-docs
+      - main
     paths:
       - ".github/workflows/stage1-control-camera-feedback.yml"
       - "probes/android_stage1/scripts/probe_world.gd"
@@ -11,6 +11,7 @@ on:
       - "probes/android_stage1/tests/world_boundary_preflight.py"
       - "probes/android_stage1/docs/CONTROL_CAMERA_FOUNDATION_README.md"
       - "ci/stage1/control_camera_phone_feedback_test.gd"
+  workflow_dispatch:
 
 permissions:
   contents: read
