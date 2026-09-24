@@ -2,7 +2,7 @@ extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const VIEWMODEL_SCENE: PackedScene = preload("res://assets/characters/first_person_viewmodel_01.tscn")
-const HANDS_TEXTURE_PATH := "res://assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001_runtime.svg"
+const HANDS_TEXTURE_PATH := "res://assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001.png"
 
 var failures: Array[String] = []
 var checks := 0
@@ -127,5 +127,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_009_FIRST_PERSON_VIEWMODEL_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_009_FIRST_PERSON_VIEWMODEL_FAILED")
-	print("This gate proves the active first-person viewmodel uses the canonical runtime-derived hands sprite, keeps the weapon presentation bounded, and does not move camera/controller/collision/targeting/combat/state authority. Physical-device obstruction/readability/performance remains a separate runtime evidence gate.")
+	print("This gate proves the active first-person viewmodel uses the canonical source PNG hands sprite, keeps the weapon presentation bounded, and does not move camera/controller/collision/targeting/combat/state authority. Physical-device obstruction/readability/performance remains a separate runtime evidence gate.")
 	quit(0 if failures.is_empty() else 1)
