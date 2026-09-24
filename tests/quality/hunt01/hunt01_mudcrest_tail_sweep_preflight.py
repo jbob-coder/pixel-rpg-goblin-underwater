@@ -12,7 +12,7 @@ REACTION = ROOT / "game/scripts/gameplay/combat/hunt01_reaction_window_runtime.g
 TELEGRAPH = ROOT / "game/assets/effects/mudcrest_tail_sweep_telegraph.tscn"
 TEST = ROOT / "game/tests/hunt01_mudcrest_tail_sweep_runtime_test.gd"
 DOC = ROOT / "game/docs/HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_RUNTIME.md"
-WORKFLOW = ROOT / ".github/workflows/production-hunt01-graybox-android.yml"
+WORKFLOW = ROOT / ".github/workflows/pixel-rpg-ci.yml"
 MONSTER_README = ROOT / "game/scripts/gameplay/monsters/monster_01/README.md"
 
 
@@ -74,9 +74,9 @@ def main() -> int:
     check("dedicated test verifies Off-Balance and Staggered producer integration", "SOLID Tail Sweep emits exactly one Off-Balance request" in test and "CLEAN Tail Sweep emits one Staggered producer request" in test and "CLEAN replay does not refresh Staggered twice" in test)
     check("runtime doc records verified evidence and preserves provisional/sever/Staggered boundaries", "Status: IMPLEMENTED / STATIC VERIFIED / HEADLESS VERIFIED / ANDROID BUILD VERIFIED" in doc and "HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_SOURCE_STATIC_VERIFIED" in doc and "HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_RUNTIME_VERIFIED" in doc and "TAIL_DISTAL" in doc and "Staggered" in doc and "provisional" in doc.lower())
     check("Monster README records Tail Sweep verified ownership", "M01_TAIL_SWEEP" in monster_readme and "3 AP / 18 Stamina" in monster_readme and "TAIL SWEEP STATIC/HEADLESS/ANDROID BUILD VERIFIED" in monster_readme)
-    check("workflow runs Tail Sweep static gate", "hunt01_mudcrest_tail_sweep_preflight.py" in workflow and "HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_SOURCE_STATIC_VERIFIED" in workflow)
-    check("workflow runs Tail Sweep headless gate", "hunt01_mudcrest_tail_sweep_runtime_test.gd" in workflow and "HUNT01_MUDCREST_TAIL_SWEEP_ATTACK_RUNTIME_VERIFIED" in workflow)
-    check("workflow exports Tail Sweep-named Android artifact", "UnnamedHuntRPG-Hunt01-MudcrestTailSweep-debug" in workflow)
+    check("canonical workflow discovers Tail Sweep static gate", 'find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py"' in workflow and 'python3 "$test_file"' in workflow)
+    check("canonical workflow discovers Tail Sweep headless gate", 'find game/tests -maxdepth 1 -type f -name "*_test.gd"' in workflow and 'godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file"' in workflow)
+    check("workflow exports Pixel RPG Android artifact", "PixelRPG-debug-${{ github.sha }}" in workflow)
 
     print()
     print(f"Checks: {checks} | Passed: {checks - len(failures)} | Failed: {len(failures)}")
