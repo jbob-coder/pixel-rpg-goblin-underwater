@@ -1,0 +1,66 @@
+name: Hunt 01 Graybox Manifest Static Validation
+
+on:
+  push:
+    branches:
+      - worldlife-reference-docs
+    paths:
+      - ".github/workflows/hunt01-graybox-manifest-static.yml"
+      - "tests/quality/hunt01/**"
+      - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json"
+      - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_VALIDATION_SPECIFICATION.md"
+      - "docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_SPATIAL_LAYOUT_REGISTRY.md"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hunt01-graybox-manifest-static-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-manifest:
+    name: Validate Hunt-01 manifest-static geometry data
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout tested revision
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Positive manifest-static validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build-evidence
+          python3 tests/quality/hunt01/hunt01_graybox_manifest_validator.py \
+            --manifest docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json \
+            --fixture tests/quality/hunt01/hunt01_stable_coordinate_fixture.json \
+            --repo-root . \
+            --json-out build-evidence/hunt01-graybox-manifest-static.json \
+            | tee build-evidence/hunt01-graybox-manifest-static.log
+
+      - name: Prove invalid data is rejected
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tests/quality/hunt01/hunt01_graybox_manifest_validator.py \
+            --manifest docs/10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json \
+            --fixture tests/quality/hunt01/hunt01_stable_coordinate_fixture.json \
+            --repo-root . \
+            --self-test-invalid \
+            | tee build-evidence/hunt01-graybox-negative-self-test.log
+          grep -q "NEGATIVE_SELF_TEST=PASS" build-evidence/hunt01-graybox-negative-self-test.log
+
+      - name: Upload manifest-static evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hunt01-Graybox-Manifest-Static-Evidence
+          path: build-evidence/
+          if-no-files-found: error
+          retention-days: 7

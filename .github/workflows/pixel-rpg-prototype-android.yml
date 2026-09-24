@@ -1,0 +1,420 @@
+name: Pixel RPG Prototype Android
+
+on:
+  push:
+    branches:
+      - pixel-rpg
+    paths:
+      - ".github/workflows/pixel-rpg-prototype-android.yml"
+      - "game/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: pixel-rpg-prototype-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_PATH: game
+  APK_PATH: game/build/android/PixelRPG-visual-pack-011-direct-photo-assets-debug.apk
+  MAX_PLAYER_REQUIRED_GAME_STORAGE_BYTES: "2000000000"
+
+jobs:
+  verify-pixel-rpg-prototype:
+    name: Parse, smoke, preserve domain tests, and export Pixel RPG APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout tested revision
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+
+      - name: Install Android SDK 35 export tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35"
+
+      - name: Set up Godot 4.7.2 and export templates
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+
+      - name: Configure Godot Android editor settings and debug keystore
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.android" "$HOME/.config/godot" build-evidence game/build/android
+          if [ ! -f "$HOME/.android/debug.keystore" ]; then
+            keytool -keyalg RSA -genkeypair -alias androiddebugkey -keypass android -keystore "$HOME/.android/debug.keystore" -storepass android -dname "CN=Android Debug,O=Android,C=US" -validity 10000
+          fi
+          cat > "$HOME/.config/godot/editor_settings-4.7.tres" <<EOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/java_sdk_path = "$JAVA_HOME"
+          export/android/android_sdk_path = "$ANDROID_HOME"
+          export/android/debug_keystore = "$HOME/.android/debug.keystore"
+          export/android/debug_keystore_user = "androiddebugkey"
+          export/android/debug_keystore_pass = "android"
+          export/android/timestamping_authority_url = ""
+          EOF
+
+      - name: Record build identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "branch=${GITHUB_REF_NAME}"
+            echo "commit=${GITHUB_SHA}"
+            echo "project=${PROJECT_PATH}"
+            godot --version
+          } | tee build-evidence/build-identity.txt
+
+      - name: Godot import and parse gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --verbose --editor --path "$PROJECT_PATH" --quit 2>&1 | tee build-evidence/godot-import-parse.log
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|ERROR:.*(parse|load|resource)" build-evidence/godot-import-parse.log; then
+            exit 1
+          fi
+
+      - name: Pixel RPG AppShell smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 7s godot --headless --verbose --path "$PROJECT_PATH" > build-evidence/app-shell-smoke.log 2>&1
+          code=$?
+          set -e
+          cat build-evidence/app-shell-smoke.log
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then exit "$code"; fi
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" build-evidence/app-shell-smoke.log; then exit 1; fi
+
+      - name: Pixel RPG prototype scene smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          timeout 7s godot --headless --verbose --path "$PROJECT_PATH" res://scenes/prototypes/pixel_rpg_prototype_001.tscn > build-evidence/pixel-prototype-smoke.log 2>&1
+          code=$?
+          set -e
+          cat build-evidence/pixel-prototype-smoke.log
+          if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then exit "$code"; fi
+          if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" build-evidence/pixel-prototype-smoke.log; then exit 1; fi
+
+      - name: Pixel RPG first-person realignment runtime gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_first_person_realignment_runtime_test.gd" 2>&1 | tee build-evidence/first-person-realignment.log
+          grep -q "Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_VERIFIED" build-evidence/first-person-realignment.log
+
+      - name: Pixel RPG Visual Pack 009 first-person viewmodel gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_visual_pack_009_first_person_viewmodel_test.gd" 2>&1 | tee build-evidence/visual-pack-009-first-person-viewmodel.log
+          grep -q "Gate: PIXEL_RPG_VISUAL_PACK_009_FIRST_PERSON_VIEWMODEL_VERIFIED" build-evidence/visual-pack-009-first-person-viewmodel.log
+
+      - name: Pixel RPG Visual Pack 010 image-derived asset gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_visual_pack_010_image_derived_assets_test.gd" 2>&1 | tee build-evidence/visual-pack-010-image-derived-assets.log
+          grep -q "Gate: PIXEL_RPG_VISUAL_PACK_010_IMAGE_DERIVED_ASSETS_VERIFIED" build-evidence/visual-pack-010-image-derived-assets.log
+
+      - name: Pixel RPG Visual Pack 011 direct concept-photo PNG asset gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_visual_pack_011_concept_photo_sprites_test.gd" 2>&1 | tee build-evidence/visual-pack-011-concept-photo-sprites.log
+          grep -q "Gate: PIXEL_RPG_VISUAL_PACK_011_CONCEPT_PHOTO_SPRITES_VERIFIED" build-evidence/visual-pack-011-concept-photo-sprites.log
+
+      - name: Pixel RPG Visual Pack 002 runtime gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_visual_pack_002_runtime_test.gd" 2>&1 | tee build-evidence/visual-pack-002.log
+          grep -q "Gate: PIXEL_RPG_VISUAL_PACK_002_RUNTIME_VERIFIED" build-evidence/visual-pack-002.log
+
+      - name: Pixel RPG Visual Pack 008 Mudcrest refinement gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_visual_pack_008_mudcrest_refinement_test.gd" 2>&1 | tee build-evidence/visual-pack-008-mudcrest-refinement.log
+          grep -q "Gate: PIXEL_RPG_VISUAL_PACK_008_MUDCREST_REFINEMENT_VERIFIED" build-evidence/visual-pack-008-mudcrest-refinement.log
+
+      - name: Pixel RPG Visual Pack 003 HUD runtime gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_visual_pack_003_hud_runtime_test.gd" 2>&1 | tee build-evidence/visual-pack-003-hud.log
+          grep -q "Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_VERIFIED" build-evidence/visual-pack-003-hud.log
+
+      - name: Pixel RPG World Pack 004 enterable smith runtime gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_world_pack_004_enterable_smith_runtime_test.gd" 2>&1 | tee build-evidence/world-pack-004-enterable-smith.log
+          grep -q "Gate: PIXEL_RPG_WORLD_PACK_004_ENTERABLE_SMITH_RUNTIME_VERIFIED" build-evidence/world-pack-004-enterable-smith.log
+
+      - name: Pixel RPG Combat Bridge 001 targeting preview gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_combat_bridge_001_targeting_preview_test.gd" 2>&1 | tee build-evidence/combat-bridge-001-targeting-preview.log
+          grep -q "Gate: PIXEL_RPG_COMBAT_BRIDGE_001_TARGETING_PREVIEW_VERIFIED" build-evidence/combat-bridge-001-targeting-preview.log
+
+      - name: Pixel RPG Combat Bridge 002 domain bootstrap no-attack gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_combat_bridge_002_domain_bootstrap_test.gd" 2>&1 | tee build-evidence/combat-bridge-002-domain-bootstrap.log
+          grep -q "Gate: PIXEL_RPG_COMBAT_BRIDGE_002_DOMAIN_BOOTSTRAP_NO_ATTACK_VERIFIED" build-evidence/combat-bridge-002-domain-bootstrap.log
+
+      - name: Pixel RPG state ownership contract gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_state_ownership_contract_test.gd" 2>&1 | tee build-evidence/state-ownership-contract.log
+          grep -q "Gate: PIXEL_RPG_STATE_OWNERSHIP_CONTRACT_001_VERIFIED" build-evidence/state-ownership-contract.log
+
+      - name: Pixel RPG prototype decomposition 001 world-base parity gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_prototype_decomposition_001_world_base_test.gd" 2>&1 | tee build-evidence/prototype-decomposition-001-world-base.log
+          grep -q "Gate: PIXEL_RPG_PROTOTYPE_DECOMPOSITION_001_WORLD_BASE_VERIFIED" build-evidence/prototype-decomposition-001-world-base.log
+
+      - name: Pixel RPG Starting Area Asset Pack 001 runtime gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_001_runtime_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-001.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_001_VERIFIED" build-evidence/starting-area-asset-pack-001.log
+
+      - name: Pixel RPG Starting Area Asset Pack 002 smith visual gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_002_smith_visual_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-002-smith.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_002_SMITH_VISUAL_VERIFIED" build-evidence/starting-area-asset-pack-002-smith.log
+
+      - name: Pixel RPG Starting Area Asset Pack 003 environment dressing gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_003_environment_dressing_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-003-environment.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_003_ENVIRONMENT_DRESSING_VERIFIED" build-evidence/starting-area-asset-pack-003-environment.log
+
+      - name: Pixel RPG Starting Area Asset Pack 004 host environment reuse gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_004_host_environment_reuse_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-004-host-environment.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_004_HOST_ENVIRONMENT_REUSE_VERIFIED" build-evidence/starting-area-asset-pack-004-host-environment.log
+
+      - name: Pixel RPG Starting Area Asset Pack 005 Gate Warden visual gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_005_gate_warden_visual_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-005-gate-warden.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_005_GATE_WARDEN_VISUAL_VERIFIED" build-evidence/starting-area-asset-pack-005-gate-warden.log
+
+      - name: Pixel RPG Starting Area Asset Pack 006 settlement building details gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_006_settlement_building_details_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-006-buildings.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_006_SETTLEMENT_BUILDING_DETAILS_VERIFIED" build-evidence/starting-area-asset-pack-006-buildings.log
+
+      - name: Pixel RPG Starting Area Asset Pack 007 path surface details gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/pixel_rpg_starting_area_asset_pack_007_path_surface_details_test.gd" 2>&1 | tee build-evidence/starting-area-asset-pack-007-path-surfaces.log
+          grep -q "Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_007_PATH_SURFACE_DETAILS_VERIFIED" build-evidence/starting-area-asset-pack-007-path-surfaces.log
+
+      - name: Preserve deterministic combat domain tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_combat_turn_shell_runtime_test.gd" 2>&1 | tee build-evidence/combat-turn-shell.log
+          grep -q "Gate: HUNT01_COMBAT_TURN_SHELL_RUNTIME_VERIFIED" build-evidence/combat-turn-shell.log
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_hunter_attack_runtime_test.gd" 2>&1 | tee build-evidence/hunter-attack.log
+          grep -q "Gate: HUNT01_FIRST_HUNTER_ATTACK_RUNTIME_VERIFIED" build-evidence/hunter-attack.log
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_mudcrest_anatomy_runtime_test.gd" 2>&1 | tee build-evidence/mudcrest-anatomy.log
+          grep -q "Gate: HUNT01_MUDCREST_ANATOMY_INTEGRITY_RUNTIME_VERIFIED" build-evidence/mudcrest-anatomy.log
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_status_application_runtime_test.gd" 2>&1 | tee build-evidence/status-application.log
+          grep -q "Gate: HUNT01_GENERIC_STATUS_APPLICATION_RUNTIME_VERIFIED" build-evidence/status-application.log
+          godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/game/tests/hunt01_status_timing_runtime_test.gd" 2>&1 | tee build-evidence/status-timing.log
+          grep -q "Gate: HUNT01_GENERIC_STATUS_TIMING_RUNTIME_VERIFIED" build-evidence/status-timing.log
+
+      - name: Export Pixel RPG Android debug APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$(dirname "$APK_PATH")"
+          godot --headless --verbose --path "$PROJECT_PATH" --export-debug "Android Debug" "$GITHUB_WORKSPACE/$APK_PATH" 2>&1 | tee build-evidence/android-export.log
+          test -f "$APK_PATH"
+
+      - name: Enforce package size ceiling and record evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          measured_bytes="$(stat -c%s "$APK_PATH")"
+          {
+            echo "apk=$APK_PATH"
+            echo "measured_apk_bytes=$measured_bytes"
+            echo "package_cap_bytes=$MAX_PLAYER_REQUIRED_GAME_STORAGE_BYTES"
+            echo "note=APK package-size evidence only; this does not prove installed-footprint compliance."
+          } | tee build-evidence/package-size.txt
+          if [ "$measured_bytes" -gt "$MAX_PLAYER_REQUIRED_GAME_STORAGE_BYTES" ]; then
+            echo "APK exceeds selected 2 GB package ceiling" >&2
+            exit 1
+          fi
+
+      - name: Upload Pixel RPG prototype APK
+        id: upload_apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: PixelRPG-visual-pack-011-direct-photo-assets-debug
+          path: game/build/android/PixelRPG-visual-pack-011-direct-photo-assets-debug.apk
+          if-no-files-found: error
+
+      - name: Finalize immutable BuildIdentity
+        shell: bash
+        env:
+          APK_ARTIFACT_ID: ${{ steps.upload_apk.outputs.artifact-id }}
+          APK_ARTIFACT_URL: ${{ steps.upload_apk.outputs.artifact-url }}
+          APK_ARTIFACT_DIGEST: ${{ steps.upload_apk.outputs.artifact-digest }}
+          GH_TOKEN: ${{ github.token }}
+          JOB_DISPLAY_NAME: "Parse, smoke, preserve domain tests, and export Pixel RPG APK"
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
+          import subprocess
+          import urllib.request
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          repo = os.environ["GITHUB_REPOSITORY"]
+          run_id = os.environ["GITHUB_RUN_ID"]
+          api_url = f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?filter=latest&per_page=100"
+          request = urllib.request.Request(
+              api_url,
+              headers={
+                  "Accept": "application/vnd.github+json",
+                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+                  "X-GitHub-Api-Version": "2022-11-28",
+              },
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              jobs = json.load(response).get("jobs", [])
+          matches = [j for j in jobs if j.get("name") == os.environ["JOB_DISPLAY_NAME"]]
+          if len(matches) != 1:
+              raise SystemExit(f"Could not resolve unique numeric job id: matches={len(matches)}")
+          job_id = int(matches[0]["id"])
+
+          apk_path = Path(os.environ["APK_PATH"])
+          apk_bytes = apk_path.read_bytes()
+          apk_sha256 = hashlib.sha256(apk_bytes).hexdigest()
+
+          export_text = Path("game/export_presets.cfg").read_text(encoding="utf-8")
+          project_text = Path("game/project.godot").read_text(encoding="utf-8")
+
+          def quoted(text: str, key: str) -> str:
+              match = re.search(rf"(?m)^{re.escape(key)}=\"([^\"]*)\"$", text)
+              if not match:
+                  raise SystemExit(f"Missing quoted config key: {key}")
+              return match.group(1)
+
+          def integer(text: str, key: str) -> int:
+              match = re.search(rf"(?m)^{re.escape(key)}=(\d+)$", text)
+              if not match:
+                  raise SystemExit(f"Missing integer config key: {key}")
+              return int(match.group(1))
+
+          identity = {
+              "schema": "pixel_rpg.build_identity.v1",
+              "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+              "repository": repo,
+              "branch": os.environ["GITHUB_REF_NAME"],
+              "source_sha": os.environ["GITHUB_SHA"],
+              "workflow": os.environ["GITHUB_WORKFLOW"],
+              "workflow_run_id": int(run_id),
+              "workflow_run_attempt": int(os.environ["GITHUB_RUN_ATTEMPT"]),
+              "job_key": os.environ["GITHUB_JOB"],
+              "job_id": job_id,
+              "godot_version": subprocess.check_output(["godot", "--version"], text=True).strip(),
+              "project_name": quoted(project_text, "config/name"),
+              "export_preset": "Android Debug",
+              "package_unique_name": quoted(export_text, "package/unique_name"),
+              "package_name": quoted(export_text, "package/name"),
+              "version_code": integer(export_text, "version/code"),
+              "version_name": quoted(export_text, "version/name"),
+              "apk_filename": apk_path.name,
+              "apk_size_bytes": len(apk_bytes),
+              "apk_sha256": apk_sha256,
+              "apk_artifact_id": int(os.environ["APK_ARTIFACT_ID"]),
+              "apk_artifact_url": os.environ["APK_ARTIFACT_URL"],
+              "apk_artifact_digest": os.environ["APK_ARTIFACT_DIGEST"],
+              "build_result_at_identity_finalize": "success",
+          }
+
+          required = [
+              "source_sha", "workflow_run_id", "job_id", "godot_version",
+              "apk_filename", "apk_size_bytes", "apk_sha256",
+              "apk_artifact_id", "apk_artifact_digest",
+          ]
+          missing = [key for key in required if identity.get(key) in ("", None, 0)]
+          if missing:
+              raise SystemExit(f"BuildIdentity missing required fields: {missing}")
+
+          Path("build-evidence/BUILD_IDENTITY.json").write_text(
+              json.dumps(identity, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          Path("build-evidence/BUILD_IDENTITY.md").write_text(
+              "# Pixel RPG BuildIdentity\n\n"
+              + "\n".join(f"- **{key}:** \`{value}\`" for key, value in identity.items())
+              + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(identity, indent=2, sort_keys=True))
+          PY
+
+      - name: Upload Pixel RPG build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: PixelRPG-visual-pack-011-direct-photo-assets-build-evidence
+          path: build-evidence/
+          if-no-files-found: error
