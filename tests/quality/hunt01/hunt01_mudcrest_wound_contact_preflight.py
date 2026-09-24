@@ -8,7 +8,7 @@ CLASSIFIER = ROOT / "game/scripts/gameplay/monsters/monster_01/hunt01_mudcrest_w
 ATTACK = ROOT / "game/scripts/gameplay/monsters/monster_01/hunt01_mudcrest_attack_runtime.gd"
 TEST = ROOT / "game/tests/hunt01_mudcrest_wound_contact_runtime_test.gd"
 DOC = ROOT / "game/docs/HUNT01_MUDCREST_WOUND_CONTACT_RUNTIME.md"
-WORKFLOW = ROOT / ".github/workflows/production-hunt01-graybox-android.yml"
+WORKFLOW = ROOT / ".github/workflows/pixel-rpg-ci.yml"
 
 
 def main() -> int:
@@ -57,8 +57,8 @@ def main() -> int:
     check("test verifies CLEAN impact-dominant Off-Balance request", "impact-dominant CLEAN emits one Off-Balance request" in test)
     check("test verifies replay cannot mutate Hunter health", "classification replay still cannot mutate Hunter health" in test)
     check("runtime doc keeps status application downstream", "PENDING_GENERIC_STATUS_APPLICATION_RUNTIME" in doc and "does not apply" in doc.lower())
-    check("workflow runs classifier static gate", "hunt01_mudcrest_wound_contact_preflight.py" in workflow and "HUNT01_MUDCREST_WOUND_CONTACT_SOURCE_STATIC_VERIFIED" in workflow)
-    check("workflow runs classifier headless gate", "hunt01_mudcrest_wound_contact_runtime_test.gd" in workflow and "HUNT01_MUDCREST_WOUND_CONTACT_RUNTIME_VERIFIED" in workflow)
+    check("canonical workflow discovers classifier static gate", 'find tests/quality/hunt01 -maxdepth 1 -type f -name "*_preflight.py"' in workflow and 'python3 "$test_file"' in workflow)
+    check("canonical workflow discovers classifier headless gate", 'find game/tests -maxdepth 1 -type f -name "*_test.gd"' in workflow and 'godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file"' in workflow)
 
     print()
     print(f"Checks: {checks} | Passed: {checks - len(failures)} | Failed: {len(failures)}")
