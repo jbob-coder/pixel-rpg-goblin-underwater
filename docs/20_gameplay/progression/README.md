@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG PROGRESSION STATUS — 2026-09-25**
+>
+> The progression philosophy and crafted-refinement example below remain design provenance. Broad current-world progression/crafting runtime is not implemented.
+>
+> Current implementation sequencing comes from the live issue/dependency graph. Future progression must consume authoritative inventory/equipment/state owners and must not let presentation or smith interaction write player power directly.
+
 # Progression Package — Gameplay Authority
 
 Status: ACTIVE PACKAGE GUIDE / FIRST-SLICE CRAFTED REFINEMENT + PHYSICAL SMITH ACCESS RECORDED / DESIGN ONLY
