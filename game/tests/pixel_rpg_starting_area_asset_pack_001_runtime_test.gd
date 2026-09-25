@@ -101,10 +101,18 @@ func _run() -> void:
 		var right_gate_shape := _box_shape(right_gate_collision)
 		_check("left gate collision size remains exact", left_gate_shape != null and left_gate_shape.size.is_equal_approx(Vector3(2.2, 4.4, 2.2)))
 		_check("right gate collision size remains exact", right_gate_shape != null and right_gate_shape.size.is_equal_approx(Vector3(2.2, 4.4, 2.2)))
-		var lantern_nodes: Array[Node] = geometry.find_children("WorldPack001Lantern", "", false, false) if geometry != null else []
-		var fence_nodes: Array[Node] = geometry.find_children("WorldPack001Fence", "", false, false) if geometry != null else []
-		_check("both gate lanterns preserve exact transforms", lantern_nodes.size() == 2 and _has_node3d_at(lantern_nodes, Vector3(-3.1, 0.0, -7.0), 0.0) and _has_node3d_at(lantern_nodes, Vector3(3.1, 0.0, -7.0), 180.0))
-		_check("both frontier fences preserve exact transforms", fence_nodes.size() == 2 and _has_node3d_at(fence_nodes, Vector3(-4.0, 0.0, -16.5), 10.0) and _has_node3d_at(fence_nodes, Vector3(4.0, 0.0, -19.0), -12.0))
+		var lantern_nodes: Array[Node] = []
+		var fence_nodes: Array[Node] = []
+		if geometry != null:
+			for child in geometry.get_children():
+				if child is Node3D:
+					var node3d := child as Node3D
+					if node3d.has_node("LanternCap") and node3d.has_node("Glow"):
+						lantern_nodes.append(node3d)
+					if node3d.has_node("FootingLeft") and node3d.has_node("RopeTieLeft"):
+						fence_nodes.append(node3d)
+		_check("both gate lanterns preserve exact transforms", lantern_nodes.size() == 2 and _has_node3d_at(lantern_nodes, Vector3(-3.1, 0.0, -7.0), 0.0) and _has_node3d_at(lantern_nodes, Vector3(3.1, 0.0, -7.0), 180.0), str(lantern_nodes.map(func(node): return {"name": node.name, "position": node.position, "yaw": node.rotation_degrees.y})))
+		_check("both frontier fences preserve exact transforms", fence_nodes.size() == 2 and _has_node3d_at(fence_nodes, Vector3(-4.0, 0.0, -16.5), 10.0) and _has_node3d_at(fence_nodes, Vector3(4.0, 0.0, -19.0), -12.0), str(fence_nodes.map(func(node): return {"name": node.name, "position": node.position, "yaw": node.rotation_degrees.y})))
 		_check("first-person camera remains current", live_camera != null and live_camera.current)
 		prototype.queue_free()
 		await process_frame
