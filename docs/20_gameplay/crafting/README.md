@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG CRAFTING STATUS — 2026-09-25**
+>
+> The one-recipe transaction law below remains valid design provenance; full crafting runtime is still not implemented in the current first-person smith interaction.
+>
+> The enterable smith is implemented as world/interior presentation + collision, but it must request crafting through a future authoritative crafting owner. The old “next dependency” sequence is historical and must not be treated as current implementation priority.
+
 # 20_gameplay/crafting — Crafting & Equipment Linkage
 
 Status: ACTIVE FIRST-SLICE DESIGN PACKAGE / ONE RECIPE + PHYSICAL SMITH SERVICE LINK RECORDED / NO CRAFTING IMPLEMENTATION
