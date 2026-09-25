@@ -3,6 +3,7 @@ extends SceneTree
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const CAMERA_MATH := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 const PLAYER_MOTION := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
+const PLAYER_MOTOR := preload("res://scripts/presentation/pixel_rpg/player_motor_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -38,6 +39,7 @@ func _run() -> void:
 	var floor_y: float = PLAYER_MOTION.apply_vertical_velocity(-3.0, true, 0.1, 9.8)
 	_check("player-motion grounded downward velocity keeps floor-stick contract", is_equal_approx(floor_y, -0.1), str(floor_y))
 	_check("player-motion respawn threshold remains strict", PLAYER_MOTION.should_respawn(-8.01, -8.0) and not PLAYER_MOTION.should_respawn(-8.0, -8.0))
+	_check("player-motor owner schema is stable", String(PLAYER_MOTOR.get_schema()) == "pixel_rpg.player_motor_001.v1")
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("prototype scene instantiates", prototype != null)
 	if prototype == null:
@@ -92,6 +94,14 @@ func _run() -> void:
 	var move: Vector3 = prototype.call("_camera_relative_movement", Vector2(0.0, -1.0))
 	_check("existing movement remains camera-relative and normalized", absf(move.length() - 1.0) <= 0.01 and absf(move.y) <= 0.001, str(move))
 
+	if hunter != null:
+		hunter.global_position = Vector3(2.0, -9.0, 2.0)
+		hunter.velocity = Vector3(1.0, -1.0, 1.0)
+		await physics_frame
+		await process_frame
+		_check("player-motor runtime owns the existing respawn application", hunter.global_position.is_equal_approx(Vector3(0.0, 0.9, 13.0)), str(hunter.global_position))
+		_check("player-motor respawn clears velocity exactly", hunter.velocity.is_equal_approx(Vector3.ZERO), str(hunter.velocity))
+
 	prototype.queue_free()
 	await process_frame
 	_finish()
@@ -103,5 +113,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_FAILED")
-	print("This gate verifies extracted first-person camera and player-motion math plus host wrapper/runtime parity; input ownership, CharacterBody3D move_and_slide authority, physical Android feel, obstruction and final visual acceptance remain separate gates.")
+	print("This gate verifies extracted first-person camera math and explicit player-motor ownership plus host wrapper/runtime parity; touch-event ownership, physical Android feel, obstruction and final visual acceptance remain separate gates.")
 	quit(0 if failures.is_empty() else 1)

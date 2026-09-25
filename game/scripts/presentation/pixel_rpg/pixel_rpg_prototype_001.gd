@@ -7,7 +7,7 @@ const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_g
 const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
 const WorldActorPresentation001 := preload("res://scripts/presentation/pixel_rpg/world_actor_presentation_001.gd")
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
-const PlayerMotionMath001 := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
+const PlayerMotor001 := preload("res://scripts/presentation/pixel_rpg/player_motor_001.gd")
 const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 const HudLayout001 := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
 const MinimapMath001 := preload("res://scripts/presentation/pixel_rpg/minimap_math_001.gd")
@@ -175,29 +175,16 @@ func _physics_process(delta: float) -> void:
 			movement_input = movement_input.normalized()
 
 	var move_world := _camera_relative_movement(movement_input)
-	hunter.velocity = PlayerMotionMath001.apply_horizontal_velocity(
-		hunter.velocity,
+	PlayerMotor001.step(
+		hunter,
+		hunter_visual,
 		move_world,
-		MOVE_SPEED_MPS
-	)
-	hunter.velocity.y = PlayerMotionMath001.apply_vertical_velocity(
-		hunter.velocity.y,
-		hunter.is_on_floor(),
 		delta,
-		GRAVITY_MPS2
+		MOVE_SPEED_MPS,
+		GRAVITY_MPS2,
+		RESPAWN_Y_M,
+		PLAYER_START
 	)
-
-	hunter.move_and_slide()
-
-	hunter_visual.rotation.y = PlayerMotionMath001.visual_yaw(
-		hunter_visual.rotation.y,
-		move_world,
-		delta
-	)
-
-	if PlayerMotionMath001.should_respawn(hunter.global_position.y, RESPAWN_Y_M):
-		hunter.global_position = PLAYER_START
-		hunter.velocity = Vector3.ZERO
 
 func _process(delta: float) -> void:
 	_elapsed += maxf(delta, 0.0)
