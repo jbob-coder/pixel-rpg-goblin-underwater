@@ -5,16 +5,15 @@ const WorldPaths001 := preload("res://scripts/presentation/pixel_rpg/world_paths
 const WorldSettlementCore001 := preload("res://scripts/presentation/pixel_rpg/world_settlement_core_001.gd")
 const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_gate_props_001.gd")
 const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
+const WorldActorPresentation001 := preload("res://scripts/presentation/pixel_rpg/world_actor_presentation_001.gd")
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 const PlayerMotionMath001 := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
 const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 const HudLayout001 := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
 const MinimapMath001 := preload("res://scripts/presentation/pixel_rpg/minimap_math_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
-const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
 const MudcrestAnatomyRuntime: Script = preload("res://scripts/gameplay/monsters/monster_01/hunt01_mudcrest_anatomy_runtime.gd")
-const GateWardenVisualScene: PackedScene = preload("res://assets/characters/gate_warden_visual_01.tscn")
 const ConceptPhotoReconstruction011 := preload("res://scripts/presentation/pixel_rpg/concept_photo_reconstruction_011.gd")
 
 const MOVE_SPEED_MPS := 5.2
@@ -637,35 +636,12 @@ func _build_prototype_world() -> void:
 
 	WorldTrailEnvironment001.add_trail_environment(world_geometry)
 
-	_npc_anchor = Node3D.new()
-	_npc_anchor.name = "GateWarden"
-	_npc_anchor.position = Vector3(-2.6, 0.0, -6.2)
-	world_geometry.add_child(_npc_anchor)
-	_add_npc_visual(_npc_anchor)
-
-	_monster_anchor = Node3D.new()
-	_monster_anchor.name = "MonsterProxy"
-	_monster_anchor.position = Vector3(0.0, 0.0, -49.0)
-	world_geometry.add_child(_monster_anchor)
-	_add_monster_proxy(_monster_anchor)
-	_add_domain_monster_body_alias(_monster_anchor.position)
-
-func _add_npc_visual(parent: Node3D) -> void:
-	var visual := GateWardenVisualScene.instantiate() as Node3D
-	if visual == null:
-		push_error("Pixel RPG Pack 005 failed to instantiate Gate Warden visual")
-		return
-	visual.name = "GateWardenVisual"
-	parent.add_child(visual)
-
-func _add_monster_proxy(parent: Node3D) -> void:
-	var visual := MudcrestVisualScene.instantiate() as Node3D
-	if visual == null:
-		push_error("Pixel RPG Pack 002 failed to instantiate Mudcrest visual")
-		return
-	visual.name = "MudcrestVisual"
-	parent.add_child(visual)
-	_monster_visual = visual
+	var actor_refs := WorldActorPresentation001.add_actor_presentation(world_geometry)
+	_npc_anchor = actor_refs.get("npc_anchor") as Node3D
+	_monster_anchor = actor_refs.get("monster_anchor") as Node3D
+	_monster_visual = actor_refs.get("monster_visual") as Node3D
+	if _monster_anchor != null:
+		_add_domain_monster_body_alias(_monster_anchor.position)
 
 func _add_domain_monster_body_alias(position: Vector3) -> void:
 	var body := StaticBody3D.new()

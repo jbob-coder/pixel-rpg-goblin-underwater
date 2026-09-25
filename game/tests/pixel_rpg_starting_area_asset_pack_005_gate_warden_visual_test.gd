@@ -2,6 +2,7 @@ extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const WARDEN_SCENE: PackedScene = preload("res://assets/characters/gate_warden_visual_01.tscn")
+const WORLD_ACTORS := preload("res://scripts/presentation/pixel_rpg/world_actor_presentation_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -24,7 +25,11 @@ func _contains_physics(node: Node) -> bool:
 	return false
 
 func _run() -> void:
-	print("Pixel RPG Starting Area Asset Pack 005 Gate Warden visual runtime gate")
+	print("Pixel RPG Starting Area Asset Pack 005 + extracted world-actor presentation gate")
+
+	_check("world-actor presentation schema is stable", String(WORLD_ACTORS.get_schema()) == "pixel_rpg.world_actor_presentation_001.v1")
+	_check("Gate Warden anchor contract is exact", WORLD_ACTORS.GATE_WARDEN_POSITION.is_equal_approx(Vector3(-2.6, 0.0, -6.2)))
+	_check("Mudcrest presentation anchor contract is exact", WORLD_ACTORS.MUDCREST_POSITION.is_equal_approx(Vector3(0.0, 0.0, -49.0)))
 
 	var visual := WARDEN_SCENE.instantiate() as Node3D
 	_check("Gate Warden reusable visual instantiates", visual != null)
@@ -84,5 +89,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_005_GATE_WARDEN_VISUAL_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_005_GATE_WARDEN_VISUAL_FAILED")
-	print("This gate proves reusable presentation-only Gate Warden art plus exact anchor/TALK behavior, first-person, smith and Mudcrest preservation. Device visual/performance acceptance remains open.")
+	print("This gate proves the extracted world-actor presentation owner preserves reusable Gate Warden/Mudcrest art plus exact anchors/TALK behavior, first-person and smith contracts. Domain Monster collision alias ownership remains separate and device acceptance remains open.")
 	quit(0 if failures.is_empty() else 1)
