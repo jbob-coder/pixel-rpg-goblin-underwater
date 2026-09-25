@@ -38,13 +38,13 @@ func _contains_physics(node: Node) -> bool:
 			return true
 	return false
 
-func _has_position(positions: Array[Vector3], target: Vector3) -> bool:
-	for position in positions:
-		if position.distance_to(target) <= 0.0001:
+func _has_position(positions: Array, target: Vector3) -> bool:
+	for position_variant in positions:
+		if position_variant is Vector3 and (position_variant as Vector3).distance_to(target) <= 0.0001:
 			return true
 	return false
 
-func _same_positions(a: Array, b: Array[Vector3]) -> bool:
+func _same_positions(a: Array, b: Array) -> bool:
 	if a.size() != b.size():
 		return false
 	for expected in a:
