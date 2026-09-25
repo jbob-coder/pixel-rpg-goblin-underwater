@@ -1,3 +1,11 @@
+> **CURRENT PRODUCTION STATUS — 2026-09-25**
+>
+> Production repository is `jbob-coder/pixel-rpg-goblin-underwater`, production branch `main`. The old `pixel-rpg` branch reference below is migration history.
+>
+> The first-person realignment is no longer merely the next bounded piece: current source has further decomposed camera state, player motor, touch state, HUD/minimap/world builders, integrated canonical first-person hands, current targeting/Combat Bridge 002, and retained deterministic combat/domain regressions.
+>
+> Use live source/tests plus the repository relationship map for exact current status. Physical-device acceptance remains a separate evidence layer.
+
 # Pixel RPG — Production Godot Root
 
 Status: ACTIVE PIXEL RPG / FIRST-PERSON CREATOR REALIGNMENT
