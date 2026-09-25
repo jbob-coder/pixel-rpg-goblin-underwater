@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This is historical Unnamed Hunt design provenance. Its aerial-exploration / first-person-tactical split, pre-engine-selection status, and “current prototype candidate” language are superseded by current first-person Pixel RPG source.
+>
+> Preserve compatible design laws such as anatomy-focused combat, deterministic resolution, presentation/domain separation, stable IDs, and the hunt→harvest→craft loop. Current presentation/runtime authority comes from live `main`, current tests, `START_HERE_NEW_CHAT.md`, and `PIXEL_RPG_VISUAL_DIRECTION.md`.
+
 # Unnamed Hunt RPG — Master Design Plan
 
 Status: DISCUSSION / DESIGN RECORDED / NO IMPLEMENTATION AUTHORIZED
