@@ -256,3 +256,11 @@ Instead:
 - use this README to interpret them;
 - update live source/tests/current handoffs for new implementation work;
 - add a new bounded note only when a new runtime slice genuinely needs its own evidence record.
+
+## Completeness verification
+
+Directory readback on 2026-09-25 found 12 Hunt-01 runtime/evidence Markdown notes under `game/docs/`, excluding this README.
+
+All 12 are explicitly classified in this index.
+
+Completeness result: **12 / 12 runtime notes classified**.
