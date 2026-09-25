@@ -42,3 +42,7 @@ The abandoned standalone Shooter RPG is still not a source/runtime authority. Do
 - exact-source Godot/Android build evidence.
 
 Phone runtime, visual quality, sustained performance and installed-footprint verification remain separate evidence layers.
+
+Runtime/domain evidence-note index:
+
+`game/docs/README.md`
