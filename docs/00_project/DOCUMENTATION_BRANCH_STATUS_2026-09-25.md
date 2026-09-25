@@ -136,7 +136,7 @@ Latest verified comparison:
 
 The current diff contains Markdown/documentation paths only.
 
-No `game/`, `tests/`, `.github/workflows/`, `ci/`, or `probes/` runtime/build file is part of the diff.
+No gameplay/runtime source, scene, asset resource, test code, workflow, CI script, or probe runtime file is part of the diff. Documentation-only Markdown under `game/` is now intentionally included for runtime-adjacent readme/evidence reconciliation.
 
 ## Corrections now represented consistently
 
@@ -278,7 +278,15 @@ Before merge:
 
 ## Next action
 
-Continue with package-local README/status review, beginning with `docs/10_world`, `docs/20_gameplay`, `docs/30_content`, `docs/40_art`, `docs/50_technical`, and `docs/60_quality`.
+Package-front-door reconciliation is now substantially complete.
+
+Continue with:
+
+1. runtime-adjacent Markdown classification/readback under `game/`;
+2. bounded review of deeper package-local documents only where old status can still misdirect current work;
+3. final documentation merge-readiness audit against live production `main`;
+4. rebase/reconcile documentation if `main` advances;
+5. preserve historical evidence rather than rewriting old proof records.
 
 Do not modify gameplay/runtime code on this branch.
 
@@ -326,6 +334,25 @@ Latest verified branch comparison during this pass:
 - documentation HEAD at comparison time: `3d53a850b60b5491283e52abf0d6a5a144823676`;
 - documentation was **82 commits ahead / 0 behind**;
 - every changed path in the comparison was Markdown/documentation;
-- no `game/`, `tests/`, `.github/workflows/`, `ci/`, or `probes/` runtime/build path was changed.
+- documentation-only Markdown under `game/` is included; no gameplay/runtime source, scene, asset resource, test code, workflow, CI script, or probe runtime file was changed.
 
 The branch has been concurrently receiving additional documentation-only reconciliation commits. Every write must continue to re-fetch the current file/blob SHA immediately before editing to avoid overwriting newer documentation work.
+
+## Progress update — runtime-adjacent documentation pass
+
+Additional work completed:
+
+- reconciled `game/README.md` repository/first-person/current-slice status;
+- classified `game/assets/README.md` as a historical stylized-kit checkpoint where its old non-pixel/illustrated-realism language conflicts with current visual authority;
+- reconciled `game/scripts/gameplay/combat/README.md` so Basic Runtime Autorun is no longer described as future work;
+- clarified `game/scripts/gameplay/encounter/README.md` so old aerial/first-person camera wording cannot restore old presentation authority;
+- added `game/docs/README.md` as the front door for Hunt-01 runtime evidence notes;
+- verified `game/docs/README.md` covers **12 / 12** runtime evidence notes.
+
+Latest verified branch comparison during this pass:
+
+- production `main`: `9dd3aa67a714027d66fd428f669d8d240d788626`;
+- documentation was **93 commits ahead / 0 behind** at the latest comparison;
+- all changed files remained Markdown/documentation;
+- documentation-only Markdown under `game/` is intentional;
+- no gameplay/runtime source, scene, asset resource, test code, workflow, CI script, or probe runtime file changed.
