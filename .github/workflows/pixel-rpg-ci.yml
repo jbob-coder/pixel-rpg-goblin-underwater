@@ -124,7 +124,7 @@ jobs:
             safe_name=$(basename "$test_file" .gd)
             log="build-evidence/${safe_name}.log"
             echo "=== $test_file ==="
-            godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file" 2>&1 | tee "$log"
+            timeout 60s godot --headless --path "$PROJECT_PATH" --script "$GITHUB_WORKSPACE/$test_file" 2>&1 | tee "$log"
             if grep -Eiq "SCRIPT ERROR|Parse Error|Failed loading resource|Cannot open file|Node not found" "$log"; then
               echo "Blocking Godot error detected in $test_file" >&2
               exit 1
