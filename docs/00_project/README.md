@@ -45,6 +45,11 @@ Primary current navigation:
 - `PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
 - `DOCUMENTATION_BRANCH_STATUS_2026-09-25.md`.
 
+Classification/navigation:
+
+- `ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` — classifies root authority/design/history documents;
+- `../70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` — classifies every historical handoff by current relevance.
+
 Migration audit:
 
 `../00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md`
