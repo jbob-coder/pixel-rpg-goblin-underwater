@@ -272,6 +272,8 @@ Use it to distinguish:
 
 `docs/README.md` is the current documentation-folder front door.
 
+Runtime-domain evidence notes under `game/docs/` are navigated through `game/docs/README.md`; use them as exact Hunt-01 provenance, not current compact-world presentation authority.
+
 ## Handoff policy
 
 `docs/70_handoff/` is evidence/history, not automatic current authority.
