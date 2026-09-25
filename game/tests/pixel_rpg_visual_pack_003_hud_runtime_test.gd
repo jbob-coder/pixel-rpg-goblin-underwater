@@ -1,6 +1,7 @@
 extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
+const TOUCH_INPUT := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -15,7 +16,17 @@ func _check(label: String, condition: bool, detail: String = "") -> void:
 		failures.append(label)
 
 func _run() -> void:
-	print("Pixel RPG Visual Pack 003 HUD runtime gate")
+	print("Pixel RPG Visual Pack 003 HUD + extracted touch-input math gate")
+
+	_check("touch-input owner schema is stable", String(TOUCH_INPUT.get_schema()) == "pixel_rpg.touch_input_math_001.v1")
+	_check("look region threshold keeps left side excluded", not TOUCH_INPUT.is_in_look_region(Vector2(400.0, 200.0), Vector2(1000.0, 600.0), 0.44))
+	_check("look region threshold keeps right side eligible", TOUCH_INPUT.is_in_look_region(Vector2(440.0, 200.0), Vector2(1000.0, 600.0), 0.44))
+	var center_sample: Dictionary = TOUCH_INPUT.joystick_sample(Vector2(200.0, 300.0), Rect2(100.0, 200.0, 200.0, 200.0), Vector2(40.0, 40.0), 0.12)
+	_check("joystick center sample remains zero", (center_sample.get("vector", Vector2.ONE) as Vector2).is_zero_approx(), str(center_sample))
+	_check("joystick center knob placement remains exact", (center_sample.get("knob_position", Vector2.ZERO) as Vector2).is_equal_approx(Vector2(80.0, 80.0)), str(center_sample))
+	var edge_sample: Dictionary = TOUCH_INPUT.joystick_sample(Vector2(400.0, 300.0), Rect2(100.0, 200.0, 200.0, 200.0), Vector2(40.0, 40.0), 0.12)
+	_check("joystick edge sample clamps to unit vector", is_equal_approx((edge_sample.get("vector", Vector2.ZERO) as Vector2).length(), 1.0), str(edge_sample))
+	_check("joystick radius contract remains 34 percent", is_equal_approx(float(edge_sample.get("radius", -1.0)), 68.0), str(edge_sample))
 
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("prototype scene instantiates", prototype != null)
@@ -97,5 +108,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_FAILED")
-	print("This gate verifies HUD zoning, Settings behavior, minimap mapping, Bag deferral and touch exclusion; phone visual acceptance remains open.")
+	print("This gate verifies extracted touch/joystick math plus HUD zoning, Settings behavior, minimap mapping, Bag deferral and touch exclusion; event capture ownership and phone visual acceptance remain open.")
 	quit(0 if failures.is_empty() else 1)

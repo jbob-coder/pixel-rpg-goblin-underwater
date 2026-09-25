@@ -7,6 +7,7 @@ const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_g
 const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 const PlayerMotionMath001 := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
+const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
@@ -238,7 +239,7 @@ func _apply_camera_rotation() -> void:
 
 func _can_claim_look_touch(screen_position: Vector2) -> bool:
 	var viewport_size := get_viewport().get_visible_rect().size
-	if screen_position.x < viewport_size.x * LOOK_REGION_START_X_RATIO:
+	if not TouchInputMath001.is_in_look_region(screen_position, viewport_size, LOOK_REGION_START_X_RATIO):
 		return false
 	if action_button.visible and action_button.get_global_rect().has_point(screen_position):
 		return false
@@ -257,24 +258,22 @@ func _can_claim_look_touch(screen_position: Vector2) -> bool:
 	return true
 
 func _update_joystick(screen_position: Vector2) -> void:
-	var rect := joystick_base.get_global_rect()
-	var center := rect.position + rect.size * 0.5
-	var radius := minf(rect.size.x, rect.size.y) * 0.34
-	var offset := screen_position - center
-	if offset.length() > radius:
-		offset = offset.normalized() * radius
-	var normalized := offset / maxf(radius, 1.0)
-	if normalized.length() < JOYSTICK_DEADZONE:
-		normalized = Vector2.ZERO
-	_joystick_vector = normalized
-	var knob_size := joystick_knob.size
-	joystick_knob.position = rect.size * 0.5 - knob_size * 0.5 + offset
+	var sample := TouchInputMath001.joystick_sample(
+		screen_position,
+		joystick_base.get_global_rect(),
+		joystick_knob.size,
+		JOYSTICK_DEADZONE
+	)
+	_joystick_vector = sample.get("vector", Vector2.ZERO) as Vector2
+	joystick_knob.position = sample.get("knob_position", Vector2.ZERO) as Vector2
 
 func _reset_joystick() -> void:
 	_joystick_touch_id = -1
 	_joystick_vector = Vector2.ZERO
-	var rect := joystick_base.get_rect()
-	joystick_knob.position = rect.size * 0.5 - joystick_knob.size * 0.5
+	joystick_knob.position = TouchInputMath001.joystick_center_position(
+		joystick_base.get_rect().size,
+		joystick_knob.size
+	)
 
 func _reset_transient_input() -> void:
 	_reset_joystick()
