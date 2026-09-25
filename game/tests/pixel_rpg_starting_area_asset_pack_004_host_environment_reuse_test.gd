@@ -44,7 +44,7 @@ func _has_position(positions: Array[Vector3], target: Vector3) -> bool:
 			return true
 	return false
 
-func _same_positions(a: Array, b: Array) -> bool:
+func _same_positions(a: Array, b: Array[Vector3]) -> bool:
 	if a.size() != b.size():
 		return false
 	for expected in a:
