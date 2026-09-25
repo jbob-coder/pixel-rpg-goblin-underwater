@@ -1,96 +1,215 @@
 # Pixel RPG
 
-Status: ACTIVE ANDROID MONSTER-HUNTING RPG / FIRST-PERSON PIXEL DIRECTION
-Last reconciled: 2026-09-23
-Branch: `pixel-rpg`
+Status: ACTIVE ANDROID MONSTER-HUNTING RPG / FIRST-PERSON PIXEL DIRECTION  
+Last reconciled: 2026-09-25
 
-Pixel RPG is the active game in this branch. WorldLife is abandoned, and the later standalone first-person Shooter RPG is not the implementation base.
+Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
+Production branch: `main`
 
-## Selected player-facing identity
+Documentation reconciliation is staged on branch `documentation`.
 
-**First-person pixel-styled real-3D monster-hunting RPG with mobile move/look controls, physical exploration, body-part combat, harvesting and persistent world/NPC consequences.**
+Pixel RPG is the active game. WorldLife is abandoned, and the later standalone first-person Shooter RPG is not the implementation base.
 
-Primary presentation authority: `PIXEL_RPG_VISUAL_DIRECTION.md`.
+## Player-facing identity
 
-Visual references in Google Drive:
-- `Pixel RPG - Visual Reference ORIGINAL.png` — `1IcZDQAEPUVpSpvJsvaVZsLqAA0RJmaxp`;
-- `Pixel RPG - Visual Reference.jpg` — `1NYHm1Y_CPQOb22ZQsF9e45T5uFV3Mh_b`.
+**First-person pixel-styled real-3D monster-hunting RPG with mobile move/look controls, physical exploration, anatomy-focused combat, harvesting, and persistent world/NPC consequences.**
 
-Names/text shown in the generated concept image are placeholders unless separately approved.
+Primary presentation authority:
+
+`PIXEL_RPG_VISUAL_DIRECTION.md`
+
+Repository navigation:
+
+`docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`
+
+Master scan/reference:
+
+`docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`
+
+## Current production boot
+
+`game/project.godot`
+→ `game/scenes/app_shell.tscn`
+→ `game/scripts/app_shell.gd`
+→ `game/scenes/prototypes/pixel_rpg_prototype_001.tscn`.
+
+The current app boots into the first-person Pixel RPG prototype slice, not the older Region-01 graybox.
 
 ## Main loop target
 
 `SETTLEMENT → PREPARE → PHYSICALLY LEAVE SETTLEMENT → EXPLORE/TRACK → OBSERVE/APPROACH → FIRST-PERSON SPATIAL COMBAT → TARGET ANATOMY → BREAK/SEVER/DEFEAT/ESCAPE → HARVEST → RETURN → NPC/SETTLEMENT CONSEQUENCES → PROCESS/CRAFT/EQUIP/LEARN → NEXT HUNT`
 
-Use compact connected spaces and world compression rather than a huge empty open world or normal menu teleportation.
+Use compact connected physical spaces and world compression rather than a huge empty open world or normal menu teleportation.
 
-## Controls target
+## Controls
 
-- landscape Android-first;
-- left virtual stick = direct continuous movement;
+- Android landscape-first;
+- left virtual stick = continuous movement;
 - right side = independent camera/look;
-- simultaneous movement/look;
+- simultaneous movement + look;
 - contextual action controls;
-- safe-area responsive HUD.
+- safe-area-aware HUD.
 
-The phrase “shooter-style controls” describes the familiar mobile control layout only. Pixel RPG is not the standalone Shooter RPG.
+“Shooter-style controls” describes the familiar mobile control layout only. Pixel RPG is not the abandoned standalone Shooter RPG.
 
-## Art target
+## Art direction
 
 Pixel-styled real 3D:
-- real spatial world/collision/camera;
-- pixel-authored/pixel-consistent textures and UI;
-- controlled low-resolution rendering/upscale where useful;
-- strong silhouettes and readable monster anatomy;
-- intentional lighting/material simplification;
-- no generic smooth 3D scene with a cosmetic pixel filter.
 
-## Gameplay foundations to preserve where compatible
+- real spatial world/collision/camera;
+- pixel-authored or pixel-consistent textures/sprites/UI;
+- controlled low-resolution rendering/upscale where useful;
+- strong silhouettes;
+- readable monster anatomy;
+- restrained material/lighting complexity;
+- no smooth generic 3D scene with only a cosmetic pixel filter.
+
+Image-derived presentation assets may be used when lineage and runtime verification are explicit.
+
+Visible art does not automatically own gameplay collision.
+
+## Current first-person implementation
+
+Current source includes:
+
+- direct active first-person `Camera3D`;
+- camera-relative movement;
+- independent look;
+- hidden third-person presentation body;
+- extracted camera math/state;
+- extracted player motion/motor;
+- extracted touch math/state;
+- HUD layout/minimap math;
+- camera-local ViewModel;
+- canonical first-person hands PNG;
+- compact settlement/trail world;
+- Gate Warden interaction;
+- enterable smith;
+- visible Mudcrest;
+- first-person targeting;
+- Combat Bridge 002 no-attack bootstrap.
+
+## Current combat boundary
+
+The deterministic Hunt-01 domain is richer than the current first-person player-facing integration.
+
+Current first-person flow:
+
+Observe/Engage
+→ targeting preview
+→ select/lock anatomy group
+→ Combat Bridge 002
+→ initialize anatomy + combat turn shell
+→ no attack yet.
+
+Future combat integration should adapt current-world physical/spatial state into the proven deterministic domain rather than duplicating combat rules or blindly teleporting old Region-01 tactical coordinates.
+
+## Gameplay foundations to preserve
+
+Where compatible, preserve:
 
 - deterministic combat/action resolution;
-- monster anatomy/body-part ownership;
+- Monster anatomy/body-part ownership;
 - wounds/statuses;
 - break/sever/harvest consequences;
 - tracking/encounter continuity;
-- stable IDs/data-driven content;
-- test/regression infrastructure.
+- stable IDs and data-driven content;
+- explicit state ownership;
+- regression infrastructure.
 
-## Supporting systems
+## Buildings/world
 
-Gradual targets include Diamond Watch, hunter journal/bestiary, relationships/memories, NPC schedules/aging, settlements/factions, crystal/diamond mining and energy economy, meaningful long-term decisions, and multi-layer progression. These are not implementation claims unless source/tests prove them.
+The current enterable smith is the strongest building blueprint because it has:
 
-## Hard storage ceiling
+- a real doorway;
+- segmented collision;
+- entrance/use anchors;
+- interior handling;
+- split roof visibility;
+- first-person interior support.
 
-Player-required installed/runtime footprint cap remains exactly `2 GB = 2,000,000,000 bytes`.
+Generic settlement buildings still use monolithic collision despite visual doors. They should not be treated as enterable until their collision/interaction contract is rebuilt.
 
-Required runtime downloads count. Development-only source/repository/CI files do not. Package-size evidence does not by itself prove installed-footprint compliance.
+## State and persistence
 
-## Historical verification boundary
+Current state ownership is explicit and executable through:
 
-Previously recorded fully production-verified monster-hunting source:
-`01a19b2811cfc5e3f9c0edb0e9264bc997161c7c`.
+`game/scripts/state/pixel_rpg_state_ownership_contract.gd`
 
-Workflow `34880096112`: SUCCESS.
-Job `104096962757`: SUCCESS.
-Artifact `10362706279`: 57,536,941 bytes; SHA-256 `ba02d634d1435ed294f42bf5db8e2c55470265da4026aa1488e4b2ce30792917`.
+Broad current-world save/load is not yet implemented.
 
-This verifies the older production state only. It does not prove the Pixel RPG presentation is implemented or accepted.
+Future durable state should use bounded owners for player/world/inventory/NPC/economy rather than one giant global singleton.
 
-## Current bounded piece
+## Android build
 
-`PIXEL_RPG_FIRST_PERSON_REALIGNMENT_001`.
+Canonical workflow:
 
-First prove:
-- one compact settlement gate/street;
-- one controllable first-person presentation using the existing player controller;
-- left-stick movement + right-side camera/look;
-- one NPC interaction;
-- one short physical route;
-- one visible monster/proxy;
-- coherent pixel rendering/art treatment;
-- responsive safe-area HUD;
-- static/headless/build verification available to the slice.
+`.github/workflows/pixel-rpg-ci.yml`
 
-Do not rewrite the entire game before this slice is accepted.
+Audited runtime baseline:
 
-For continuation, begin with `START_HERE_NEW_CHAT.md` and reconstruct live `pixel-rpg` state before implementation.
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`
+
+Canonical run:
+
+`36082533109` — SUCCESS
+
+Verification job:
+
+`107907382620` — SUCCESS
+
+Android export job:
+
+`107907562399` — SUCCESS
+
+This verifies that exact source revision at automated/headless/Android-build level. It does not prove phone acceptance.
+
+## Storage ceiling
+
+Player-required installed/runtime footprint cap:
+
+`2 GB = 2,000,000,000 bytes`
+
+Required runtime downloads count toward the same cap.
+
+Development-only source/repository/CI files do not.
+
+APK byte-size evidence alone does not prove installed-footprint compliance.
+
+## Current work register
+
+Current master issue:
+
+- #20 — first-person foundation, settlement and current-world combat.
+
+Important active tracks:
+
+- #1 — safe prototype decomposition;
+- #2 — geometry/collision ownership;
+- #9 — player/touch/camera separation;
+- #21 — stale documentation/authority cleanup after migration.
+
+## Verification discipline
+
+Keep separate:
+
+DESIGNED  
+→ IMPLEMENTED  
+→ STATIC_VERIFIED  
+→ HEADLESS_VERIFIED  
+→ ANDROID_BUILD_VERIFIED  
+→ PHONE_RUNTIME_VERIFIED  
+→ VISUAL_QUALITY_VERIFIED  
+→ PERFORMANCE_VERIFIED.
+
+Do not claim physical-device acceptance from CI alone.
+
+## Continuation
+
+Begin with:
+
+`START_HERE_NEW_CHAT.md`
+
+Then use the repository map/master reference to locate the exact source and tests.
+
+Always fetch live `main` before implementation work and re-check it before writes.
