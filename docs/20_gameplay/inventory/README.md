@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG INVENTORY STATUS — 2026-09-25**
+>
+> The material-ownership/conservation rules below remain useful design authority. Broad current-world inventory runtime is still not implemented.
+>
+> The old “exact next dependency = persistence contract” wording is historical sequencing, not current task priority. Any implementation must start from current state-ownership boundaries and current issues, preserve one authoritative material owner, stable transfer IDs, provenance, and anti-duplication.
+
 # 20_gameplay/inventory — Material Ownership Package
 
 Status: ACTIVE FIRST-SLICE DESIGN PACKAGE / BASELINE + CRAFT/SMITH CONSUMER RECORDED / NO INVENTORY IMPLEMENTATION
