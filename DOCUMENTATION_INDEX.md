@@ -17,11 +17,11 @@ For a new session or contributor:
 4. read `docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
 5. read `docs/00_project/PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md` when you need to understand how runtime owners, adapters, presentation, tests, and builds relate;
 6. use `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` before relying on older root design documents;
-6. use `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` before relying on handoff history;
-7. use `docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md` when ownership crosses documentation/runtime packages;
-8. read the exact owning source and tests for the bounded task;
-9. inspect the current GitHub issue for that subsystem;
-10. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
+7. use `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` before relying on handoff history;
+8. use `docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md` when ownership crosses documentation/runtime packages;
+9. read the exact owning source and tests for the bounded task;
+10. inspect the current GitHub issue for that subsystem;
+11. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
 
 Do not use `jbob-coder/Chatgptjuegolpcal@pixel-rpg` as current implementation authority. It is migration/provenance history.
 
