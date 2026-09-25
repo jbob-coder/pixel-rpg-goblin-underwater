@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This roadmap is historical sequencing from the Stage-1 engine-probe period. Its “CURRENT Stage 1,” engine-not-selected, aerial/first-person transition, and blocked-domain statements are superseded by implemented Godot 4.7.2 production source and current first-person Pixel RPG.
+>
+> Retain it as dependency-history and planning provenance. Current work sequencing is governed by live source/tests and GitHub issue #20 with current tracks such as #1, #2, #9, and #21.
+
 # Unnamed Hunt RPG — Implementation Roadmap
 
 Status: STAGE 1 ENGINE/ANDROID PROBE AUTHORIZED / LATER STAGES DEPENDENCY-GATED
