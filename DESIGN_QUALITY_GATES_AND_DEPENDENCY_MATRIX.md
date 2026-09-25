@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This file is historical cross-system design governance from the pre-implementation Unnamed Hunt period. Its “NO IMPLEMENTATION” status and specific “next documentation piece” are superseded.
+>
+> Preserve reusable laws such as one authoritative owner, dependency-impact analysis, anti-duplication, state/presentation separation, evidence-specific status labels, and bounded complexity budgets. Current task order comes from live Pixel RPG issues/source.
+
 # Unnamed Hunt RPG — Design Quality Gates and Cross-System Dependency Matrix
 
 Status: ACTIVE DESIGN GOVERNANCE / NO IMPLEMENTATION
