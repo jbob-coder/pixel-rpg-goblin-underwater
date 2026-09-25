@@ -15,9 +15,11 @@ For a new session or contributor:
 2. read `START_HERE_NEW_CHAT.md`;
 3. read `docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`;
 4. read `docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
-5. read the exact owning source and tests for the bounded task;
-6. inspect the current GitHub issue for that subsystem;
-7. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
+5. use `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` before relying on older root design documents;
+6. use `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` before relying on handoff history;
+7. read the exact owning source and tests for the bounded task;
+8. inspect the current GitHub issue for that subsystem;
+9. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
 
 Do not use `jbob-coder/Chatgptjuegolpcal@pixel-rpg` as current implementation authority. It is migration/provenance history.
 
@@ -66,7 +68,6 @@ Primary visual document:
 
 `PIXEL_RPG_VISUAL_DIRECTION.md`
 
-Note: its old branch header is still being reconciled on the documentation branch; its first-person presentation rules remain aligned with live source.
 
 ## Current first-person technical owners
 
@@ -257,11 +258,23 @@ Important planned work also includes sections/streaming, reusable buildings, NPC
 
 `docs/70_handoff/` is evidence/history, not automatic current authority.
 
+Classification index:
+
+`docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md`
+
 Use a handoff only when:
 
 1. it concerns the exact current subsystem;
 2. current source/tests still match it;
 3. no newer source/authority supersedes it.
+
+## Root design-document policy
+
+Older root documents are classified in:
+
+`docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md`
+
+Use current authority/navigation files directly. Use older Unnamed Hunt, Stage-1, aerial, third-person, Shooter-RPG, model, mechanics, and pre-engine documents only according to their classification and any supersession banner. Preserve reusable architecture/design laws without promoting stale implementation status or camera assumptions.
 
 ## Verification language
 
