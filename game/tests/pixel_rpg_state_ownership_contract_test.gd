@@ -35,6 +35,7 @@ func _run() -> void:
 	_check("combat bootstrap latch is orchestration, not combat truth", String((data["combat.bootstrap_started_latch"] as Dictionary).get("authority", "")) == "ORCHESTRATION")
 	_check("target lock is transient and never gameplay-saved", String((data["targeting.locked_group"] as Dictionary).get("persistence", "")) == "NEVER_GAMEPLAY_SAVE")
 	_check("camera yaw/pitch is transient and never gameplay-saved", String((data["camera.yaw_pitch"] as Dictionary).get("persistence", "")) == "NEVER_GAMEPLAY_SAVE")
+	_check("exploration input authority moved to explicit transient owner", String((owners["control.exploration_input"] as Dictionary).get("source_path", "")) == "res://scripts/presentation/pixel_rpg/touch_input_state_001.gd" and String((owners["control.exploration_input"] as Dictionary).get("property_audit", "")) == "SOURCE_INSTANCE")
 	_check("camera sensitivity is preference-only, not gameplay save", String((data["camera.look_sensitivity_runtime"] as Dictionary).get("persistence", "")) == "LOCAL_PREFERENCE_NOT_GAMEPLAY_SAVE")
 	_check("future durable state is split across bounded owners", owners.has("durable.player_state") and owners.has("durable.world_state") and owners.has("durable.inventory_equipment") and owners.has("durable.npc_relationships"))
 
@@ -47,16 +48,43 @@ func _run() -> void:
 	var prototype := PrototypeScene.instantiate()
 	_check("prototype scene instantiates for ownership audit", prototype != null)
 	if prototype != null:
-		var property_names: Dictionary = {}
+		var prototype_property_names: Dictionary = {}
 		for property_variant in prototype.get_property_list():
 			var property_entry := property_variant as Dictionary
-			property_names[String(property_entry.get("name", ""))] = true
+			prototype_property_names[String(property_entry.get("name", ""))] = true
+
+		var owner_property_names: Dictionary = {}
+		owner_property_names["__prototype__"] = prototype_property_names
 
 		for datum_variant in data.keys():
 			var datum_id := String(datum_variant)
 			var spec := data[datum_id] as Dictionary
 			if String(spec.get("implementation", "")) != "ACTIVE":
 				continue
+
+			var owner_id := String(spec.get("owner_id", ""))
+			var owner := owners.get(owner_id, {}) as Dictionary
+			var property_audit := String(owner.get("property_audit", "PROTOTYPE"))
+			var property_names := prototype_property_names
+
+			if property_audit == "SOURCE_INSTANCE":
+				if not owner_property_names.has(owner_id):
+					var source_path := String(owner.get("source_path", ""))
+					var source_script := load(source_path) as Script if ResourceLoader.exists(source_path) else null
+					var owner_instance: Object = source_script.new() if source_script != null else null
+					var source_property_names: Dictionary = {}
+					if owner_instance != null:
+						for property_variant in owner_instance.get_property_list():
+							var property_entry := property_variant as Dictionary
+							source_property_names[String(property_entry.get("name", ""))] = true
+					owner_property_names[owner_id] = source_property_names
+					_check(
+						"source-instance owner is constructible: %s" % owner_id,
+						owner_instance != null,
+						source_path
+					)
+				property_names = owner_property_names.get(owner_id, {}) as Dictionary
+
 			var runtime_property := String(spec.get("runtime_property", ""))
 			if not runtime_property.is_empty():
 				_check("runtime property exists for %s" % datum_id, property_names.has(runtime_property), runtime_property)
@@ -92,5 +120,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_STATE_OWNERSHIP_CONTRACT_001_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_STATE_OWNERSHIP_CONTRACT_001_FAILED")
-	print("This gate verifies ownership/persistence boundaries only. It does not implement broad save/load, migrate current state owners, or prove phone runtime.")
+	print("This gate verifies explicit multi-owner runtime/property and persistence boundaries, including the extracted transient touch-state owner. It does not implement broad save/load or prove phone runtime.")
 	quit(0 if failures.is_empty() else 1)
