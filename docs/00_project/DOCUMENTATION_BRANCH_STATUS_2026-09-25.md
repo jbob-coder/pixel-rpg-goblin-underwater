@@ -129,9 +129,9 @@ Historical SHA/workflow/device evidence remains valid only for the exact revisio
 
 Latest verified comparison:
 
-- `documentation`: **47 commits ahead** of `main`;
+- `documentation`: **84 commits ahead** of `main` at the latest verified comparison;
 - `documentation`: **0 commits behind** `main`;
-- changed files: **41**;
+- changed files: **67**;
 - non-documentation paths changed: **0**.
 
 The current diff contains Markdown/documentation paths only.
@@ -190,13 +190,76 @@ The coverage result is recorded in `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX
 
 Remaining work is now narrower:
 
-1. bounded readback of remaining future-system and asset/model documents for misleading top-level status fields;
-2. package-local README review under `docs/10_world`, `20_gameplay`, `30_content`, `40_art`, `50_technical`, and `60_quality`;
-3. bounded stale repository/branch/issue/workflow pointer sweeps in batches small enough for connector limits;
-4. check links/navigation for newly added classification files;
-5. final merge-readiness audit against live production `main`.
+1. bounded readback of deeper package/content documents that still present old status as current;
+2. continue classifying old package-local design files without rewriting historical evidence;
+3. final merge-readiness review against live production `main`;
+4. reconcile any production changes if `main` advances before merge.
 
-The earlier broad branch-wide stale-reference sweep exceeded the connector per-script call ceiling before returning a complete result. It is not evidence that stale references are absent.
+Package front-door README review is complete for the major world/gameplay/content/art/technical/persistence/quality/handoff packages.
+
+The earlier broad branch-wide stale-reference sweep exceeded the connector per-script call ceiling before returning a complete result and is not evidence. It was replaced by two valid bounded scans covering 24 current authority/navigation files.
+
+## Current navigation validation — 2026-09-25
+
+Bounded validation completed after the package/root/handoff reconciliation:
+
+### Stale-pointer scan
+
+Scanned **24 current authority/navigation documents** in two valid 12-file batches.
+
+Checked for active stale patterns including:
+
+- old repository as an active repository declaration;
+- `pixel-rpg` as the active/current branch;
+- old “fetch pixel-rpg HEAD” continuation instructions;
+- obsolete issue #28/#29/#30 work split;
+- removed `pixel-rpg-prototype-android.yml` workflow;
+- obsolete “canonical hands integration not complete” state.
+
+Result:
+
+- stale active-pointer hits: **0**.
+
+Historical documents may still contain old branch/workflow/issue references as preserved provenance. This result applies only to the current authority/navigation set.
+
+### Navigation-link audit
+
+Audited Markdown file references across seven primary navigation/classification documents:
+
+- `START_HERE_NEW_CHAT.md`;
+- `DOCUMENTATION_INDEX.md`;
+- `PIXEL_RPG_AUTHORITY_LOCK.md`;
+- `docs/README.md`;
+- `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md`;
+- `docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md`;
+- `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md`.
+
+References checked: **174**.
+
+Initial missing references: **2**, both persistence paths in the package-authority matrix.
+
+Those two paths were corrected to:
+
+- `docs/50_technical/persistence/PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md`;
+- `docs/50_technical/persistence/FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT.md`.
+
+Re-audit result:
+
+- unresolved Markdown file references: **0**.
+
+### Latest verified branch comparison
+
+At the comparison immediately before this status update:
+
+- production `main`: `9dd3aa67a714027d66fd428f669d8d240d788626`;
+- documentation HEAD: `5fd59379ed24739c64e7e766d7cd79cb8e5e7483`;
+- ahead: **84 commits**;
+- behind: **0 commits**;
+- changed files: **67**;
+- changed runtime/build paths: **0**.
+
+Every changed path in that comparison was Markdown/documentation.
+
 
 ## Merge policy
 
