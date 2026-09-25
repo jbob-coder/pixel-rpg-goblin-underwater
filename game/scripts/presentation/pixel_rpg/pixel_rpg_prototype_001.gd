@@ -4,13 +4,11 @@ const WorldBase001 := preload("res://scripts/presentation/pixel_rpg/world_base_0
 const WorldPaths001 := preload("res://scripts/presentation/pixel_rpg/world_paths_001.gd")
 const WorldSettlementCore001 := preload("res://scripts/presentation/pixel_rpg/world_settlement_core_001.gd")
 const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_gate_props_001.gd")
-const WorldPack001 := preload("res://scripts/presentation/pixel_rpg/world_pack_001.gd")
+const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
 const MudcrestAnatomyRuntime: Script = preload("res://scripts/gameplay/monsters/monster_01/hunt01_mudcrest_anatomy_runtime.gd")
-const TrailPineScene: PackedScene = preload("res://assets/environment/starting_area/trail_pine_01.tscn")
-const TrailRockVisualScene: PackedScene = preload("res://assets/environment/starting_area/trail_rock_visual_01.tscn")
 const GateWardenVisualScene: PackedScene = preload("res://assets/characters/gate_warden_visual_01.tscn")
 const ConceptPhotoReconstruction011 := preload("res://scripts/presentation/pixel_rpg/concept_photo_reconstruction_011.gd")
 
@@ -690,16 +688,7 @@ func _build_prototype_world() -> void:
 
 	WorldGateProps001.add_gate_props(world_geometry)
 
-	for z in [-18.0, -25.0, -33.0, -48.0]:
-		_add_tree(Vector3(-7.5, 0.0, z))
-		_add_tree(Vector3(7.0, 0.0, z - 2.0))
-	_add_tree(Vector3(-11.0, 0.0, -39.0))
-	_add_tree(Vector3(11.5, 0.0, -43.0))
-
-	_add_trail_rock()
-	WorldPack001.add_vegetation_cluster(world_geometry, Vector3(-8.5, 0.0, -22.0))
-	WorldPack001.add_vegetation_cluster(world_geometry, Vector3(8.0, 0.0, -31.0), 120.0)
-	WorldPack001.add_rock_cluster(world_geometry, Vector3(4.8, 0.0, -34.0))
+	WorldTrailEnvironment001.add_trail_environment(world_geometry)
 
 	_npc_anchor = Node3D.new()
 	_npc_anchor.name = "GateWarden"
@@ -713,37 +702,6 @@ func _build_prototype_world() -> void:
 	world_geometry.add_child(_monster_anchor)
 	_add_monster_proxy(_monster_anchor)
 	_add_domain_monster_body_alias(_monster_anchor.position)
-
-func _add_tree(position: Vector3) -> void:
-	var visual := TrailPineScene.instantiate() as Node3D
-	if visual == null:
-		push_error("Pixel RPG Pack 004 failed to instantiate trail pine visual")
-		return
-	visual.position = position
-	visual.set_meta("pixel_rpg_trail_pine_visual", true)
-	world_geometry.add_child(visual)
-
-func _add_trail_rock() -> void:
-	var body := StaticBody3D.new()
-	body.name = "TrailRockL"
-	body.position = Vector3(-3.8, 0.75, -29.0)
-	body.collision_layer = 1
-	body.collision_mask = 1
-	world_geometry.add_child(body)
-
-	var visual := TrailRockVisualScene.instantiate() as MeshInstance3D
-	if visual == null:
-		push_error("Pixel RPG Pack 004 failed to instantiate TrailRockL visual")
-	else:
-		visual.name = "MeshInstance3D"
-		body.add_child(visual)
-
-	var collision := CollisionShape3D.new()
-	collision.name = "CollisionShape3D"
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(2.4, 1.5, 2.0)
-	collision.shape = shape
-	body.add_child(collision)
 
 func _add_npc_visual(parent: Node3D) -> void:
 	var visual := GateWardenVisualScene.instantiate() as Node3D
