@@ -3,6 +3,7 @@ extends SceneTree
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const TOUCH_INPUT := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 const HUD_LAYOUT := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
+const MINIMAP_MATH := preload("res://scripts/presentation/pixel_rpg/minimap_math_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -48,6 +49,17 @@ func _run() -> void:
 		18.0
 	)
 	_check("safe-area scaling remains exact", (inset_layout.get("margins", Vector4.ZERO) as Vector4).is_equal_approx(Vector4(58.0, 38.0, 58.0, 38.0)), str(inset_layout))
+
+	_check("minimap owner schema is stable", String(MINIMAP_MATH.get_schema()) == "pixel_rpg.minimap_math_001.v1")
+	_check("minimap world bounds remain exact", is_equal_approx(MINIMAP_MATH.WORLD_MIN_X, -23.0) and is_equal_approx(MINIMAP_MATH.WORLD_MAX_X, 23.0) and is_equal_approx(MINIMAP_MATH.WORLD_MIN_Z, -57.0) and is_equal_approx(MINIMAP_MATH.WORLD_MAX_Z, 20.0))
+	var map_size := Vector2(200.0, 140.0)
+	var marker_size := Vector2(8.0, 8.0)
+	var min_corner := MINIMAP_MATH.marker_position(Vector3(-23.0, 0.0, -57.0), map_size, marker_size)
+	var max_corner := MINIMAP_MATH.marker_position(Vector3(23.0, 0.0, 20.0), map_size, marker_size)
+	var clamped_corner := MINIMAP_MATH.marker_position(Vector3(999.0, 0.0, -999.0), map_size, marker_size)
+	_check("minimap minimum world corner maps to origin", min_corner.is_equal_approx(Vector2.ZERO), str(min_corner))
+	_check("minimap maximum world corner maps inside marker-adjusted bounds", max_corner.is_equal_approx(Vector2(192.0, 132.0)), str(max_corner))
+	_check("minimap mapping clamps out-of-range world positions", clamped_corner.is_equal_approx(Vector2(192.0, 0.0)), str(clamped_corner))
 
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("prototype scene instantiates", prototype != null)
@@ -129,5 +141,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_FAILED")
-	print("This gate verifies extracted HUD layout and touch/joystick math plus live HUD zoning, Settings behavior, minimap mapping, Bag deferral and touch exclusion; event capture ownership and phone visual acceptance remain open.")
+	print("This gate verifies extracted HUD layout, minimap mapping and touch/joystick math plus live HUD zoning, Settings behavior, Bag deferral and touch exclusion; event capture ownership and phone visual acceptance remain open.")
 	quit(0 if failures.is_empty() else 1)

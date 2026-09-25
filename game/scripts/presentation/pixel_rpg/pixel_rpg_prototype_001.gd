@@ -9,6 +9,7 @@ const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/
 const PlayerMotionMath001 := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
 const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 const HudLayout001 := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
+const MinimapMath001 := preload("res://scripts/presentation/pixel_rpg/minimap_math_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
@@ -21,10 +22,6 @@ const GRAVITY_MPS2 := 9.8
 const JOYSTICK_DEADZONE := 0.12
 const LOOK_REGION_START_X_RATIO := 0.44
 const DEFAULT_LOOK_DEGREES_PER_PIXEL := 0.105
-const MINIMAP_WORLD_MIN_X := -23.0
-const MINIMAP_WORLD_MAX_X := 23.0
-const MINIMAP_WORLD_MIN_Z := -57.0
-const MINIMAP_WORLD_MAX_Z := 20.0
 const CAMERA_PITCH_MIN_DEG := -78.0
 const CAMERA_PITCH_MAX_DEG := 78.0
 const NPC_INTERACT_DISTANCE_M := 2.6
@@ -340,15 +337,12 @@ func _update_minimap() -> void:
 	if minimap_canvas == null or minimap_player_marker == null or hunter == null:
 		return
 	var map_size := minimap_canvas.size
-	var marker_size := minimap_player_marker.size
 	if map_size.x <= 1.0 or map_size.y <= 1.0:
 		return
-	var pos := hunter.global_position
-	var normalized_x := clampf(inverse_lerp(MINIMAP_WORLD_MIN_X, MINIMAP_WORLD_MAX_X, pos.x), 0.0, 1.0)
-	var normalized_z := clampf(inverse_lerp(MINIMAP_WORLD_MIN_Z, MINIMAP_WORLD_MAX_Z, pos.z), 0.0, 1.0)
-	minimap_player_marker.position = Vector2(
-		normalized_x * maxf(map_size.x - marker_size.x, 0.0),
-		normalized_z * maxf(map_size.y - marker_size.y, 0.0)
+	minimap_player_marker.position = MinimapMath001.marker_position(
+		hunter.global_position,
+		map_size,
+		minimap_player_marker.size
 	)
 
 func _configure_targeting_preview() -> void:
