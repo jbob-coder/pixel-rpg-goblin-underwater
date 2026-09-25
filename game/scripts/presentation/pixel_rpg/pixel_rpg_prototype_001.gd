@@ -8,6 +8,7 @@ const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 const PlayerMotionMath001 := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
 const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
+const HudLayout001 := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
@@ -280,114 +281,57 @@ func _reset_transient_input() -> void:
 	_look_touch_id = -1
 
 func _apply_safe_area_layout() -> void:
-	var viewport_size := get_viewport().get_visible_rect().size
-	if viewport_size.x <= 0.0 or viewport_size.y <= 0.0:
+	var layout := HudLayout001.calculate(
+		get_viewport().get_visible_rect().size,
+		DisplayServer.window_get_size(),
+		DisplayServer.get_display_safe_area(),
+		HUD_EDGE_MARGIN
+	)
+	if layout.is_empty():
 		return
 
-	var left_safe := 0.0
-	var top_safe := 0.0
-	var right_safe := 0.0
-	var bottom_safe := 0.0
-	var window_size := DisplayServer.window_get_size()
-	var safe_rect := DisplayServer.get_display_safe_area()
-	if window_size.x > 0 and window_size.y > 0 and safe_rect.size.x > 0 and safe_rect.size.y > 0:
-		var scale := Vector2(viewport_size.x / float(window_size.x), viewport_size.y / float(window_size.y))
-		left_safe = maxf(0.0, float(safe_rect.position.x) * scale.x)
-		top_safe = maxf(0.0, float(safe_rect.position.y) * scale.y)
-		right_safe = maxf(0.0, float(window_size.x - safe_rect.end.x) * scale.x)
-		bottom_safe = maxf(0.0, float(window_size.y - safe_rect.end.y) * scale.y)
-
-	var left := maxf(24.0, left_safe + HUD_EDGE_MARGIN)
-	var top := maxf(22.0, top_safe + HUD_EDGE_MARGIN)
-	var right := maxf(24.0, right_safe + HUD_EDGE_MARGIN)
-	var bottom := maxf(24.0, bottom_safe + HUD_EDGE_MARGIN)
-	var available_width := maxf(320.0, viewport_size.x - left - right)
-	var available_height := maxf(240.0, viewport_size.y - top - bottom)
-
-	status_panel.offset_left = left
-	status_panel.offset_top = top
-	status_panel.offset_right = left + minf(250.0, available_width * 0.34)
-	status_panel.offset_bottom = top + 82.0
-
-	objective_panel.offset_left = left
-	objective_panel.offset_top = top + 96.0
-	objective_panel.offset_right = left + minf(470.0, available_width * 0.48)
-	objective_panel.offset_bottom = top + 174.0
+	HudLayout001.apply_offsets(status_panel, layout.get("status_offsets", Rect2()) as Rect2)
+	HudLayout001.apply_offsets(objective_panel, layout.get("objective_offsets", Rect2()) as Rect2)
 
 	settings_button.anchor_left = 0.5
 	settings_button.anchor_right = 0.5
 	settings_button.anchor_top = 0.0
 	settings_button.anchor_bottom = 0.0
-	settings_button.offset_left = -86.0
-	settings_button.offset_right = 86.0
-	settings_button.offset_top = top
-	settings_button.offset_bottom = top + 60.0
+	HudLayout001.apply_offsets(settings_button, layout.get("settings_button_offsets", Rect2()) as Rect2)
 
 	minimap_panel.anchor_left = 1.0
 	minimap_panel.anchor_right = 1.0
 	minimap_panel.anchor_top = 0.0
 	minimap_panel.anchor_bottom = 0.0
-	minimap_panel.offset_left = -right - 222.0
-	minimap_panel.offset_right = -right
-	minimap_panel.offset_top = top
-	minimap_panel.offset_bottom = top + 166.0
+	HudLayout001.apply_offsets(minimap_panel, layout.get("minimap_offsets", Rect2()) as Rect2)
 
-	watch_button.offset_left = -right - 180.0
-	watch_button.offset_right = -right
-	watch_button.offset_top = top + 178.0
-	watch_button.offset_bottom = top + 242.0
-
-	joystick_base.offset_left = left + 10.0
-	joystick_base.offset_right = left + 214.0
-	joystick_base.offset_top = -bottom - 204.0
-	joystick_base.offset_bottom = -bottom
-
-	action_button.offset_left = -right - 218.0
-	action_button.offset_right = -right
-	action_button.offset_top = -bottom - 150.0
-	action_button.offset_bottom = -bottom - 56.0
+	HudLayout001.apply_offsets(watch_button, layout.get("watch_button_offsets", Rect2()) as Rect2)
+	HudLayout001.apply_offsets(joystick_base, layout.get("joystick_offsets", Rect2()) as Rect2)
+	HudLayout001.apply_offsets(action_button, layout.get("action_button_offsets", Rect2()) as Rect2)
 
 	prompt_label.anchor_left = 0.32
 	prompt_label.anchor_right = 0.68
 	prompt_label.anchor_top = 1.0
 	prompt_label.anchor_bottom = 1.0
-	prompt_label.offset_left = 0.0
-	prompt_label.offset_right = 0.0
-	prompt_label.offset_top = -bottom - 118.0
-	prompt_label.offset_bottom = -bottom - 72.0
+	HudLayout001.apply_offsets(prompt_label, layout.get("prompt_offsets", Rect2()) as Rect2)
 
-	var panel_width := minf(660.0, available_width - 32.0)
-	var panel_height := minf(460.0, available_height - 28.0)
 	watch_panel.anchor_left = 0.5
 	watch_panel.anchor_right = 0.5
 	watch_panel.anchor_top = 0.5
 	watch_panel.anchor_bottom = 0.5
-	watch_panel.offset_left = -panel_width * 0.5
-	watch_panel.offset_right = panel_width * 0.5
-	watch_panel.offset_top = -panel_height * 0.5
-	watch_panel.offset_bottom = panel_height * 0.5
+	HudLayout001.apply_offsets(watch_panel, layout.get("watch_panel_offsets", Rect2()) as Rect2)
 
-	var settings_width := minf(520.0, available_width - 40.0)
-	var settings_height := minf(340.0, available_height - 36.0)
 	settings_panel.anchor_left = 0.5
 	settings_panel.anchor_right = 0.5
 	settings_panel.anchor_top = 0.5
 	settings_panel.anchor_bottom = 0.5
-	settings_panel.offset_left = -settings_width * 0.5
-	settings_panel.offset_right = settings_width * 0.5
-	settings_panel.offset_top = -settings_height * 0.5
-	settings_panel.offset_bottom = settings_height * 0.5
+	HudLayout001.apply_offsets(settings_panel, layout.get("settings_panel_offsets", Rect2()) as Rect2)
 
-	var targeting_width := minf(380.0, available_width * 0.44)
-	var targeting_height := minf(470.0, available_height - 36.0)
 	targeting_panel.anchor_left = 1.0
 	targeting_panel.anchor_right = 1.0
 	targeting_panel.anchor_top = 0.5
 	targeting_panel.anchor_bottom = 0.5
-	targeting_panel.offset_left = -right - targeting_width
-	targeting_panel.offset_right = -right
-	targeting_panel.offset_top = -targeting_height * 0.5
-	targeting_panel.offset_bottom = targeting_height * 0.5
+	HudLayout001.apply_offsets(targeting_panel, layout.get("targeting_panel_offsets", Rect2()) as Rect2)
 
 	_update_minimap()
 	_reset_joystick()

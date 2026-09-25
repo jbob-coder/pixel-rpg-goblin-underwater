@@ -2,6 +2,7 @@ extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const TOUCH_INPUT := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
+const HUD_LAYOUT := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -27,6 +28,26 @@ func _run() -> void:
 	var edge_sample: Dictionary = TOUCH_INPUT.joystick_sample(Vector2(400.0, 300.0), Rect2(100.0, 200.0, 200.0, 200.0), Vector2(40.0, 40.0), 0.12)
 	_check("joystick edge sample clamps to unit vector", is_equal_approx((edge_sample.get("vector", Vector2.ZERO) as Vector2).length(), 1.0), str(edge_sample))
 	_check("joystick radius contract remains 34 percent", is_equal_approx(float(edge_sample.get("radius", -1.0)), 68.0), str(edge_sample))
+
+	_check("HUD layout owner schema is stable", String(HUD_LAYOUT.get_schema()) == "pixel_rpg.hud_layout_001.v1")
+	var baseline_layout: Dictionary = HUD_LAYOUT.calculate(
+		Vector2(1280.0, 720.0),
+		Vector2i(1280, 720),
+		Rect2i(0, 0, 1280, 720),
+		18.0
+	)
+	_check("baseline HUD margins preserve authored minimums", (baseline_layout.get("margins", Vector4.ZERO) as Vector4).is_equal_approx(Vector4(24.0, 22.0, 24.0, 24.0)), str(baseline_layout))
+	_check("baseline status offsets preserve exact contract", (baseline_layout.get("status_offsets", Rect2()) as Rect2).is_equal_approx(Rect2(24.0, 22.0, 250.0, 82.0)))
+	_check("baseline settings offsets preserve top-center contract", (baseline_layout.get("settings_button_offsets", Rect2()) as Rect2).is_equal_approx(Rect2(-86.0, 22.0, 172.0, 60.0)))
+	_check("baseline minimap offsets preserve upper-right contract", (baseline_layout.get("minimap_offsets", Rect2()) as Rect2).is_equal_approx(Rect2(-246.0, 22.0, 222.0, 166.0)))
+	_check("baseline joystick offsets preserve lower-left contract", (baseline_layout.get("joystick_offsets", Rect2()) as Rect2).is_equal_approx(Rect2(34.0, -228.0, 204.0, 204.0)))
+	var inset_layout: Dictionary = HUD_LAYOUT.calculate(
+		Vector2(1280.0, 720.0),
+		Vector2i(2560, 1440),
+		Rect2i(80, 40, 2400, 1360),
+		18.0
+	)
+	_check("safe-area scaling remains exact", (inset_layout.get("margins", Vector4.ZERO) as Vector4).is_equal_approx(Vector4(58.0, 38.0, 58.0, 38.0)), str(inset_layout))
 
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("prototype scene instantiates", prototype != null)
@@ -108,5 +129,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_FAILED")
-	print("This gate verifies extracted touch/joystick math plus HUD zoning, Settings behavior, minimap mapping, Bag deferral and touch exclusion; event capture ownership and phone visual acceptance remain open.")
+	print("This gate verifies extracted HUD layout and touch/joystick math plus live HUD zoning, Settings behavior, minimap mapping, Bag deferral and touch exclusion; event capture ownership and phone visual acceptance remain open.")
 	quit(0 if failures.is_empty() else 1)
