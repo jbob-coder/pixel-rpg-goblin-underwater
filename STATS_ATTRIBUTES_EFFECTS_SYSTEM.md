@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATS/EFFECTS NOTE — 2026-09-25**
+>
+> This remains a broad design contract rather than proof that the complete proposed attribute/equipment/terrain modifier stack is implemented. However, the repository now contains real deterministic combat resources, Hunter health/injury, anatomy integrity, generic status application, and status timing/lifecycle runtime.
+>
+> Preserve the bounded/explainable/deterministic modifier principles. For what is actually implemented today, read the current combat/anatomy/status source and tests; do not infer the entire planned six-attribute/equipment/terrain pipeline exists from this document.
+
 # Unnamed Hunt RPG — Stats, Attributes, Equipment, Status and Terrain System
 
 Status: DESIGN DECISION + BALANCE CANDIDATES / NO IMPLEMENTATION
