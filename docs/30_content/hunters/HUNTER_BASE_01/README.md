@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG HUNTER-BASE STATUS — 2026-09-25**
+>
+> This packet remains useful for humanoid scale/proportion, attachment vocabulary, modular equipment, and source-art provenance. Its repeated **aerial-readability** composition language is superseded by current first-person Pixel RPG presentation authority and must not drive current camera or player-visible-body decisions.
+>
+> Current first-person hands/ViewModel live under `game/assets/characters/first_person/` and `first_person_viewmodel_01.tscn`. Preserve the 1.75 m prototype scale/technical proportion rules where current source adopts them; treat old H02/H03/H04 production sequencing and Drive-lane state as historical asset-pipeline provenance.
+
 # HUNTER_BASE_01 — Prototype Hunter Visual/Model Packet
 
 Status: SELECTED PROTOTYPE BODY/GEAR LANGUAGE / NOT FINAL STORY PROTAGONIST
