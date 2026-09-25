@@ -9,6 +9,7 @@ const WorldActorPresentation001 := preload("res://scripts/presentation/pixel_rpg
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 const PlayerMotor001 := preload("res://scripts/presentation/pixel_rpg/player_motor_001.gd")
 const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
+const TouchInputState001 := preload("res://scripts/presentation/pixel_rpg/touch_input_state_001.gd")
 const HudLayout001 := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
 const MinimapMath001 := preload("res://scripts/presentation/pixel_rpg/minimap_math_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
@@ -79,10 +80,6 @@ const DOMAIN_HUNTER_ID := "hunter_player_0001"
 @onready var start_combat_domain_button: Button = $HUD/TargetingPanel/Layout/StartCombatDomain
 @onready var targeting_close_button: Button = $HUD/TargetingPanel/Layout/Close
 
-var _joystick_vector := Vector2.ZERO
-var _joystick_touch_id := -1
-var _look_touch_id := -1
-var _look_last_position := Vector2.ZERO
 var _camera_yaw_rad := 0.0
 var _camera_pitch_rad := 0.0
 var _look_degrees_per_pixel := DEFAULT_LOOK_DEGREES_PER_PIXEL
@@ -101,6 +98,7 @@ var _locked_target_group := ""
 var _target_highlight_material: StandardMaterial3D
 var _current_context := "NONE"
 var _world_ready := false
+var _touch_input_state := TouchInputState001.new()
 var _elapsed := 0.0
 
 func _notification(what: int) -> void:
@@ -133,31 +131,30 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		var touch := event as InputEventScreenTouch
 		if touch.pressed:
-			if not _targeting_open and _joystick_touch_id == -1 and joystick_base.get_global_rect().has_point(touch.position):
-				_joystick_touch_id = touch.index
-				_update_joystick(touch.position)
-				get_viewport().set_input_as_handled()
-			elif _look_touch_id == -1 and _can_claim_look_touch(touch.position):
-				_look_touch_id = touch.index
-				_look_last_position = touch.position
-				get_viewport().set_input_as_handled()
+			if not _targeting_open and _touch_input_state.is_joystick_free() and joystick_base.get_global_rect().has_point(touch.position):
+				if _touch_input_state.claim_joystick(touch.index):
+					_update_joystick(touch.position)
+					get_viewport().set_input_as_handled()
+			elif _touch_input_state.is_look_free() and _can_claim_look_touch(touch.position):
+				if _touch_input_state.claim_look(touch.index, touch.position):
+					get_viewport().set_input_as_handled()
 		else:
-			if touch.index == _joystick_touch_id:
+			if _touch_input_state.is_joystick_touch(touch.index):
 				_reset_joystick()
 				get_viewport().set_input_as_handled()
-			elif touch.index == _look_touch_id:
-				_look_touch_id = -1
+			elif _touch_input_state.is_look_touch(touch.index):
+				_touch_input_state.reset_look()
 				get_viewport().set_input_as_handled()
 	elif event is InputEventScreenDrag:
 		var drag := event as InputEventScreenDrag
-		if drag.index == _joystick_touch_id:
+		if _touch_input_state.is_joystick_touch(drag.index):
 			_update_joystick(drag.position)
 			get_viewport().set_input_as_handled()
-		elif drag.index == _look_touch_id:
-			var delta_px := drag.position - _look_last_position
-			_look_last_position = drag.position
-			_apply_look_delta(delta_px)
-			get_viewport().set_input_as_handled()
+		elif _touch_input_state.is_look_touch(drag.index):
+			var look_drag := _touch_input_state.update_look_drag(drag.index, drag.position)
+			if bool(look_drag.get("handled", false)):
+				_apply_look_delta(look_drag.get("delta", Vector2.ZERO) as Vector2)
+				get_viewport().set_input_as_handled()
 	elif event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		var mouse_motion := event as InputEventMouseMotion
 		_apply_look_delta(mouse_motion.relative)
@@ -170,7 +167,7 @@ func _physics_process(delta: float) -> void:
 	if not _targeting_open:
 		var desktop_x := (1.0 if Input.is_key_pressed(KEY_D) else 0.0) - (1.0 if Input.is_key_pressed(KEY_A) else 0.0)
 		var desktop_y := (1.0 if Input.is_key_pressed(KEY_S) else 0.0) - (1.0 if Input.is_key_pressed(KEY_W) else 0.0)
-		movement_input = Vector2(desktop_x, desktop_y) + _joystick_vector
+		movement_input = Vector2(desktop_x, desktop_y) + _touch_input_state.get_joystick_vector()
 		if movement_input.length() > 1.0:
 			movement_input = movement_input.normalized()
 
@@ -248,20 +245,22 @@ func _update_joystick(screen_position: Vector2) -> void:
 		joystick_knob.size,
 		JOYSTICK_DEADZONE
 	)
-	_joystick_vector = sample.get("vector", Vector2.ZERO) as Vector2
+	_touch_input_state.set_joystick_vector(sample.get("vector", Vector2.ZERO) as Vector2)
 	joystick_knob.position = sample.get("knob_position", Vector2.ZERO) as Vector2
 
 func _reset_joystick() -> void:
-	_joystick_touch_id = -1
-	_joystick_vector = Vector2.ZERO
+	_touch_input_state.reset_joystick()
 	joystick_knob.position = TouchInputMath001.joystick_center_position(
 		joystick_base.get_rect().size,
 		joystick_knob.size
 	)
 
 func _reset_transient_input() -> void:
-	_reset_joystick()
-	_look_touch_id = -1
+	_touch_input_state.reset_all()
+	joystick_knob.position = TouchInputMath001.joystick_center_position(
+		joystick_base.get_rect().size,
+		joystick_knob.size
+	)
 
 func _apply_safe_area_layout() -> void:
 	var layout := HudLayout001.calculate(
