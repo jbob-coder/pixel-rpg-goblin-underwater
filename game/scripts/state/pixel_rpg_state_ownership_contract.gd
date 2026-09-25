@@ -37,8 +37,9 @@ const OWNER_SPECS := {
 	"control.exploration_input": {
 		"kind": "TRANSIENT_CONTROL",
 		"implementation": "ACTIVE",
-		"runtime_path": "PixelRPGPrototype001",
-		"source_path": "res://scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd",
+		"runtime_path": "PixelRPGPrototype001::_touch_input_state",
+		"source_path": "res://scripts/presentation/pixel_rpg/touch_input_state_001.gd",
+		"property_audit": "SOURCE_INSTANCE",
 	},
 	"control.first_person_camera": {
 		"kind": "TRANSIENT_CONTROL",
