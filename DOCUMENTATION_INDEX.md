@@ -15,7 +15,8 @@ For a new session or contributor:
 2. read `START_HERE_NEW_CHAT.md`;
 3. read `docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`;
 4. read `docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
-5. use `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` before relying on older root design documents;
+5. read `docs/00_project/PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md` when you need to understand how runtime owners, adapters, presentation, tests, and builds relate;
+6. use `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` before relying on older root design documents;
 6. use `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` before relying on handoff history;
 7. use `docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md` when ownership crosses documentation/runtime packages;
 8. read the exact owning source and tests for the bounded task;
