@@ -2,6 +2,7 @@ extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const TOUCH_INPUT := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
+const TOUCH_STATE := preload("res://scripts/presentation/pixel_rpg/touch_input_state_001.gd")
 const HUD_LAYOUT := preload("res://scripts/presentation/pixel_rpg/hud_layout_001.gd")
 const MINIMAP_MATH := preload("res://scripts/presentation/pixel_rpg/minimap_math_001.gd")
 
@@ -29,6 +30,20 @@ func _run() -> void:
 	var edge_sample: Dictionary = TOUCH_INPUT.joystick_sample(Vector2(400.0, 300.0), Rect2(100.0, 200.0, 200.0, 200.0), Vector2(40.0, 40.0), 0.12)
 	_check("joystick edge sample clamps to unit vector", is_equal_approx((edge_sample.get("vector", Vector2.ZERO) as Vector2).length(), 1.0), str(edge_sample))
 	_check("joystick radius contract remains 34 percent", is_equal_approx(float(edge_sample.get("radius", -1.0)), 68.0), str(edge_sample))
+
+	var touch_state := TOUCH_STATE.new()
+	_check("touch-state owner schema is stable", String(touch_state.get_schema()) == "pixel_rpg.touch_input_state_001.v1")
+	_check("touch-state starts with both channels free", touch_state.is_joystick_free() and touch_state.is_look_free())
+	_check("touch-state claims exactly one joystick touch", touch_state.claim_joystick(3) and not touch_state.claim_joystick(4) and touch_state.is_joystick_touch(3))
+	touch_state.set_joystick_vector(Vector2(0.5, -0.25))
+	_check("touch-state owns joystick vector", touch_state.get_joystick_vector().is_equal_approx(Vector2(0.5, -0.25)))
+	touch_state.reset_joystick()
+	_check("touch-state joystick reset clears id and vector", touch_state.is_joystick_free() and touch_state.get_joystick_vector().is_zero_approx())
+	_check("touch-state claims look touch with initial position", touch_state.claim_look(7, Vector2(100.0, 80.0)) and touch_state.is_look_touch(7))
+	var look_drag: Dictionary = touch_state.update_look_drag(7, Vector2(112.0, 74.0))
+	_check("touch-state look drag delta is exact", bool(look_drag.get("handled", false)) and (look_drag.get("delta", Vector2.ZERO) as Vector2).is_equal_approx(Vector2(12.0, -6.0)), str(look_drag))
+	touch_state.reset_all()
+	_check("touch-state full reset clears both channels", touch_state.is_joystick_free() and touch_state.is_look_free() and touch_state.get_joystick_vector().is_zero_approx())
 
 	_check("HUD layout owner schema is stable", String(HUD_LAYOUT.get_schema()) == "pixel_rpg.hud_layout_001.v1")
 	var baseline_layout: Dictionary = HUD_LAYOUT.calculate(
@@ -141,5 +156,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_VISUAL_PACK_003_HUD_RUNTIME_FAILED")
-	print("This gate verifies extracted HUD layout, minimap mapping and touch/joystick math plus live HUD zoning, Settings behavior, Bag deferral and touch exclusion; event capture ownership and phone visual acceptance remain open.")
+	print("This gate verifies extracted transient touch-state ownership, HUD layout, minimap mapping and touch math plus live HUD behavior; event routing remains in the host and phone visual acceptance remains open.")
 	quit(0 if failures.is_empty() else 1)
