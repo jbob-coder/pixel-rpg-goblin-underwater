@@ -3,6 +3,7 @@ extends Node
 const WorldBase001 := preload("res://scripts/presentation/pixel_rpg/world_base_001.gd")
 const WorldPaths001 := preload("res://scripts/presentation/pixel_rpg/world_paths_001.gd")
 const WorldSettlementCore001 := preload("res://scripts/presentation/pixel_rpg/world_settlement_core_001.gd")
+const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_gate_props_001.gd")
 const WorldPack001 := preload("res://scripts/presentation/pixel_rpg/world_pack_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
@@ -687,16 +688,7 @@ func _build_prototype_world() -> void:
 	_smith_root = settlement_refs.get("smith_root") as Node3D
 	_smith_use_anchor = settlement_refs.get("smith_use_anchor") as Node3D
 
-	WorldPack001.add_settlement_gate(world_geometry, Vector3(0.0, 0.0, -10.0))
-	_add_collision_box("GateLeftCollision", Vector3(-4.8, 2.2, -10.0), Vector3(2.2, 4.4, 2.2))
-	_add_collision_box("GateRightCollision", Vector3(4.8, 2.2, -10.0), Vector3(2.2, 4.4, 2.2))
-	WorldPack001.add_service_clutter(world_geometry, Vector3(-3.8, 0.0, -5.5))
-	WorldPack001.add_lantern_post(world_geometry, Vector3(-3.1, 0.0, -7.0))
-	WorldPack001.add_lantern_post(world_geometry, Vector3(3.1, 0.0, -7.0), 180.0)
-	WorldPack001.add_banner_post(world_geometry, Vector3(-6.7, 0.0, -9.2))
-	WorldPack001.add_signpost(world_geometry, Vector3(2.9, 0.0, -13.0), -15.0)
-	WorldPack001.add_fence(world_geometry, Vector3(-4.0, 0.0, -16.5), 10.0)
-	WorldPack001.add_fence(world_geometry, Vector3(4.0, 0.0, -19.0), -12.0)
+	WorldGateProps001.add_gate_props(world_geometry)
 
 	for z in [-18.0, -25.0, -33.0, -48.0]:
 		_add_tree(Vector3(-7.5, 0.0, z))
@@ -786,14 +778,3 @@ func _add_domain_monster_body_alias(position: Vector3) -> void:
 	collision.shape = shape
 	body.add_child(collision)
 	_domain_monster_body = body
-
-func _add_collision_box(name: String, position: Vector3, size: Vector3) -> void:
-	var body := StaticBody3D.new()
-	body.name = name
-	body.position = position
-	world_geometry.add_child(body)
-	var collision := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = size
-	collision.shape = shape
-	body.add_child(collision)

@@ -1,6 +1,7 @@
 extends SceneTree
 
 const WORLD_PACK := preload("res://scripts/presentation/pixel_rpg/world_pack_001.gd")
+const GATE_PROPS := preload("res://scripts/presentation/pixel_rpg/world_gate_props_001.gd")
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const GATE_SCENE: PackedScene = preload("res://assets/environment/starting_area/settlement_gate_01.tscn")
 const MARKET_SCENE: PackedScene = preload("res://assets/environment/starting_area/market_stall_01.tscn")
@@ -31,9 +32,29 @@ func _check_scene(scene: PackedScene, expected_root: String, required_nodes: Arr
 		_check(expected_root + " contains " + node_name, instance.get_node_or_null(NodePath(node_name)) != null)
 	instance.queue_free()
 
+func _box_shape(body: StaticBody3D) -> BoxShape3D:
+	if body == null:
+		return null
+	for child in body.get_children():
+		if child is CollisionShape3D and (child as CollisionShape3D).shape is BoxShape3D:
+			return (child as CollisionShape3D).shape as BoxShape3D
+	return null
+
+func _has_node3d_at(nodes: Array[Node], target: Vector3, yaw_deg: float) -> bool:
+	for node in nodes:
+		if node is Node3D:
+			var node3d := node as Node3D
+			if node3d.position.is_equal_approx(target) and is_equal_approx(node3d.rotation_degrees.y, yaw_deg):
+				return true
+	return false
+
 func _run() -> void:
 	print("Pixel RPG Starting Area Asset Pack 001 runtime gate")
 	_check("asset pack schema is stable", WORLD_PACK.STARTING_AREA_ASSET_PACK_SCHEMA == "pixel_rpg.starting_area_asset_pack_001.v1")
+	_check("gate/props owner schema is stable", String(GATE_PROPS.get_schema()) == "pixel_rpg.world_gate_props_001.v1")
+	_check("gate placement contract is exact", GATE_PROPS.GATE_POSITION.is_equal_approx(Vector3(0.0, 0.0, -10.0)))
+	_check("gate collision contract is exact", GATE_PROPS.GATE_LEFT_COLLISION_POSITION.is_equal_approx(Vector3(-4.8, 2.2, -10.0)) and GATE_PROPS.GATE_RIGHT_COLLISION_POSITION.is_equal_approx(Vector3(4.8, 2.2, -10.0)) and GATE_PROPS.GATE_COLLISION_SIZE.is_equal_approx(Vector3(2.2, 4.4, 2.2)))
+	_check("gate signpost contract is exact", GATE_PROPS.SIGNPOST_POSITION.is_equal_approx(Vector3(2.9, 0.0, -13.0)) and is_equal_approx(GATE_PROPS.SIGNPOST_YAW_DEG, -15.0))
 
 	_check_scene(GATE_SCENE, "WorldPack001Gate", ["LeftTower", "RightTower", "UpperBeam", "BraceLeft", "BraceRight", "StoneFootingLeft", "GateBanner"])
 	_check_scene(MARKET_SCENE, "WorldPack001Market", ["Counter", "PostLeft", "PostRight", "Canopy", "CrateA", "CrateB", "CounterTop", "Shelf"])
@@ -66,12 +87,24 @@ func _run() -> void:
 		var live_gate := geometry.get_node_or_null("WorldPack001Gate") as Node3D if geometry != null else null
 		var live_market := geometry.get_node_or_null("WorldPack001Market") as Node3D if geometry != null else null
 		var live_clutter := geometry.get_node_or_null("WorldPack001Clutter") as Node3D if geometry != null else null
+		var left_gate_collision := geometry.get_node_or_null("GateLeftCollision") as StaticBody3D if geometry != null else null
+		var right_gate_collision := geometry.get_node_or_null("GateRightCollision") as StaticBody3D if geometry != null else null
 		var live_signpost := geometry.get_node_or_null("WorldPack001Signpost") as Node3D if geometry != null else null
 		var live_camera := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/Hunter/CameraYaw/CameraPitch/Camera3D") as Camera3D
 		_check("starting-area gate uses Pack 001 scene asset", live_gate != null and live_gate.has_node("StoneFootingLeft") and live_gate.has_node("GateBanner"))
 		_check("starting-area market uses Pack 001 scene asset", live_market != null and live_market.has_node("CounterTop") and live_market.has_node("Shelf"))
 		_check("starting-area clutter uses Pack 001 scene asset", live_clutter != null and live_clutter.has_node("CrateLid") and live_clutter.has_node("SackA"))
 		_check("starting-area signpost uses Pack 001 scene asset", live_signpost != null and live_signpost.has_node("StoneFoot"))
+		_check("left gate collision placement remains exact", left_gate_collision != null and left_gate_collision.position.is_equal_approx(Vector3(-4.8, 2.2, -10.0)))
+		_check("right gate collision placement remains exact", right_gate_collision != null and right_gate_collision.position.is_equal_approx(Vector3(4.8, 2.2, -10.0)))
+		var left_gate_shape := _box_shape(left_gate_collision)
+		var right_gate_shape := _box_shape(right_gate_collision)
+		_check("left gate collision size remains exact", left_gate_shape != null and left_gate_shape.size.is_equal_approx(Vector3(2.2, 4.4, 2.2)))
+		_check("right gate collision size remains exact", right_gate_shape != null and right_gate_shape.size.is_equal_approx(Vector3(2.2, 4.4, 2.2)))
+		var lantern_nodes: Array[Node] = geometry.find_children("WorldPack001Lantern", "", false, false) if geometry != null else []
+		var fence_nodes: Array[Node] = geometry.find_children("WorldPack001Fence", "", false, false) if geometry != null else []
+		_check("both gate lanterns preserve exact transforms", lantern_nodes.size() == 2 and _has_node3d_at(lantern_nodes, Vector3(-3.1, 0.0, -7.0), 0.0) and _has_node3d_at(lantern_nodes, Vector3(3.1, 0.0, -7.0), 180.0))
+		_check("both frontier fences preserve exact transforms", fence_nodes.size() == 2 and _has_node3d_at(fence_nodes, Vector3(-4.0, 0.0, -16.5), 10.0) and _has_node3d_at(fence_nodes, Vector3(4.0, 0.0, -19.0), -12.0))
 		_check("first-person camera remains current", live_camera != null and live_camera.current)
 		prototype.queue_free()
 		await process_frame
@@ -85,5 +118,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_001_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_STARTING_AREA_ASSET_PACK_001_FAILED")
-	print("This gate proves reusable scene instantiation, builder wiring, applied starting-area nodes and first-person preservation. Physical-device visual acceptance and sustained performance remain open.")
+	print("This gate proves the extracted gate/props owner preserves Pack 001 presentation assets, exact gate collision proxies, lantern/fence transforms and first-person presentation. Physical-device visual acceptance and sustained performance remain open.")
 	quit(0 if failures.is_empty() else 1)
