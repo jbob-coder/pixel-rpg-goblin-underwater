@@ -1,6 +1,7 @@
 extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
+const CAMERA_MATH := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -15,7 +16,17 @@ func _check(label: String, condition: bool, detail: String = "") -> void:
 		failures.append(label)
 
 func _run() -> void:
-	print("Pixel RPG first-person realignment runtime gate")
+	print("Pixel RPG first-person realignment + extracted camera-math parity gate")
+
+	_check("camera-math owner schema is stable", String(CAMERA_MATH.get_schema()) == "pixel_rpg.first_person_camera_math_001.v1")
+	_check("camera-math zero input remains zero", CAMERA_MATH.camera_relative_movement(Basis.IDENTITY, Vector2.ZERO).is_equal_approx(Vector3.ZERO))
+	var pure_forward: Vector3 = CAMERA_MATH.camera_relative_movement(Basis.IDENTITY, Vector2(0.0, -1.0))
+	_check("camera-math identity forward remains normalized -Z", pure_forward.is_equal_approx(Vector3(0.0, 0.0, -1.0)), str(pure_forward))
+	var pure_look: Vector2 = CAMERA_MATH.apply_look_delta(0.0, 0.0, Vector2(24.0, -18.0), 0.105, -78.0, 78.0)
+	_check("camera-math horizontal look sign remains exact", is_equal_approx(pure_look.x, -deg_to_rad(2.52)), str(pure_look.x))
+	_check("camera-math vertical look sign remains exact", is_equal_approx(pure_look.y, deg_to_rad(1.89)), str(pure_look.y))
+	var clamped_look: Vector2 = CAMERA_MATH.apply_look_delta(0.0, 0.0, Vector2(0.0, -5000.0), 0.105, -78.0, 78.0)
+	_check("camera-math pitch clamp remains exact", is_equal_approx(clamped_look.y, deg_to_rad(78.0)), str(rad_to_deg(clamped_look.y)))
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("prototype scene instantiates", prototype != null)
 	if prototype == null:
@@ -81,5 +92,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_FAILED")
-	print("This gate verifies presentation/controller realignment only; physical Android camera/viewmodel feel, obstruction and final visual acceptance remain unverified.")
+	print("This gate verifies extracted first-person camera math plus host wrapper parity; input ownership, physical Android camera/viewmodel feel, obstruction and final visual acceptance remain unverified.")
 	quit(0 if failures.is_empty() else 1)

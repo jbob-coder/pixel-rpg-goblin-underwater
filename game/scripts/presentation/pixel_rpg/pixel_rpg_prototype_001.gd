@@ -5,6 +5,7 @@ const WorldPaths001 := preload("res://scripts/presentation/pixel_rpg/world_paths
 const WorldSettlementCore001 := preload("res://scripts/presentation/pixel_rpg/world_settlement_core_001.gd")
 const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_gate_props_001.gd")
 const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
+const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
@@ -205,26 +206,28 @@ func _process(delta: float) -> void:
 	_update_smith_interior_visibility()
 
 func _camera_relative_movement(input_vector: Vector2) -> Vector3:
-	if input_vector.length_squared() <= 0.0001:
-		return Vector3.ZERO
-	var basis := camera_yaw.global_transform.basis
-	var right := basis.x
-	right.y = 0.0
-	right = right.normalized()
-	var forward := -basis.z
-	forward.y = 0.0
-	forward = forward.normalized()
-	return (right * input_vector.x + forward * -input_vector.y).normalized()
+	return FirstPersonCameraMath001.camera_relative_movement(camera_yaw.global_transform.basis, input_vector)
 
 func _apply_look_delta(delta_px: Vector2) -> void:
-	_camera_yaw_rad -= deg_to_rad(delta_px.x * _look_degrees_per_pixel)
-	_camera_pitch_rad -= deg_to_rad(delta_px.y * _look_degrees_per_pixel)
-	_camera_pitch_rad = clampf(_camera_pitch_rad, deg_to_rad(CAMERA_PITCH_MIN_DEG), deg_to_rad(CAMERA_PITCH_MAX_DEG))
+	var next_rotation := FirstPersonCameraMath001.apply_look_delta(
+		_camera_yaw_rad,
+		_camera_pitch_rad,
+		delta_px,
+		_look_degrees_per_pixel,
+		CAMERA_PITCH_MIN_DEG,
+		CAMERA_PITCH_MAX_DEG
+	)
+	_camera_yaw_rad = next_rotation.x
+	_camera_pitch_rad = next_rotation.y
 	_apply_camera_rotation()
 
 func _apply_camera_rotation() -> void:
-	camera_yaw.rotation.y = _camera_yaw_rad
-	camera_pitch.rotation.x = _camera_pitch_rad
+	FirstPersonCameraMath001.apply_camera_rotation(
+		camera_yaw,
+		camera_pitch,
+		_camera_yaw_rad,
+		_camera_pitch_rad
+	)
 
 func _can_claim_look_touch(screen_position: Vector2) -> bool:
 	var viewport_size := get_viewport().get_visible_rect().size
