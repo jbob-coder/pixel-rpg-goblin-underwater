@@ -45,6 +45,7 @@ Primary current navigation:
 - `PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
 - `PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md` — runtime owner/adapter/presentation/test/build relationship map;
 - `DOCUMENTATION_BRANCH_STATUS_2026-09-25.md`.
+- `DOCUMENTATION_PRE_MERGE_AUDIT_2026-09-25.md` — pre-merge snapshot/checklist; not merge authorization.
 
 Classification/navigation:
 
