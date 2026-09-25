@@ -199,9 +199,9 @@ Current important technical authority includes:
 
 Key distinction:
 
-`PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md` has an executable current counterpart.
+`docs/50_technical/persistence/PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md` has an executable current counterpart.
 
-`FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT.md` is older design/provenance and is not proof of implemented broad save/load.
+`docs/50_technical/persistence/FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT.md` is older design/provenance and is not proof of implemented broad save/load.
 
 ## docs/60_quality
 
