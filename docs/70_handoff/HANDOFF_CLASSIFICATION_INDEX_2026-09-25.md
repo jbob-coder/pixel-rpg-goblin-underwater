@@ -25,6 +25,17 @@ current creator instruction
 
 Historical SHA/workflow/APK/device evidence remains valid only for the exact revision/evidence it identifies.
 
+## Classification coverage audit
+
+Verified on 2026-09-25 against the live `documentation` branch tree at the time of audit:
+
+- handoff records excluding this index and the directory README: **74**;
+- primary A–G classification entries: **74**;
+- missing primary classifications: **0**;
+- multiply assigned primary classifications: **0**.
+
+Some filenames may appear again later in explanatory cross-references/examples; those repeats do not create a second primary classification.
+
 ## Classification rules
 
 ### A — Current-lineage Pixel RPG technical evidence
