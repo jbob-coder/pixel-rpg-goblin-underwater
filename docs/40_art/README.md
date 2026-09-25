@@ -1,47 +1,92 @@
 # 40_art — Art, Models and Presentation References
 
-Purpose: visual language, asset-production standards, runtime 2D rules, reference packages and 3D conversion workflows.
+Status: ACTIVE ART MAP / CURRENT RUNTIME IMAGE-DERIVED ASSETS + HISTORICAL MODEL PIPELINE  
+Last reconciled: 2026-09-25
 
-Belongs here:
-- model/art direction;
-- reference-image requirements;
-- hunter/NPC/monster model sheets;
-- building/environment visual sheets;
-- materials and palette guides;
-- animation/telegraph presentation guides;
-- VFX/audio presentation references;
-- UI/bestiary/map-art references;
-- asset provenance/reference metadata;
-- raster resolution/zoom-quality rules;
-- runtime 2D asset preparation;
-- image-to-3D conversion/orchestration guides.
+## Purpose
 
-## Current asset-pipeline package
+Own art/reference/asset-lineage documentation without taking gameplay/collision/state authority.
+
+## Current runtime-art lineage
+
+Current Pixel RPG source includes verified image-derived presentation.
+
+### Pack 010
+
+Concept-derived material textures:
+
+`game/assets/textures/concept_derived/`
+
+Manifest:
+
+`game/assets/textures/concept_derived/image_derived_asset_manifest.gd`
+
+### Pack 011
+
+Direct concept-photo PNG assets:
+
+`game/assets/environment/starting_area/concept_photo_sprites_011/`
+
+Runtime data/loader:
+
+- `game/assets/environment/starting_area/concept_photo_sprite_data_011.gd`;
+- `game/scripts/presentation/pixel_rpg/concept_photo_reconstruction_011.gd`.
+
+### Canonical first-person hands
+
+`game/assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001.png`
+
+Live ViewModel:
+
+`game/assets/characters/first_person_viewmodel_01.tscn`
+
+## Historical asset-pipeline package
 
 `asset_pipeline/`
-- `README.md` — asset classes and Drive storage map;
-- `RASTER_RESOLUTION_AND_ZOOM_QUALITY.md` — high-resolution master, zoom, derivative, vector/SDF and upscaling policy;
-- `RUNTIME_2D_ASSET_GUIDE.md` — which generated images may become actual game assets and their approval gates;
-- `PNG_TO_3D_AUTOMATION_PIPELINE.md` — reconstruction → Blender → anatomy/sever → rig → animation → LOD → device pipeline;
-- `GENERATED_SHEET_REGISTRY.md` — planned/generated sheet IDs and destinations.
 
-## Current root authorities
+contains valuable lineage, QA, source/master/derivative, raster, image-to-3D, and reference rules.
 
-- `/MODEL_ART_DIRECTION_AND_ASSET_STANDARD.md`;
-- `/MODEL_REFERENCE_IMAGE_AND_CREATION_PIPELINE.md`;
-- `/VISUAL_WORLD_BEHAVIOR_BIBLE.md`;
-- `/GAME_EXPERIENCE_BIBLE.md`.
+Older status text such as:
 
-## Core rule
+- `NO ENGINE IMPORT YET`;
+- `APPROVED_RUNTIME_2D = NONE`
 
-Generated PNGs are visual intent unless separately technically verified. Never treat generated image text, UV-looking art, normal/ORM-looking art, hit regions, scale or collision as production truth by appearance alone.
+is historical and does not describe the complete current Pixel RPG runtime asset inventory.
 
-A generated image can be classified separately as:
-- modeling reference;
-- 3D conversion input candidate;
-- runtime 2D candidate;
-- discussion-only concept.
+## Reviews
 
-Those classifications are not interchangeable.
+`reviews/`
 
-Region-specific visual requirements live in the region package, shared production standards live here/root authority, and entity-specific visual/body requirements live in the matching content package.
+records per-asset QA decisions.
+
+A review may authorize a specific use level; it does not become gameplay authority.
+
+## Core law
+
+Generated/reference images are visual intent unless separately technically verified.
+
+Do not infer from imagery alone:
+
+- exact scale;
+- collision;
+- UVs;
+- hidden geometry;
+- hit zones;
+- anatomy thresholds;
+- final text/canon.
+
+## Current visual authority
+
+Player-facing style/camera authority:
+
+`/PIXEL_RPG_VISUAL_DIRECTION.md`
+
+Historical aerial/third-person/model-art documents remain provenance only where their presentation conflicts with current first-person Pixel RPG.
+
+## Presentation boundary
+
+Art may replace visible presentation.
+
+Gameplay collision/state may remain separate invisible support.
+
+Never make visual assets authoritative for combat, targeting truth, persistence, or durable state.
