@@ -345,3 +345,13 @@ It does not automatically prove:
 - current performance.
 
 Current claims require current evidence.
+
+## Completeness verification
+
+Directory readback on 2026-09-25 found 76 Markdown files in `docs/70_handoff/`: 74 historical handoff records plus this index and `README.md`.
+
+All 74 historical handoff filenames are explicitly present in this classification index.
+
+Completeness result: **74 / 74 handoffs classified**.
+
+This verifies classification coverage only. It does not promote any historical handoff into current authority.
