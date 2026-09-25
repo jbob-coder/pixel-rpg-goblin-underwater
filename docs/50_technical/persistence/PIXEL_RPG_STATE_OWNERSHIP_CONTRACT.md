@@ -1,9 +1,10 @@
 # Pixel RPG — State Ownership Contract 001
 
 Status: IMPLEMENTED CONTRACT / EXECUTABLE OWNERSHIP GATE / NO BROAD PERSISTENCE IMPLEMENTATION  
-Last reconciled: 2026-09-23
+Last reconciled: 2026-09-25
 
-Issue: #7 — Define authoritative runtime/state ownership contract.
+Current related implementation: issue #9 — Separate player movement, touch input and first-person camera controllers.  
+Historical source issue reference is superseded by the current repository issue map.
 
 ## Purpose
 
@@ -37,12 +38,15 @@ Presentation variables such as `_combat_domain_started` are orchestration latche
 
 ### Transient-control owners
 
-The current prototype controller owns:
-- joystick vector/touch capture;
-- first-person yaw/pitch;
-- targeting open/selected/locked state;
-- contextual interaction selection;
-- scene/bootstrap latches.
+Current ownership is deliberately split rather than concentrated in one prototype controller:
+
+- `control.exploration_input` is implemented by `touch_input_state_001.gd`, held by the prototype as one transient `_touch_input_state` reference. It owns joystick vector, joystick touch capture, look touch capture and last look position.
+- first-person yaw/pitch remains transient camera-control state while the camera-controller extraction continues;
+- targeting open/selected/locked state remains transient targeting control;
+- contextual interaction selection remains transient interaction control;
+- scene/bootstrap latches remain orchestration state.
+
+The prototype may route events to these owners, but it must not duplicate their authoritative mutable properties.
 
 These are not gameplay-save data.
 
@@ -94,12 +98,12 @@ Later attack integration must use an explicit current-world spatial adapter rath
 ## Migration order
 
 NOW:
-1. freeze owner identities and persistence eligibility;
-2. test that active runtime variables and owner sources still exist;
-3. preserve first-person + Bridge 002 behavior.
+1. keep owner identities and persistence eligibility explicit as the prototype is decomposed;
+2. audit runtime properties at the declared owner rather than assuming every property still lives on the prototype;
+3. preserve first-person + current combat-domain behavior.
 
 NEXT:
-1. decompose the prototype mechanically without changing owner semantics;
+1. continue mechanical controller decomposition without duplicating state authority;
 2. introduce durable player/world owners only when persistence work begins;
 3. route presentation intent through explicit boundaries.
 
