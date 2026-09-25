@@ -6,6 +6,7 @@ const WorldSettlementCore001 := preload("res://scripts/presentation/pixel_rpg/wo
 const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_gate_props_001.gd")
 const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
+const PlayerMotionMath001 := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
 const CombatTurnShellRuntime: Script = preload("res://scripts/gameplay/combat/hunt01_combat_turn_shell_runtime.gd")
@@ -176,21 +177,27 @@ func _physics_process(delta: float) -> void:
 			movement_input = movement_input.normalized()
 
 	var move_world := _camera_relative_movement(movement_input)
-	hunter.velocity.x = move_world.x * MOVE_SPEED_MPS
-	hunter.velocity.z = move_world.z * MOVE_SPEED_MPS
-
-	if not hunter.is_on_floor():
-		hunter.velocity.y -= GRAVITY_MPS2 * maxf(delta, 0.0)
-	elif hunter.velocity.y < 0.0:
-		hunter.velocity.y = -0.1
+	hunter.velocity = PlayerMotionMath001.apply_horizontal_velocity(
+		hunter.velocity,
+		move_world,
+		MOVE_SPEED_MPS
+	)
+	hunter.velocity.y = PlayerMotionMath001.apply_vertical_velocity(
+		hunter.velocity.y,
+		hunter.is_on_floor(),
+		delta,
+		GRAVITY_MPS2
+	)
 
 	hunter.move_and_slide()
 
-	if move_world.length_squared() > 0.002:
-		var target_yaw := atan2(move_world.x, move_world.z)
-		hunter_visual.rotation.y = lerp_angle(hunter_visual.rotation.y, target_yaw, clampf(delta * 12.0, 0.0, 1.0))
+	hunter_visual.rotation.y = PlayerMotionMath001.visual_yaw(
+		hunter_visual.rotation.y,
+		move_world,
+		delta
+	)
 
-	if hunter.global_position.y < RESPAWN_Y_M:
+	if PlayerMotionMath001.should_respawn(hunter.global_position.y, RESPAWN_Y_M):
 		hunter.global_position = PLAYER_START
 		hunter.velocity = Vector3.ZERO
 

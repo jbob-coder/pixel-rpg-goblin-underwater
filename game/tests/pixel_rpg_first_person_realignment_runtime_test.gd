@@ -2,6 +2,7 @@ extends SceneTree
 
 const PROTOTYPE_SCENE: PackedScene = preload("res://scenes/prototypes/pixel_rpg_prototype_001.tscn")
 const CAMERA_MATH := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
+const PLAYER_MOTION := preload("res://scripts/presentation/pixel_rpg/player_motion_math_001.gd")
 
 var failures: Array[String] = []
 var checks := 0
@@ -27,6 +28,16 @@ func _run() -> void:
 	_check("camera-math vertical look sign remains exact", is_equal_approx(pure_look.y, deg_to_rad(1.89)), str(pure_look.y))
 	var clamped_look: Vector2 = CAMERA_MATH.apply_look_delta(0.0, 0.0, Vector2(0.0, -5000.0), 0.105, -78.0, 78.0)
 	_check("camera-math pitch clamp remains exact", is_equal_approx(clamped_look.y, deg_to_rad(78.0)), str(rad_to_deg(clamped_look.y)))
+
+	_check("player-motion owner schema is stable", String(PLAYER_MOTION.get_schema()) == "pixel_rpg.player_motion_math_001.v1")
+	var horizontal_velocity: Vector3 = PLAYER_MOTION.apply_horizontal_velocity(Vector3(9.0, 3.25, 8.0), Vector3(0.6, 0.0, -0.8), 5.2)
+	_check("player-motion horizontal velocity preserves Y", is_equal_approx(horizontal_velocity.y, 3.25), str(horizontal_velocity))
+	_check("player-motion horizontal speed mapping stays exact", is_equal_approx(horizontal_velocity.x, 3.12) and is_equal_approx(horizontal_velocity.z, -4.16), str(horizontal_velocity))
+	var airborne_y: float = PLAYER_MOTION.apply_vertical_velocity(2.0, false, 0.1, 9.8)
+	_check("player-motion airborne gravity stays exact", is_equal_approx(airborne_y, 1.02), str(airborne_y))
+	var floor_y: float = PLAYER_MOTION.apply_vertical_velocity(-3.0, true, 0.1, 9.8)
+	_check("player-motion grounded downward velocity keeps floor-stick contract", is_equal_approx(floor_y, -0.1), str(floor_y))
+	_check("player-motion respawn threshold remains strict", PLAYER_MOTION.should_respawn(-8.01, -8.0) and not PLAYER_MOTION.should_respawn(-8.0, -8.0))
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("prototype scene instantiates", prototype != null)
 	if prototype == null:
@@ -92,5 +103,5 @@ func _finish() -> void:
 		print("Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_VERIFIED")
 	else:
 		print("Gate: PIXEL_RPG_FIRST_PERSON_REALIGNMENT_RUNTIME_FAILED")
-	print("This gate verifies extracted first-person camera math plus host wrapper parity; input ownership, physical Android camera/viewmodel feel, obstruction and final visual acceptance remain unverified.")
+	print("This gate verifies extracted first-person camera and player-motion math plus host wrapper/runtime parity; input ownership, CharacterBody3D move_and_slide authority, physical Android feel, obstruction and final visual acceptance remain separate gates.")
 	quit(0 if failures.is_empty() else 1)
