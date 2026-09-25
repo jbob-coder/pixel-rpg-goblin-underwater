@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG CODE-GUIDE NOTICE — 2026-09-25**
+>
+> This guide predates engine selection and implemented Godot source. Its “engine-specific source not created” status and planned package names are historical.
+>
+> Preserve its dependency-direction, ownership, determinism, testability, replaceable-presentation, and safe-save-evolution principles where compatible. Current code layout and owners are defined by live `game/`, executable state ownership, and current tests.
+
 # Unnamed Hunt RPG — Code Guide
 
 Status: STRUCTURAL PLAN / ENGINE-SPECIFIC SOURCE NOT CREATED
