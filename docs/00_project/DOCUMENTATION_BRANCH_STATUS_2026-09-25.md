@@ -164,6 +164,28 @@ Issue #21 contains documentation-branch progress evidence.
 
 Additional progress should be recorded there when a bounded documentation layer is completed.
 
+
+## Additional reconciliation completed
+
+Current-status notices were added to remaining pre-implementation design contracts that could otherwise overstate or understate present runtime state:
+
+- `CONTENT_DATA_GUIDE.md`;
+- `STATS_ATTRIBUTES_EFFECTS_SYSTEM.md`;
+- `BEHAVIOR_PATTERN_SYSTEM.md`;
+- `CRYSTAL_MUTATION_ECOSYSTEM_SYSTEM.md`;
+- `ADMIN_CREATOR_SYSTEM.md`.
+
+These notices preserve the useful design laws while directing implementation claims back to current source/tests.
+
+Handoff classification was also audited structurally:
+
+- handoff records: **74**;
+- primary A–G classifications: **74**;
+- missing primary classifications: **0**;
+- multiply classified primary records: **0**.
+
+The coverage result is recorded in `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md`.
+
 ## Remaining documentation reconciliation
 
 Remaining work is now narrower:
