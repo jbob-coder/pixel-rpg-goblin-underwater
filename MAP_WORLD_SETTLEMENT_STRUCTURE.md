@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This world-structure file is historical design provenance. Its aerial exploration and local first-person encounter transition model is superseded by the current first-person Pixel RPG presentation.
+>
+> Reusable principles remain relevant: avoid one huge always-loaded world, use compact connected spaces, stream/load bounded areas, preserve physical continuity, and keep authoritative world state independent from presentation. Current spatial implementation authority is live source/tests and current world issues.
+
 # Unnamed Hunt RPG — Map, Settlement and Hunting-World Structure
 
 Status: CORE WORLD-STRUCTURE DESIGN / NO IMPLEMENTATION
