@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG REFERENCE NOTICE — 2026-09-25**
+>
+> The saved concept images remain valid visual-reference/provenance assets, but the interpretation text below that describes a third-person behind-character perspective is superseded.
+>
+> Current camera/presentation authority is first-person and lives in `PIXEL_RPG_VISUAL_DIRECTION.md` plus live source/tests. The reference images may still inform pixel style, settlement density, silhouette/readability, pathing, service cues, wilderness depth, and bounded HUD composition. Visible text/names/camera angle in the concept are not automatic current canon.
+
 # Pixel RPG — Visual Reference Assets
 
 Status: ACTIVE REFERENCE MAP / FIRST-PERSON INTERPRETATION  
