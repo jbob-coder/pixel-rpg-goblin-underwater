@@ -218,3 +218,51 @@ Before merge:
 Continue with package-local README/status review, beginning with `docs/10_world`, `docs/20_gameplay`, `docs/30_content`, `docs/40_art`, `docs/50_technical`, and `docs/60_quality`.
 
 Do not modify gameplay/runtime code on this branch.
+
+## Progress update — relationship/package pass
+
+Additional verified work completed on the documentation branch:
+
+- added `PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md`;
+- linked the relationship map from the global index, project-governance README, and package-authority matrix;
+- verified root-document classification completeness: **33 / 33 root Markdown files classified**;
+- verified historical handoff classification completeness: **74 / 74 handoff records classified**;
+- reconciled or status-guarded the current/legacy boundary for:
+  - Region package front door;
+  - Region-01 historical integration baseline;
+  - settlement package;
+  - shared spatial package;
+  - combat package;
+  - Monster-01 package;
+  - harvest package;
+  - inventory package;
+  - crafting package;
+  - progression package;
+  - Hunter Base 01 presentation history;
+  - quality package.
+
+Current relationship map now explicitly documents:
+
+- input → touch state → camera/movement intent;
+- movement intent → player motor → authoritative Hunter transform;
+- world builders and collision ownership;
+- interaction/context ownership;
+- targeting → Combat Bridge → deterministic domain boundary;
+- Region-01 legacy integration relationship;
+- Monster visual ↔ anatomy owner boundary;
+- state-owner/readers/adapters relationship;
+- future persistence snapshot flow;
+- asset promotion lineage;
+- test/build/device evidence flow;
+- current issue/dependency order;
+- anti-duplication rules.
+
+Latest verified branch comparison during this pass:
+
+- production `main`: `9dd3aa67a714027d66fd428f669d8d240d788626`;
+- documentation HEAD at comparison time: `3d53a850b60b5491283e52abf0d6a5a144823676`;
+- documentation was **82 commits ahead / 0 behind**;
+- every changed path in the comparison was Markdown/documentation;
+- no `game/`, `tests/`, `.github/workflows/`, `ci/`, or `probes/` runtime/build path was changed.
+
+The branch has been concurrently receiving additional documentation-only reconciliation commits. Every write must continue to re-fetch the current file/blob SHA immediately before editing to avoid overwriting newer documentation work.
