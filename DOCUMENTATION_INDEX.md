@@ -17,9 +17,10 @@ For a new session or contributor:
 4. read `docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
 5. use `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` before relying on older root design documents;
 6. use `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` before relying on handoff history;
-7. read the exact owning source and tests for the bounded task;
-8. inspect the current GitHub issue for that subsystem;
-9. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
+7. use `docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md` when ownership crosses documentation/runtime packages;
+8. read the exact owning source and tests for the bounded task;
+9. inspect the current GitHub issue for that subsystem;
+10. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
 
 Do not use `jbob-coder/Chatgptjuegolpcal@pixel-rpg` as current implementation authority. It is migration/provenance history.
 
@@ -253,6 +254,22 @@ Current important tracks:
 - #21 — stale authority/document reconciliation after repository migration.
 
 Important planned work also includes sections/streaming, reusable buildings, NPC foundations, persistence, regression expansion, physical-device/performance evidence, and current-world combat positioning.
+
+## Package authority map
+
+Cross-package ownership/navigation:
+
+`docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md`
+
+Use it to distinguish:
+
+- documentation intent from runtime implementation;
+- current technical packages from historical snapshots;
+- Region-01 legacy spatial authority from current compact-world authority;
+- current runtime-art records from historical asset-pipeline status;
+- static/headless/build evidence from device evidence.
+
+`docs/README.md` is the current documentation-folder front door.
 
 ## Handoff policy
 
