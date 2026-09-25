@@ -198,27 +198,33 @@ Do not rewrite the whole guides as if every planned system is complete. Change t
 
 ---
 
-## A-008 — Path extraction passed broad CI but lacks a dedicated parity regression
+## A-008 — Path extraction parity regression
 
-Status: **COVERAGE GAP**  
+Status: **RESOLVED / CORROBORATED 2026-09-24**  
 Priority: P0 implementation quality  
 Related issue: #1
 
-Live change:
-- `game/scripts/presentation/pixel_rpg/world_paths_001.gd` now owns Street/Trail visual surface creation and detail scenes;
-- `pixel_rpg_prototype_001.gd` routes path construction through that owner;
-- exact legacy constants were retained:
-  - Street position `(0, 0.03, 2)`, size `(6.2, 0.10, 34)`;
-  - Trail position `(0, 0.04, -31)`, size `(4.2, 0.11, 34)`.
+Live implementation:
+- `game/scripts/presentation/pixel_rpg/world_paths_001.gd` owns Street/Trail visual surface creation and detail-scene placement;
+- `pixel_rpg_prototype_001.gd` routes path construction through that owner.
+
+Corroboration action:
+Rather than creating a duplicate new test, the existing owning path test
+`game/tests/pixel_rpg_starting_area_asset_pack_007_path_surface_details_test.gd`
+was extended to assert the extracted owner schema plus exact Street/Trail position and size contracts. This follows the guide's reuse-before-invention and anti-duplication rules.
 
 Evidence:
-Current HEAD `6c42a39d4f58969d1d165bbb12e34f387e57a13b` passed canonical run `36073988516`, including import/parse, AppShell smoke, all discovered GDScript tests, and Android export.
+- test commit: `9e72be230127a9a646915d732a8079683593a07d`;
+- workflow run: `36075287648`, attempt 2;
+- verification job `107885622049`: SUCCESS;
+- Android export job `107885621069`: SUCCESS;
+- import/parse, AppShell smoke, static preflights, all discovered GDScript tests, Android export and artifact upload passed.
 
-Gap:
-A dedicated “decomposition 002 / path parity” test was prepared conceptually but is not present in the current tree. Broad regression success is useful but does not explicitly prove every path anchor/material/detail contract.
+Boundary:
+This proves source/headless/build parity for the extracted path owner. It does not prove physical-phone visual quality or performance.
 
-Recommended action:
-Before extracting the next world-composition slice, add a narrow path parity test that asserts exact Street/Trail transforms, sizes, detail roots, lack of new physics ownership, and first-person camera survival.
+Next:
+Proceed to the next bounded decomposition slice only while preserving the same owner/test/evidence discipline.
 
 ---
 
