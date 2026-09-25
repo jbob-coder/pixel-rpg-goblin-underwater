@@ -43,6 +43,7 @@ Primary current navigation:
 
 - `PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`;
 - `PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
+- `PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md` — runtime owner/adapter/presentation/test/build relationship map;
 - `DOCUMENTATION_BRANCH_STATUS_2026-09-25.md`.
 
 Classification/navigation:
