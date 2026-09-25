@@ -235,3 +235,13 @@ It cannot prove:
 - current performance.
 
 Those require the corresponding source/test/build/device evidence.
+
+## Completeness verification
+
+Root-directory readback on 2026-09-25 found 33 Markdown files at repository root.
+
+All 33 root Markdown files are covered by the current-authority set or classes B–E in this index.
+
+Completeness result: **33 / 33 root Markdown files classified**.
+
+This verifies navigation coverage only; source/tests still outrank documentation.
