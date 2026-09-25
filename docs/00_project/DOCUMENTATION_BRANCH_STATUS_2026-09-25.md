@@ -262,6 +262,10 @@ Every changed path in that comparison was Markdown/documentation.
 
 
 ## Merge policy
+Pre-merge audit snapshot:
+
+`docs/00_project/DOCUMENTATION_PRE_MERGE_AUDIT_2026-09-25.md`
+
 
 Do not merge `documentation` merely because the files read better.
 
