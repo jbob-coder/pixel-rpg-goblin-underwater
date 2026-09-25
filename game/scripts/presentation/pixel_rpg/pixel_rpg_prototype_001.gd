@@ -2,6 +2,7 @@ extends Node
 
 const WorldBase001 := preload("res://scripts/presentation/pixel_rpg/world_base_001.gd")
 const WorldPaths001 := preload("res://scripts/presentation/pixel_rpg/world_paths_001.gd")
+const WorldSettlementCore001 := preload("res://scripts/presentation/pixel_rpg/world_settlement_core_001.gd")
 const WorldPack001 := preload("res://scripts/presentation/pixel_rpg/world_pack_001.gd")
 const WorldPack004EnterableSmith := preload("res://scripts/presentation/pixel_rpg/world_pack_004_enterable_smith.gd")
 const MudcrestVisualScene: PackedScene = preload("res://assets/monsters/mudcrest_visual.tscn")
@@ -10,7 +11,6 @@ const MudcrestAnatomyRuntime: Script = preload("res://scripts/gameplay/monsters/
 const TrailPineScene: PackedScene = preload("res://assets/environment/starting_area/trail_pine_01.tscn")
 const TrailRockVisualScene: PackedScene = preload("res://assets/environment/starting_area/trail_rock_visual_01.tscn")
 const GateWardenVisualScene: PackedScene = preload("res://assets/characters/gate_warden_visual_01.tscn")
-const SettlementBuildingDetailsScene: PackedScene = preload("res://assets/environment/starting_area/settlement_building_details_01.tscn")
 const ConceptPhotoReconstruction011 := preload("res://scripts/presentation/pixel_rpg/concept_photo_reconstruction_011.gd")
 
 const MOVE_SPEED_MPS := 5.2
@@ -683,11 +683,9 @@ func _build_prototype_world() -> void:
 	world_geometry.add_child(concept_photo_reconstruction)
 	WorldPaths001.add_paths(world_geometry)
 
-	_add_building(Vector3(-7.0, 1.7, 8.5), Vector3(7.0, 3.4, 7.0), Color(0.34, 0.22, 0.13))
-	WorldPack001.add_market_stall(world_geometry, Vector3(7.0, 0.0, 6.0), -90.0)
-	_smith_root = WorldPack004EnterableSmith.add_enterable_smith(world_geometry, Vector3(-7.4, 0.0, -1.5), 90.0)
-	_smith_use_anchor = _smith_root.get_node_or_null("UseAnchor") as Node3D
-	_add_building(Vector3(7.5, 1.6, -3.0), Vector3(6.8, 3.2, 6.4), Color(0.36, 0.23, 0.13))
+	var settlement_refs := WorldSettlementCore001.add_settlement_core(world_geometry)
+	_smith_root = settlement_refs.get("smith_root") as Node3D
+	_smith_use_anchor = settlement_refs.get("smith_use_anchor") as Node3D
 
 	WorldPack001.add_settlement_gate(world_geometry, Vector3(0.0, 0.0, -10.0))
 	_add_collision_box("GateLeftCollision", Vector3(-4.8, 2.2, -10.0), Vector3(2.2, 4.4, 2.2))
@@ -723,20 +721,6 @@ func _build_prototype_world() -> void:
 	world_geometry.add_child(_monster_anchor)
 	_add_monster_proxy(_monster_anchor)
 	_add_domain_monster_body_alias(_monster_anchor.position)
-
-func _add_building(position: Vector3, size: Vector3, color: Color) -> void:
-	_add_box("Building", position, size, color, true)
-	_add_box("Roof", position + Vector3(0, size.y * 0.5 + 0.45, 0), Vector3(size.x + 0.6, 0.9, size.z + 0.6), Color(0.20, 0.12, 0.08), false)
-
-	var details := SettlementBuildingDetailsScene.instantiate() as Node3D
-	if details == null:
-		push_error("Pixel RPG Pack 006 failed to instantiate settlement building details")
-		return
-	details.name = "SettlementBuildingDetails"
-	details.position = position
-	details.scale = Vector3(size.x / 7.0, size.y / 3.4, size.z / 7.0)
-	details.set_meta("pixel_rpg_settlement_building_details", true)
-	world_geometry.add_child(details)
 
 func _add_tree(position: Vector3) -> void:
 	var visual := TrailPineScene.instantiate() as Node3D
@@ -813,40 +797,3 @@ func _add_collision_box(name: String, position: Vector3, size: Vector3) -> void:
 	shape.size = size
 	collision.shape = shape
 	body.add_child(collision)
-
-func _add_box(name: String, position: Vector3, size: Vector3, color: Color, collision_enabled: bool) -> void:
-	var holder: Node3D
-	if collision_enabled:
-		var body := StaticBody3D.new()
-		body.name = name
-		body.position = position
-		world_geometry.add_child(body)
-		holder = body
-	else:
-		var node := Node3D.new()
-		node.name = name
-		node.position = position
-		world_geometry.add_child(node)
-		holder = node
-
-	var mesh_instance := MeshInstance3D.new()
-	var mesh := BoxMesh.new()
-	mesh.size = size
-	mesh_instance.mesh = mesh
-	mesh_instance.material_override = _material(color)
-	holder.add_child(mesh_instance)
-
-	if collision_enabled:
-		var collision := CollisionShape3D.new()
-		var shape := BoxShape3D.new()
-		shape.size = size
-		collision.shape = shape
-		holder.add_child(collision)
-
-func _material(color: Color) -> StandardMaterial3D:
-	var material := StandardMaterial3D.new()
-	material.albedo_color = color
-	material.roughness = 0.95
-	material.shading_mode = BaseMaterial3D.SHADING_MODE_PER_VERTEX
-	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-	return material
