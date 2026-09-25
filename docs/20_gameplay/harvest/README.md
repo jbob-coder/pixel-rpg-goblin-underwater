@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG HARVEST STATUS — 2026-09-25**
+>
+> The finite-capacity/anatomy-derived harvest contract below remains useful design authority, and broad current-world harvest runtime is still not implemented. However, the old “exact next downstream dependency” sequence is historical; current implementation priority is governed by the live issue/dependency graph.
+>
+> When harvest implementation begins, it must consume authoritative current anatomy/condition state, preserve source lineage/depletion/idempotency, and integrate through current inventory/persistence owners rather than reviving the old first-slice order as a mandatory schedule.
+
 # 20_gameplay/harvest — Harvest Gameplay Package
 
 Status: ACTIVE FIRST-SLICE DESIGN PACKAGE / BASELINE RECORDED / INVENTORY DOWNSTREAM RECORDED / NO HARVEST IMPLEMENTATION
