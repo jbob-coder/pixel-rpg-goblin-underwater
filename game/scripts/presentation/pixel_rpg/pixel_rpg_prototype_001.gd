@@ -7,6 +7,7 @@ const WorldGateProps001 := preload("res://scripts/presentation/pixel_rpg/world_g
 const WorldTrailEnvironment001 := preload("res://scripts/presentation/pixel_rpg/world_trail_environment_001.gd")
 const WorldActorPresentation001 := preload("res://scripts/presentation/pixel_rpg/world_actor_presentation_001.gd")
 const FirstPersonCameraMath001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_math_001.gd")
+const FirstPersonCameraState001 := preload("res://scripts/presentation/pixel_rpg/first_person_camera_state_001.gd")
 const PlayerMotor001 := preload("res://scripts/presentation/pixel_rpg/player_motor_001.gd")
 const TouchInputMath001 := preload("res://scripts/presentation/pixel_rpg/touch_input_math_001.gd")
 const TouchInputState001 := preload("res://scripts/presentation/pixel_rpg/touch_input_state_001.gd")
@@ -80,8 +81,6 @@ const DOMAIN_HUNTER_ID := "hunter_player_0001"
 @onready var start_combat_domain_button: Button = $HUD/TargetingPanel/Layout/StartCombatDomain
 @onready var targeting_close_button: Button = $HUD/TargetingPanel/Layout/Close
 
-var _camera_yaw_rad := 0.0
-var _camera_pitch_rad := 0.0
 var _look_degrees_per_pixel := DEFAULT_LOOK_DEGREES_PER_PIXEL
 var _npc_anchor: Node3D
 var _smith_root: Node3D
@@ -98,6 +97,7 @@ var _locked_target_group := ""
 var _target_highlight_material: StandardMaterial3D
 var _current_context := "NONE"
 var _world_ready := false
+var _first_person_camera_state := FirstPersonCameraState001.new()
 var _touch_input_state := TouchInputState001.new()
 var _elapsed := 0.0
 
@@ -108,8 +108,7 @@ func _notification(what: int) -> void:
 
 func _ready() -> void:
 	_build_prototype_world()
-	_camera_yaw_rad = 0.0
-	_camera_pitch_rad = 0.0
+	_first_person_camera_state.set_rotation(0.0, 0.0)
 	_apply_camera_rotation()
 	hunter_visual.visible = false
 	camera.current = true
@@ -198,25 +197,16 @@ func _camera_relative_movement(input_vector: Vector2) -> Vector3:
 	return FirstPersonCameraMath001.camera_relative_movement(camera_yaw.global_transform.basis, input_vector)
 
 func _apply_look_delta(delta_px: Vector2) -> void:
-	var next_rotation := FirstPersonCameraMath001.apply_look_delta(
-		_camera_yaw_rad,
-		_camera_pitch_rad,
+	_first_person_camera_state.apply_look_delta(
 		delta_px,
 		_look_degrees_per_pixel,
 		CAMERA_PITCH_MIN_DEG,
 		CAMERA_PITCH_MAX_DEG
 	)
-	_camera_yaw_rad = next_rotation.x
-	_camera_pitch_rad = next_rotation.y
 	_apply_camera_rotation()
 
 func _apply_camera_rotation() -> void:
-	FirstPersonCameraMath001.apply_camera_rotation(
-		camera_yaw,
-		camera_pitch,
-		_camera_yaw_rad,
-		_camera_pitch_rad
-	)
+	_first_person_camera_state.apply_to_nodes(camera_yaw, camera_pitch)
 
 func _can_claim_look_touch(screen_position: Vector2) -> bool:
 	var viewport_size := get_viewport().get_visible_rect().size

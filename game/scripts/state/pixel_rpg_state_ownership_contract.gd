@@ -47,6 +47,13 @@ const OWNER_SPECS := {
 		"runtime_path": "WorldDisplay/WorldViewport/World/Hunter/CameraYaw",
 		"source_path": "res://scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd",
 	},
+	"control.first_person_camera_state": {
+		"kind": "TRANSIENT_CONTROL",
+		"implementation": "ACTIVE",
+		"runtime_path": "PixelRPGPrototype001::_first_person_camera_state",
+		"source_path": "res://scripts/presentation/pixel_rpg/first_person_camera_state_001.gd",
+		"property_audit": "SOURCE_INSTANCE",
+	},
 	"control.targeting": {
 		"kind": "TRANSIENT_CONTROL",
 		"implementation": "ACTIVE",
@@ -179,7 +186,7 @@ const DATUM_SPECS := {
 		"runtime_properties": ["_joystick_touch_id", "_look_touch_id", "_look_last_position"],
 	},
 	"camera.yaw_pitch": {
-		"owner_id": "control.first_person_camera",
+		"owner_id": "control.first_person_camera_state",
 		"authority": "TRANSIENT_CONTROL",
 		"implementation": "ACTIVE",
 		"persistence": PERSIST_NEVER,
