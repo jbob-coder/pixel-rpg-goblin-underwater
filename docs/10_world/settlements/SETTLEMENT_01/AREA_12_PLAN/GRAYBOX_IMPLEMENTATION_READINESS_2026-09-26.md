@@ -1,6 +1,6 @@
 # Settlement 01 — Graybox Implementation Readiness Matrix
 
-Status: IMPLEMENTATION-PREPARED / RUNTIME NOT STARTED  
+Status: G00–G15 IMPLEMENTED + VERIFIED / G16 NEXT  
 Created: 2026-09-26
 
 ## Purpose
@@ -28,8 +28,37 @@ Final art promotion must wait for creator review.
 | F001 final references | 12/12 GENERATED |
 | F001 spatial checks | 12/12 PASS |
 | creator art approval | 0/12 PENDING |
-| runtime SectionDefinition | NOT IMPLEMENTED |
-| runtime five-section migration | NOT IMPLEMENTED |
+| runtime SectionDefinition / AreaDefinition / SectionInstance | IMPLEMENTED + VERIFIED (G00) |
+| isolated five-section / twelve-area graybox stack | IMPLEMENTED + VERIFIED (G01–G15) |
+
+## Runtime execution update — G00–G15
+
+Implemented:
+- G00 layout/schema ownership;
+- G01 floor + spine;
+- G02 plaza;
+- G03 Smith;
+- G04 Community Hall;
+- G05 residences;
+- G06 work support;
+- G07 worker passage;
+- G08 South Gate;
+- G09 security;
+- G10 logistics;
+- G11 hunter staging;
+- G12 North Gate;
+- G13 perimeter/streetscape;
+- G14 NPC anchors/schedules;
+- G15 minimap derivation.
+
+Still pending:
+- G16 conservative streaming;
+- G17 persistence hooks;
+- production-world cutover;
+- final visual approval 0/12.
+
+Current status reference:
+`../SETTLEMENT_01_RUNTIME_STATUS_G00_G15_2026-09-26.md`
 
 ## What may proceed before visual approval
 
@@ -87,7 +116,7 @@ Contains:
 - stable connector register;
 - graybox test contract.
 
-These are implementation inputs only. Runtime code is still not started.
+These inputs are now consumed by the isolated G00–G15 runtime stack. Production-world cutover remains separate.
 
 ## Recommended runtime implementation order
 
@@ -158,13 +187,19 @@ Before full settlement promotion:
 
 ## Evidence boundary
 
-This matrix does not mean the runtime implementation exists.
+The isolated Settlement 01 runtime **does exist through G15** and is canonical-CI/Android-build verified.
 
-Current status remains:
-`DOCUMENTATION + REFERENCE + MODEL CONTRACT READY`
+Current production evidence:
+- main: `9d600407e29e8f3c5be0ce48ec5afdf02c766f42`
+- G15 CI: `36267898515` SUCCESS
+
+This does **not** mean production-world cutover, streaming, persistence, creator-final art approval, or phone acceptance are complete.
+
+Current status:
+`ISOLATED SETTLEMENT G00-G15 IMPLEMENTED + VERIFIED`
 
 not:
-`SETTLEMENT RUNTIME IMPLEMENTED`.
+`CURRENT PLAYER-FACING WORLD CUT OVER`.
 
 
 ## F002 visual-reference clarification
