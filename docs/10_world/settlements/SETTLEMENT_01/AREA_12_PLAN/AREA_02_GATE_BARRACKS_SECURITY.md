@@ -294,3 +294,37 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Accepted standalone reference
+
+Reference asset ID:
+`REF_SET01_A02_GATE_BARRACKS_SECURITY_R001`
+
+Persisted archive:
+- Library path: `/Pixel RPG/Settlement 01/Area References/AREA_02_GATE_BARRACKS_SECURITY_R001(3).png`
+- Library file ID: `libfile_de0aeaaedad881918a7a528682842b8f`
+- backing file ID: `file_00000000e1e881f69c05abebeac31ead`
+- MIME: `image/png`
+
+Generated derivative:
+- dimensions: 1152×768
+- bytes: 9,014
+- SHA-256: `b62d64add0f57be79696a2e0347fbc21dbe4aebd04bfe1115ca23e95700c9600`
+
+This accepted Area 02 reference is a deliberately constructed low-resolution pixel-art scene, not one of the rejected whole-settlement overview generations.
+
+Reference content includes:
+- compact barracks;
+- open patrol yard;
+- equipment racks;
+- duty board;
+- briefing canopy;
+- benches;
+- lanterns;
+- modest wall/security edge;
+- six guard sprites;
+- visible clear road edge.
+
+Next state after creator review:
+`REFERENCE_REVIEWED`.
