@@ -48,7 +48,7 @@ Spatial coordinates remain owned by the master blueprint even when art is revise
 | 08 | East Work Frontage / Worker Passage | `AREA_08_EAST_WORK_FRONTAGE_PASSAGE_F002_LOCKED.png` | `libfile_efa4f553935c8191be7fad6f89f02020` | PASS | PENDING |
 | 09 | Smithy & Craft Quarter | `AREA_09_SMITHY_CRAFT_QUARTER_F002_LOCKED.png` | `libfile_5b049d4da204819194cf231331c38774` | PASS | PENDING |
 | 10 | Storage / Workshop Yard | `AREA_10_STORAGE_WORKSHOP_YARD_F002_LOCKED.png` | `libfile_45154eda501081918983f283c0edce7b` | PASS | PENDING |
-| 11 | North Hunter Staging Ground | `AREA_11_NORTH_HUNTER_STAGING_GROUND_F001_LOCKED.png` | `libfile_ff02079a24688191b47ba502f3aced34` | PASS | PENDING |
+| 11 | North Hunter Staging Ground | `AREA_11_NORTH_HUNTER_STAGING_GROUND_F002_LOCKED.png` | `libfile_a35941b0c6e481918dcd8b44ebabe2c5` | PASS | PENDING |
 | 12 | North Watch Gate & Trail Exit | `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F001_LOCKED.png` | `libfile_fcb3ef306ffc8191a82587516f55b698` | PASS | PENDING |
 
 Library folder:
@@ -216,5 +216,17 @@ F002 was generated after technical art review found F001 too diagram-like for th
 
 Current creator-review target:
 `AREA_10_STORAGE_WORKSHOP_YARD_F002_LOCKED.png`
+
+No creator approval is inferred from the revision.
+
+
+## Area 11 revision note
+
+F001 remains archived.
+
+F002 was generated after technical art review found F001 too thin/under-developed for the hunter-preparation threshold.
+
+Current creator-review target:
+`AREA_11_NORTH_HUNTER_STAGING_GROUND_F002_LOCKED.png`
 
 No creator approval is inferred from the revision.
