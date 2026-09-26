@@ -1,6 +1,6 @@
 # Area 12 — North Watch Gate & Trail Exit
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
 Parent section: `SET01_S05`  
 Area ID: `SET01_A12_NORTH_WATCH_GATE_TRAIL_EXIT`
 
@@ -124,3 +124,23 @@ Persisted Library archive:
 Disposition:
 - accepted as current Area 12 pixel-art reference;
 - 8 m gate opening, trail connector and collision remain blueprint authority.
+
+
+## Technical asset review / model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_12/`
+
+Final-reference placement authority:
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+Current state:
+- R001 concept reference preserved;
+- technical asset review complete;
+- primary model-sheet contracts ready;
+- final position-locked reference still requires regeneration;
+- runtime implementation not started;
+- device visual verification not started.
