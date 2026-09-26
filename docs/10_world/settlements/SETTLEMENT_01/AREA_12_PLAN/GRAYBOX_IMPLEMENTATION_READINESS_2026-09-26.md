@@ -75,6 +75,20 @@ Do not lock:
 | 11 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
 | 12 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
 
+## Implementation-prep package
+
+Runtime-preparation contracts:
+
+`IMPLEMENTATION_PREP/`
+
+Contains:
+- SectionDefinition / SectionInstance contract;
+- 12-area coordinate register;
+- stable connector register;
+- graybox test contract.
+
+These are implementation inputs only. Runtime code is still not started.
+
 ## Recommended runtime implementation order
 
 Do not implement all twelve at once.
