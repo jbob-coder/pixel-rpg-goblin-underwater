@@ -40,6 +40,14 @@ Live ViewModel:
 
 `game/assets/characters/first_person_viewmodel_01.tscn`
 
+## Photo/reference reverse-engineering
+
+Current guide:
+
+`asset_pipeline/PHOTO_REFERENCE_REVERSE_ENGINEERING_GUIDE.md`
+
+Use it to turn photos or generated reference images into observed/inferred game blueprints, orthographic/model sheets, modular-part plans, and game-scale construction guides while keeping collision and technical truth separate.
+
 ## Historical asset-pipeline package
 
 `asset_pipeline/`
