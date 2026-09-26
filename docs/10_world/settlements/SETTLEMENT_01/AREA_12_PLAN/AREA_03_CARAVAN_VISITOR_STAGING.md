@@ -1,6 +1,6 @@
 # Area 03 — Caravan Yard / Visitor Staging
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S01`  
 Area ID: `SET01_A03_CARAVAN_VISITOR_STAGING`
 
@@ -197,3 +197,40 @@ Current state:
 The archived R001 image remains a concept/asset reference.
 
 A later final reference must be regenerated against the locked coordinates, orientation, neighbor edges, streets and building parcels before runtime placement is approved.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A03_F001`
+
+Artifact:
+- filename: `AREA_03_CARAVAN_VISITOR_STAGING_F001_LOCKED.png`
+- dimensions: 840×714
+- bytes: 6,500
+- SHA-256: `c8356b01a18f60ed606b7ea7b9fffca7dd0796d06fd440f427d32466e70ccac5`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_03_CARAVAN_VISITOR_STAGING_F001_LOCKED.png`
+- Library file ID: `libfile_4000ab4f8b688191bbc00d05db6c9513`
+- backing file ID: `file_000000000f2481f69bee9e9a6a9abcee`
+
+Spatial validation:
+- north = image top;
+- frame uses X +12..+30 / Z +14..+29;
+- Arrival Storage/Logistics fixed at center +20,+23;
+- building footprint remains 7×6 m;
+- bounds X +16.5..+23.5 / Z +20..+26;
+- west-side connector remains clear;
+- building has a dedicated frontage strip before the connector lane;
+- carts, awning, hitching and trough remain outside the connector;
+- yard remains logistics/staging, not market.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
