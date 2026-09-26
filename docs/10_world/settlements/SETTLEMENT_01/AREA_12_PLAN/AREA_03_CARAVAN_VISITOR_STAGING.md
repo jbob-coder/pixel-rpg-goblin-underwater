@@ -309,3 +309,51 @@ Creator final visual approval:
 
 This technical review does not change the master coordinates or promote the image directly into runtime geometry.
 
+
+
+## Creator-review revision F003
+
+Reason:
+- direct visual review of F002 found the spatial lock and area identity valid, but the presentation still too sparse/diagram-like for the intended settlement art quality.
+
+Reference ID:
+`FINAL_REF_SET01_A03_F003`
+
+Artifact:
+- filename: `AREA_03_CARAVAN_VISITOR_STAGING_F003_LOCKED.png`
+- dimensions: 1260×900
+- bytes: 11,524
+- SHA-256: `c7499b1b08f120ddae07ebd8ebd01b796d64cf728fb223847a015c814f2d78f6`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_03_CARAVAN_VISITOR_STAGING_F003_LOCKED.png`
+- Library file ID: `libfile_eeb9c35a348c8191843fbe57b59f345e`
+- backing file ID: `file_00000000e0d081f69708085635a32c24`
+
+F003 preserves:
+- north-up orientation;
+- Arrival Storage remains the primary building mass;
+- west connector remains open;
+- north connector remains open;
+- cart/logistics staging remains outside the primary routes.
+
+F003 improves:
+- stronger caravan/logistics identity;
+- three-cart staging;
+- supply awning;
+- hitching posts;
+- water trough;
+- wayfinding;
+- traveler/check-in activity;
+- deliberate pixel-art density with a still-open central yard.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art recommendation:
+`REVIEW_F003`
+
+Creator final visual approval:
+`PENDING`
+
+F001/F002 remain archived for provenance.
