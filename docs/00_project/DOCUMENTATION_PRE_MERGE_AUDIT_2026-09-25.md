@@ -15,12 +15,14 @@ Production `main` at audit:
 
 Documentation HEAD at audit:
 
-`0fcc2d70f536847e4e55f01d89b63e9f650a39f9`
+`58e5c7abeb3434a8bc7459dac1a2aa020e5180a9`
 
 Comparison:
 
-- documentation ahead of main: **94 commits**;
+- documentation ahead of main: **98 commits**;
 - documentation behind main: **0 commits**;
+- changed files: **74**;
+- non-Markdown changed files: **0**;
 - changed paths: Markdown/documentation only.
 
 This is a snapshot. It must be refreshed before any actual merge.
@@ -193,3 +195,127 @@ Historical records should remain available for:
 - migration traceability.
 
 The documentation branch should improve interpretation without falsifying history.
+
+## Final live-state audit refresh — 2026-09-25
+
+Live-state checks performed after the initial snapshot:
+
+### Production branch
+
+`main` remains:
+
+`9dd3aa67a714027d66fd428f669d8d240d788626`
+
+Its parent is the audited runtime implementation:
+
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`.
+
+The `9dd3aa67...` commit is documentation-only, so the last runtime CI evidence remains tied to `7e9f370...`.
+
+### Canonical CI
+
+Latest canonical main-branch workflow run:
+
+`36082533109`
+
+Workflow:
+
+`Pixel RPG CI + Android APK`
+
+Head SHA:
+
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`
+
+Conclusion:
+
+`SUCCESS`
+
+No later runtime commit exists on `main` in this audit snapshot.
+
+### Current issue register
+
+Verified open issues:
+
+- #20 — master first-person foundation/settlement/current-world combat;
+- #1 — prototype decomposition;
+- #2 — geometry/collision ownership;
+- #9 — player/touch/first-person camera separation;
+- #21 — documentation/authority migration audit.
+
+Issue bodies may contain older exact evidence baselines; current source/tests and later issue comments supersede those older snapshots.
+
+### Production source-pointer corroboration
+
+Verified on live `main`:
+
+- canonical workflow exists at `.github/workflows/pixel-rpg-ci.yml`;
+- `game/project.godot` points `run/main_scene` to `res://scenes/app_shell.tscn`;
+- `game/scripts/app_shell.gd` references `res://scenes/prototypes/pixel_rpg_prototype_001.tscn`;
+- current prototype scene/script exist;
+- `game/assets/characters/first_person_viewmodel_01.tscn` directly references the canonical hands PNG;
+- canonical hands PNG exists in the production Git tree as blob `6e066fe789bb2938269fcd2c048da59d1e97a974`;
+- state-ownership executable contract exists;
+- Combat Bridge 002 regression test exists.
+
+The connector cannot decode the PNG as UTF-8, so binary existence was verified through Git tree membership rather than text fetch.
+
+### Active stale-pointer audit
+
+Bounded scan covered **21 current authority/navigation documents**.
+
+Two pattern matches in `START_HERE_NEW_CHAT.md` were inspected and confirmed intentional protective history:
+
+- old `pixel-rpg` branch explicitly labeled migration/provenance;
+- old “hands integration pending” wording explicitly labeled stale.
+
+Active stale-pointer result:
+
+**0 active stale pointers found**.
+
+### Navigation-reference audit
+
+Audited **16 current navigation/reference documents** against the live documentation-branch Git tree.
+
+Markdown references checked:
+
+**268**
+
+Unresolved references:
+
+**0**
+
+An initial relative-path parser defect falsely reported two `../` references; the audit was rerun with corrected path normalization and returned zero unresolved references.
+
+### Classification completeness
+
+Still verified:
+
+- root Markdown: **33 / 33 classified**;
+- historical handoffs: **74 / 74 classified**;
+- `game/docs/` runtime evidence notes: **12 / 12 classified**.
+
+### Documentation-only diff
+
+Latest comparison before this refresh:
+
+- documentation ahead: **98 commits**;
+- documentation behind: **0 commits**;
+- changed files: **74**;
+- non-Markdown changed files: **0**.
+
+No gameplay/runtime source, Godot scene, asset resource, test code, workflow, CI script, or probe runtime file is changed.
+
+### Audit-ledger disposition
+
+`docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` now records:
+
+- A-001 through A-007 resolved on the documentation branch or by explicit authority-owner decision;
+- A-008 already resolved;
+- A-009 still open as implementation risk under issue #1;
+- A-010 documentation boundary resolved while physical-device evidence remains open.
+
+### Merge-readiness conclusion
+
+At this exact snapshot the branch is **DOCUMENTATION-CONSISTENT AND PRE-MERGE READY FOR REVIEW**, but not merge-authorized.
+
+A final live `main` re-fetch and comparison is still mandatory immediately before merge.
