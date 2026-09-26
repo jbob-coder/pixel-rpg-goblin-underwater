@@ -1,6 +1,6 @@
 # Area 07 — West Residential Cluster
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S03`  
 Area ID: `SET01_A07_WEST_RESIDENTIAL_CLUSTER`
 
@@ -116,3 +116,24 @@ Approve only if:
 - yard prop density controlled;
 - no market/work-district visual language;
 - genuine pixel art.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A07_WEST_RESIDENTIAL_CLUSTER_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_07_WEST_RESIDENTIAL_CLUSTER_R001.png`
+- dimensions: 1152×768
+- bytes: 8,015
+- SHA-256: `7795764a2b82c184dfde27f5f4979fc267564b559ebbd278d89d03ec4e1971d6`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_07_WEST_RESIDENTIAL_CLUSTER_R001.png`
+- Library file ID: `libfile_9482f1206518819194a4b7f6f73d9c1f`
+- backing file ID: `file_00000000834081f69078fd6432500e8d`
+
+Disposition:
+- accepted as current Area 07 pixel-art reference;
+- residence family geometry remains building-blueprint authority.
