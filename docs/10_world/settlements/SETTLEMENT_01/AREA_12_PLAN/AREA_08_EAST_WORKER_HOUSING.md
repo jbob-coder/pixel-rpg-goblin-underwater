@@ -1,6 +1,6 @@
 # Area 08 — East Residential / Worker Housing
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S04`  
 Area ID: `SET01_A08_EAST_WORKER_HOUSING`
 
@@ -106,3 +106,24 @@ Approve only if:
 - work-related props restrained;
 - no industrial/factory look;
 - genuine pixel style.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A08_EAST_WORKER_HOUSING_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_08_EAST_WORKER_HOUSING_R001.png`
+- dimensions: 1152×768
+- bytes: 7,708
+- SHA-256: `148b0763fb03afb04a7f2795a3bcf16b0a7ea9a14048e141fc28e7310ce4b723`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_08_EAST_WORKER_HOUSING_R001.png`
+- Library file ID: `libfile_d74938a003188191b4f08185c552531a`
+- backing file ID: `file_000000004ea881f68a5ac33f15774174`
+
+Disposition:
+- accepted as current Area 08 pixel-art reference;
+- worker-house geometry remains future building-blueprint authority.
