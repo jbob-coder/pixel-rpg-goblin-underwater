@@ -42,7 +42,7 @@ Spatial coordinates remain owned by the master blueprint even when art is revise
 | 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY_F002_LOCKED.png` | `libfile_edb2206ccd2881918b4b97f6b6374da6` | PASS | PENDING |
 | 03 | Caravan Yard / Visitor Staging | `AREA_03_CARAVAN_VISITOR_STAGING_F002_LOCKED.png` | `libfile_026839b1bdb081919c5ad3aae3541173` | PASS | PENDING |
 | 04 | Main Central Spine Road | `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F002_LOCKED.png` | `libfile_a9afa198e7808191a4d4e95347b63f6f` | PASS | PENDING |
-| 05 | Central Market Plaza | `AREA_05_CENTRAL_MARKET_PLAZA_F001_LOCKED.png` | `libfile_85f336f794cc8191a73adb7ad4d1d7b8` | PASS | PENDING |
+| 05 | Central Market Plaza | `AREA_05_CENTRAL_MARKET_PLAZA_F002_LOCKED.png` | `libfile_8d693400146881918fbda73d9ad3d58a` | PASS | PENDING |
 | 06 | Community Hall / Civic Core | `AREA_06_COMMUNITY_HALL_CIVIC_CORE_F001_LOCKED.png` | `libfile_9355a08b2aec819180cf433f516e4842` | PASS | PENDING |
 | 07 | West Residential Cluster | `AREA_07_WEST_RESIDENTIAL_CLUSTER_F001_LOCKED.png` | `libfile_86d731ea32fc8191b399bc2ee082d36c` | PASS | PENDING |
 | 08 | East Work Frontage / Worker Passage | `AREA_08_EAST_WORK_FRONTAGE_PASSAGE_F001_LOCKED.png` | `libfile_938f7952b3b08191b42740721cf00b4d` | PASS | PENDING |
@@ -144,5 +144,17 @@ F002 was generated after technical art review found F001 too diagram-like.
 
 Current creator-review target:
 `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F002_LOCKED.png`
+
+No creator approval is inferred from the revision.
+
+
+## Area 05 revision note
+
+F001 remains archived.
+
+F002 was generated after technical art review found F001 too flat/diagram-like for the market/civic center.
+
+Current creator-review target:
+`AREA_05_CENTRAL_MARKET_PLAZA_F002_LOCKED.png`
 
 No creator approval is inferred from the revision.
