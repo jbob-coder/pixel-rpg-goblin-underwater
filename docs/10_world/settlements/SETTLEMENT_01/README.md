@@ -1,20 +1,24 @@
 > **CURRENT PIXEL RPG SETTLEMENT-01 STATUS — 2026-09-26**
 >
-> Current production `main@9d600407e29e8f3c5be0ce48ec5afdf02c766f42` implements and verifies the isolated Settlement 01 rebuild through **G15**.
+> Current production `main@abeeda02568a4e7b9a36d9dd9ee381d1539cdc67` implements and verifies the isolated Settlement 01 foundation through **G17**.
 >
-> Implemented: G00 layout/schema, G01–G13 static graybox areas/perimeter, G14 NPC anchors + simple schedules, and G15 layout-derived minimap data. G15 canonical CI run `36267898515` passed full verification and Android export.
+> G16 adds conservative section lifecycle/streaming intent. G17 adds a versioned stable-ID Settlement 01 durable-world snapshot boundary. Neither performs production-world cutover; G16 does not unload scene nodes and G17 does not write save files.
 >
-> The new Settlement 01 has **not** replaced the current player-facing prototype world. G16 streaming, G17 persistence, production-world cutover, creator-final art approval (0/12), and physical-device acceptance remain pending.
+> Corrected G17 canonical CI run `36268786947` passed full verification and Android export after one legitimate JSON canonicalization defect was fixed.
 >
-> Current runtime status: `SETTLEMENT_01_RUNTIME_STATUS_G00_G15_2026-09-26.md`
+> The existing compact first-person prototype remains the current player-facing world. Creator-final visual approval remains 0/12 and rebuilt-settlement phone acceptance remains unverified.
 >
-> Older large first-slice coordinates and “NO GRAYBOX IMPLEMENTATION” statements below are historical provenance only.
+> Current runtime status: `SETTLEMENT_01_RUNTIME_STATUS_G00_G17_2026-09-26.md`
+>
+> Production cutover plan: `SETTLEMENT_01_PRODUCTION_CUTOVER_PLAN_2026-09-26.md`
+>
+> Older first-slice coordinates and old “NO GRAYBOX IMPLEMENTATION” statements below are historical provenance only.
 
 Current planning report: `CURRENT_SETTLEMENT_ASSET_AND_BUILDOUT_REPORT_2026-09-25.md`
 
 # SETTLEMENT_01 — First Frontier Hunter Settlement
 
-Status: ACTIVE FIRST-SETTLEMENT PACKAGE / G00–G15 ISOLATED RUNTIME VERIFIED / PRODUCTION CUTOVER PENDING
+Status: ACTIVE FIRST-SETTLEMENT PACKAGE / G00–G17 ISOLATED RUNTIME VERIFIED / PRODUCTION CUTOVER PENDING
 Last reconciled: 2026-09-03
 
 ## Purpose
@@ -98,11 +102,12 @@ Settlement 01 owns local service/route application. Shared spatial coordinates/d
 
 `SETTLEMENT_01_SMITH_SERVICE_DESIGN_RECORDED = YES`
 `SETTLEMENT_01_SPATIAL_TARGETS_RECORDED = YES`
-`SETTLEMENT_01_ISOLATED_GRAYBOX_G00_G15_IMPLEMENTED = YES`
-`SETTLEMENT_01_G15_CANONICAL_CI_VERIFIED = YES`
+`SETTLEMENT_01_ISOLATED_FOUNDATION_G00_G17_IMPLEMENTED = YES`
+`SETTLEMENT_01_G16_STREAMING_LIFECYCLE_VERIFIED = YES`
+`SETTLEMENT_01_G17_PERSISTENCE_HOOKS_VERIFIED = YES`
 `SETTLEMENT_01_PRODUCTION_WORLD_CUTOVER = NO`
-`SETTLEMENT_01_G16_STREAMING_IMPLEMENTED = NO`
-`SETTLEMENT_01_G17_PERSISTENCE_HOOKS_IMPLEMENTED = NO`.
+`SETTLEMENT_01_DISK_SAVE_LOAD_IMPLEMENTED = NO`
+`SETTLEMENT_01_CREATOR_FINAL_ART_APPROVAL = 0_OF_12`.
 
 ## Runtime graybox implementation plan
 
