@@ -1,11 +1,35 @@
 # Settlement 01 — Runtime Graybox Implementation Plan
 
-Status: READY FOR IMPLEMENTATION PLANNING / DOCUMENTATION ONLY  
+Status: EXECUTED THROUGH G15 / G16 STREAMING NEXT  
 Created: 2026-09-26
 
 Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
 Production branch: `main`  
 Documentation branch: `documentation`
+
+## Execution status — 2026-09-26
+
+Current production:
+`main@9d600407e29e8f3c5be0ce48ec5afdf02c766f42`
+
+Executed and verified:
+- G00–G15 COMPLETE;
+- latest canonical verification: run `36267898515` SUCCESS;
+- Android export in the same run: SUCCESS.
+
+Not implemented:
+- G16 conservative streaming;
+- G17 persistence hooks.
+
+Not performed:
+- production-world cutover;
+- creator-final visual approval (0/12);
+- physical-device acceptance of the rebuilt settlement.
+
+Current runtime status:
+`SETTLEMENT_01_RUNTIME_STATUS_G00_G15_2026-09-26.md`
+
+The pass descriptions below are retained as the implementation plan/provenance. G00–G15 are now completed records; G16–G17 remain future work.
 
 ## Purpose
 
@@ -28,7 +52,7 @@ This document does **not** change runtime files.
 - 12 / 12 archived
 - 12 / 12 documentation spatial-check PASS
 - creator-final-visual approval remains separate
-- runtime implementation remains not started
+- isolated runtime implementation is complete through G15; production-world cutover remains separate
 
 Archive:
 `/Pixel RPG/Settlement 01/Final Area References/`
