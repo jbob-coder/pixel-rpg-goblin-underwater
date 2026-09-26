@@ -1,6 +1,6 @@
 # Area 02 — Gate Barracks & Security
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S01`  
 Area ID: `SET01_A02_GATE_BARRACKS_SECURITY`
 
@@ -270,3 +270,39 @@ Current state:
 The archived R001 image remains a concept/asset reference.
 
 A later final reference must be regenerated against the locked coordinates, orientation, neighbor edges, streets and building parcels before runtime placement is approved.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A02_F001`
+
+Artifact:
+- filename: `AREA_02_GATE_BARRACKS_SECURITY_F001_LOCKED.png`
+- dimensions: 840×714
+- bytes: 6,302
+- SHA-256: `f10d6c21623e29d16322fad5e093cf4361eb0fc1e96b5eda5886f5b47b6374e8`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_02_GATE_BARRACKS_SECURITY_F001_LOCKED.png`
+- Library file ID: `libfile_bcd1f43499908191a798027f74ca176e`
+- backing file ID: `file_000000009c0c81f6916cfc1e566a6d00`
+
+Spatial validation:
+- north = image top;
+- frame uses X -30..-12 / Z +14..+29;
+- Barracks locked to center -20,+23;
+- Barracks footprint fixed at 7×6 m;
+- bounds X -23.5..-16.5 / Z +20..+26;
+- east-side circulation lane remains open;
+- northbound connection remains readable;
+- yard equipment stays outside the primary connector.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
