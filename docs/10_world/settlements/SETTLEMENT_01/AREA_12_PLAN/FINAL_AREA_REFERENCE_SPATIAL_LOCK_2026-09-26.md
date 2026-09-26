@@ -185,7 +185,7 @@ Connection:
 
 Final image may show both pockets in one north-up composition, but Community Hall must remain between them rather than being moved out of the district.
 
-### Area 08 — East Work Frontage / Worker Court
+### Area 08 — East Work Frontage / Worker Passage
 Parent: S04
 
 **This supersedes the earlier “East Worker Housing” placement concept.**
@@ -199,7 +199,7 @@ Final-reference frame:
 
 Function:
 - east frontage circulation;
-- worker idle/rest court;
+- worker idle/rest frontage;
 - small shared storage/tool/bench props;
 - connective social space between Areas 09 and 10;
 - NO new residence buildings in this locked footprint.
