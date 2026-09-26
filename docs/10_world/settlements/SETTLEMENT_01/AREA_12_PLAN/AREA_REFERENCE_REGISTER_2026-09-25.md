@@ -27,7 +27,7 @@ No area image replaces coordinate, collision, building, state or section authori
 | 08 | East Work Frontage / Worker Passage | `AREA_08_EAST_WORKER_HOUSING.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_d74938a003188191b4f08185c552531a` | `148b0763fb03afb04a7f2795a3bcf16b0a7ea9a14048e141fc28e7310ce4b723` |
 | 09 | Smithy & Craft Quarter | `AREA_09_SMITHY_CRAFT_QUARTER.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_4005c918494481919beab673e222d8dc` | `f3e3e7f446c4f59550a9d677cc382a258ef0374bf177c8c5ad262756ac4b5d7f` |
 | 10 | Storage / Workshop Yard | `AREA_10_STORAGE_WORKSHOP_YARD.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_ed59a2812eb08191ae8cd434677811e0` | `8e9bd95f377c8917bd44103c1c0a754b0fc79ae06dc198ddfd3243cc2f98a680` |
-| 11 | North Hunter Staging Ground | `AREA_11_NORTH_HUNTER_STAGING_GROUND.md` | MODEL_SHEET_READY / FINAL_REF_REGEN_REQUIRED | `libfile_0bb6bce88c988191818a153a1f206df2` | `63afae7b08b3069a0b74deec359061f1437188d12f6672b5b1965ff241aa8bc0` |
+| 11 | North Hunter Staging Ground | `AREA_11_NORTH_HUNTER_STAGING_GROUND.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_0bb6bce88c988191818a153a1f206df2` | `63afae7b08b3069a0b74deec359061f1437188d12f6672b5b1965ff241aa8bc0` |
 | 12 | North Watch Gate & Trail Exit | `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT.md` | MODEL_SHEET_READY / FINAL_REF_REGEN_REQUIRED | `libfile_5ccb9754dd288191ab6e1084513dab9b` | `72d1d8f941886a21809e8e148f3212b38593d010a34fe0eba4768de9758291f0` |
 
 ## Library folder
@@ -103,7 +103,7 @@ Each final image must be checked against the spatial lock before the next area a
 
 ## Final spatial-reference progress
 
-Final references generated: **10 / 12**
+Final references generated: **11 / 12**
 
 - Area 01 — F001 generated, archived, spatial check PASS, creator review pending.
 - Area 02 — F001 generated, archived, spatial check PASS, creator review pending.
@@ -115,4 +115,5 @@ Final references generated: **10 / 12**
 - Area 08 — F001 generated, archived, spatial check PASS, creator review pending.
 - Area 09 — F001 generated, archived, spatial check PASS, creator review pending.
 - Area 10 — F001 generated, archived, spatial check PASS, creator review pending.
-- Areas 11–12 — pending final locked reference generation.
+- Area 11 — F001 generated, archived, spatial check PASS, creator review pending.
+- Area 12 — pending final locked reference generation.
