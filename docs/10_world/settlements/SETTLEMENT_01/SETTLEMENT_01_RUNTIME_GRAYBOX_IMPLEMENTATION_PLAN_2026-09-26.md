@@ -1,6 +1,6 @@
 # Settlement 01 — Runtime Graybox Implementation Plan
 
-Status: EXECUTED THROUGH G15 / G16 STREAMING NEXT  
+Status: EXECUTED THROUGH G17 / ISOLATED FOUNDATION COMPLETE  
 Created: 2026-09-26
 
 Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
@@ -10,16 +10,15 @@ Documentation branch: `documentation`
 ## Execution status — 2026-09-26
 
 Current production:
-`main@9d600407e29e8f3c5be0ce48ec5afdf02c766f42`
+`main@abeeda02568a4e7b9a36d9dd9ee381d1539cdc67`
 
 Executed and verified:
-- G00–G15 COMPLETE;
-- latest canonical verification: run `36267898515` SUCCESS;
+- G00–G17 COMPLETE as isolated foundation;
+- corrected G17 canonical verification: run `36268786947` SUCCESS;
 - Android export in the same run: SUCCESS.
 
-Not implemented:
-- G16 conservative streaming;
-- G17 persistence hooks.
+G16 is a lifecycle/intention manager only; real scene-node residency is deferred to cutover.
+G17 is a persistence-envelope hook only; disk save/load is deferred.
 
 Not performed:
 - production-world cutover;
@@ -27,9 +26,9 @@ Not performed:
 - physical-device acceptance of the rebuilt settlement.
 
 Current runtime status:
-`SETTLEMENT_01_RUNTIME_STATUS_G00_G15_2026-09-26.md`
+`SETTLEMENT_01_RUNTIME_STATUS_G00_G17_2026-09-26.md`
 
-The pass descriptions below are retained as the implementation plan/provenance. G00–G15 are now completed records; G16–G17 remain future work.
+The pass descriptions below are retained as implementation provenance. G00–G17 are now completed isolated-foundation records. Production cutover is governed separately by `SETTLEMENT_01_PRODUCTION_CUTOVER_PLAN_2026-09-26.md`.
 
 ## Purpose
 
@@ -52,7 +51,7 @@ This document does **not** change runtime files.
 - 12 / 12 archived
 - 12 / 12 documentation spatial-check PASS
 - creator-final-visual approval remains separate
-- isolated runtime implementation is complete through G15; production-world cutover remains separate
+- isolated runtime foundation is complete through G17; production-world cutover remains separate
 
 Archive:
 `/Pixel RPG/Settlement 01/Final Area References/`
