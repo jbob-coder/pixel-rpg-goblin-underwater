@@ -1,6 +1,6 @@
 # Area 01 — South Arrival Gate
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY
 Parent section: `SET01_S01`  
 Area ID: `SET01_A01_SOUTH_ARRIVAL_GATE`
 
@@ -97,3 +97,19 @@ Then extract:
 - wayfinding sign;
 - cart/supply prop set;
 - gate/wall visual modules.
+
+
+## Asset extraction and model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_01_SOUTH_ARRIVAL_GATE_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_01/`
+
+Current state:
+- reference generated and archived;
+- technical reference review passed;
+- primary model-sheet contracts ready;
+- runtime implementation not started;
+- device visual verification not started.
