@@ -331,10 +331,11 @@ static func _anchor(parent: Node3D, name: String, position: Vector3) -> Marker3D
 	parent.add_child(anchor)
 	return anchor
 
-static func _box(parent: Node3D, name: String, position: Vector3, size: Vector3, color: Color) -> MeshInstance3D:
+static func _box(parent: Node3D, name: String, position: Vector3, size: Vector3, color: Color, rotation_deg := Vector3.ZERO) -> MeshInstance3D:
 	var node := MeshInstance3D.new()
 	node.name = name
 	node.position = position
+	node.rotation_degrees = rotation_deg
 	var mesh := BoxMesh.new()
 	mesh.size = size
 	node.mesh = mesh
