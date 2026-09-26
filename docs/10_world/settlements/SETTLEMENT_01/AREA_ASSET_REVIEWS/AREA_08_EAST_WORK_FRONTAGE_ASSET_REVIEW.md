@@ -1,4 +1,4 @@
-# Area 08 Asset Extraction Review — East Work Frontage / Worker Court
+# Area 08 Asset Extraction Review — East Work Frontage / Worker Passage
 
 Status: TECHNICAL_REFERENCE_REVIEWED / OLD HOUSING COMPOSITION REJECTED  
 Area ID: `SET01_A08_EAST_WORK_FRONTAGE`  
@@ -10,7 +10,7 @@ Final Area 08 frame:
 - X +14..+20.5
 - Z -14..+14
 
-Area 08 is an **open frontage/worker court**, not a housing district.
+Area 08 is an **open frontage/worker passage**, not a housing district.
 
 The old R001 image contains two houses. Those houses are:
 `REJECT_FROM_AREA_08_FINAL_PLACEMENT`.
@@ -95,7 +95,7 @@ No building.
 
 ## Model-sheet queue
 
-1. Worker Court Deployment
+1. Worker Passage Deployment
 2. Shift Board / Worker Tool Rack Variant
 3. Worker Social/Shift Anchors
 
