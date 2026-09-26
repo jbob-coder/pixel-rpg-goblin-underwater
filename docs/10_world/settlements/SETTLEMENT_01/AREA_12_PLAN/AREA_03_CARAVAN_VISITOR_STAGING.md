@@ -1,6 +1,6 @@
 # Area 03 — Caravan Yard / Visitor Staging
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S01`  
 Area ID: `SET01_A03_CARAVAN_VISITOR_STAGING`
 
@@ -150,3 +150,25 @@ Approve only if:
 - not mistaken for a market;
 - pixel style is genuine;
 - reference remains compact and mobile-readable.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A03_CARAVAN_VISITOR_STAGING_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_03_CARAVAN_VISITOR_STAGING_R001.png`
+- dimensions: 1152×768
+- bytes: 9,293
+- SHA-256: `5ba054d60d69d3cbd6a4365850a6fd4617ae2d3bb824936a4faed72ff9bd65f3`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_03_CARAVAN_VISITOR_STAGING_R001.png`
+- Library file ID: `libfile_13295846ca3c819196a0f8dc020dd388`
+- backing file ID: `file_0000000071ec81f6ba11a699db2d3316`
+
+Disposition:
+- accepted as current Area 03 pixel-art reference;
+- image is visual-reference authority only;
+- road/collision dimensions remain owned by the settlement blueprint.
