@@ -1,6 +1,6 @@
 # Area 11 — North Hunter Staging Ground
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S05`  
 Area ID: `SET01_A11_NORTH_HUNTER_STAGING`
 
@@ -107,3 +107,24 @@ Approve only if:
 - Area 12 direction visible;
 - prop density controlled;
 - genuine pixel art.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A11_NORTH_HUNTER_STAGING_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_11_NORTH_HUNTER_STAGING_GROUND_R001.png`
+- dimensions: 1152×768
+- bytes: 7,993
+- SHA-256: `63afae7b08b3069a0b74deec359061f1437188d12f6672b5b1965ff241aa8bc0`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_11_NORTH_HUNTER_STAGING_GROUND_R001.png`
+- Library file ID: `libfile_0bb6bce88c988191818a153a1f206df2`
+- backing file ID: `file_00000000157c81f6a1c05c924fd94c77`
+
+Disposition:
+- accepted as current Area 11 pixel-art reference;
+- hunter-preparation geometry remains blueprint authority.
