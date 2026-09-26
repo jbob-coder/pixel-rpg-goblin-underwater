@@ -7,13 +7,37 @@ This package converts the approved Settlement 01 documentation into runtime-read
 
 ## Contents
 
+Core contracts:
 - `SECTION_RUNTIME_CONTRACT_2026-09-26.md`
 - `AREA_12_COORDINATE_REGISTER_2026-09-26.md`
 - `CONNECTOR_REGISTER_2026-09-26.md`
 - `GRAYBOX_TEST_CONTRACT_2026-09-26.md`
 - `F002_TO_GRAYBOX_BINDING_REGISTER_2026-09-26.md`
-- `SLICE_01_DATA_OWNERSHIP_HANDOFF_2026-09-26.md`
-- `SLICE_02_MAIN_SPINE_SCAFFOLD_HANDOFF_2026-09-26.md`
+
+Bounded implementation handoffs:
+1. `SLICE_01_DATA_OWNERSHIP_HANDOFF_2026-09-26.md`
+2. `SLICE_02_MAIN_SPINE_SCAFFOLD_HANDOFF_2026-09-26.md`
+3. `SLICE_03_CENTRAL_PLAZA_SCAFFOLD_HANDOFF_2026-09-26.md`
+4. `SLICE_04_SMITH_QUARTER_HANDOFF_2026-09-26.md`
+5. `SLICE_05_WEST_LOCAL_DISTRICT_HANDOFF_2026-09-26.md`
+6. `SLICE_06_SOUTH_ARRIVAL_HANDOFF_2026-09-26.md`
+7. `SLICE_07_EAST_SUPPORT_HANDOFF_2026-09-26.md`
+8. `SLICE_08_NORTH_HUNTER_TRANSITION_HANDOFF_2026-09-26.md`
+9. `SLICE_09_PERIMETER_WALLS_PROPS_HANDOFF_2026-09-26.md`
+10. `SLICE_10_CONSERVATIVE_STREAMING_HANDOFF_2026-09-26.md`
+
+## Preparation status
+
+Documentation/engineering preparation:
+**COMPLETE FOR THE CURRENT TEN-SLICE PLAN**
+
+Runtime implementation:
+**NOT STARTED BY THIS PACKAGE**
+
+Visual state:
+- 12/12 areas have F002 current creator-review targets;
+- creator-final approval remains separate;
+- graybox primitives do not require final visual approval.
 
 ## Authority chain
 
