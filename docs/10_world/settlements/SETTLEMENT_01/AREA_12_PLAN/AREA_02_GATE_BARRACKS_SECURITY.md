@@ -1,6 +1,6 @@
 # Area 02 — Gate Barracks & Security
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: PLAN_READY / REFERENCE GENERATION RETRY REQUIRED  
 Parent section: `SET01_S01`  
 Area ID: `SET01_A02_GATE_BARRACKS_SECURITY`
 
@@ -168,3 +168,16 @@ Approve only if:
 - prop density controlled;
 - security theme is clear without fortress scale;
 - pixel art is genuine/readable rather than painterly.
+
+
+## Generation attempt record
+
+Multiple 2026-09-25 image-generation attempts drifted back into whole-settlement / twelve-area overview infographics instead of producing the required standalone Area 02 scene.
+
+Disposition:
+- **REJECTED AS AREA-02 REFERENCE**
+- do not archive/promote those overview images as Area 02;
+- keep this specification authoritative;
+- retry only with a generation path that can honor a single-area scene reliably.
+
+No rejected overview image is considered `REFERENCE_GENERATED` for Area 02.
