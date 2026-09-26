@@ -94,3 +94,15 @@ Settlement 01 owns local service/route application. Shared spatial coordinates/d
 `SETTLEMENT_01_SPATIAL_TARGETS_RECORDED = YES`
 `SETTLEMENT_01_GRAYBOX_IMPLEMENTED = NO`
 `SETTLEMENT_01_RUNTIME_VERIFIED = NO`.
+
+## Runtime graybox implementation plan
+
+`SETTLEMENT_01_RUNTIME_GRAYBOX_IMPLEMENTATION_PLAN_2026-09-26.md`
+
+This converts the locked 12-area settlement into bounded runtime passes G00–G17 while preserving:
+- first-person authority;
+- current Smith functionality;
+- explicit collision ownership;
+- stable section/area/building IDs;
+- one-pass-at-a-time migration;
+- separate Android/device acceptance.
