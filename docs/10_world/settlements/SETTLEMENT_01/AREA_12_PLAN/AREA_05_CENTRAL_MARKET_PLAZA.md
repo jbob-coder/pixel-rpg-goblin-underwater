@@ -1,6 +1,6 @@
 # Area 05 — Central Market Plaza
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S02`  
 Area ID: `SET01_A05_CENTRAL_MARKET_PLAZA`
 
@@ -172,3 +172,38 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A05_F001`
+
+Artifact:
+- filename: `AREA_05_CENTRAL_MARKET_PLAZA_F001_LOCKED.png`
+- dimensions: 1092×1092
+- bytes: 10,402
+- SHA-256: `f0f52664e9a021e1e1a24c9140b59aee11869eac9f1688bbfbf16c6fa8aa9910`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_05_CENTRAL_MARKET_PLAZA_F001_LOCKED.png`
+- Library file ID: `libfile_85f336f794cc8191a73adb7ad4d1d7b8`
+- backing file ID: `file_00000000dac481f6a657818025a8c031`
+
+Spatial validation:
+- north = image top;
+- bounds X -14..+14 / Z -14..+14;
+- Main Spine remains X -4..+4;
+- Cross Street remains Z -2.5..+2.5;
+- four 4×3 m stall slots remain outside both clear corridors;
+- plaza center remains open;
+- civic water/notice/bench/tree props remain peripheral.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
