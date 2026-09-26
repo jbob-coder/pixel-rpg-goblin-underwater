@@ -112,13 +112,24 @@ func _run() -> void:
 			if anchor != null and not anchor_name.begins_with("Connector"):
 				_check("G07 anchor %s stays east of clear lane" % anchor_name, anchor.position.x >= 18.75, str(anchor.position))
 
-		for prop_name in ["ShiftBoard", "ToolRackNorth", "ToolRackSouth", "SupplyCrateBottom"]:
+		for prop_name in ["ShiftBoard", "SupplyCrateBottom"]:
 			var prop := g07_root.find_child(prop_name, true, false) as MeshInstance3D
 			_check("G07 prop %s exists" % prop_name, prop != null)
 			if prop != null:
 				var prop_size: Vector3 = _mesh_size(prop)
 				var prop_min_x: float = prop.global_position.x - prop_size.x * 0.5
 				_check("G07 prop %s does not intrude into 4.5 m lane" % prop_name, prop_min_x >= 18.5 - 0.001, "min_x=%.3f" % prop_min_x)
+
+		for rack_name in ["ToolRackNorth", "ToolRackSouth"]:
+			var rack := g07_root.get_node_or_null(rack_name) as Node3D
+			_check("G07 rack %s exists" % rack_name, rack != null)
+			if rack != null:
+				var frame := rack.get_node_or_null("Frame") as MeshInstance3D
+				_check("G07 rack %s has Frame mesh" % rack_name, frame != null)
+				if frame != null:
+					var frame_size: Vector3 = _mesh_size(frame)
+					var frame_min_x: float = frame.global_position.x - frame_size.x * 0.5
+					_check("G07 rack %s does not intrude into 4.5 m lane" % rack_name, frame_min_x >= 18.5 - 0.001, "min_x=%.3f" % frame_min_x)
 
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("current prototype still instantiates", prototype != null)
