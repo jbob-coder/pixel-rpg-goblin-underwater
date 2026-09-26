@@ -1,6 +1,6 @@
 # Area 10 — Storage / Workshop Yard
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
 Parent section: `SET01_S04`  
 Area ID: `SET01_A10_STORAGE_WORKSHOP_YARD`
 
@@ -125,3 +125,23 @@ Persisted Library archive:
 Disposition:
 - accepted as current Area 10 pixel-art reference;
 - loading/collision geometry remains blueprint authority.
+
+
+## Technical asset review / model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_10_STORAGE_WORKSHOP_YARD_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_10/`
+
+Final-reference placement authority:
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+Current state:
+- R001 concept reference preserved;
+- technical asset review complete;
+- primary model-sheet contracts ready;
+- final position-locked reference still requires regeneration;
+- runtime implementation not started;
+- device visual verification not started.
