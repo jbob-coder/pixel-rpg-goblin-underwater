@@ -1,6 +1,6 @@
 # Area 07 — West Residential Cluster
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S03`  
 Area ID: `SET01_A07_WEST_RESIDENTIAL_CLUSTER`
 
@@ -192,3 +192,51 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too blocky/under-detailed for the residential quality target.
+
+Reference ID:
+`FINAL_REF_SET01_A07_F002`
+
+Artifact:
+- filename: `AREA_07_WEST_RESIDENTIAL_CLUSTER_F002_LOCKED.png`
+- dimensions: 1080×1638
+- bytes: 14,241
+- SHA-256: `457ea6bba0b8529fa7191601138f2a1b5ec513468e9d5e459229baf31848d4aa`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_07_WEST_RESIDENTIAL_CLUSTER_F002_LOCKED.png`
+- Library file ID: `libfile_6fdced7d73188191b5a45c3e22ee4fe2`
+- backing file ID: `file_000000006c3c81f69893acc29d97a44b`
+
+F002 preserves:
+- north-up orientation;
+- full relation frame X -30..-14 / Z -14..+14;
+- W02 remains centered at -24.5,-10;
+- Community Hall remains centered at -24.5,0;
+- W01 remains centered at -24.5,+10;
+- east-facing approaches remain toward the West Frontage Lane;
+- lane remains open and outside the house/hall parcels.
+
+F002 improves:
+- residence-family variation;
+- quieter yard identity;
+- woodpile/storage/garden-style life props;
+- hall/residence hierarchy;
+- frontage readability;
+- deliberate pixel-art depth.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
