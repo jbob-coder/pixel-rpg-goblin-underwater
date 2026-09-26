@@ -24,6 +24,18 @@ Shared coordinate/dimension owner:
 Concrete spatial registry:
 `/docs/10_world/spatial/FIRST_SLICE_SPATIAL_COORDINATE_REGISTRY.md`.
 
+## Layered settlement blueprint
+
+Master blueprint:
+
+`SETTLEMENT_01_MASTER_LAYERED_BLUEPRINT_2026-09-25.md`
+
+Layer package:
+
+`BLUEPRINT_LAYERS/`
+
+The package defines the provisional 60×70 m settlement in 13 layers: coordinates, sections, streets, parcels, interiors, props/corners, NPC/services, collision/navigation, streaming ownership, minimap/wayfinding, art/photo asset queue, performance/LOD, and migration sequencing.
+
 ## Current first-slice service authority
 
 `FIRST_SLICE_SETTLEMENT_SMITH_SERVICE_INTERACTION_CONTRACT.md`.
