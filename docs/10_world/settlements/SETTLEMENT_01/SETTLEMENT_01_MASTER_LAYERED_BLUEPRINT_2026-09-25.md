@@ -224,6 +224,22 @@ Supply/warning:
 - warning sign/banner
 - fence/wall termination
 
+## Building blueprint package
+
+Detailed reusable building contracts:
+
+`BUILDING_BLUEPRINTS/`
+
+Current package covers:
+- reusable building standard;
+- Community Hall;
+- Residence Type A;
+- South Gatehouse/Watch;
+- East Work support;
+- Hunter Exit support;
+- market stall variants;
+- modular wall/gate kit.
+
 ## 11. Important interior priorities
 
 Tier 1:
