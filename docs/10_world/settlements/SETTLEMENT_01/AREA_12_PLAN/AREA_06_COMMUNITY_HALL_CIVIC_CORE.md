@@ -1,6 +1,6 @@
 # Area 06 — Community Hall / Civic Core
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S03`  
 Area ID: `SET01_A06_COMMUNITY_CIVIC_CORE`
 
@@ -128,3 +128,24 @@ Approve only if:
 - clear relationship to road/lane;
 - not confused with market or temple;
 - genuine pixel style.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A06_COMMUNITY_HALL_CIVIC_CORE_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_06_COMMUNITY_HALL_CIVIC_CORE_R001.png`
+- dimensions: 1152×768
+- bytes: 8,278
+- SHA-256: `9d7e800d7c71cfb3ead52a28d45b12d7589ba5e44146775fca9e2a80c017069a`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_06_COMMUNITY_HALL_CIVIC_CORE_R001.png`
+- Library file ID: `libfile_4930f61027088191b60af81747b41a76`
+- backing file ID: `file_00000000476081f69b73dc35526842aa`
+
+Disposition:
+- accepted as current Area 06 pixel-art reference;
+- Community Hall geometric blueprint remains dimension/collision authority.
