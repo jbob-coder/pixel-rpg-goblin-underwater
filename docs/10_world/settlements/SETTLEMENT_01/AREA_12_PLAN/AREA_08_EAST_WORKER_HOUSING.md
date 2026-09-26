@@ -1,6 +1,6 @@
 # Area 08 — East Work Frontage / Worker Court
 
-Status: SPATIAL_PLAN_CORRECTED / OLD R001 CONCEPT RETAINED AS HISTORICAL REFERENCE  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
 Parent section: `SET01_S04`  
 Area ID: `SET01_A08_EAST_WORK_FRONTAGE`
 
@@ -113,3 +113,23 @@ Final Area 08 must:
 - preserve connections north/south to Area 10;
 - contain no new residence buildings;
 - remain pixel style.
+
+
+## Technical asset review / model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_08_EAST_WORK_FRONTAGE_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_08/`
+
+Final-reference placement authority:
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+Current state:
+- R001 concept reference preserved;
+- technical asset review complete;
+- primary model-sheet contracts ready;
+- final position-locked reference still requires regeneration;
+- runtime implementation not started;
+- device visual verification not started.
