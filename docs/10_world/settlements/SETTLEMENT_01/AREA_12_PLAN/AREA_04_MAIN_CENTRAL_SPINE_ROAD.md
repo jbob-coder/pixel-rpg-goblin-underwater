@@ -1,6 +1,6 @@
 # Area 04 — Main Central Spine Road
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent relationship: shared connector infrastructure  
 Area ID: `SET01_A04_MAIN_CENTRAL_SPINE`
 
@@ -180,3 +180,40 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A04_F001`
+
+Artifact:
+- filename: `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F001_LOCKED.png`
+- dimensions: 564×1764
+- bytes: 10,970
+- SHA-256: `edcd2f70ab34d40a3abe0afe15785fdfcef85059ad64627eb86a00910ff050cf`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_04_MAIN_CENTRAL_SPINE_ROAD_F001_LOCKED.png`
+- Library file ID: `libfile_bfacf733c100819181584a5e7875d3fd`
+- backing file ID: `file_00000000498081f6b46c09e872abb73e`
+
+Spatial validation:
+- north = image top;
+- frame uses X -10..+10 / Z -36..+34;
+- Main Hunter Spine fixed at X -4..+4 for the entire image;
+- Central Cross Street fixed at Z -2.5..+2.5;
+- South Gate threshold fixed at Z +33;
+- North Gate threshold fixed at Z -35;
+- neighboring South Gate structures appear only where their real parcels intersect the frame;
+- no neighboring building is moved into the road corridor;
+- permanent props stay outside the central travel path.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
