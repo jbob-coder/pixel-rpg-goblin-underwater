@@ -328,3 +328,45 @@ Reference content includes:
 
 Next state after creator review:
 `REFERENCE_REVIEWED`.
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too sparse/diagram-like for the desired final pixel-art security-yard language.
+
+Reference ID:
+`FINAL_REF_SET01_A02_F002`
+
+Artifact:
+- filename: `AREA_02_GATE_BARRACKS_SECURITY_F002_LOCKED.png`
+- dimensions: 1260×900
+- bytes: 10,826
+- SHA-256: `a8eec265b1adf8804fff34417f45bdf01fffe4532beace08f56e272150bb96fa`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_02_GATE_BARRACKS_SECURITY_F002_LOCKED.png`
+- Library file ID: `libfile_edb2206ccd2881918b4b97f6b6374da6`
+- backing file ID: `file_0000000029e881f69d28811b9fc86796`
+
+F002 preserves:
+- north-up orientation;
+- barracks remains the Area 02 primary mass;
+- east connector toward Area 01/Main Spine remains clear;
+- north connector remains clear;
+- security-yard equipment stays outside the primary route.
+
+F002 improves:
+- barracks landmark readability;
+- open-yard composition;
+- briefing/equipment language;
+- guard activity;
+- genuine pixel-art density.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
