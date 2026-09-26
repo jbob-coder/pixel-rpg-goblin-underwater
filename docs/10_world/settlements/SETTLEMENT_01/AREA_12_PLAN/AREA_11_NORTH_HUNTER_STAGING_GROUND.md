@@ -1,6 +1,6 @@
 # Area 11 — North Hunter Staging Ground
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S05`  
 Area ID: `SET01_A11_NORTH_HUNTER_STAGING`
 
@@ -182,3 +182,51 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too thin/under-developed for the hunter-preparation threshold.
+
+Reference ID:
+`FINAL_REF_SET01_A11_F002`
+
+Artifact:
+- filename: `AREA_11_NORTH_HUNTER_STAGING_GROUND_F002_LOCKED.png`
+- dimensions: 1280×380
+- bytes: 7,153
+- SHA-256: `4bad2fd48b62d19eadfee05ae5a411f6ab5efdc23fe1a749970b6a4cf352d2dd`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_11_NORTH_HUNTER_STAGING_GROUND_F002_LOCKED.png`
+- Library file ID: `libfile_a35941b0c6e481918dcd8b44ebabe2c5`
+- backing file ID: `file_00000000f31c81f6a4a5dd90895663eb`
+
+F002 preserves:
+- north-up orientation;
+- frame X -30..+30 / Z -23..-14;
+- 8 m Main Spine remains fully clear at center;
+- northward route toward Area 12 remains visible;
+- no permanent building or market stall is introduced;
+- bounty/prep/supply elements stay outside the center route.
+
+F002 improves:
+- bounty/route board prominence;
+- hunter prep racks;
+- supply/equipment staging;
+- warning-banner identity;
+- regrouping/readiness cues;
+- controlled hunter/support NPC density;
+- pixel-art depth without military-barracks drift.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
