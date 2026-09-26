@@ -1,6 +1,6 @@
 # Area 10 — Storage / Workshop Yard
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S04`  
 Area ID: `SET01_A10_STORAGE_WORKSHOP_YARD`
 
@@ -104,3 +104,24 @@ Approve only if:
 - storage building compact;
 - not warehouse/factory scale;
 - genuine pixel style.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A10_STORAGE_WORKSHOP_YARD_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_10_STORAGE_WORKSHOP_YARD_R001.png`
+- dimensions: 1152×768
+- bytes: 7,507
+- SHA-256: `8e9bd95f377c8917bd44103c1c0a754b0fc79ae06dc198ddfd3243cc2f98a680`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_10_STORAGE_WORKSHOP_YARD_R001.png`
+- Library file ID: `libfile_ed59a2812eb08191ae8cd434677811e0`
+- backing file ID: `file_00000000579881f68a8107a3f618108b`
+
+Disposition:
+- accepted as current Area 10 pixel-art reference;
+- loading/collision geometry remains blueprint authority.
