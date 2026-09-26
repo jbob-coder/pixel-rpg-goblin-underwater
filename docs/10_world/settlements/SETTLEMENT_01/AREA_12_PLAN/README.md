@@ -123,3 +123,23 @@ The next production layer is **REFERENCE_REVIEWED → MODEL_SHEET_READY**:
 4. identify which objects already exist in runtime;
 5. identify which require new blueprint/model sheets;
 6. reject any image detail that conflicts with the documented 60×70 m settlement geometry.
+
+
+## Final spatial-reference pass — complete
+
+The original R001 set remains concept/asset-extraction material.
+
+A second F001 set has now been created under the spatial lock:
+- 12 / 12 final area references generated;
+- north-up orientation fixed;
+- fixed roads/buildings/connectors preserved;
+- all 12 passed documentation spatial checks;
+- files archived under `/Pixel RPG/Settlement 01/Final Area References/`.
+
+Area 08 was materially corrected during this pass:
+- final role: **East Work Frontage / Worker Passage**;
+- no residence buildings;
+- narrow frontage geometry preserved.
+
+Creator visual review remains separate from spatial validation.
+Runtime implementation remains separate from both.
