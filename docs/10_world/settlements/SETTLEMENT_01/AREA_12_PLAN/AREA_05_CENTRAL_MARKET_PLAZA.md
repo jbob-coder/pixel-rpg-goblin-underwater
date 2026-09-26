@@ -1,6 +1,6 @@
 # Area 05 — Central Market Plaza
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S02`  
 Area ID: `SET01_A05_CENTRAL_MARKET_PLAZA`
 
@@ -131,3 +131,24 @@ Approve only if:
 - market identity obvious;
 - not over-cluttered;
 - deliberate pixel style.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A05_CENTRAL_MARKET_PLAZA_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_05_CENTRAL_MARKET_PLAZA_R001.png`
+- dimensions: 1152×768
+- bytes: 9,738
+- SHA-256: `f89b2113a7a90647fd53096c60649674ff4f832c89213a270d9db5b533409176`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_05_CENTRAL_MARKET_PLAZA_R001.png`
+- Library file ID: `libfile_0486cb5d89ac8191a345de15ba8d976e`
+- backing file ID: `file_000000002f9081f69dbc271e88c567e5`
+
+Disposition:
+- accepted as current Area 05 pixel-art reference;
+- plaza dimensions and circulation remain blueprint authority.
