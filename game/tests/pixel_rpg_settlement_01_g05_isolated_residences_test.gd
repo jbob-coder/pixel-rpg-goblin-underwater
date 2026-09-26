@@ -161,7 +161,7 @@ func _run() -> void:
 	for residence in [w02, w01]:
 		if residence == null:
 			continue
-		var residence_max_x := residence.position.x + 7.0 * 0.5
+		var residence_max_x: float = residence.position.x + 7.0 * 0.5
 		_check(
 			"%s keeps at least 2.5 m frontage clearance" % residence.name,
 			west_frontage_lane_min_x - residence_max_x >= 2.5 - 0.001,
