@@ -426,3 +426,50 @@ Do not promote directly:
 
 Next state after creator review:
 `REFERENCE_REVIEWED`.
+
+
+## Creator-review revision F003
+
+Reason:
+- direct visual review of F002 found the spatial lock valid but the yard still too schematic for the intended settlement art quality.
+
+Reference ID:
+`FINAL_REF_SET01_A02_F003`
+
+Artifact:
+- filename: `AREA_02_GATE_BARRACKS_SECURITY_F003_LOCKED.png`
+- dimensions: 1260×900
+- bytes: 12,575
+- SHA-256: `29866966ed208b542ceef133b2751946760ae385cb768b5765c9372f9c490747`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_02_GATE_BARRACKS_SECURITY_F003_LOCKED.png`
+- Library file ID: `libfile_5f0e0e7535e08191976e15a8c36c9c60`
+- backing file ID: `file_00000000b09881f6a2fde179ec376f99`
+
+F003 preserves:
+- north-up orientation;
+- Barracks remains the dominant Area 02 building;
+- east-side connector remains open;
+- north connector remains open;
+- security-yard equipment stays outside the primary routes.
+
+F003 improves:
+- stronger barracks landmark;
+- deeper yard composition;
+- equipment/spear/shield staging;
+- briefing canopy;
+- guard patrol/readiness activity;
+- duty board and bench/rest identity;
+- deliberate pixel-art density without turning the yard into a fortress.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art recommendation:
+`REVIEW_F003`
+
+Creator final visual approval:
+`PENDING`
+
+F001/F002 remain archived for provenance.
