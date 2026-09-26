@@ -1,4 +1,4 @@
-# Area 08 Model-Sheet Package — East Work Frontage / Worker Court
+# Area 08 Model-Sheet Package — East Work Frontage / Worker Passage
 
 Status: MODEL-SHEET CONTRACTS / DOCUMENTATION ONLY
 
