@@ -1,6 +1,6 @@
 # Area 02 — Gate Barracks & Security
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY
 Parent section: `SET01_S01`  
 Area ID: `SET01_A02_GATE_BARRACKS_SECURITY`
 
@@ -245,3 +245,19 @@ Persisted Library archive:
 Disposition:
 - accepted as the current Area 02 pixel-art reference;
 - previous whole-settlement image-generation drifts remain rejected and are not Area 02 references.
+
+
+## Asset extraction and model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_02_GATE_BARRACKS_SECURITY_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_02/`
+
+Current state:
+- reference generated and archived;
+- technical reference review passed;
+- primary model-sheet contracts ready;
+- runtime implementation not started;
+- device visual verification not started.
