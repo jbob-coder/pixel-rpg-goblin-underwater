@@ -1,3 +1,9 @@
+> **SUPERSEDED PRESENTATION / CURRENT DISCUSSION NOTICE — 2026-09-25**
+>
+> This checklist contains many still-useful unresolved design questions, but its “decisions now recorded” section includes superseded aerial-exploration and first-person-only-combat presentation choices.
+>
+> Current Pixel RPG uses first-person exploration/presentation. Treat unresolved crystal, progression, behavior, ecology, balance, and content questions as design provenance unless a current issue/source adopts them. Do not use this file to restore the old camera/mode split.
+
 # Unnamed Hunt RPG — Discussion Checklist
 
 Status: OPEN / MUST BE DISCUSSED BEFORE IMPLEMENTATION

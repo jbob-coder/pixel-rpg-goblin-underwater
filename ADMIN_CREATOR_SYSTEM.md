@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG CREATOR-TOOLS NOTE — 2026-09-25**
+>
+> This remains a creator/debug tooling design target, not proof of a current in-game Admin system. The architectural law is still useful: debug/creator tools should inspect authoritative owners and issue validated commands rather than becoming a second gameplay engine.
+>
+> Current debugging/verification capability primarily lives in tests, preflights, runtime source, GitHub Actions evidence, and engine/debug workflows. Any future in-game creator tooling must preserve current state-ownership and deterministic-domain boundaries.
+
 # Unnamed Hunt RPG — Admin / Creator / Debug System
 
 Status: DESIGN TARGET / NO IMPLEMENTATION

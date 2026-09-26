@@ -1,88 +1,94 @@
 # 20_gameplay — Gameplay Systems
 
-Status: ACTIVE GAMEPLAY DESIGN MAP / COMBAT + HARVEST + INVENTORY + CRAFT/EQUIP + SMITH SERVICE LINK RECORDED / PERSISTENCE NEXT
-Last reconciled: 2026-09-03
+Status: ACTIVE GAMEPLAY MAP / DETERMINISTIC COMBAT IMPLEMENTED / HARVEST-INVENTORY-CRAFTING-PERSISTENCE PARTIAL OR DESIGN  
+Last reconciled: 2026-09-25
 
 ## Purpose
 
-Own reusable gameplay rules across settlements, regions, monsters and content packages. The game is the objective; this package prevents individual content or UI from silently redefining generic mechanics.
+Own reusable gameplay rules across worlds, settlements, Monsters, and content packages.
 
-## Package map
+Generic mechanics belong here conceptually; exact current runtime behavior is proven by `game/scripts/gameplay/` and its tests.
 
-### Combat
-Front door: `combat/README.md`.
-Nine generic first-slice combat/outcome contracts are recorded through Defeat/Retreat.
+## Current implementation split
 
-### Harvest
-Front door: `harvest/README.md`.
-Authority: `harvest/FIRST_SLICE_HARVEST_CAPACITY_AND_CONDITION_CONTRACT.md`.
+### Combat — implemented deterministic runtime lineage
 
-### Inventory
-Front door: `inventory/README.md`.
-Authority: `inventory/FIRST_SLICE_INVENTORY_MATERIAL_OWNERSHIP_CONTRACT.md`.
+Current source includes live owners for:
 
-### Crafting
-Front door: `crafting/README.md`.
-Authority: `crafting/FIRST_SLICE_ONE_RECIPE_CRAFT_EQUIP_LINKAGE_CONTRACT.md`.
+- turn/round/activation scheduling;
+- AP/RP/Stamina;
+- tactical movement;
+- reaction windows;
+- Hunter attack;
+- Hunter defense consequence;
+- Hunter health/injury;
+- status application/timing;
+- encounter outcome;
+- Mudcrest anatomy/attacks/wound-contact;
+- tracking and encounter triggering.
 
-First recipe:
-`recipe_field_poleblade_raker_tendon_grip`.
+Runtime source:
 
-Inputs:
-2 HIGH tail tendon + 2 STANDARD-or-better hide.
+`game/scripts/gameplay/`
 
-Output/effect:
-Raker-Tendon Grip refinement; Placed Hew Stamina 18 -> 16 through typed `COST_MODIFIER` only.
+Current first-person boot does **not** expose the entire Hunt-01 stack yet.
 
-### Progression
-Front door: `progression/README.md`.
-Direction remains equipment + mastery + knowledge weighted, with bounded specialization.
+### Harvest — design/provenance
 
-## Physical Smith service integration
+Finite-capacity anatomy-derived harvest contracts are recorded.
 
-World owner:
-`/docs/10_world/settlements/SETTLEMENT_01/FIRST_SLICE_SETTLEMENT_SMITH_SERVICE_INTERACTION_CONTRACT.md`.
+Broad current-world harvest runtime is not implemented.
 
-Selected physical proof:
-- `CRAFT_STATION_WEAPON_WORKBENCH` maps to Settlement 01 Smith/Workshop;
-- workbench sits on the Hunter Service Loop near the gate/processing route;
-- return-path graybox target <=25 seconds normal walking from gate return threshold;
-- service remains available in normal Settlement state without requiring one NPC at one anchor;
-- opening/previewing/canceling mutates nothing;
-- Confirm submits the normal authoritative Craft request;
-- UI/Settlement/NPC logic may not consume materials or write refinements.
+### Inventory — design/provenance
 
-## First-slice ownership chain
+Material ownership/transfer contracts are recorded.
 
-```text
-COMBAT DAMAGE/SEVER
--> FINAL ANATOMY STATE
--> DEFEAT/ESCAPE OUTCOME
--> HARVEST SOURCE CAPACITY/CONDITION
--> RECOVERY BUNDLE
--> PLAYER MATERIAL INVENTORY
--> RETURN THROUGH SETTLEMENT GATE
--> PHYSICAL SMITH/WORKBENCH INTERACTION
--> CRAFT RESERVATION/ATOMIC COMMIT
--> FIELD POLEBLADE REFINEMENT
--> SHARED EFFECT PIPELINE
--> NEXT-HUNT TACTICAL DIFFERENCE
-```
+Broad current-world inventory runtime is not implemented.
 
-No downstream package may manufacture matter, replay a committed transaction, or silently rewrite upstream physical truth.
+### Crafting — design/provenance
 
-## Verification state
+One-recipe/craft/equipment linkage is recorded.
 
-`COMBAT_DESIGN_BASELINE_COMPLETE = YES`
-`FIRST_SLICE_HARVEST_BASELINE_RECORDED = YES`
-`FIRST_SLICE_INVENTORY_MATERIAL_OWNERSHIP_RECORDED = YES`
-`FIRST_SLICE_ONE_RECIPE_CRAFT_EQUIP_LINKAGE_RECORDED = YES`
-`FIRST_SLICE_SETTLEMENT_SMITH_SERVICE_INTERACTION_RECORDED = YES`.
+Current first-person smith interaction does not yet provide full crafting.
 
-Runtime gameplay remains unimplemented/unverified beyond the existing Stage-1 engine probe.
+### Progression — design/provenance
 
-## Exact next gameplay/system dependency
+Progression/equipment direction remains useful design input.
 
-`FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT`
+Do not infer a completed current progression runtime from these documents.
 
-That pass should define one authoritative first-slice save/reload boundary across player/world/Monster/hunt/anatomy/harvest/Inventory/crafting/refinement/Settlement state and transaction ledgers before broader content expansion.
+## Current first-person combat boundary
+
+Current player-facing path:
+
+Observe/Engage  
+→ targeting preview  
+→ anatomy target selection/lock  
+→ Combat Bridge 002  
+→ initialize Mudcrest anatomy + combat turn shell  
+→ no attack yet.
+
+The proven deterministic combat domain should be adapted into the current world rather than duplicated in presentation code.
+
+## Ownership law
+
+- combat domain owns combat truth;
+- Monster anatomy owner owns anatomy integrity;
+- presentation/HUD may request/display but not resolve gameplay;
+- world interaction may request crafting/harvest actions but may not directly mutate generic inventory/equipment truth.
+
+## Persistence
+
+Broad current-world save/load is not implemented.
+
+Current persistence boundary starts with explicit state ownership under:
+
+`docs/50_technical/persistence/PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md`
+
+and:
+
+`game/scripts/state/pixel_rpg_state_ownership_contract.gd`.
+
+## Verification boundary
+
+Historical design contracts remain useful, but current claims require current source/tests/evidence.

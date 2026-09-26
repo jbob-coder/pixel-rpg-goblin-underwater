@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This Settlement 01 blueprint is historical design provenance from before the current compact Pixel RPG settlement implementation. Its “NO IMPLEMENTATION” status and exact next-document recommendation are superseded.
+>
+> Compatible principles—compact service loops, functional walkability, bounded NPC fidelity, and avoiding menu-only settlement design—remain useful. Current settlement geometry/building/collision authority lives in current `game/scripts/presentation/pixel_rpg/` owners and their tests.
+
 # Unnamed Hunt RPG — First Settlement Blueprint
 
 Status: SELECTED FIRST-SETTLEMENT STRUCTURE + PROTOTYPE TARGETS / NO IMPLEMENTATION

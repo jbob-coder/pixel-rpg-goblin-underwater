@@ -1,58 +1,136 @@
 # START HERE — Pixel RPG — Canonical Bootstrap
 
-Status: ACTIVE / FIRST-PERSON / CURRENT AUTHORITY ONLY
-Last reconciled: 2026-09-24
+Status: ACTIVE / FIRST-PERSON / CURRENT REPOSITORY AUTHORITY
+Last reconciled: 2026-09-25
 
-Repository: `jbob-coder/Chatgptjuegolpcal`
-Active branch: `pixel-rpg`
+Production repository: `jbob-coder/pixel-rpg-goblin-underwater`
+Production branch: `main`
+
+Documentation-cleanup branch: `documentation`
+Purpose of `documentation`: reconcile and stage documentation only. It is not a replacement runtime branch and does not redefine gameplay source authority.
+
+Current repository navigation map:
+`docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`
+
+Known migration/stale-document audit:
+`docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md`
 
 ## Canonical authority barrier
 
-Pixel RPG is the only active game authority for this branch.
+Pixel RPG is the active game authority.
 
-Do not use any archived, quarantined, superseded, unrelated, or historical project document, prompt, asset package, camera direction, gameplay identity, or handoff as design authority for Pixel RPG.
+The old repository `jbob-coder/Chatgptjuegolpcal` and its `pixel-rpg` branch are migration/provenance history, not current implementation authority.
 
-Historical material may be consulted only for provenance or for a technical dependency that is demonstrably referenced by the current Pixel RPG source/tests. Historical material never overrides current Pixel RPG design, presentation, camera, sprite, or gameplay direction.
+Do not use archived, quarantined, superseded, unrelated, or historical project material as current design or implementation authority merely because it exists in repository history or `docs/70_handoff/`.
+
+Historical material may be consulted only for provenance or for a technical dependency that current source/tests demonstrably still use.
 
 ## Mandatory bootstrap
 
-1. Fetch live `pixel-rpg` HEAD and record the exact SHA before doing work.
-2. Read this file first.
-3. Then read `EVOLVE_ALIGNMENT.md`, `PROJECT_HANDOFF.md`, `DOCUMENTATION_INDEX.md`, `PIXEL_RPG_VISUAL_DIRECTION.md`, the newest relevant Pixel RPG handoff under `docs/70_handoff/`, and the exact owning source/tests/workflow for the bounded task.
-4. Re-check HEAD after reconstruction; never mix revisions.
-5. Authority order is: current explicit creator instruction → current source/tests/build/device evidence → current Pixel RPG presentation authority → current handoff/alignment docs → narrow owner/package docs.
-6. Archived or quarantined material is outside that authority chain.
-7. Never weaken a legitimate gate to force success.
-8. Never treat CI/build success as physical-device verification.
+1. Fetch live `jbob-coder/pixel-rpg-goblin-underwater@main` and record exact HEAD before implementation work.
+2. Read the repository map named above to locate the current owner.
+3. Read the exact owning source file(s).
+4. Read the exact owning test(s).
+5. Read the current GitHub issue for that subsystem.
+6. Use exact current CI/build evidence only when it is tied to the same source SHA.
+7. Re-check `main` HEAD before any implementation write.
+8. Never mix evidence from different revisions.
+9. Never weaken a legitimate gate to force success.
+10. Never convert CI/build success into a physical-device claim.
+
+Authority order:
+
+current explicit creator instruction  
+→ live `main` source  
+→ exact implementation owner  
+→ exact tests  
+→ exact same-SHA build evidence  
+→ current GitHub issue register  
+→ migration/stale-doc audit  
+→ narrow documentation that still matches source  
+→ historical handoffs for provenance only.
 
 ## Active game identity
 
-Pixel RPG is first-person.
+Pixel RPG is an Android-first first-person pixel-styled real-3D monster-hunting RPG.
 
-Preserve the current working first-person camera/controller, movement/look, collision ownership, HUD, targeting, Combat Bridge 002, state ownership, deterministic combat/domain systems, and Android build pipeline unless a current bounded task explicitly requires a compatible change.
+Preserve unless an explicit bounded task changes them compatibly:
 
-The active camera contract remains the direct `Camera3D` first-person path with camera-relative movement and the third-person presentation body hidden.
+- direct first-person `Camera3D` path;
+- camera-relative movement;
+- independent right-side look;
+- hidden third-person presentation body;
+- current collision ownership;
+- HUD and contextual interaction;
+- first-person targeting;
+- Combat Bridge 002 no-attack domain bootstrap;
+- deterministic combat/anatomy/status domain owners;
+- state-ownership boundaries;
+- Android landscape export pipeline.
 
-## Current visual direction
+Do not replace proven gameplay/domain systems merely to change presentation.
 
-User-supplied and approved image-derived assets are presentation authority when they have been explicitly promoted into the current Pixel RPG asset chain.
+## Current implementation boundary
 
-Gameplay/collision geometry may remain as invisible technical support while approved image-derived art becomes the visible presentation layer. Do not expose duplicated procedural placeholder visuals after an equivalent approved asset has passed parity verification.
+The current player-facing boot path is:
 
-The current first-person hands integration task uses the canonical Pixel RPG asset `pixel_rpg_hunter_fp_hands_neutral_r001.png`. It is presentation-only and must not own physics, collision, input, targeting, combat, persistence, or durable state.
+`game/project.godot`
+→ `game/scenes/app_shell.tscn`
+→ `game/scripts/app_shell.gd`
+→ `game/scenes/prototypes/pixel_rpg_prototype_001.tscn`.
 
-## Current work split
+The richer Region-01 Hunt-01 runtime remains implemented/tested code but is not the current application boot scene.
 
-- Issue #28 is the master task for canonical first-person hands integration plus authority cleanup.
-- Issue #29 is documentation/authority only.
-- Issue #30 is sprite/viewmodel integration and technical verification only.
+The current first-person world exposes targeting plus Combat Bridge 002 bootstrap into the combat/anatomy domain. It does not yet expose the complete Hunt-01 attack/reaction/tactical-combat stack to the player.
 
-The two work tracks must remain independent and auditable.
+## Current first-person hands status
+
+Canonical asset:
+
+`game/assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001.png`
+
+Live ViewModel:
+
+`game/assets/characters/first_person_viewmodel_01.tscn`
+
+Current source already references the canonical PNG directly and current automated gates cover the ViewModel/first-person invariants. Older documentation claiming that canonical-hands integration is still pending is stale.
+
+The ViewModel is presentation-only and must not own physics, collision, input, targeting, combat, persistence, or durable state.
+
+## Current work register
+
+Current master issue:
+- #20 — Pixel RPG first-person foundation, settlement and current-world combat.
+
+Current high-priority architecture/documentation tracks include:
+- #1 — safe decomposition of `PixelRPGPrototype001`;
+- #2 — geometry/collision ownership;
+- #9 — player/touch/first-person camera controller separation;
+- #21 — stale authority/document corroboration after repository migration.
+
+Issue comments are progress evidence, not guaranteed latest-source authority. Live source/tests at current `main` win.
 
 ## Verification law
 
-`READ LIVE STATE → VERIFY → ONE BOUNDED CHANGE → STATIC/HEADLESS/BUILD QA → FIX SAME-LAYER FAILURES → RECORD EVIDENCE → COMMIT → READ BACK`
+`READ LIVE STATE → VERIFY OWNER → ONE BOUNDED CHANGE → RUN EXACT GATES → FIX SAME-LAYER FAILURES → RECORD EVIDENCE → COMMIT → READ BACK`
 
-Required evidence for a build-affecting change includes exact source SHA, workflow run ID, job ID, Godot version, APK filename, APK size, APK SHA-256, test results, and explicit physical-device verification status.
+Keep these evidence states separate:
 
-Physical Android acceptance remains separate from CI: install, launch/no black screen, landscape, first-person framing, hands visibility/clipping, touch movement/look, HUD safe area, targeting, FPS, and heat.
+- DESIGNED;
+- IMPLEMENTED;
+- STATIC_VERIFIED;
+- HEADLESS_VERIFIED;
+- ANDROID_BUILD_VERIFIED;
+- PHONE_RUNTIME_VERIFIED;
+- VISUAL_QUALITY_VERIFIED;
+- PERFORMANCE_VERIFIED.
+
+Physical Android acceptance requires real device evidence for install/launch, no black screen, landscape framing, first-person composition, touch controls, safe areas, targeting, sustained FPS/heat, lifecycle behavior, and installed footprint.
+
+## Documentation branch rule
+
+Use `documentation` for documentation reconciliation only.
+
+Do not place gameplay/runtime implementation changes on this branch.
+
+A documentation-only commit does not create a new runtime verification state. Runtime/build claims must continue to point to the exact implementation SHA and exact workflow evidence that proved them.

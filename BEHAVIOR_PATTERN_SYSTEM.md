@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG BEHAVIOR NOTE — 2026-09-25**
+>
+> This is still primarily a design/provenance contract. The core law—authored, inspectable, state-driven behavior rather than opaque runtime generative AI—remains compatible with current Pixel RPG direction, but the full generic behavior-pattern framework described below is not established as a broad current runtime subsystem.
+>
+> Current Monster/Hunt behavior that exists in source/tests must be read from its owning gameplay runtime. Do not treat proposed behavior tiers/rule schemas here as implemented unless current source/tests explicitly use them.
+
 # Unnamed Hunt RPG — NPC / Creature Behavior Pattern System
 
 Status: DESIGN DECISION / NO IMPLEMENTATION

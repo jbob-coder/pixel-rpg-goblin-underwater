@@ -1,3 +1,9 @@
+> **CURRENT STATUS NOTE — 2026-09-25**
+>
+> This file is retained as a historical work-register snapshot from the pre-migration / early current-world phase. Its branch name, issue numbering, “current” handoff references, and some presentation-state claims are superseded by live `jbob-coder/pixel-rpg-goblin-underwater@main`, current GitHub issue #20, and the current repository scan/navigation documents.
+>
+> Do not use this file as the present master work register. Preserve it for provenance, dependency history, and earlier design/verification rationale. For current location/ownership use `docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`; for current operating context use `START_HERE_NEW_CHAT.md`, `DOCUMENTATION_INDEX.md`, and live source/tests/issues.
+
 # Pixel RPG — Master Work Register
 
 Status: ACTIVE WORK AUTHORITY / FOUNDATION + FIVE-SECTION SETTLEMENT + CURRENT-WORLD COMBAT

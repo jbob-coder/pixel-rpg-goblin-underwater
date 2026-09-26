@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG MODEL-REFERENCE NOTE — 2026-09-25**
+>
+> This file is retained as reference-pipeline provenance. Its old grounded-stylized/aerial framing and `NO 3D ASSET IMPLEMENTATION` status do not describe the full current Pixel RPG runtime state.
+>
+> Preserve the key law that generated/reference images define visual intent but do not automatically define exact scale, hidden geometry, topology, collision, UVs, break zones, or other technical truth. Current pixel-styled first-person direction and runtime asset status must be read from current source/tests and current art/authority documents.
+
 # Unnamed Hunt RPG — Model Reference Image and Creation Pipeline
 
 Status: SELECTED REFERENCE PIPELINE + PROTOTYPE REQUIREMENTS / NO 3D ASSET IMPLEMENTATION

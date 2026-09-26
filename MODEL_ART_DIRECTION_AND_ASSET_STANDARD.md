@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG PRESENTATION NOTE — 2026-09-25**
+>
+> This asset standard predates the selected pixel-styled real-3D Pixel RPG direction and was written for grounded stylized / illustrated-realism assets readable from aerial and first-person views.
+>
+> Current visual direction is pixel-styled real 3D and first-person. Preserve reusable technical guidance—coherent scale, anatomy-aware Monster construction, LOD/reuse, bounded mobile cost, stable attachment/break zones, and collision separate from render art—but do not treat the old grounded-stylized/aerial art target as current authority.
+
 # Unnamed Hunt RPG — Model Art Direction and Asset Standard
 
 Status: SELECTED ART DIRECTION + PROTOTYPE ASSET TARGETS / NO IMPLEMENTATION

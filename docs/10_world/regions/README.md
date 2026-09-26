@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG REGION STATUS — 2026-09-25**
+>
+> This package guide contains reusable region-design laws, but its continuous-streamed-sector language describes the broader intended region architecture, not a claim that current production section streaming is already implemented.
+>
+> Current app boot uses the compact first-person Pixel RPG world. `REGION_01` remains a real tested Hunt-01 integration/regression path, not current compact-world spatial authority. Current section/streaming work must follow the live issue/source state and must not transplant Region-01 coordinates directly.
+
 # Hunting Region Packages
 
 Each hunting region is a bounded physical ecosystem composed of continuous streamed sectors. A region folder applies world/mechanical/art/performance authorities to one specific place.

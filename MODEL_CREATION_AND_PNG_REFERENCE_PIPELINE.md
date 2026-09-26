@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG MODEL/PNG PIPELINE NOTE — 2026-09-25**
+>
+> This file is historical/reference production guidance from before current Pixel RPG runtime asset integration. Its blanket `NO 3D IMPLEMENTATION` status and aerial-readability assumptions are not current project-wide status.
+>
+> Preserve the still-useful production laws: distinguish reference PNGs from runtime textures, separate visual intent from technical truth, verify scale/anatomy/collision independently, keep source lineage, and validate Android cost. Current runtime art and first-person presentation authority come from live source/tests and current Pixel RPG art documents.
+
 # Unnamed Hunt RPG — Model Creation and PNG Reference Pipeline
 
 Status: SELECTED PRODUCTION WORKFLOW + REFERENCE-ASSET CONTRACT / NO 3D IMPLEMENTATION

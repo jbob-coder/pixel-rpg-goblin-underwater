@@ -1,75 +1,116 @@
 # Pixel RPG — Authority Lock
 
-Status: ACTIVE / CREATOR-AUTHORITATIVE
-Branch: `pixel-rpg`
-Effective: 2026-09-24
-Owner: Sol — issue #29
-Parent: issue #28
+Status: ACTIVE / CREATOR-AUTHORITATIVE / MIGRATION-RECONCILED  
+Last reconciled: 2026-09-25
+
+Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
+Production branch: `main`  
+Documentation branch: `documentation`
 
 ## Authority rule
 
-Pixel RPG is the only active project authority for this repository branch.
+Pixel RPG is the active project authority.
 
-For current design, visual direction, camera, sprites, assets, controls, gameplay presentation, runtime architecture, and continuation decisions, use only:
+Current implementation authority comes from:
+
 1. current explicit creator instruction;
-2. current `pixel-rpg` source, tests, and build/device evidence;
-3. current Pixel RPG authority documents on this branch;
-4. bounded current Pixel RPG package documentation that current source/tests still support.
+2. live production `main`;
+3. exact implementation owner;
+4. exact tests;
+5. exact same-SHA build/device evidence;
+6. current GitHub issue register;
+7. current migration/stale-document audit;
+8. narrow current documentation;
+9. historical evidence only for provenance.
 
-Archived, quarantined, superseded, unrelated, or historical material is non-authoritative unless current Pixel RPG source/tests prove a specific technical dependency. A technical dependency never grants design, visual, camera, sprite, asset, or project-direction authority.
+The old `jbob-coder/Chatgptjuegolpcal@pixel-rpg` repository/branch is not current implementation authority.
 
 ## No-reference barrier
 
-Do not use non-current material to infer or propose Pixel RPG:
-- camera perspective or FOV;
+Archived, quarantined, superseded, unrelated, or historical material must not define current:
+
+- camera/FOV;
 - player presentation;
-- sprite or ViewModel art;
-- weapons or combat identity;
-- movement mechanics;
+- ViewModel art;
+- controls;
+- movement;
+- combat identity;
 - package/runtime structure;
 - world design;
-- UI/HUD direction;
-- asset-selection decisions.
+- implementation priorities;
+- build state.
 
-Do not recursively open archived or quarantined material unless a current bounded task explicitly requires provenance or compatibility evidence.
+Historical material may be opened when a bounded task needs provenance or compatibility evidence.
+
+A technical dependency does not grant design authority.
 
 ## First-person lock
 
-Pixel RPG exploration is first-person by creator directive. Superseded presentation implementations remain historical evidence only and cannot override current first-person authority.
+Pixel RPG exploration/presentation is first-person unless an explicit current creator decision changes it.
 
-## Preservation rule
+Preserve:
 
-Do not delete proven gameplay/domain systems merely because their history predates the current presentation direction. Preserve current working behavior unless a bounded task and current evidence justify replacement.
+- direct first-person `Camera3D`;
+- camera-relative movement;
+- independent look;
+- hidden third-person presentation body;
+- current targeting;
+- current collision/state ownership;
+- Combat Bridge 002 no-attack boundary;
+- deterministic combat/anatomy/status systems.
 
-## Quarantine rule
+Do not delete proven domain systems because their history predates the current presentation.
 
-Drive material marked archived/non-authoritative stays outside the active Pixel RPG authority chain. No active bootstrap instruction may treat quarantined Drive material as required reading, asset authority, or design input.
+## Presentation/gameplay boundary
 
-## Current split of responsibility
+Visible art may be replaced through verified asset lineage.
 
-- Issue #29 — Sol: authority/documentation only.
-- Issue #30 — Nexo: canonical first-person hands PNG integration, tests, and Android export only.
-- Issue #28 — common pipeline/root checkpoint.
+Gameplay collision may remain invisible technical support.
 
-Sol must not modify issue #30 runtime/ViewModel implementation while this split is active. Nexo must not redefine project authority while executing issue #30 except for implementation/build evidence.
+Presentation must not own:
 
-## Audit result — 2026-09-24
+- authoritative collision;
+- targeting truth;
+- combat resolution;
+- save state;
+- durable world/player state.
 
-Active authority chain reconciled:
-- `START_HERE_NEW_CHAT.md`;
-- `docs/00_authority/PIXEL_RPG_ACTIVE_AUTHORITY.md`;
-- `EVOLVE_ALIGNMENT.md`;
-- `PROJECT_HANDOFF.md`;
-- `DOCUMENTATION_INDEX.md`;
-- `PIXEL_RPG_VISUAL_DIRECTION.md`;
-- this authority lock.
+## Documentation split
 
-The active documents now describe Pixel RPG directly instead of relying on unrelated project names as rejection/comparison context.
+`documentation` is documentation-only.
 
-`docs/70_handoff/README.md` explicitly classifies the handoff directory as historical continuity evidence and prevents a handoff from becoming current authority merely because it exists there. Historical handoff filenames/content are retained for traceability and truthful evidence.
+Do not put gameplay/runtime implementation changes on it.
 
-Drive quarantine was verified directly on 2026-09-24. Archived historical material is marked non-authoritative and is not required by the active bootstrap.
+Production runtime work belongs against current `main`.
 
-This task is documentation-only. It changes no gameplay, camera, input, collision, combat, state, sprite rendering, or ViewModel implementation.
+## Current issue authority
 
-— Sol
+Master:
+- #20.
+
+Priority tracks include:
+- #1 prototype decomposition;
+- #2 geometry/collision ownership;
+- #9 player/touch/camera separation;
+- #21 documentation migration cleanup.
+
+Old #28/#29/#30 task ownership is historical and must not control current work.
+
+## Current navigation
+
+Bootstrap:
+`START_HERE_NEW_CHAT.md`
+
+Index:
+`DOCUMENTATION_INDEX.md`
+
+Repository map:
+`docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`
+
+Master scan/reference:
+`docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`
+
+Migration audit:
+`docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md`
+
+This file is an authority barrier, not runtime/device evidence.

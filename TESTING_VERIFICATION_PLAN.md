@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This file predates the implemented regression suite and canonical CI, so “NO TEST SUITE IMPLEMENTED” is historical.
+>
+> Preserve its verification vocabulary and testing principles. Current automated authority is `.github/workflows/pixel-rpg-ci.yml`, `game/tests/`, and repository-level Python preflights. Physical-device verification remains a separate evidence layer.
+
 # Unnamed Hunt RPG — Testing and Verification Plan
 
 Status: PLANNING CONTRACT / NO TEST SUITE IMPLEMENTED

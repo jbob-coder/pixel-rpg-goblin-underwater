@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG RUNTIME STATUS NOTE — 2026-09-25**
+>
+> The original status banner below (`NO ENGINE IMPORT YET`) describes the asset-pipeline state when this document was written and is retained as historical production-lineage context. It is no longer a complete statement about current Pixel RPG runtime art.
+>
+> Current Pixel RPG source now includes build-verified image-derived runtime presentation: Pack 010 concept-derived material textures and Pack 011 direct concept-photo PNG assets, plus the canonical first-person hands PNG in the live ViewModel. The classification, lineage, QA, source/master/derivative, and “do not infer technical truth from generated imagery” rules in this document remain useful unless a newer owner document explicitly supersedes them.
+>
+> Do not reinterpret old Drive-lane status fields as proof that current runtime assets are absent.
+
 # Unnamed Hunt RPG — Asset Production Pipeline
 
 Status: ACTIVE DESIGN/PRODUCTION CONTRACT / NO ENGINE IMPORT YET

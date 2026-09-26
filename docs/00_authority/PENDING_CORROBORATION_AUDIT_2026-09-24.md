@@ -21,6 +21,29 @@ Do not convert a note into a current requirement until the owning source/doc is 
 
 ---
 
+## Reconciliation status — 2026-09-25
+
+The original findings below are preserved as the evidence observed on 2026-09-24.
+
+Current documentation-branch disposition:
+
+| Item | Current disposition | Evidence/decision |
+|---|---|---|
+| A-001 | **RESOLVED ON `documentation` / MERGE PENDING** | Current bootstrap/authority docs point to `jbob-coder/pixel-rpg-goblin-underwater@main`; old repository/branch retained only as provenance. |
+| A-002 | **RESOLVED ON `documentation` / MERGE PENDING** | Current issue authority is #20 master with #1/#2/#9/#21 tracks; #28/#29/#30 treated as historical. |
+| A-003 | **RESOLVED ON `documentation` / MERGE PENDING** | Current docs record canonical hands as already integrated and automated/build verified; phone visual acceptance remains separate. |
+| A-004 | **RESOLVED ON `documentation` / MERGE PENDING** | Current CI authority is `.github/workflows/pixel-rpg-ci.yml`; removed workflow no longer acts as current authority. |
+| A-005 | **RESOLVED BY DECISION / DO NOT RECREATE DUPLICATE OWNER** | Root `REPOSITORY_AUTHORITY.md` remains absent. Current authority is intentionally split between `PIXEL_RPG_AUTHORITY_LOCK.md` and `docs/00_authority/PIXEL_RPG_ACTIVE_AUTHORITY.md`, with live source/tests above documentation. Recreating the missing file would create another authority surface without a demonstrated need. |
+| A-006 | **RESOLVED ON `documentation` / MERGE PENDING** | Root-document classification + supersession notices distinguish reusable architecture from aerial/third-person/shooter-era presentation history. |
+| A-007 | **RESOLVED ON `documentation` / MERGE PENDING** | Current-status notices/package front doors prevent old “NO IMPLEMENTATION” statements from overriding live runtime state while preserving design provenance. |
+| A-008 | **RESOLVED / ALREADY CORROBORATED** | Existing path-owner regression was extended and exact build evidence recorded in the original item. |
+| A-009 | **STILL OPEN AS IMPLEMENTATION RISK** | Prototype decomposition remains active under issue #1. Documentation now maps the owners, but runtime decomposition is not finished. |
+| A-010 | **DOCUMENTATION BOUNDARY RESOLVED / DEVICE EVIDENCE STILL OPEN** | Current docs consistently separate automated/build evidence from physical-device acceptance; actual current device acceptance remains tracked separately. |
+
+This table does not claim the documentation changes are merged into production `main`. Until merge, the production branch still contains the pre-reconciliation documentation state.
+
+---
+
 ## A-001 — Active bootstrap documents still point to the old repository/branch
 
 Status: **CONFIRMED STALE**  

@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG CONTENT/DATA NOTE — 2026-09-25**
+>
+> This file began as a pre-engine planning contract. Its blanket `NO CONTENT PIPELINE IMPLEMENTED` status is no longer a complete description of current Pixel RPG source: current runtime content/data already exists under `game/content/`, deterministic gameplay definitions/IDs exist in source, and tests validate multiple current content relationships.
+>
+> Preserve this guide's still-useful laws—stable IDs, data-first reusable definitions, display-name/identity separation, validation, and no gameplay truth hidden in UI. Treat individual proposed schemas/prefixes as design guidance unless current source/tests adopt them explicitly.
+
 # Unnamed Hunt RPG — Content and Data Guide
 
 Status: PLANNING CONTRACT / NO CONTENT PIPELINE IMPLEMENTED

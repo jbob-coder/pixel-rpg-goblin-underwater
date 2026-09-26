@@ -1,141 +1,305 @@
 # Pixel RPG — Documentation Index
 
-Status: ACTIVE GLOBAL MAP / FIRST-PERSON / CURRENT AUTHORITY ONLY
-Last reconciled: 2026-09-24
-Branch: `pixel-rpg`
+Status: ACTIVE GLOBAL MAP / FIRST-PERSON / MIGRATION-RECONCILED ON DOCUMENTATION BRANCH  
+Last reconciled: 2026-09-25
 
-## Mandatory read order
+Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
+Production branch: `main`  
+Documentation cleanup branch: `documentation`
 
-1. `docs/00_authority/PIXEL_RPG_ACTIVE_AUTHORITY.md`
-2. `START_HERE_NEW_CHAT.md`
-3. `EVOLVE_ALIGNMENT.md`
-4. `PIXEL_RPG_VISUAL_DIRECTION.md`
-5. `PROJECT_HANDOFF.md`
-6. newest relevant Pixel RPG handoff under `docs/70_handoff/`
-7. exact owning source/data/tests/workflow for the bounded task.
+## Start here
 
-Fetch live `pixel-rpg` HEAD before reconstruction and re-check it before any write. Never mix evidence from different source revisions.
+For a new session or contributor:
 
-## Authority boundary
+1. fetch live production `main` and record exact HEAD;
+2. read `START_HERE_NEW_CHAT.md`;
+3. read `docs/00_project/PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`;
+4. read `docs/00_project/PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
+5. read `docs/00_project/PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md` when you need to understand how runtime owners, adapters, presentation, tests, and builds relate;
+6. use `docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` before relying on older root design documents;
+7. use `docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` before relying on handoff history;
+8. use `docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md` when ownership crosses documentation/runtime packages;
+9. read the exact owning source and tests for the bounded task;
+10. inspect the current GitHub issue for that subsystem;
+11. use `docs/00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md` when an older document conflicts with current source.
 
-Only current Pixel RPG documentation, current source/tests, current build evidence, and explicit creator instructions participate in the active authority chain.
+Do not use `jbob-coder/Chatgptjuegolpcal@pixel-rpg` as current implementation authority. It is migration/provenance history.
 
-Archived, quarantined, superseded, or unrelated project material is excluded from bootstrap and design authority. Historical material may remain in repository/Drive history for provenance or for a technical dependency proven by current source/tests, but it cannot direct camera, presentation, sprites, gameplay identity, world design, or implementation priorities.
+## Authority order
+
+current explicit creator instruction  
+→ live production `main` source  
+→ exact implementation owner  
+→ exact tests  
+→ exact same-SHA CI/build evidence  
+→ current GitHub issue register  
+→ migration/stale-document audit  
+→ narrow documentation that still matches source  
+→ historical handoffs/provenance.
+
+A document marked ACTIVE may still contain stale migration fields. Current source/tests/evidence win.
+
+## Current production boot
+
+`game/project.godot`
+→ `game/scenes/app_shell.tscn`
+→ `game/scripts/app_shell.gd`
+→ `game/scenes/prototypes/pixel_rpg_prototype_001.tscn`.
+
+Main host:
+
+`game/scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd`
+
+The richer Region-01 Hunt-01 graybox remains real/tested code but is not the current application boot scene.
 
 ## Current presentation authority
 
-`PIXEL_RPG_VISUAL_DIRECTION.md` owns current player-facing presentation direction:
-- first-person eye-height exploration;
-- pixel-styled real 3D;
+Primary player-facing direction remains first-person:
+
+- direct eye-height `Camera3D`;
+- camera-relative movement;
+- independent right-side look;
 - Android landscape-first controls;
-- left-stick movement plus independent right-look;
+- pixel-styled real 3D;
 - compact connected physical spaces;
-- same-world monster combat;
-- readable Android HUD and interaction presentation;
-- approved image-derived assets replacing duplicated visible placeholders only after parity verification.
+- same-world monster encounter/combat direction;
+- readable HUD and contextual actions;
+- approved image-derived presentation with gameplay/collision authority kept separate.
 
-## Current bootstrap authority
+Primary visual document:
 
-`START_HERE_NEW_CHAT.md` is the canonical new-session bootstrap.
+`PIXEL_RPG_VISUAL_DIRECTION.md`
 
-`docs/00_authority/PIXEL_RPG_ACTIVE_AUTHORITY.md` is the explicit no-reference barrier.
 
-`EVOLVE_ALIGNMENT.md` records current operating law, state ownership, verification boundaries, cost/storage constraints, and the current work split.
+## Current first-person technical owners
 
-`PROJECT_HANDOFF.md` records the current verified baseline, active work, blockers, and next actions.
+Source package:
 
-## Current work split
+`game/scripts/presentation/pixel_rpg/`
 
-Issue #28: master pipeline.
+Important current owners include:
 
-Issue #29: authority/document cleanup only.
+- `first_person_camera_math_001.gd`;
+- `first_person_camera_state_001.gd`;
+- `player_motion_math_001.gd`;
+- `player_motor_001.gd`;
+- `touch_input_math_001.gd`;
+- `touch_input_state_001.gd`;
+- `hud_layout_001.gd`;
+- `minimap_math_001.gd`.
 
-Issue #30: canonical first-person hands PNG → live ViewModel integration + technical verification.
-
-Do not merge responsibilities between those tracks in documentation or implementation claims.
+The prototype still owns orchestration/event-routing responsibilities that are being decomposed safely.
 
 ## Canonical first-person hands
 
-Canonical asset name:
-`pixel_rpg_hunter_fp_hands_neutral_r001.png`.
+Canonical source:
 
-Repository source-identity records live under:
-`game/assets/characters/first_person/`.
+`game/assets/characters/first_person/pixel_rpg_hunter_fp_hands_neutral_r001.png`
 
-Live viewmodel scene:
-`game/assets/characters/first_person_viewmodel_01.tscn`.
+Live ViewModel:
 
-Owning verification:
+`game/assets/characters/first_person_viewmodel_01.tscn`
+
+Current source already references the canonical PNG directly. Older documents claiming this integration is still pending are stale.
+
+Owning verification includes:
+
 - `game/tests/pixel_rpg_visual_pack_009_first_person_viewmodel_test.gd`;
-- `game/tests/pixel_rpg_first_person_realignment_runtime_test.gd`;
-- Combat Bridge 002 gate;
-- State Ownership gate;
-- deterministic combat/anatomy/status regressions;
-- Android export/package-size gate.
-
-The hands asset is presentation-only and must not own gameplay state, collision, input, targeting, or combat.
-
-## Latest fully recorded visual baseline
-
-Visual Pack 011 Direct Concept-Photo PNG Assets:
-- source SHA `93978e1947fe8cffaeb0876574d8d761dcad90b2`;
-- workflow `35947488962` — SUCCESS;
-- job `107468585038` — SUCCESS;
-- Godot `4.7.2.stable.official.ed1daf0bf`;
-- APK `PixelRPG-visual-pack-011-direct-photo-assets-debug.apk`;
-- size `58,290,596` bytes;
-- SHA-256 `bec6ba206a293edab5ab6b5220090e444b110a3521f7f8a48c6e9b6cade40c7b`.
-
-Owning art docs:
-- `docs/40_art/PIXEL_RPG_VISUAL_PACK_011_DIRECT_PHOTO_ASSETS.md`;
-- `docs/40_art/PIXEL_RPG_VISUAL_PACK_011_CONCEPT_PHOTO_SPRITES.md` for historical Pack 011 implementation detail;
-- `docs/40_art/PIXEL_RPG_VISUAL_PACK_010_IMAGE_DERIVED_ASSETS.md` for prior image-derived material lineage.
-
-Live concept-derived environment PNG directory:
-`game/assets/environment/starting_area/concept_photo_sprites_011/`.
-
-## Current technical authorities
-
-State ownership:
-- `docs/50_technical/persistence/PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md`;
-- `game/scripts/state/pixel_rpg_state_ownership_contract.gd`;
-- `game/tests/pixel_rpg_state_ownership_contract_test.gd`.
-
-First-person runtime:
-- `game/scenes/prototypes/pixel_rpg_prototype_001.tscn`;
-- `game/scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd`;
 - `game/tests/pixel_rpg_first_person_realignment_runtime_test.gd`.
 
-Combat compatibility:
-- `game/scripts/presentation/pixel_rpg/pixel_rpg_world_combat_compat.gd`;
+ViewModel remains presentation-only.
+
+## World and building owners
+
+Current compact-world presentation owners:
+
+- world base: `world_base_001.gd`;
+- paths: `world_paths_001.gd`;
+- settlement core: `world_settlement_core_001.gd`;
+- gate/props: `world_gate_props_001.gd`;
+- trail environment: `world_trail_environment_001.gd`;
+- actor presentation: `world_actor_presentation_001.gd`;
+- reusable starting-area visual factory: `world_pack_001.gd`;
+- enterable smith: `world_pack_004_enterable_smith.gd`.
+
+The enterable smith is the best current building blueprint. Generic settlement buildings still use monolithic collision and are not equivalent to the smith's real doorway/interior pattern.
+
+## Runtime art / asset lineage
+
+Current direct/runtime image-derived assets include:
+
+- Pack 010 material derivation under `game/assets/textures/concept_derived/`;
+- Pack 011 direct PNG assets under `game/assets/environment/starting_area/concept_photo_sprites_011/`.
+
+Important runtime manifests/loaders:
+
+- `game/assets/textures/concept_derived/image_derived_asset_manifest.gd`;
+- `game/assets/environment/starting_area/concept_photo_sprite_data_011.gd`;
+- `game/scripts/presentation/pixel_rpg/concept_photo_reconstruction_011.gd`.
+
+Older asset-pipeline files saying “NO ENGINE IMPORT” or “APPROVED_RUNTIME_2D = NONE” are historical status statements and must not override current runtime source/tests.
+
+## Gameplay/domain owners
+
+Generic combat:
+
+`game/scripts/gameplay/combat/`
+
+Mudcrest species runtime:
+
+`game/scripts/gameplay/monsters/monster_01/`
+
+Tracking:
+
+`game/scripts/gameplay/tracking/`
+
+Encounter:
+
+`game/scripts/gameplay/encounter/`
+
+The deterministic Hunt-01 domain is richer than what the current first-person boot scene exposes.
+
+## Current-world combat boundary
+
+Current first-person player flow:
+
+Observe/Engage  
+→ targeting preview  
+→ anatomy target selection/lock  
+→ Combat Bridge 002  
+→ initialize Mudcrest anatomy + combat turn shell  
+→ no attack yet.
+
+Owning tests:
+
+- `game/tests/pixel_rpg_combat_bridge_001_targeting_preview_test.gd`;
 - `game/tests/pixel_rpg_combat_bridge_002_domain_bootstrap_test.gd`.
 
-Android build:
-- `.github/workflows/pixel-rpg-prototype-android.yml`;
-- `game/export_presets.cfg`;
-- `game/project.godot`.
+Do not claim the full Hunt-01 attack/reaction/tactical loop is already exposed by the current first-person boot scene.
+
+## State ownership and persistence
+
+Current executable ownership authority:
+
+`game/scripts/state/pixel_rpg_state_ownership_contract.gd`
+
+Focused test:
+
+`game/tests/pixel_rpg_state_ownership_contract_test.gd`
+
+Current technical document:
+
+`docs/50_technical/persistence/PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md`
+
+Broad save/load is not implemented.
+
+Older design contract:
+
+`docs/50_technical/persistence/FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT.md`
+
+is design/provenance material, not proof of current save/load implementation.
+
+## Tests
+
+Godot runtime/regression tests:
+
+`game/tests/`
+
+Python static/preflight tests:
+
+- `tests/quality/hunt01/`;
+- `tests/quality/pixel_rpg/`;
+- `probes/android_stage1/tests/`.
+
+The current canonical GDScript discovery loop runs `game/tests/*_test.gd`.
+
+Do not automatically classify `ci/stage1/*.gd` as current canonical CI gates without a current invocation.
+
+## Canonical CI / Android build
+
+Current workflow:
+
+`.github/workflows/pixel-rpg-ci.yml`
+
+Audited runtime baseline:
+
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`
+
+Canonical run:
+
+`36082533109` — SUCCESS
+
+Verification job:
+
+`107907382620` — SUCCESS
+
+Android export job:
+
+`107907562399` — SUCCESS
+
+Current workflow runs static preflights, Godot import/parse, AppShell smoke, discovered Godot tests, Android debug export, APK integrity, SHA-256, size recording, and artifact upload.
+
+CI/build evidence applies to the exact SHA it tested.
+
+## Current GitHub work register
+
+Master:
+
+- #20 — Pixel RPG first-person foundation, settlement and current-world combat.
+
+Current important tracks:
+
+- #1 — safe prototype decomposition;
+- #2 — geometry/collision ownership;
+- #9 — player/touch/first-person camera separation;
+- #21 — stale authority/document reconciliation after repository migration.
+
+Important planned work also includes sections/streaming, reusable buildings, NPC foundations, persistence, regression expansion, physical-device/performance evidence, and current-world combat positioning.
+
+## Package authority map
+
+Cross-package ownership/navigation:
+
+`docs/00_project/PACKAGE_AUTHORITY_MATRIX_2026-09-25.md`
+
+Use it to distinguish:
+
+- documentation intent from runtime implementation;
+- current technical packages from historical snapshots;
+- Region-01 legacy spatial authority from current compact-world authority;
+- current runtime-art records from historical asset-pipeline status;
+- static/headless/build evidence from device evidence.
+
+`docs/README.md` is the current documentation-folder front door.
+
+Runtime-domain evidence notes under `game/docs/` are navigated through `game/docs/README.md`; use them as exact Hunt-01 provenance, not current compact-world presentation authority.
 
 ## Handoff policy
 
-`docs/70_handoff/` contains both current and historical evidence.
+`docs/70_handoff/` is evidence/history, not automatic current authority.
 
-A handoff is not active authority merely because it exists in that directory. Use a handoff only when:
-1. its title/scope is explicitly Pixel RPG;
-2. it describes the exact current subsystem being worked on;
-3. current source/tests still match its claims;
-4. no newer current authority supersedes it.
+Classification index:
 
-Historical handoffs remain traceable but are not bootstrap authority.
+`docs/70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md`
 
-## Manifest policy
+Use a handoff only when:
 
-Build manifests, package records, and evidence files prove only the source/build they identify. They do not define current presentation or design direction.
+1. it concerns the exact current subsystem;
+2. current source/tests still match it;
+3. no newer source/authority supersedes it.
 
-When a manifest is retained for legacy domain/provenance evidence, treat it as technical history unless current Pixel RPG source/tests directly depend on it.
+## Root design-document policy
+
+Older root documents are classified in:
+
+`docs/00_project/ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md`
+
+Use current authority/navigation files directly. Use older Unnamed Hunt, Stage-1, aerial, third-person, Shooter-RPG, model, mechanics, and pre-engine documents only according to their classification and any supersession banner. Preserve reusable architecture/design laws without promoting stale implementation status or camera assumptions.
 
 ## Verification language
 
-Do not collapse these states:
+Keep separate:
+
 - DESIGNED;
 - IMPLEMENTED;
 - STATIC_VERIFIED;
@@ -149,11 +313,26 @@ A successful CI build does not prove physical-device quality.
 
 ## Current unresolved physical evidence
 
-Unless a fresh device record proves otherwise, the following remain unverified for the latest source:
+Unless a fresh device record proves otherwise:
+
 - physical Android install/launch;
-- first-person hands visual composition/clipping;
+- no-black-screen acceptance;
+- first-person hands composition/clipping;
 - touch ergonomics;
 - safe-area behavior;
 - sustained FPS/heat;
 - lifecycle behavior;
-- installed footprint under the 2 GB cap.
+- installed footprint;
+- durable APK update/signing continuity
+
+remain separate/unverified.
+
+## Documentation branch policy
+
+`documentation` is a documentation-only reconciliation branch.
+
+Do not place gameplay/runtime implementation changes on it.
+
+Documentation-only commits do not create a new runtime/build verification state.
+
+When this branch is eventually reviewed/merged, merge only corroborated documentation changes.

@@ -1,3 +1,11 @@
+> **SUPERSEDED PRESENTATION NOTICE — 2026-09-25**
+>
+> This document is preserved as historical architecture/presentation evidence from the `shooter-rpg` / third-person pivot period. Its active-status header, branch, third-person camera direction, shooter visual references, and implementation-state claims are not current Pixel RPG authority.
+>
+> Current Pixel RPG presentation is first-person and is governed by live `main`, `PIXEL_RPG_VISUAL_DIRECTION.md`, `START_HERE_NEW_CHAT.md`, and current source/tests.
+>
+> Reusable architecture laws in this file—single authoritative gameplay owners, presentation not inventing outcomes, stable IDs, deterministic systems, versioned saves, and state/presentation separation—remain valuable unless a newer owner explicitly supersedes them.
+
 # Unnamed Hunt RPG — Architecture and Visual Bible
 
 Status: ACTIVE DESIGN AUTHORITY / SHOOTER-RPG VISUAL PIVOT / IMPLEMENTATION NOT YET CLAIMED

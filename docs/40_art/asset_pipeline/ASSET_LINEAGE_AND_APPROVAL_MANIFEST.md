@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG RUNTIME STATUS NOTE — 2026-09-25**
+>
+> This manifest is retained as authority for the historical/reference asset lanes and their recorded review lineage, but its old global gate values such as `APPROVED_RUNTIME_2D = NONE` and `GAME_READY_3D = NONE` must not be read as a complete current Pixel RPG runtime inventory.
+>
+> Current Pixel RPG source separately contains verified runtime image-derived presentation under `game/assets/textures/concept_derived/`, `game/assets/environment/starting_area/concept_photo_sprites_011/`, and the canonical first-person hands PNG. Preserve this manifest's stable-ID, parent/master, promotion, and anti-hallucinated-technical-detail laws; reconcile runtime asset status through the current source/tests and current Pixel RPG art documents.
+
 # Unnamed Hunt RPG — Asset Lineage and Approval Manifest
 
 Status: ACTIVE ASSET AUTHORITY / NO ENGINE IMPORT

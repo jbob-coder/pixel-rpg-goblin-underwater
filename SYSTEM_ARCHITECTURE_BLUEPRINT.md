@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This is historical pre-engine architecture design. Its aerial/first-person presentation and “no engine source implemented” assumptions are superseded.
+>
+> Core architecture laws remain valuable where compatible: one authoritative gameplay model, explicit owners, stable IDs, deterministic resolution, versioned persistence, presentation adapters, and no gameplay truth hidden only in UI/animation. Use current executable state ownership and live source as the implementation authority.
+
 # Unnamed Hunt RPG — System Architecture Blueprint
 
 Status: PLANNING AUTHORITY / NO ENGINE SOURCE IMPLEMENTED

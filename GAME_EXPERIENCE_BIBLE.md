@@ -1,3 +1,9 @@
+> **SUPERSEDED PRESENTATION NOTICE — 2026-09-25**
+>
+> This file is retained as historical player-experience design from the third-person `shooter-rpg` pivot. Its active-status header, branch, third-person camera identity, and “current presentation” claims are superseded.
+>
+> Current Pixel RPG uses first-person exploration/presentation. Preserve only compatible experience goals such as compact physical spaces, readable anatomy, consequential harvesting, NPC/world continuity, and phone-scale usability. Current source/tests and `PIXEL_RPG_VISUAL_DIRECTION.md` control presentation.
+
 # Unnamed Hunt RPG — Game Experience Bible
 
 Status: ACTIVE PLAYER-EXPERIENCE CONTRACT / SHOOTER-RPG PIXEL DIRECTION

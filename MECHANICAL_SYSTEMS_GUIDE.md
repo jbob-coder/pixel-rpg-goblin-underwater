@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG PRESENTATION NOTE — 2026-09-25**
+>
+> This mechanical guide contains reusable domain principles but its continuous aerial exploration and first-person turn-based tactical presentation assumptions are historical.
+>
+> Preserve compatible mechanics laws: explicit authoritative owners, validated actions, deterministic consequences, anatomy targeting, statuses/effects, track→hunt→harvest loop, and presentation following authoritative state. Current movement/combat presentation is defined by live first-person Pixel RPG source and current combat-integration boundaries.
+
 # Unnamed Hunt RPG — Mechanical Systems Guide
 
 Status: DESIGN CONTRACT / NO IMPLEMENTATION

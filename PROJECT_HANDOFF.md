@@ -1,148 +1,164 @@
 # PROJECT HANDOFF — Pixel RPG
 
-Status: ACTIVE / FIRST-PERSON / AUTHORITY CLEANUP + CANONICAL HANDS INTEGRATION IN PROGRESS
-Last reconciled: 2026-09-24
-Branch: `pixel-rpg`
+Status: ACTIVE / FIRST-PERSON / POST-MIGRATION DOCUMENTATION RECONCILIATION  
+Last reconciled: 2026-09-25
+
+Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
+Production branch: `main`  
+Documentation branch: `documentation`
 
 ## CURRENT_OBJECTIVE
 
-Finish the current first-person presentation pipeline without changing proven gameplay/domain ownership:
-1. close authority/document cleanup under issue #29;
-2. integrate the canonical first-person hands PNG into the live ViewModel under issue #30;
-3. pass the required Godot/regression/Android build gates;
-4. preserve physical-device validation as a separate evidence stage.
+Maintain a reliable current authority chain while production development continues on `main`.
 
-Parent pipeline: issue #28.
+Current documentation task:
+- reconcile stale migrated bootstrap/status documents on `documentation`;
+- keep historical evidence intact where useful;
+- prevent new sessions from returning to the old repository/branch or obsolete issue map.
+
+Current implementation work remains governed by live `main` and the current GitHub issue register.
 
 ## CURRENT_STATE
 
 Pixel RPG is first-person.
 
-Current source keeps:
-- direct active `Camera3D` first-person path;
-- camera-relative movement and independent look;
-- hidden non-first-person presentation body;
-- existing world/collision authority;
-- targeting and Combat Bridge 002 no-attack bootstrap;
-- State Ownership 001;
-- deterministic combat/anatomy/status domain regressions;
-- Android build/export pipeline.
+Current production boot:
 
-The canonical first-person hands source is recorded as:
-`pixel_rpg_hunter_fp_hands_neutral_r001.png`.
+`game/project.godot`
+→ `game/scenes/app_shell.tscn`
+→ `game/scripts/app_shell.gd`
+→ `game/scenes/prototypes/pixel_rpg_prototype_001.tscn`.
 
-Repository source-identity records exist under:
-`game/assets/characters/first_person/`.
+Current source preserves:
 
-Live ViewModel scene:
-`game/assets/characters/first_person_viewmodel_01.tscn`.
-
-Issue #30 remains open until the PNG is actually live in that ViewModel and all required gates pass.
-
-## AUTHORITY
-
-Active authority chain:
-1. explicit current creator instruction;
-2. current source/tests/build/device evidence;
-3. `docs/00_authority/PIXEL_RPG_ACTIVE_AUTHORITY.md`;
-4. `START_HERE_NEW_CHAT.md`;
-5. `PIXEL_RPG_VISUAL_DIRECTION.md`;
-6. `EVOLVE_ALIGNMENT.md` and this handoff;
-7. narrow owner/package docs.
-
-Archived, quarantined, superseded, or unrelated project material is outside this chain. It may remain for provenance or a proven technical dependency but cannot direct current camera, sprites, visual identity, gameplay identity, or priorities.
-
-## LAST VERIFIED VISUAL BASELINE
-
-Visual Pack 011 Direct Concept-Photo PNG Assets:
-- source SHA: `93978e1947fe8cffaeb0876574d8d761dcad90b2`;
-- workflow run: `35947488962` — SUCCESS;
-- job: `107468585038` — SUCCESS;
-- Godot: `4.7.2.stable.official.ed1daf0bf`;
-- APK: `PixelRPG-visual-pack-011-direct-photo-assets-debug.apk`;
-- APK size: `58,290,596` bytes;
-- APK SHA-256: `bec6ba206a293edab5ab6b5220090e444b110a3521f7f8a48c6e9b6cade40c7b`.
-
-That baseline includes seven standalone RGBA concept-derived environment assets under:
-`game/assets/environment/starting_area/concept_photo_sprites_011/`.
-
-Their presentation layer owns no collision, input, targeting, combat, persistence, or durable world state.
-
-## COMPLETED_WORK
-
-Current first-person foundation already has recorded engine/build evidence for:
-- first-person realignment;
-- Pack 009 camera-local ViewModel foundation;
-- image-derived environment presentation through Pack 011;
-- Gate Warden and smith interaction preservation;
-- Mudcrest targeting/anatomy preservation;
+- direct first-person `Camera3D`;
+- camera-relative movement;
+- independent look;
+- hidden third-person presentation body;
+- explicit camera/touch/player-motor decomposition;
+- compact current-world settlement/trail;
+- enterable smith;
+- first-person targeting;
 - Combat Bridge 002 no-attack bootstrap;
-- State Ownership 001;
-- deterministic combat/anatomy/status regressions;
-- Android debug export/package-size gate.
+- deterministic combat/anatomy/status domain systems;
+- state ownership;
+- Android CI/export.
 
-Authority cleanup completed so far:
-- canonical bootstrap barrier added;
-- active authority barrier added;
-- Drive legacy handoff/folder quarantine verified;
-- active alignment/index/visual-direction documents reconciled to current Pixel RPG authority;
-- historical evidence retained outside active bootstrap authority.
+## LAST VERIFIED RUNTIME BASELINE
 
-## IN_PROGRESS
+Audited runtime source:
 
-Issue #29 — authority/document cleanup:
-- verify active bootstrap contains no path into quarantined Drive material;
-- keep handoff/manifests as provenance only unless current source proves dependency;
-- record exact intentionally retained history and justification;
-- report final evidence to issue #28.
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`
 
-Issue #30 — technical hands integration:
-- canonical PNG must be present in source;
-- wire it into the live ViewModel as presentation-only art;
-- preserve existing placeholder geometry as fallback until parity gates pass;
-- update owning tests without weakening first-person invariants;
-- run required build/regression gates;
-- record exact source/build evidence.
+Commit:
 
-## REQUIRED GATES FOR ISSUE #30
+`refactor: centralize first-person camera pose state`
 
-- Godot import/parse;
-- AppShell smoke;
-- prototype scene smoke;
-- first-person realignment runtime gate;
-- first-person ViewModel gate;
-- Combat Bridge 002 no-attack bootstrap;
-- State Ownership gate;
-- deterministic combat/anatomy/status regressions;
-- Android debug export;
-- package-size ceiling.
+Canonical workflow:
 
-## IMPORTANT_DECISIONS
+`36082533109` — SUCCESS
 
-- Do not restart the game or replace proven domain systems for presentation work.
-- Approved image-derived art may replace duplicated visible procedural placeholders only after parity verification.
-- Gameplay/collision geometry may remain invisible technical support.
-- Presentation assets do not own gameplay state.
-- Documentation-only changes must not be presented as runtime verification.
-- Build success must not be presented as physical-device verification.
-- Use free/no-billing-risk tooling for normal project work.
+Verification job:
 
-## KNOWN_RISKS
+`107907382620` — SUCCESS
 
-- Active source can move while documentation is being reconciled; always re-fetch HEAD before writes.
-- A PNG source record is not equivalent to live ViewModel integration.
-- Camera-local sprite placement can obstruct targeting or clip at phone aspect ratios even when headless gates pass.
-- Removing procedural geometry before parity proof can create regressions.
-- Historical evidence can contaminate current direction if treated as bootstrap authority.
+Android export job:
 
-## TEST_RESULTS
+`107907562399` — SUCCESS
 
-Latest fully recorded visual baseline: PASS at source/Godot/headless/Android-build level as listed above.
+This evidence applies to that exact runtime SHA.
 
-Current canonical-hands integration: NOT YET COMPLETE until issue #30 records a live source commit and passing gates.
+Documentation-only commits after that SHA do not create a new runtime verification state.
 
-Physical-device visual/touch/performance acceptance for the current hands work: NOT VERIFIED.
+## COMPLETED / CONFIRMED
+
+Confirmed current foundations include:
+
+- first-person camera realignment;
+- canonical hands PNG live in the ViewModel;
+- first-person ViewModel presentation-only boundary;
+- mobile touch/movement/look ownership decomposition;
+- world-base/path/settlement/gate/trail/actor decomposition slices;
+- enterable smith with real doorway/interior collision;
+- image-derived runtime presentation assets;
+- Mudcrest targeting/anatomy integration;
+- Combat Bridge 002 bootstrap;
+- deterministic Hunt-01 combat/anatomy/status regressions;
+- state ownership contract;
+- canonical Android CI/export.
+
+## CURRENT COMBAT BOUNDARY
+
+The current first-person boot scene does not expose the complete Hunt-01 combat loop.
+
+Current flow:
+
+Observe/Engage
+→ targeting preview
+→ anatomy group select/lock
+→ Combat Bridge 002
+→ initialize anatomy + turn shell
+→ no attack yet.
+
+The richer Hunt-01 tracking/encounter/combat implementation remains real and tested but is not the current app boot path.
+
+Future attack integration requires an explicit current-world spatial adapter rather than blindly reusing Region-01 tactical coordinates.
+
+## CURRENT WORK REGISTER
+
+Master:
+- #20 — Pixel RPG first-person foundation, settlement and current-world combat.
+
+Important current tracks:
+- #1 — safe prototype decomposition;
+- #2 — geometry/collision ownership;
+- #9 — player/touch/camera separation;
+- #21 — stale authority/document migration cleanup.
+
+## DOCUMENTATION WORK COMPLETED ON `documentation`
+
+- created/reconciled repository “Where Is What” map;
+- added repository scan master reference;
+- corrected `START_HERE_NEW_CHAT.md`;
+- corrected `DOCUMENTATION_INDEX.md`;
+- reconciled this handoff;
+- reconciled active authority barrier.
+
+Remaining stale documents should be corrected one at a time with live-source corroboration.
+
+## IMPORTANT DECISIONS
+
+- Do not restart the game.
+- Do not replace proven domain systems merely to change presentation.
+- Presentation does not own gameplay truth.
+- Collision and visible art are separate concerns.
+- Generic visual doors do not imply traversable buildings.
+- Use the enterable smith as the strongest current building-pattern reference.
+- Current-world combat needs an adapter to proven domain systems, not a duplicate combat engine.
+- Documentation-only changes do not prove runtime behavior.
+- Build success does not prove physical-device acceptance.
+- Use free/no-billing-risk tooling unless explicitly authorized otherwise.
+
+## KNOWN RISKS
+
+- generic buildings still have monolithic collision;
+- collision ownership varies by asset family;
+- the main prototype still owns significant orchestration;
+- some legacy procedural helpers remain;
+- full current-world combat integration is incomplete;
+- broad save/load is not implemented;
+- stale migrated docs can misdirect future work;
+- `main` is not currently protected by required status checks;
+- GitHub CI artifacts expire after seven days;
+- debug signing does not yet prove durable production update identity;
+- physical Android visual/touch/performance acceptance remains separate.
 
 ## NEXT_ACTION
 
-Finish #29 with readback evidence, then keep documentation stable while #30 completes the technical integration and build gates. After #30 passes, prepare a bounded physical Android validation checklist for first-person hands composition, clipping, touch controls, targeting, safe areas, sustained FPS/heat, and lifecycle behavior.
+Continue documentation reconciliation on `documentation`, next prioritizing:
+1. `EVOLVE_ALIGNMENT.md`;
+2. root `README.md`;
+3. `PIXEL_RPG_VISUAL_DIRECTION.md` stale branch/status fields;
+4. old work-register/status documents where current-source claims conflict.
+
+Do not modify gameplay/runtime code on the documentation branch.

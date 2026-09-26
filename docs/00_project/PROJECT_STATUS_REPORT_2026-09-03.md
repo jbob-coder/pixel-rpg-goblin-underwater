@@ -1,3 +1,9 @@
+> **HISTORICAL SNAPSHOT NOTICE — 2026-09-25**
+>
+> This report already describes itself as a dated snapshot. Its old repository/branch, pre-engine-selection state, aerial/first-person presentation model, and “current” 2026-09-03 development direction are historical only.
+>
+> For current Pixel RPG status use live `jbob-coder/pixel-rpg-goblin-underwater@main`, `START_HERE_NEW_CHAT.md`, `DOCUMENTATION_INDEX.md`, the repository map/master scan, current GitHub issues, and exact source/tests/build evidence.
+
 # Unnamed Hunt RPG — Project Status Report — 2026-09-03
 
 Status: SAVED PROJECT SNAPSHOT / REPORT ONLY / CURRENT OPERATING AUTHORITY REMAINS `EVOLVE_ALIGNMENT.md`

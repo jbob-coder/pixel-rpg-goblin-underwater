@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG PRESENTATION NOTE — 2026-09-25**
+>
+> This file is historical visual/world-behavior design from the aerial-exploration → first-person-combat era. Its aerial camera, transition model, and “primary visual contract” status are superseded by current first-person Pixel RPG.
+>
+> Preserve compatible principles such as readable terrain, physical continuity, anatomy-driven visuals, authoritative world state, presentation/domain separation, and bounded Android costs. Current camera/presentation authority is live `main` plus `PIXEL_RPG_VISUAL_DIRECTION.md`.
+
 # Unnamed Hunt RPG — Visual World & Behavior Bible
 
 Status: DESIGN CONTRACT / NO IMPLEMENTATION

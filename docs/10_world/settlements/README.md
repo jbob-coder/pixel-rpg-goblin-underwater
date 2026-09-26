@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG SETTLEMENT STATUS — 2026-09-25**
+>
+> The original `DESIGN ONLY` status below is historical. Current first-person Pixel RPG source already contains a compact settlement slice with market, Gate Warden, generic buildings, settlement gate/props, and an enterable smith.
+>
+> Current runtime ownership lives under `game/scripts/presentation/pixel_rpg/`. The enterable smith is the strongest implemented building reference; generic buildings still use monolithic collision and are not equivalent to a real interior building. Older Settlement-01 coordinates/service contracts remain design provenance unless current source explicitly adopts them.
+
 # 10_world/settlements — Settlement Packages
 
 Status: ACTIVE WORLD PACKAGE MAP / DESIGN ONLY

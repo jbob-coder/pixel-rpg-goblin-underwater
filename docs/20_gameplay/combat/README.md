@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG COMBAT STATUS — 2026-09-25**
+>
+> The original “NO COMBAT IMPLEMENTATION” state and “next dependency = harvest contract” sequencing below are historical. Current source now contains deterministic combat runtime descendants for scheduler/resources, tactical movement, Hunter attack, reaction windows, defense consequences, Hunter health/injury, status application/timing, encounter outcome, Mudcrest anatomy, Head Sweep, Tail Sweep, wound/contact classification, tracking, encounter triggering, and basic autorun regressions.
+>
+> Current first-person Pixel RPG **does not yet expose the full Hunt-01 combat stack**. Its live current-world boundary is targeting → anatomy target lock → Combat Bridge 002 → initialize anatomy + turn shell → no attack yet.
+>
+> Preserve the generic combat contracts below as design/domain provenance, but use live `game/scripts/gameplay/`, current tests, and the current-world relationship map for implementation status and next work.
+
 # 20_gameplay/combat — Tactical Combat Package
 
 Status: ACTIVE DESIGN PACKAGE / NINE GENERIC FIRST-SLICE CONTRACTS RECORDED / MONSTER 01 NORMAL ATTACK + BERSERK CONTENT RECORDED / NO COMBAT IMPLEMENTATION

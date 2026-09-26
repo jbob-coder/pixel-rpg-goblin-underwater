@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This document mixes still-current product constraints with historical Stage-1 probe state. The hard player-required storage ceiling remains current: `2 GB = 2,000,000,000 bytes`.
+>
+> Stage-1 probe references, aerial/first-person transition assumptions, and old “current calibration” language are historical unless corroborated by current source/device evidence. Sustained FPS/heat, installed footprint, and current phone behavior still require real-device validation.
+
 # Unnamed Hunt RPG — Performance Budgets and Caps
 
 Status: PLANNING CONTRACT / 2 GB GAME STORAGE CAP SELECTED / STAGE 1 TELEMETRY PREPARED / SUSTAINED TARGET-DEVICE CALIBRATION PENDING

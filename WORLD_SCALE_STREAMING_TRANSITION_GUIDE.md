@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG PRESENTATION NOTE — 2026-09-25**
+>
+> This file contains useful scale/streaming principles but was written for an aerial-exploration / local first-person encounter model that is no longer current presentation authority.
+>
+> Preserve compatible laws: coherent meter-scale worlds, compact connected areas, bounded loading, logical actor state independent from render sectors, human-scale buildings, Android-aware streaming, and no giant always-loaded world. Current first-person spatial implementation and section/streaming work must come from live source/issues, not the old aerial camera assumptions.
+
 # Unnamed Hunt RPG — World Scale, Streaming, Transition and Building Guide
 
 Status: CORE DESIGN DECISION + PROTOTYPE SCALE TARGETS / NO IMPLEMENTATION

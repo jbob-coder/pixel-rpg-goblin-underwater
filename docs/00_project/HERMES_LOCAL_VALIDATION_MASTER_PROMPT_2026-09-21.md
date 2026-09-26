@@ -1,3 +1,11 @@
+> **SUPERSEDED CURRENT-STATE NOTICE — 2026-09-25**
+>
+> This Hermes prompt is preserved as a historical local-validation/evidence instruction set from the pre-migration third-person phase. Its repository, branch, HEAD, issue numbers, third-person camera assumptions, and current-work references are superseded.
+>
+> Do not execute it as the current Pixel RPG validation prompt without rewriting it against live `jbob-coder/pixel-rpg-goblin-underwater@main`, current first-person source/tests, current issue #20, and current canonical workflow `.github/workflows/pixel-rpg-ci.yml`.
+>
+> It remains useful for its evidence discipline: exact tested SHA/build identity, local/device reproducibility, screenshots/photos, lifecycle/phone checks, and strict separation between build evidence and physical-device evidence.
+
 # HERMES — PIXEL RPG LOCAL VALIDATION / EVIDENCE MASTER PROMPT
 
 You are Hermes. You are joining the active **Pixel RPG** project as the local-runtime, target-device, evidence, and reproducibility operator.

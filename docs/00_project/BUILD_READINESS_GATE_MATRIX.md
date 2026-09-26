@@ -1,3 +1,9 @@
+> **CURRENT STATUS NOTE — 2026-09-25**
+>
+> This matrix contains valuable verified Hunt-01 build evidence, but its “current baseline,” next-action language, and some project-wide readiness claims predate the current migrated Pixel RPG repository state. Treat individual historical workflow/SHA records as evidence for the exact revisions they identify, not as the latest Pixel RPG runtime baseline.
+>
+> Current production authority is live `jbob-coder/pixel-rpg-goblin-underwater@main`. The audited current-runtime baseline from the repository scan is `7e9f37071a3634dee98db1d1040ecc1c57e13d3a` with canonical workflow `36082533109` SUCCESS. This older matrix remains useful for Hunt-01 domain provenance and regression-history lookup.
+
 # Build Readiness Gate Matrix
 
 Status: ACTIVE GOVERNANCE / HUNT-01 BASIC AUTORUN HUNTER DEFEAT TERMINAL ANDROID BUILD VERIFIED / 2 GB STORAGE CAP SELECTED / PACKAGE CAP CI GATE NEXT / PHONE QA BATCHED

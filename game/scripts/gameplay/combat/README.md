@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG COMBAT RUNTIME STATUS — 2026-09-25**
+>
+> This README's `BASIC RUNTIME AUTORUN NEXT` / `Current production slice` statement is historical. Basic runtime autorun and additional Hunter-attack/status/defeat regressions exist in current `game/tests/` and are executed by canonical CI.
+>
+> The deterministic Hunt-01 combat package remains a live domain owner. Current first-person Pixel RPG does not yet expose the entire stack; current-world player integration stops at targeting + Combat Bridge 002 no-attack bootstrap. Use current source/tests for exact implemented behaviors and the current-world relationship map for integration boundaries.
+
 # Hunt-01 Combat Runtime
 
 Status: STACK THROUGH TAIL SWEEP CLEAN→GENERIC STAGGERED STATIC/HEADLESS/ANDROID BUILD VERIFIED / BASIC RUNTIME AUTORUN NEXT

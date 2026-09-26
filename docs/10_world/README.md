@@ -1,102 +1,90 @@
 # 10_world — World, Settlements, Spatial Framework and Hunting Regions
 
-Status: ACTIVE WORLD PACKAGE MAP / HUNT-01 BUILD MANIFEST + VALIDATION CONTRACT RECORDED / NO WORLD RUNTIME IMPLEMENTATION
-Last reconciled: 2026-09-03
+Status: ACTIVE WORLD DOCUMENTATION MAP / CURRENT COMPACT WORLD + LEGACY REGION-01 PROVENANCE  
+Last reconciled: 2026-09-25
 
 ## Purpose
 
-Own spatial/playable-world packages and world-specific application of shared gameplay systems.
+Own world, settlement, Region, spatial, and streaming design packages without replacing live runtime world ownership.
 
-Belongs here:
-- world spatial framework and coordinates;
-- settlement/frontier packages;
-- hunting-region packages;
-- sector topology;
-- camps/safe anchors;
-- tracking/evidence routes;
-- persistent Monster routes;
-- encounter-footprint placement;
-- graybox geometry specifications;
-- engine-neutral build manifests/data;
-- local streaming adjacency/application.
+Current production world implementation lives primarily under:
 
-Does not own generic combat/stat formulas, behavior-engine semantics, Crystal definitions, persistence implementation or final art standards.
+`game/scripts/presentation/pixel_rpg/`
 
-## Current front doors
+Important current owners include:
 
-Shared spatial:
-`spatial/README.md`.
+- `world_base_001.gd`;
+- `world_paths_001.gd`;
+- `world_settlement_core_001.gd`;
+- `world_gate_props_001.gd`;
+- `world_trail_environment_001.gd`;
+- `world_actor_presentation_001.gd`;
+- `world_pack_004_enterable_smith.gd`.
 
-Settlement 01:
-`settlements/SETTLEMENT_01/README.md`.
+## Current world distinction
 
-Region 01:
-`regions/REGION_01/README.md`.
+Two world lineages coexist:
 
-## Shared coordinate baseline
+1. **Current compact first-person Pixel RPG world** — current app boot/runtime authority.
+2. **Region-01 Hunt-01 graybox** — still real/tested legacy integration and regression provenance, but not current app boot/spatial authority.
 
-Framework:
-`spatial/FIRST_SLICE_WORLD_COORDINATE_DIMENSION_FRAMEWORK_CONTRACT.md`.
+Do not apply Region-01 absolute coordinates directly to the compact first-person world.
 
-Major registry:
-`spatial/FIRST_SLICE_SPATIAL_COORDINATE_REGISTRY.md`.
+## Package map
 
-Selected:
-- `1 world unit = 1 meter`;
-- +X East / +Y Up / -Z North / +Z South;
-- separate local spaces for Settlement 01, Frontier and Region 01;
-- stable anchor mappings connect spaces;
-- all unbuilt numeric positions remain prototype targets unless explicitly locked.
+- `spatial/` — historical/shared first-slice coordinate framework and registries;
+- `settlements/` — settlement design packages and older Settlement-01 planning contracts;
+- `regions/` — hunting-region packages, including the implemented/tested Region-01 graybox lineage.
 
-## Region 01 Hunt-01 package chain
+## Current compact-world rule
 
-Spatial integration:
-- `regions/REGION_01/FIRST_SLICE_REGION01_TRACKING_TO_ENCOUNTER_GRAYBOX_INTEGRATION_CONTRACT.md`;
-- `regions/REGION_01/FIRST_SLICE_HUNT01_SPATIAL_LAYOUT_REGISTRY.md`.
+Current compact-world transforms/collision come from live source/tests.
 
-Geometry:
-- `regions/REGION_01/FIRST_SLICE_REGION01_HUNT01_GRAYBOX_GEOMETRY_SPECIFICATION.md`;
-- `regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_GEOMETRY_REGISTRY.md`.
+Documentation may describe:
 
-Build/validation:
-- `regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.md`;
-- `regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_BUILD_MANIFEST.json`;
-- `regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_VALIDATION_SPECIFICATION.md`.
+- intended sections;
+- settlement structure;
+- streaming boundaries;
+- service locations;
+- world-scale constraints.
 
-Recorded proof:
-`S00 -> S01 -> S03 -> R01_EF02 -> escape toward S05 -> reacquisition`.
+It does not become runtime transform authority merely by recording coordinates.
 
-Current physical targets include:
-- 285–315 m required route;
-- 58×54 m Ford basin;
-- 34×18 m shallow water;
-- 70×54 m EF02 floor;
-- 10 tactical nodes / 14 links;
-- physical cover;
-- >=9 m Raker corridors;
-- Monster/camera/streaming clearance/debug volumes.
+## Region-01 rule
 
-The build manifest also records the reversible observation-ramp control `(-74.0,4.62,-237.5)` as BUILD ONLY, never gameplay/persistence authority.
+Region 01 remains valuable for:
 
-## Root authorities
+- tracking/encounter integration;
+- tactical/combat-domain regression;
+- graybox geometry history;
+- manifest/projection validation.
 
-- `/MAP_WORLD_SETTLEMENT_STRUCTURE.md`;
-- `/WORLD_SCALE_STREAMING_TRANSITION_GUIDE.md`;
-- `/FIRST_SETTLEMENT_BLUEPRINT.md`;
-- `/PERFORMANCE_BUDGETS_AND_CAPS.md`.
+It is not the current first-person compact-world layout.
 
-World packages apply shared owners rather than redefining them.
+Current-world combat positioning must use an explicit adapter rather than offsetting the legacy tactical graph.
 
-## Verification state
+## Settlement rule
 
-`FIRST_SLICE_REGION01_HUNT01_GRAYBOX_BUILD_MANIFEST_RECORDED = YES`
-`FIRST_SLICE_REGION01_HUNT01_GRAYBOX_VALIDATION_SPECIFICATION_RECORDED = YES`
-`HUNT01_GRAYBOX_MANIFEST_STATIC_VALIDATOR_IMPLEMENTED = NO`
-`REGION01_HUNT01_GRAYBOX_IMPLEMENTED = NO`
-`WORLD_SPATIAL_RUNTIME_VERIFIED = NO`.
+The current enterable smith is the strongest implemented building-pattern reference.
 
-## Exact next world dependency
+Generic current settlement buildings still use monolithic collision despite visual doors.
 
-`FIRST_SLICE_REGION01_HUNT01_GRAYBOX_STATIC_VALIDATOR_IMPLEMENTATION`.
+Older `SETTLEMENT_01` planning coordinates remain design provenance unless current source explicitly adopts them.
 
-The next pass should validate build data/invariants only. It must not start production world implementation or claim runtime/phone evidence.
+## Streaming/section direction
+
+Current section/streaming work is planned through the current issue register.
+
+Do not infer implemented streaming merely from older world-design documents.
+
+## Verification boundary
+
+Keep separate:
+
+- world design recorded;
+- source implementation;
+- headless/runtime verification;
+- Android build verification;
+- physical-device acceptance.
+
+Use live source/tests for implementation truth.

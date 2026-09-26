@@ -1,74 +1,70 @@
-# 50_technical/persistence — First-Slice Persistence Authority
+# 50_technical/persistence — Pixel RPG State Ownership and Persistence
 
-Status: ACTIVE FIRST-SLICE DESIGN PACKAGE / PERSISTENCE BASELINE RECORDED / SPATIAL OWNER LINKED / NO IMPLEMENTATION
-Last reconciled: 2026-09-03
+Status: ACTIVE OWNERSHIP PACKAGE / STATE OWNERSHIP IMPLEMENTED / BROAD SAVE-LOAD NOT IMPLEMENTED  
+Last reconciled: 2026-09-25
 
 ## Purpose
 
-Own the smallest save/reload contract required to preserve one complete vertical-slice hunt loop without turning presentation state, transaction callbacks or re-created content into gameplay truth.
+Own persistence boundaries and the mapping between authoritative runtime owners and future durable save data.
 
-Primary law:
-**A reload restores one previously committed authoritative snapshot. It never reruns already committed domain consequences to reconstruct that snapshot.**
+## Current authority
 
-## Local authorities
+Current Pixel RPG ownership contract:
 
-- `README.md` — this package front door.
-- `FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT.md` — historical first-slice schema/snapshot/safe-point/transaction continuity authority.
-- `PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md` — current Pixel RPG single-owner/persistence-boundary contract; this outranks legacy coordinate/presentation assumptions for current runtime ownership.
+`PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md`
 
-## Selected first-slice model
+Executable schema:
 
-- `UHR_SAVE_SCHEMA_1`, version 1;
-- prototype slot `save_slot_01`;
-- monotonically increasing committed snapshot generation;
-- state snapshot, not event sourcing;
-- persistence-safe boundary required for new commit;
-- active combat save allowed at stable decision/reaction points;
-- exact scheduler/transaction identity survives reload;
-- same Monster/carcass/source/bundle/item identities survive reload;
-- presentation/UI/animation is reconstructed from domain truth;
-- incomplete new generation cannot invalidate last committed generation.
+`game/scripts/state/pixel_rpg_state_ownership_contract.gd`
 
-## Spatial owner linkage
+Focused verification:
 
-Shared world-coordinate owner:
-`/docs/10_world/spatial/FIRST_SLICE_WORLD_COORDINATE_DIMENSION_FRAMEWORK_CONTRACT.md`.
+`game/tests/pixel_rpg_state_ownership_contract_test.gd`
 
-Concrete registry:
-`/docs/10_world/spatial/FIRST_SLICE_SPATIAL_COORDINATE_REGISTRY.md`.
+## Current ownership rule
 
-Persistence stores:
-- stable `spatial_context_id`;
-- sector/local-area ID;
-- local `(x,y,z)` in meters;
-- orientation/heading;
-- stable transition/service/escape anchor references where required.
+Only the declared owner is authoritative for a datum.
 
-Selected spaces currently include:
-- `space_settlement_01`;
-- `space_frontier_01`;
-- `space_region_01`.
+Examples:
 
-Persistence consumes those spatial IDs/coordinates. It does not redefine them.
+- Hunter transform/physics → world Hunter owner;
+- combat AP/RP/Stamina/round state → combat turn shell;
+- Mudcrest anatomy → anatomy owner;
+- touch/joystick → transient exploration-input owner;
+- yaw/pitch → first-person camera-state owner;
+- targeting/context → transient control owners;
+- HUD/highlights/minimap → presentation only.
 
-## Verification boundary
+## Persistence classifications
 
-`FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_RECORDED = YES`
-`PERSISTENCE_RUNTIME_IMPLEMENTED = NO`
-`PERSISTENCE_RUNTIME_VERIFIED = NO`.
+Current contract distinguishes:
 
-## Exact downstream dependency
+- never-save transient control/presentation;
+- local preference candidates;
+- durable-eligible future state;
+- checkpointable deterministic domain state;
+- planned durable player/world/inventory/NPC/economy owners.
 
-Current project next action:
-`FIRST_SLICE_REGION01_TRACKING_TO_ENCOUNTER_GRAYBOX_INTEGRATION_CONTRACT`.
+Broad serializer/save-slot implementation is not present.
 
-That pass should consume the new spatial registry; Persistence remains a supporting owner for saved pursuit/encounter locations.
+## Historical first-slice persistence design
 
-## Current Pixel RPG ownership boundary
+`FIRST_SLICE_PERSISTENCE_SAVE_RELOAD_CONTRACT.md`
 
-Current Pixel RPG ownership is defined by `PIXEL_RPG_STATE_OWNERSHIP_CONTRACT.md` and executable schema `pixel_rpg.state_ownership.v1`.
+is retained for:
 
-The older first-slice persistence contract remains useful for safe-point and anti-replay principles, but it does not make legacy Region-01 tactical coordinates or old presentation owners authoritative in the compact current Pixel RPG world.
+- safe snapshot boundaries;
+- anti-replay/idempotency ideas;
+- transaction continuity;
+- corruption/atomic-write design;
+- future schema migration concepts.
 
-`PIXEL_RPG_STATE_OWNERSHIP_CONTRACT_001_IMPLEMENTED = YES`  
-`PIXEL_RPG_BROAD_PERSISTENCE_IMPLEMENTED = NO`
+It is not proof of implemented Pixel RPG save/load.
+
+Its old `UHR_SAVE_SCHEMA_1`, legacy spatial IDs, and Region-01 assumptions are historical design unless a current persistence implementation explicitly adopts them.
+
+## Current next direction
+
+Persistence work should begin from current state ownership and the current issue register, not from replaying the old first-slice implementation order.
+
+When implemented, durable save data must serialize authoritative owners rather than HUD/UI/callback state.

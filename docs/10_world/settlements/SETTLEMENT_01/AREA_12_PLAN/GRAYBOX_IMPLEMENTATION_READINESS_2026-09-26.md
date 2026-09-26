@@ -1,0 +1,227 @@
+# Settlement 01 — Graybox Implementation Readiness Matrix
+
+Status: G00–G17 IMPLEMENTED + VERIFIED / PRODUCTION CUTOVER NEXT  
+Created: 2026-09-26
+
+## Purpose
+
+Separate what is ready for graybox implementation from what still requires creator art approval.
+
+A graybox may use authoritative coordinates/model contracts even while final art approval is pending.
+
+Final art promotion must wait for creator review.
+
+## Global readiness
+
+| Input | State |
+|---|---|
+| 60×70 m envelope | READY |
+| global orientation | LOCKED |
+| five-section topology | READY |
+| twelve-area subdivision | READY |
+| main spine/cross/frontage geometry | READY |
+| fixed building parcels | LOCKED FOR F001 |
+| section connectors | READY |
+| collision/navigation rules | READY |
+| area technical reviews | 12/12 COMPLETE |
+| model-sheet packages | 12/12 COMPLETE |
+| F001 final references | 12/12 GENERATED |
+| F001 spatial checks | 12/12 PASS |
+| creator art approval | 0/12 PENDING |
+| runtime SectionDefinition / AreaDefinition / SectionInstance | IMPLEMENTED + VERIFIED (G00) |
+| isolated five-section / twelve-area runtime foundation | IMPLEMENTED + VERIFIED (G01–G17) |
+
+## Runtime execution update — G00–G17
+
+Implemented:
+- G00 layout/schema ownership;
+- G01 floor + spine;
+- G02 plaza;
+- G03 Smith;
+- G04 Community Hall;
+- G05 residences;
+- G06 work support;
+- G07 worker passage;
+- G08 South Gate;
+- G09 security;
+- G10 logistics;
+- G11 hunter staging;
+- G12 North Gate;
+- G13 perimeter/streetscape;
+- G14 NPC anchors/schedules;
+- G15 minimap derivation;
+- G16 conservative streaming lifecycle intent;
+- G17 stable-ID persistence hooks.
+
+Still pending:
+- production-world cutover;
+- actual scene-node streaming adapter/device proof;
+- disk save/load service;
+- final visual approval 0/12.
+
+Current status reference:
+`../SETTLEMENT_01_RUNTIME_STATUS_G00_G17_2026-09-26.md`
+
+## What may proceed before visual approval
+
+Documentation/engineering preparation may proceed for:
+- stable IDs;
+- SectionDefinition schema;
+- SectionInstance schema;
+- connector records;
+- coordinate constants/data records;
+- collision ownership contracts;
+- graybox primitive dimensions;
+- anchor naming;
+- focused test specifications;
+- migration/rollback plan.
+
+Graybox geometry may use simple primitives and authoritative dimensions.
+
+## What must not be treated as final before creator approval
+
+Do not lock:
+- final facade art;
+- final roof silhouettes;
+- final prop styling;
+- color/material variants;
+- decorative signage;
+- final clutter density;
+- final NPC visual density.
+
+## Area-by-area readiness
+
+| Area | Geometry | Technical review | Model sheets | F001 spatial | Graybox-ready | Final-art-ready |
+|---|---|---|---|---|---|---|
+| 01 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 02 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 03 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 04 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 05 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 06 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 07 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 08 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 09 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 10 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 11 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+| 12 | READY | COMPLETE | COMPLETE | PASS | YES | NO |
+
+## Implementation-prep package
+
+Runtime-preparation contracts:
+
+`IMPLEMENTATION_PREP/`
+
+Contains:
+- SectionDefinition / SectionInstance contract;
+- 12-area coordinate register;
+- stable connector register;
+- graybox test contract.
+
+These inputs are now consumed by the isolated G00–G15 runtime stack. Production-world cutover remains separate.
+
+## Recommended runtime implementation order
+
+Do not implement all twelve at once.
+
+### Slice 1 — data/ownership only
+- SectionDefinition
+- SectionInstance
+- stable connector records
+- no visible movement
+
+### Slice 2 — Area 04 spine scaffold
+- main north/south route
+- coordinate origin proof
+- connector test
+
+### Slice 3 — Area 05 central plaza scaffold
+- central crossing
+- four-way navigation
+- minimap transform proof
+
+### Slice 4 — Area 09 Smith quarter
+- migrate/adapt current smith
+- preserve real doorway/interior
+- validate East frontage
+
+### Slice 5 — Area 06 + 07 west local district
+- Community Hall graybox
+- two residence grayboxes
+- frontage lane
+
+### Slice 6 — Areas 01–03 south arrival
+- gate
+- barracks
+- logistics yard
+- south connector
+
+### Slice 7 — Areas 10 + 08 east support
+- storage/canopy
+- worker passage
+
+### Slice 8 — Areas 11–12 north hunter transition
+- staging
+- watch/supply
+- gate/trail connector
+
+### Slice 9 — perimeter/wall modules
+- only after all core traversal passes
+
+### Slice 10 — conservative streaming
+- only after static full layout passes
+
+## Minimum test set
+
+Before full settlement promotion:
+- every area inside envelope;
+- every fixed building inside parcel;
+- every required connector open;
+- main spine continuous South→North;
+- cross street continuous West↔East;
+- all important doors traversable;
+- adjacent walls block;
+- no section-boundary step/gap;
+- player transform continuous across section ownership;
+- minimap mapping continuous;
+- no duplicate NPC/world owner;
+- current first-person controls unchanged.
+
+## Evidence boundary
+
+The isolated Settlement 01 runtime foundation **exists through G17** and is canonical-CI/Android-build verified.
+
+Current production evidence:
+- main: `abeeda02568a4e7b9a36d9dd9ee381d1539cdc67`
+- G17 corrected CI: `36268786947` SUCCESS
+
+This does **not** mean production-world cutover, streaming, persistence, creator-final art approval, or phone acceptance are complete.
+
+Current status:
+`ISOLATED SETTLEMENT G00-G17 IMPLEMENTED + VERIFIED`
+
+not:
+`CURRENT PLAYER-FACING WORLD CUT OVER`.
+
+
+## F002 visual-reference clarification
+
+The F001 set remains sufficient as spatial-lock evidence and provenance.
+
+A later technical-art pass produced **F002 current creator-review targets for all 12 areas**.
+
+This does not change graybox geometry readiness because graybox authority comes from:
+- the master 60×70 m blueprint;
+- section/area coordinate locks;
+- fixed building parcels;
+- connector records;
+- collision/navigation contracts;
+- model-sheet dimensions.
+
+Current visual state:
+- F002 creator-review targets: **12 / 12**
+- creator-final approvals: **0 / 12**
+- graybox geometry readiness: unchanged / ready for bounded implementation-prep slices
+- final art promotion: still blocked on creator review
+
+Do not delay primitive graybox/data-schema work merely because final facade/prop art remains pending.
