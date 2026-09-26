@@ -1,6 +1,6 @@
 # Area 09 — Smithy & Craft Quarter
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S04`  
 Area ID: `SET01_A09_SMITHY_CRAFT_QUARTER`
 
@@ -115,3 +115,24 @@ Approve only if:
 - entrance/frontage not blocked;
 - not factory-scale;
 - genuine pixel art.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A09_SMITHY_CRAFT_QUARTER_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_09_SMITHY_CRAFT_QUARTER_R001.png`
+- dimensions: 1152×768
+- bytes: 7,095
+- SHA-256: `f3e3e7f446c4f59550a9d677cc382a258ef0374bf177c8c5ad262756ac4b5d7f`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_09_SMITHY_CRAFT_QUARTER_R001.png`
+- Library file ID: `libfile_4005c918494481919beab673e222d8dc`
+- backing file ID: `file_00000000a2a881f6ba6db0742dbf86be`
+
+Disposition:
+- accepted as current Area 09 pixel-art reference;
+- current enterable smith remains runtime/collision authority.
