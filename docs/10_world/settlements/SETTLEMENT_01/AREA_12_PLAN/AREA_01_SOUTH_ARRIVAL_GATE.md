@@ -203,3 +203,51 @@ Creator final visual approval:
 `PENDING`
 
 F001 remains archived for provenance.
+
+
+## Creator-review revision F003
+
+Reason:
+- direct visual review of F002 found the spatial lock valid but the scene still too flat/block-diagram-like for the desired pixel-art settlement identity.
+
+Reference ID:
+`FINAL_REF_SET01_A01_F003`
+
+Artifact:
+- filename: `AREA_01_SOUTH_ARRIVAL_GATE_F003_LOCKED.png`
+- dimensions: 1260×900
+- bytes: 12,571
+- SHA-256: `c3d274bc94d8c327ff5a89ba0309cf5f1aacb19e5dad02f6c0973afe970c9953`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_01_SOUTH_ARRIVAL_GATE_F003_LOCKED.png`
+- Library file ID: `libfile_964e9734c40881919c95fbe7cee361fe`
+- backing file ID: `file_000000004fa881f6b2ef4b5b4bc83c5e`
+
+F003 preserves:
+- north-up orientation;
+- Gatehouse W remains on the west/left;
+- Watch E remains on the east/right;
+- 8 m central gate corridor remains visually clear;
+- Main Spine continues north through the center;
+- permanent props remain outside the locked gate opening.
+
+F003 improves:
+- explicit deliberate pixel construction;
+- stronger gatehouse/watch material separation;
+- open-gate readability;
+- banners/lanterns/logistics props;
+- traveler/security activity;
+- road-edge and wall identity;
+- stronger arrival landmark readability.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art recommendation:
+`REVIEW_F003`
+
+Creator final visual approval:
+`PENDING`
+
+F001/F002 remain archived for provenance.
