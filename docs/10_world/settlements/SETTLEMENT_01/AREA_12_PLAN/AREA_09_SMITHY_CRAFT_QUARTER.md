@@ -1,6 +1,6 @@
 # Area 09 — Smithy & Craft Quarter
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S04`  
 Area ID: `SET01_A09_SMITHY_CRAFT_QUARTER`
 
@@ -191,3 +191,53 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too sparse for the smith/craft anchor.
+
+Reference ID:
+`FINAL_REF_SET01_A09_F002`
+
+Artifact:
+- filename: `AREA_09_SMITHY_CRAFT_QUARTER_F002_LOCKED.png`
+- dimensions: 1020×1050
+- bytes: 9,816
+- SHA-256: `62f33be60ff8460aa06bbe90874d7210d588165e736a7c3687d8a9eb90316793`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_09_SMITHY_CRAFT_QUARTER_F002_LOCKED.png`
+- Library file ID: `libfile_5b049d4da204819194cf231331c38774`
+- backing file ID: `file_00000000f15c81f680732be819fa7200`
+
+F002 preserves:
+- north-up orientation;
+- frame X +20.5..+30 / Z -5..+5;
+- Smith fixed at center +24.5,0;
+- 6.6×6.4 m smith footprint;
+- west-facing entrance remains on the Area 08/frontage side;
+- doorway approach remains clear;
+- no second forge building is added;
+- work props remain outside the building footprint.
+
+F002 improves:
+- smith silhouette;
+- forge/fire identity;
+- anvil/worktable/tool-rack readability;
+- equipment display;
+- ore/firewood/material staging;
+- customer/waiting pocket;
+- first-person service-frontage readability.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
