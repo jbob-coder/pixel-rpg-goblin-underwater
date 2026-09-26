@@ -1,6 +1,6 @@
 # Area 03 — Caravan Yard / Visitor Staging
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY
 Parent section: `SET01_S01`  
 Area ID: `SET01_A03_CARAVAN_VISITOR_STAGING`
 
@@ -172,3 +172,19 @@ Disposition:
 - accepted as current Area 03 pixel-art reference;
 - image is visual-reference authority only;
 - road/collision dimensions remain owned by the settlement blueprint.
+
+
+## Asset extraction and model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_03_CARAVAN_VISITOR_STAGING_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_03/`
+
+Current state:
+- reference generated and archived;
+- technical reference review passed;
+- primary model-sheet contracts ready;
+- runtime implementation not started;
+- device visual verification not started.
