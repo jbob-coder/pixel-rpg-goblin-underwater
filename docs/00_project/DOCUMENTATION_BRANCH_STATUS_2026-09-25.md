@@ -129,9 +129,9 @@ Historical SHA/workflow/device evidence remains valid only for the exact revisio
 
 Latest verified comparison:
 
-- `documentation`: **84 commits ahead** of `main` at the latest verified comparison;
+- `documentation`: **98 commits ahead** of `main` at the latest verified comparison;
 - `documentation`: **0 commits behind** `main`;
-- changed files: **67**;
+- changed files: **74**;
 - non-documentation paths changed: **0**.
 
 The current diff contains Markdown/documentation paths only.
@@ -360,3 +360,54 @@ Latest verified branch comparison during this pass:
 - all changed files remained Markdown/documentation;
 - documentation-only Markdown under `game/` is intentional;
 - no gameplay/runtime source, scene, asset resource, test code, workflow, CI script, or probe runtime file changed.
+
+## Final merge-readiness validation — 2026-09-25
+
+Fresh live checks completed:
+
+- production `main`: `9dd3aa67a714027d66fd428f669d8d240d788626`;
+- audited runtime parent: `7e9f37071a3634dee98db1d1040ecc1c57e13d3a`;
+- latest canonical runtime CI: `36082533109` SUCCESS;
+- documentation ahead: **98 commits** at the pre-refresh comparison;
+- documentation behind: **0**;
+- changed files: **74**;
+- non-Markdown changed files: **0**.
+
+Current authority/navigation stale-pointer audit:
+
+- documents checked: **21**;
+- active stale-pointer hits: **0**.
+
+Current navigation-reference audit:
+
+- documents checked: **16**;
+- Markdown references checked: **268**;
+- unresolved references: **0**.
+
+Current issue hierarchy corroborated:
+
+- #20 open master;
+- #1 open decomposition;
+- #2 open geometry/collision ownership;
+- #9 open controller separation;
+- #21 open documentation audit.
+
+Production source pointers corroborated:
+
+- canonical workflow;
+- AppShell boot;
+- prototype boot target;
+- first-person ViewModel;
+- canonical hands PNG Git blob;
+- state-ownership executable contract;
+- Combat Bridge 002 test.
+
+The corroboration audit ledger now records resolved documentation items separately from still-open implementation/device work.
+
+Detailed final snapshot:
+
+`docs/00_project/DOCUMENTATION_PRE_MERGE_AUDIT_2026-09-25.md`
+
+Current assessment:
+
+**documentation-consistent / pre-merge ready for review / merge not yet authorized**.
