@@ -39,7 +39,7 @@ Spatial coordinates remain owned by the master blueprint even when art is revise
 | Area | Name | Final reference | Library ID | Spatial | Creator |
 |---|---|---|---|---|---|
 | 01 | South Arrival Gate | `AREA_01_SOUTH_ARRIVAL_GATE_F002_LOCKED.png` | `libfile_7235023bbebc81919f292949c2562be4` | PASS | PENDING |
-| 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY_F001_LOCKED.png` | `libfile_bcd1f43499908191a798027f74ca176e` | PASS | PENDING |
+| 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY_F002_LOCKED.png` | `libfile_edb2206ccd2881918b4b97f6b6374da6` | PASS | PENDING |
 | 03 | Caravan Yard / Visitor Staging | `AREA_03_CARAVAN_VISITOR_STAGING_F001_LOCKED.png` | `libfile_4000ab4f8b688191bbc00d05db6c9513` | PASS | PENDING |
 | 04 | Main Central Spine Road | `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F001_LOCKED.png` | `libfile_bfacf733c100819181584a5e7875d3fd` | PASS | PENDING |
 | 05 | Central Market Plaza | `AREA_05_CENTRAL_MARKET_PLAZA_F001_LOCKED.png` | `libfile_85f336f794cc8191a73adb7ad4d1d7b8` | PASS | PENDING |
@@ -108,5 +108,17 @@ F002 was generated after technical art review found F001 too flat/weak as the pr
 
 Current creator-review target:
 `AREA_01_SOUTH_ARRIVAL_GATE_F002_LOCKED.png`
+
+No creator approval is inferred from the revision.
+
+
+## Area 02 revision note
+
+F001 remains archived.
+
+F002 was generated after technical art review found F001 too sparse/diagram-like.
+
+Current creator-review target:
+`AREA_02_GATE_BARRACKS_SECURITY_F002_LOCKED.png`
 
 No creator approval is inferred from the revision.
