@@ -49,7 +49,7 @@ static func add_hunter_staging(parent: Node3D) -> Dictionary:
 		return {}
 
 	var area := area_specs[AREA_ID] as Dictionary
-	if String(area.get("section_id", "")) != SECTION_ID:
+	if String(area.get("parent_section_id", "")) != SECTION_ID:
 		push_error("Settlement 01 G11 Hunter Staging section ownership disagrees with the layout contract.")
 		return {}
 
