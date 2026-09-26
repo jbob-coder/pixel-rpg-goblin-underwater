@@ -88,6 +88,22 @@ F002 must preserve:
 
 Only visual/art composition may change unless the master blueprint is changed first.
 
+## Runtime status clarification — G00–G15
+
+The creator-review queue remains the art gate, but engineering is no longer “not started.”
+
+Current production:
+- main `9d600407e29e8f3c5be0ce48ec5afdf02c766f42`;
+- G00–G15 isolated settlement runtime implemented;
+- G15 canonical CI `36267898515` SUCCESS;
+- G16 streaming and G17 persistence still pending;
+- current player-facing world has not been cut over.
+
+Runtime status reference:
+`../SETTLEMENT_01_RUNTIME_STATUS_G00_G15_2026-09-26.md`
+
+Creator approval remains exactly **0 / 12**.
+
 ## Current gate
 
 Technical/spatial phase:
@@ -96,8 +112,14 @@ Technical/spatial phase:
 Creator visual approval:
 **0 / 12**
 
-Runtime implementation from final references:
+Isolated settlement runtime:
+**G00–G15 IMPLEMENTED + VERIFIED**
+
+Production-world cutover:
 **NOT STARTED**
+
+Final-art promotion:
+**BLOCKED ON CREATOR REVIEW (0 / 12)**
 
 
 ## Area 01 revision note
@@ -271,7 +293,7 @@ Technical art disposition:
 - F002 is preferred for creator review across all twelve areas;
 - all F002 revisions preserve their spatial-lock constraints;
 - no creator approval is inferred;
-- runtime implementation remains separate.
+- isolated graybox/runtime implementation exists through G15; production-world cutover and final-art promotion remain separate.
 
 Next gate:
 creator reviews the twelve F002 references one area at a time.
