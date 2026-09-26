@@ -1,6 +1,6 @@
 # Settlement 01 — 12-Area Reference Register
 
-Status: TECHNICAL REVIEW COMPLETE / FINAL SPATIAL REFERENCES PENDING  
+Status: TECHNICAL EXTRACTION COMPLETE / FINAL SPATIAL REFERENCES COMPLETE / CREATOR REVIEW PENDING  
 Created: 2026-09-25
 
 This register is the single lookup table for the twelve separately generated Settlement 01 area references.
@@ -18,7 +18,7 @@ No area image replaces coordinate, collision, building, state or section authori
 | Area | Area name | Documentation | Reference state | Library file ID | SHA-256 |
 |---|---|---|---|---|---|
 | 01 | South Arrival Gate | `AREA_01_SOUTH_ARRIVAL_GATE.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_5608f2d202188191a3a5ae202479a2e6` | `fb9ab61c5b03aa2ccc790cd8580be4770df1a33e847c4ff5d0c66650686ad792` |
-| 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_d2a27ef9c0fc8191ba8661ea42a46c58` | `b62d64add0f57be79696a2e0347fbc21dbe4aebd04bfe1115ca23e95700c9600` |
+| 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_d23b6419e71481919403009dfe6d009b` | `b62d64add0f57be79696a2e0347fbc21dbe4aebd04bfe1115ca23e95700c9600` |
 | 03 | Caravan Yard / Visitor Staging | `AREA_03_CARAVAN_VISITOR_STAGING.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_13295846ca3c819196a0f8dc020dd388` | `5ba054d60d69d3cbd6a4365850a6fd4617ae2d3bb824936a4faed72ff9bd65f3` |
 | 04 | Main Central Spine Road | `AREA_04_MAIN_CENTRAL_SPINE_ROAD.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_19a66f2318a48191a67d3585c113a31d` | `0be02d5640aac5293738bcc4db2b8f09d795e31b699e8367fdb8942564967442` |
 | 05 | Central Market Plaza | `AREA_05_CENTRAL_MARKET_PLAZA.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_0486cb5d89ac8191a345de15ba8d976e` | `f89b2113a7a90647fd53096c60649674ff4f832c89213a270d9db5b533409176` |
@@ -34,18 +34,21 @@ No area image replaces coordinate, collision, building, state or section authori
 
 `/Pixel RPG/Settlement 01/Area References/`
 
-Area 02 currently uses the duplicate-safe archived filename:
-`AREA_02_GATE_BARRACKS_SECURITY_R001(1).png`.
+Area 02 canonical R001 archive:
+`AREA_02_GATE_BARRACKS_SECURITY_R001.png`
 
-The register uses Library IDs as stable lookup identity rather than assuming filenames are unique.
+The accidental duplicate-safe `(1)` and `(2)` copies were removed on 2026-09-26. Library IDs remain the stable lookup identity.
 
 ## Current review state
 
 Technical extraction status:
 - **12 / 12 areas technically reviewed**;
-- **12 / 12 have model-sheet contracts**;
-- **12 / 12 R001 images remain concept references only**;
-- **0 / 12 final position-locked references generated**.
+- **12 / 12 have non-empty model-sheet packages**;
+- **12 / 12 R001 images remain concept/reference-only**;
+- **12 / 12 F001 final position-locked references generated**;
+- **12 / 12 F001 spatial checks PASS**;
+- **0 / 12 creator-final-visual approvals recorded**;
+- **0 / 12 runtime implementations started from this reference pass**.
 
 Area 08 note:
 - old worker-housing R001 preserved for concept/prop ideas;
@@ -57,28 +60,42 @@ Final placement authority:
 
 ## Next pass
 
-Review area-by-area for:
-- visual consistency;
-- first-person readability;
-- object/module extraction;
-- building/prop list;
-- collision-class assignment;
-- reusable asset opportunities;
-- mismatches with the 60×70 m blueprint.
+The technical review/model-sheet extraction gate is already complete.
 
-Only approved areas advance to model-sheet extraction.
+Next gate is **creator/art visual review of the F001 set**.
+
+Review each final reference for:
+- pixel-style consistency;
+- first-person readability;
+- area identity;
+- density/clutter;
+- neighbor/connector readability;
+- landmark silhouette;
+- mismatch with intended mood or original-IP direction.
+
+Creator-approved areas may then advance to runtime graybox planning. A creator rejection produces an F002 revision while preserving F001 provenance.
 
 
 ## Asset-extraction progress
 
-Current completed progression:
-- Area 01: technical review + structural model sheets complete
-- Area 02: technical review + structural/prop model sheets complete
-- Area 03: technical review + shared logistics model sheets complete
+Verified 2026-09-26:
 
-Remaining Areas 04–12:
-- reference generated;
-- technical asset review/model-sheet extraction pending.
+- **12 / 12 area asset-review documents exist**;
+- **12 / 12 model-sheet directories are non-empty**;
+- Area 01: 4 model contracts + README;
+- Area 02: 4 model contracts + README;
+- Area 03: 4 model contracts + README;
+- Area 04: 3 model contracts + README;
+- Area 05: 4 model contracts + README;
+- Area 06: 3 model contracts + README;
+- Area 07: 4 model contracts + README;
+- Area 08: 3 model contracts + README;
+- Area 09: 4 model contracts + README;
+- Area 10: 4 model contracts + README;
+- Area 11: 4 model contracts + README;
+- Area 12: 4 model contracts + README.
+
+Technical extraction/model-sheet phase is complete.
 
 
 ## Final-reference production order
