@@ -304,6 +304,13 @@ static func _canonicalize(value: Variant) -> Variant:
 				var key := String(key_variant)
 				result_dict[key] = _canonicalize(source[key_variant])
 			return result_dict
+		TYPE_FLOAT:
+			var number := float(value)
+			# Godot JSON parsing represents JSON numbers as floats. Normalize exact
+			# integral values so build -> JSON -> parse -> canonical JSON is stable.
+			if is_equal_approx(number, round(number)):
+				return int(round(number))
+			return number
 		_:
 			return value
 
