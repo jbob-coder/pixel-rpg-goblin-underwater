@@ -1,6 +1,6 @@
 # Area 02 — Gate Barracks & Security
 
-Status: PLAN_READY / REFERENCE GENERATION RETRY REQUIRED  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S01`  
 Area ID: `SET01_A02_GATE_BARRACKS_SECURITY`
 
@@ -181,3 +181,46 @@ Disposition:
 - retry only with a generation path that can honor a single-area scene reliably.
 
 No rejected overview image is considered `REFERENCE_GENERATED` for Area 02.
+
+
+## Accepted visual reference
+
+Reference ID:
+`REF_SET01_A02_GATE_BARRACKS_SECURITY_R001`
+
+Persisted archive:
+- Library path: `/Pixel RPG/Settlement 01/Area References/AREA_02_GATE_BARRACKS_SECURITY_R001.png`
+- Library file ID: `libfile_d23b6419e71481919403009dfe6d009b`
+- backing file ID: `file_00000000c57081f68bfdfda82dbeb839`
+- MIME: `image/png`
+
+Image properties:
+- dimensions: 1152×768
+- source construction canvas: 384×256
+- nearest-neighbor scale: 3×
+- bytes: 9,014
+- SHA-256: `b62d64add0f57be79696a2e0347fbc21dbe4aebd04bfe1115ca23e95700c9600`
+
+This accepted reference is deliberate low-resolution pixel art constructed from the Area 02 specification.
+
+## Reference interpretation
+
+Keep:
+- compact guard barracks;
+- open patrol/security yard;
+- equipment racks;
+- duty board;
+- briefing canopy;
+- benches;
+- lanterns;
+- modest guard count;
+- visible clear road edge.
+
+Refine before runtime:
+- align final barracks footprint to exact settlement parcel once Area 02 runtime bounds are authored;
+- keep guard count performance-bounded;
+- collision remains independent;
+- authored signage replaces placeholder label/text;
+- preserve the main-road clearance.
+
+Earlier full-settlement infographic outputs are explicitly rejected and are not part of Area 02 asset authority.
