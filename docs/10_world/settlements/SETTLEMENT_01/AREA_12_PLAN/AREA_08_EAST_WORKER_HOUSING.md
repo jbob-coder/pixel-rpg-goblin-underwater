@@ -1,129 +1,115 @@
-# Area 08 — East Residential / Worker Housing
+# Area 08 — East Work Frontage / Worker Court
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: SPATIAL_PLAN_CORRECTED / OLD R001 CONCEPT RETAINED AS HISTORICAL REFERENCE  
 Parent section: `SET01_S04`  
-Area ID: `SET01_A08_EAST_WORKER_HOUSING`
+Area ID: `SET01_A08_EAST_WORK_FRONTAGE`
 
-## Purpose
+## Correction
 
-Area 08 provides compact worker/local housing adjacent to the East Work District.
+The earlier Area 08 concept described two worker houses.
 
-It supports:
-- smith/work helpers;
-- worker residents;
-- compact yards;
-- quick access to Area 09 and Area 10;
-- quieter living edge within S04.
+That placement is superseded.
 
-## Visual difference from Area 07
+Reason:
+the approved S04 geometry already contains:
 
-Area 07:
-- family/local residential
-- softer yards
-- civic adjacency
+- Smith at +24.5,0;
+- Work Storage at +24.5,+9.5;
+- Work Canopy at +24.5,-9.5;
+- East Frontage Lane centered X +16.25;
+- east service alley near X +28.5.
 
-Area 08:
-- worker housing
-- tighter footprints
-- more practical storage
-- work clothes/tools visible at edges
-- slightly denser lane
+Adding two 6×5 m worker houses would overlap the approved work-district parcels or circulation.
 
-Do not make Area 08 look industrial.
+## Final physical role
 
-## Composition
+Area 08 is now the **East Work Frontage / Worker Court**.
 
-Standalone pixel-art cluster only.
+Locked frame:
+- X +14..+20.5
+- Z -14..+14
 
-Show:
-- two compact worker houses;
-- one small shared courtyard;
-- narrow lane;
-- modest tool/coat/storage props;
-- woodpile/crates;
+It is a connective, mostly open area between:
+- Area 05 Central Plaza to the west;
+- Area 09 Smithy to the east/center;
+- Area 10 work/storage pockets north and south.
+
+## Functions
+
+- worker idle/rest space;
+- frontage circulation;
+- small shared bench;
+- tool/coat/storage edge props;
+- one modest green/tree pocket if space allows;
 - lanterns;
-- one tree or green patch;
-- clear connector toward smith/craft quarter.
+- social/shift-change anchors;
+- no new permanent residence buildings.
 
-## Building target
+## Fixed circulation
 
-Two small residences:
-- about 6×5 m each;
-- real doorways;
-- one-story;
-- simple roofs;
-- compatible with Residence Type A language but slightly more compact.
+East Frontage Lane:
+- center X +16.25
+- width 4.5 m
 
-## Lane
+The lane remains physically clear.
 
-Target:
-- 4–4.5 m clear lane.
+## Planned anchors
 
-Keep all storage/yard props outside the lane.
-
-## NPC density
-
-Reference:
-- 3–6 residents/workers maximum.
-
-## Anchors
-
-Planned:
-- `A08_House01Entrance`
-- `A08_House02Entrance`
 - `A08_WorkerIdle_01..04`
-- `A08_SharedYardAnchor`
-- `A08_Connector_A09`
-- `A08_Connector_A10`
+- `A08_ShiftChangeAnchor`
+- `A08_BenchAnchor`
 - `A08_Connector_A05`
+- `A08_Connector_A09`
+- `A08_Connector_A10_N`
+- `A08_Connector_A10_S`
 
-## Collision
+## Props
 
-- houses: segmented collision;
-- tool/storage racks: simple if substantial;
-- small visual work props: presentation-only;
-- lane walkability owned by ground.
+Allowed:
+- bench;
+- lantern;
+- small tool/coat rack;
+- small crate/storage edge;
+- one tree/green accent;
+- wayfinding sign.
 
-## Image brief
+Not allowed:
+- residence buildings;
+- large warehouse;
+- market stalls;
+- material piles blocking frontage;
+- smith forge duplicated here.
 
-Generate only Area 08.
-
-Desired view:
-- high 3/4 deliberate pixel art;
-- two compact worker homes;
-- shared small yard;
-- visible lane;
-- subtle work-district relationship;
-- no smith itself dominating frame;
-- no full settlement.
-
-## Acceptance checklist
-
-Approve only if:
-- clearly residential but distinct from Area 07;
-- lane open;
-- houses compact;
-- work-related props restrained;
-- no industrial/factory look;
-- genuine pixel style.
-
-
-## Accepted reference artifact
+## Existing R001 reference
 
 Reference ID:
 `REF_SET01_A08_EAST_WORKER_HOUSING_R001`
 
-Accepted pixel-art artifact:
-- source file: `AREA_08_EAST_WORKER_HOUSING_R001.png`
-- dimensions: 1152×768
-- bytes: 7,708
-- SHA-256: `148b0763fb03afb04a7f2795a3bcf16b0a7ea9a14048e141fc28e7310ce4b723`
+Archive remains preserved for:
+- pixel-language ideas;
+- small-yard/worker-life props;
+- housing visual ideas that may be reused elsewhere later.
 
-Persisted Library archive:
-- path: `/Pixel RPG/Settlement 01/Area References/AREA_08_EAST_WORKER_HOUSING_R001.png`
-- Library file ID: `libfile_d74938a003188191b4f08185c552531a`
-- backing file ID: `file_000000004ea881f68a5ac33f15774174`
+It is **not** a final placement reference for Area 08.
 
 Disposition:
-- accepted as current Area 08 pixel-art reference;
-- worker-house geometry remains future building-blueprint authority.
+`CONCEPT_REFERENCE_SUPERSEDED_FOR_FINAL_POSITION`
+
+Future final Area 08 reference must be regenerated from:
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`.
+
+## Collision
+
+- frontage floor owned by ground;
+- benches/racks simple collision only if substantial;
+- small props presentation-only;
+- no new building collision.
+
+## Acceptance
+
+Final Area 08 must:
+- show the fixed frontage lane;
+- keep Smith/Area 09 east of it;
+- preserve connections north/south to Area 10;
+- contain no new residence buildings;
+- remain pixel style.
