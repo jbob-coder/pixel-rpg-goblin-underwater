@@ -1,6 +1,6 @@
 # Area 12 — North Watch Gate & Trail Exit
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S05`  
 Area ID: `SET01_A12_NORTH_WATCH_GATE_TRAIL_EXIT`
 
@@ -144,3 +144,40 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A12_F001`
+
+Artifact:
+- filename: `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F001_LOCKED.png`
+- dimensions: 1524×396
+- bytes: 6,708
+- SHA-256: `ab54e9407e556418e4234f1ea0593ca40f0ee16c71c1651f15c390055a5534cd`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F001_LOCKED.png`
+- Library file ID: `libfile_fcb3ef306ffc8191a82587516f55b698`
+- backing file ID: `file_00000000d23481f6a7cf1ccec5eb623a`
+
+Spatial validation:
+- north = image top;
+- frame uses X -30..+30 / Z -36..-23;
+- Hunter Watch remains fixed at center -19,-27;
+- Supply Cache remains fixed at center +19,-27;
+- North Gate remains centered at X 0 / Z -35;
+- 8 m gate opening remains clear;
+- Area 11 return route remains south/bottom;
+- trail continues north/top;
+- settlement props reduce while vegetation/rock cues increase north of the gate.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
