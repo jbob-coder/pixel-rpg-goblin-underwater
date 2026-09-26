@@ -1,6 +1,6 @@
 # Settlement 01 — Graybox Implementation Readiness Matrix
 
-Status: G00–G15 IMPLEMENTED + VERIFIED / G16 NEXT  
+Status: G00–G17 IMPLEMENTED + VERIFIED / PRODUCTION CUTOVER NEXT  
 Created: 2026-09-26
 
 ## Purpose
@@ -29,9 +29,9 @@ Final art promotion must wait for creator review.
 | F001 spatial checks | 12/12 PASS |
 | creator art approval | 0/12 PENDING |
 | runtime SectionDefinition / AreaDefinition / SectionInstance | IMPLEMENTED + VERIFIED (G00) |
-| isolated five-section / twelve-area graybox stack | IMPLEMENTED + VERIFIED (G01–G15) |
+| isolated five-section / twelve-area runtime foundation | IMPLEMENTED + VERIFIED (G01–G17) |
 
-## Runtime execution update — G00–G15
+## Runtime execution update — G00–G17
 
 Implemented:
 - G00 layout/schema ownership;
@@ -49,16 +49,18 @@ Implemented:
 - G12 North Gate;
 - G13 perimeter/streetscape;
 - G14 NPC anchors/schedules;
-- G15 minimap derivation.
+- G15 minimap derivation;
+- G16 conservative streaming lifecycle intent;
+- G17 stable-ID persistence hooks.
 
 Still pending:
-- G16 conservative streaming;
-- G17 persistence hooks;
 - production-world cutover;
+- actual scene-node streaming adapter/device proof;
+- disk save/load service;
 - final visual approval 0/12.
 
 Current status reference:
-`../SETTLEMENT_01_RUNTIME_STATUS_G00_G15_2026-09-26.md`
+`../SETTLEMENT_01_RUNTIME_STATUS_G00_G17_2026-09-26.md`
 
 ## What may proceed before visual approval
 
@@ -187,16 +189,16 @@ Before full settlement promotion:
 
 ## Evidence boundary
 
-The isolated Settlement 01 runtime **does exist through G15** and is canonical-CI/Android-build verified.
+The isolated Settlement 01 runtime foundation **exists through G17** and is canonical-CI/Android-build verified.
 
 Current production evidence:
-- main: `9d600407e29e8f3c5be0ce48ec5afdf02c766f42`
-- G15 CI: `36267898515` SUCCESS
+- main: `abeeda02568a4e7b9a36d9dd9ee381d1539cdc67`
+- G17 corrected CI: `36268786947` SUCCESS
 
 This does **not** mean production-world cutover, streaming, persistence, creator-final art approval, or phone acceptance are complete.
 
 Current status:
-`ISOLATED SETTLEMENT G00-G15 IMPLEMENTED + VERIFIED`
+`ISOLATED SETTLEMENT G00-G17 IMPLEMENTED + VERIFIED`
 
 not:
 `CURRENT PLAYER-FACING WORLD CUT OVER`.
