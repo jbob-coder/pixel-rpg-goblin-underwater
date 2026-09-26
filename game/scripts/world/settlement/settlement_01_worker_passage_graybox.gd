@@ -39,7 +39,7 @@ static func add_worker_passage(parent: Node3D) -> Dictionary:
 		push_error("Settlement 01 G07 Worker Passage requires a valid G00 layout contract: %s" % str(validation.get("errors", [])))
 		return {}
 
-	var areas: Dictionary = LayoutContract.get_area_definitions()
+	var areas: Dictionary = LayoutContract.get_area_specs()
 	if not areas.has(AREA_ID):
 		push_error("Settlement 01 G07 A08 area definition is missing.")
 		return {}
