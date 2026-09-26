@@ -27,7 +27,7 @@ Area 04 crosses multiple section boundaries and is treated as shared connector i
 - Area 07 — West Residential Cluster
 
 ### S04 East Work District
-- Area 08 — East Residential / Worker Housing Cluster
+- Area 08 — East Work Frontage / Worker Court
 - Area 09 — Smithy & Craft Quarter
 - Area 10 — Storage / Workshop Yard
 
@@ -48,11 +48,21 @@ Area 08 is worker/local housing inside the broader East Work District; it does n
 | 05 | Central Market Plaza | S02 | commerce, gathering, central orientation |
 | 06 | Community Hall / Civic Core | S03 | local administration, notices, events, social hub |
 | 07 | West Residential Cluster | S03 | resident homes, yards, quiet local life |
-| 08 | East Residential / Worker Housing | S04 | worker homes, compact yards, work-district support |
+| 08 | East Work Frontage / Worker Court | S04 | frontage circulation, worker rest/social court, work-district connector |
 | 09 | Smithy & Craft Quarter | S04 | smith service, work frontage, equipment/craft identity |
 | 10 | Storage / Workshop Yard | S04 | materials, storage, work canopy, loading |
 | 11 | North Hunter Staging Ground | S05 | hunt preparation, supplies, bounty/route information |
 | 12 | North Watch Gate & Trail Exit | S05 | dangerous-world threshold, trail connector, watch |
+
+## Final-image spatial lock
+
+Authoritative placement contract for future final references:
+
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+The existing R001 images are concept/asset references. They do not have authority to move buildings, roads, section boundaries or connectors.
+
+Area 08 was corrected during this lock: the earlier worker-housing concept conflicts with fixed S04 building parcels and is superseded by **East Work Frontage / Worker Court**.
 
 ## Production rule
 
