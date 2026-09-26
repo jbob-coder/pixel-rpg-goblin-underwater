@@ -290,8 +290,9 @@ static func _validate_json_value(value: Variant, path: String, errors: Array[Str
 static func _canonicalize(value: Variant) -> Variant:
 	match typeof(value):
 		TYPE_ARRAY:
+			var source_array := value as Array
 			var result_array: Array = []
-			for item in value as Array:
+			for item in source_array:
 				result_array.append(_canonicalize(item))
 			return result_array
 		TYPE_DICTIONARY:
