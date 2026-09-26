@@ -370,3 +370,59 @@ Creator final visual approval:
 `PENDING`
 
 F001 remains archived for provenance.
+
+
+## Approved reference artifact
+
+Asset ID:
+`REF_SET01_A02_GATE_BARRACKS_SECURITY_R001`
+
+Conversation/generated file:
+`AREA_02_GATE_BARRACKS_SECURITY_R001.png`
+
+Archived Library path:
+`/Pixel RPG/Settlement 01/Area References/AREA_02_GATE_BARRACKS_SECURITY_R001(4).png`
+
+Library file ID:
+`libfile_025c8a1ef5d88191abec3256e8d4b4c1`
+
+Backing file ID:
+`file_0000000030f081f6af1de785639bb7f3`
+
+Image dimensions:
+`1152 × 768`
+
+Bytes:
+`9,014`
+
+SHA-256:
+`b62d64add0f57be79696a2e0347fbc21dbe4aebd04bfe1115ca23e95700c9600`
+
+Reference disposition:
+- standalone Area 02 scene;
+- valid deliberate pixel-art reference;
+- no whole-settlement overview;
+- suitable for barracks/security-yard composition extraction;
+- runtime dimensions/collision remain governed by the blueprint, not the image.
+
+## Review extraction
+
+Keep:
+- compact barracks;
+- open patrol/security yard;
+- equipment racks;
+- duty board;
+- briefing canopy;
+- benches;
+- lantern posts;
+- restrained guard count;
+- visible main-road edge.
+
+Do not promote directly:
+- exact prop coordinates;
+- exact wall profile;
+- exact NPC count;
+- any implied collision from sprite shapes.
+
+Next state after creator review:
+`REFERENCE_REVIEWED`.
