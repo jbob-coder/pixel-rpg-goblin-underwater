@@ -7,9 +7,14 @@ Purpose: turn the Settlement 01 parcel plan into repeatable first-person buildin
 
 ## Current blueprint set
 
+0. `BUILDING_BLUEPRINT_STANDARD.md`
 1. `BLD_01_COMMUNITY_HALL.md`
 2. `BLD_02_RESIDENCE_TYPE_A.md`
 3. `BLD_03_SOUTH_GATEHOUSE.md`
+4. `BLD_04_WORK_DISTRICT_SUPPORT.md`
+5. `BLD_05_HUNTER_EXIT_SUPPORT.md`
+6. `BLD_06_MARKET_STALL_VARIANTS.md`
+7. `MODULAR_WALL_GATE_KIT.md`
 
 Current implemented comparison reference:
 
