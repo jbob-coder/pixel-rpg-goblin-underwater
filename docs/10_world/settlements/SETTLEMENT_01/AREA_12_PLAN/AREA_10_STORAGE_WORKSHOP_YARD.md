@@ -1,6 +1,6 @@
 # Area 10 — Storage / Workshop Yard
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S04`  
 Area ID: `SET01_A10_STORAGE_WORKSHOP_YARD`
 
@@ -145,3 +145,38 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A10_F001`
+
+Artifact:
+- filename: `AREA_10_STORAGE_WORKSHOP_YARD_F001_LOCKED.png`
+- dimensions: 426×1092
+- bytes: 5,958
+- SHA-256: `ef6e410ce4308fc0855dd8d0029486b6f9308207d7726ae8e63824b6bc7e0fb4`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_10_STORAGE_WORKSHOP_YARD_F001_LOCKED.png`
+- Library file ID: `libfile_01bd38d4ad4881918e0364d24392aae6`
+- backing file ID: `file_00000000f01081f6acaa975abf463e60`
+
+Spatial validation:
+- north = image top;
+- full relation frame uses X +20.5..+30 / Z -14..+14;
+- Work Canopy remains north at center +24.5,-9.5;
+- Smith remains between the work pockets at center +24.5,0;
+- Work Storage remains south at center +24.5,+9.5;
+- east service-alley edge remains readable;
+- carts/materials stay within their work pockets and do not merge the two areas.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
