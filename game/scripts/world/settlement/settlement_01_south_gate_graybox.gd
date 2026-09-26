@@ -80,10 +80,12 @@ static func add_south_gate(parent: Node3D) -> Dictionary:
 
 	var gatehouse_spec := building_specs[GATEHOUSE_ID] as Dictionary
 	var watch_spec := building_specs[WATCH_ID] as Dictionary
-	if not (gatehouse_spec.get("footprint_xz", Vector2.ZERO) as Vector2).is_equal_approx(GATEHOUSE_FOOTPRINT):
+	var gatehouse_footprint: Vector2 = gatehouse_spec.get("footprint_xz", Vector2.ZERO)
+	var watch_footprint: Vector2 = watch_spec.get("footprint_xz", Vector2.ZERO)
+	if not gatehouse_footprint.is_equal_approx(GATEHOUSE_FOOTPRINT):
 		push_error("Settlement 01 G08 Gatehouse footprint drifted from 8x7 m.")
 		return {}
-	if not (watch_spec.get("footprint_xz", Vector2.ZERO) as Vector2).is_equal_approx(WATCH_FOOTPRINT):
+	if not watch_footprint.is_equal_approx(WATCH_FOOTPRINT):
 		push_error("Settlement 01 G08 Watch footprint drifted from 6x6 m.")
 		return {}
 
