@@ -1,6 +1,6 @@
 # Area 08 — East Work Frontage / Worker Passage
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S04`  
 Area ID: `SET01_A08_EAST_WORK_FRONTAGE`
 
@@ -168,3 +168,52 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too sparse and diagram-like for the intended worker-frontage/pass-through identity.
+
+Reference ID:
+`FINAL_REF_SET01_A08_F002`
+
+Artifact:
+- filename: `AREA_08_EAST_WORK_FRONTAGE_PASSAGE_F002_LOCKED.png`
+- dimensions: 540×1860
+- bytes: 10,025
+- SHA-256: `12facdfbf68800190dc1378b146c941e878783215570c135b160302f74468acd`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_08_EAST_WORK_FRONTAGE_PASSAGE_F002_LOCKED.png`
+- Library file ID: `libfile_efa4f553935c8191be7fad6f89f02020`
+- backing file ID: `file_00000000b2f881f6945c004df7954574`
+
+F002 preserves:
+- north-up orientation;
+- frame X +14..+20.5 / Z -14..+14;
+- East Frontage Lane remains the dominant open circulation strip;
+- no new residence buildings are introduced;
+- west connector to Area 05 remains readable;
+- center/east connector to Area 09 remains readable;
+- north/south connectors to Area 10 remain readable;
+- work-support detail stays flush to the east apron.
+
+F002 improves:
+- worker-frontage identity;
+- tool/coat/storage edge detail;
+- shift/rest points;
+- lantern/wayfinding readability;
+- pixel-art depth;
+- visual connection between Areas 09 and 10 without blocking circulation.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
