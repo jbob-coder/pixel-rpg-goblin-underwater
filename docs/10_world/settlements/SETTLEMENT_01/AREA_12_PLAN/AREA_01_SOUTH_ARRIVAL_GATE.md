@@ -1,6 +1,6 @@
 # Area 01 — South Arrival Gate
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S01`  
 Area ID: `SET01_A01_SOUTH_ARRIVAL_GATE`
 
@@ -122,3 +122,42 @@ Current state:
 The archived R001 image remains a concept/asset reference.
 
 A later final reference must be regenerated against the locked coordinates, orientation, neighbor edges, streets and building parcels before runtime placement is approved.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A01_F001`
+
+Artifact:
+- filename: `AREA_01_SOUTH_ARRIVAL_GATE_F001_LOCKED.png`
+- dimensions: 1260×462
+- bytes: 6,826
+- SHA-256: `986fccf0c58ee10695352f7fa5ac653f1fdb554deaf47d73a7673960c00d46cf`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_01_SOUTH_ARRIVAL_GATE_F001_LOCKED.png`
+- Library file ID: `libfile_4cd0010b75b48191af53be76338799dd`
+- backing file ID: `file_00000000594c81f68221331225fd3565`
+
+Spatial validation:
+- north = image top;
+- south = image bottom;
+- west = image left;
+- east = image right;
+- frame uses X -14..+14 / Z +25..+34;
+- Gatehouse W uses X -12..-4 / Z +25.5..+32.5;
+- Watch E uses X +5..+11 / Z +26..+32;
+- South Gate remains centered on X 0 / Z +33;
+- 8 m central gate corridor X -4..+4 remains open;
+- Main Spine continues north through the center;
+- permanent props remain outside the locked gate corridor.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
