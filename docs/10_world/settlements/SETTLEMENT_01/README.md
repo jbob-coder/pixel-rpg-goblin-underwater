@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG SETTLEMENT-01 STATUS — 2026-09-25**
+>
+> The large `X -100..+100 / Z -10..+250` blueprint and `NO GRAYBOX IMPLEMENTATION` language below are historical first-slice planning records. Current production already contains a compact first-person settlement/graybox with street, market, generic buildings, Gate Warden, gate/props, enterable smith, and north trail.
+>
+> Current approved rebuild direction is issue #4's five-section settlement. The current planning report adopts a **provisional 60 × 70 m** settlement envelope with a 7–8 m main spine, 4.5–5 m secondary streets, and 2.5–3 m service alleys. Exact runtime section bounds remain unimplemented until #3/#4 convert the plan into stable section definitions/connectors.
+>
+> Current report: `CURRENT_SETTLEMENT_ASSET_AND_BUILDOUT_REPORT_2026-09-25.md`
+
 # SETTLEMENT_01 — First Frontier Hunter Settlement
 
 Status: ACTIVE FIRST-SETTLEMENT PACKAGE / SMITH SERVICE + PROTOTYPE SPATIAL ANCHORS RECORDED / NO GRAYBOX IMPLEMENTATION
