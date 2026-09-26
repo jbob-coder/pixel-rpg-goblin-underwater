@@ -79,3 +79,37 @@ Every area reference must be:
 - free of misleading exact technical dimensions unless documented separately.
 
 The image is visual reference, not collision or coordinate authority.
+
+
+## Reference-production status — complete
+
+All twelve areas now have separate saved references.
+
+Register:
+`AREA_REFERENCE_REGISTER_2026-09-25.md`
+
+Current state:
+- Area 01 — REFERENCE_GENERATED
+- Area 02 — REFERENCE_GENERATED
+- Area 03 — REFERENCE_GENERATED
+- Area 04 — REFERENCE_GENERATED
+- Area 05 — REFERENCE_GENERATED
+- Area 06 — REFERENCE_GENERATED
+- Area 07 — REFERENCE_GENERATED
+- Area 08 — REFERENCE_GENERATED
+- Area 09 — REFERENCE_GENERATED
+- Area 10 — REFERENCE_GENERATED
+- Area 11 — REFERENCE_GENERATED
+- Area 12 — REFERENCE_GENERATED
+
+All reference images are stored under the Library folder:
+
+`/Pixel RPG/Settlement 01/Area References/`
+
+The next production layer is **REFERENCE_REVIEWED → MODEL_SHEET_READY**:
+1. review visual consistency;
+2. extract reusable buildings/props;
+3. assign collision class;
+4. identify which objects already exist in runtime;
+5. identify which require new blueprint/model sheets;
+6. reject any image detail that conflicts with the documented 60×70 m settlement geometry.
