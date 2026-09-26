@@ -1,6 +1,6 @@
 # Area 05 — Central Market Plaza
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S02`  
 Area ID: `SET01_A05_CENTRAL_MARKET_PLAZA`
 
@@ -207,3 +207,51 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but remained too flat/diagram-like for the desired market/civic quality level.
+
+Reference ID:
+`FINAL_REF_SET01_A05_F002`
+
+Artifact:
+- filename: `AREA_05_CENTRAL_MARKET_PLAZA_F002_LOCKED.png`
+- dimensions: 1260×1260
+- bytes: 14,715
+- SHA-256: `c7c1f4187bfb3296cb11d3f9d703659d47a982e5b1eb5db9d75db654a91d9c3b`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_05_CENTRAL_MARKET_PLAZA_F002_LOCKED.png`
+- Library file ID: `libfile_8d693400146881918fbda73d9ad3d58a`
+- backing file ID: `file_000000005b4881f6abc4731682f9203a`
+
+F002 preserves:
+- north-up orientation;
+- Area 05 bounds X -14..+14 / Z -14..+14;
+- Main Spine X -4..+4 remains fully clear;
+- Cross Street Z -2.5..+2.5 remains fully clear;
+- four market stall positions remain in perimeter quadrants;
+- plaza center/intersection remains open;
+- civic water feature, notice board, benches, lanterns and trees remain outside locked clear corridors.
+
+F002 improves:
+- pixel-art depth and texture;
+- market-stall readability;
+- quadrant identity;
+- civic/social visual hierarchy;
+- first-person landmark readability from the road approaches;
+- controlled NPC/prop density without blocking circulation.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
