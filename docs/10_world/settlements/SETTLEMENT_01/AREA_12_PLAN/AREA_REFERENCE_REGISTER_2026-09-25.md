@@ -23,7 +23,7 @@ No area image replaces coordinate, collision, building, state or section authori
 | 04 | Main Central Spine Road | `AREA_04_MAIN_CENTRAL_SPINE_ROAD.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_19a66f2318a48191a67d3585c113a31d` | `0be02d5640aac5293738bcc4db2b8f09d795e31b699e8367fdb8942564967442` |
 | 05 | Central Market Plaza | `AREA_05_CENTRAL_MARKET_PLAZA.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_0486cb5d89ac8191a345de15ba8d976e` | `f89b2113a7a90647fd53096c60649674ff4f832c89213a270d9db5b533409176` |
 | 06 | Community Hall / Civic Core | `AREA_06_COMMUNITY_HALL_CIVIC_CORE.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_4930f61027088191b60af81747b41a76` | `9d7e800d7c71cfb3ead52a28d45b12d7589ba5e44146775fca9e2a80c017069a` |
-| 07 | West Residential Cluster | `AREA_07_WEST_RESIDENTIAL_CLUSTER.md` | MODEL_SHEET_READY / FINAL_REF_REGEN_REQUIRED | `libfile_9482f1206518819194a4b7f6f73d9c1f` | `7795764a2b82c184dfde27f5f4979fc267564b559ebbd278d89d03ec4e1971d6` |
+| 07 | West Residential Cluster | `AREA_07_WEST_RESIDENTIAL_CLUSTER.md` | FINAL_REF_GENERATED / SPATIAL_PASS / CREATOR_REVIEW_PENDING | `libfile_9482f1206518819194a4b7f6f73d9c1f` | `7795764a2b82c184dfde27f5f4979fc267564b559ebbd278d89d03ec4e1971d6` |
 | 08 | East Work Frontage / Worker Court | `AREA_08_EAST_WORKER_HOUSING.md` | MODEL_SHEET_READY / FINAL_REF_REGEN_REQUIRED | `libfile_d74938a003188191b4f08185c552531a` | `148b0763fb03afb04a7f2795a3bcf16b0a7ea9a14048e141fc28e7310ce4b723` |
 | 09 | Smithy & Craft Quarter | `AREA_09_SMITHY_CRAFT_QUARTER.md` | MODEL_SHEET_READY / FINAL_REF_REGEN_REQUIRED | `libfile_4005c918494481919beab673e222d8dc` | `f3e3e7f446c4f59550a9d677cc382a258ef0374bf177c8c5ad262756ac4b5d7f` |
 | 10 | Storage / Workshop Yard | `AREA_10_STORAGE_WORKSHOP_YARD.md` | MODEL_SHEET_READY / FINAL_REF_REGEN_REQUIRED | `libfile_ed59a2812eb08191ae8cd434677811e0` | `8e9bd95f377c8917bd44103c1c0a754b0fc79ae06dc198ddfd3243cc2f98a680` |
@@ -103,7 +103,7 @@ Each final image must be checked against the spatial lock before the next area a
 
 ## Final spatial-reference progress
 
-Final references generated: **6 / 12**
+Final references generated: **7 / 12**
 
 - Area 01 — F001 generated, archived, spatial check PASS, creator review pending.
 - Area 02 — F001 generated, archived, spatial check PASS, creator review pending.
@@ -111,4 +111,5 @@ Final references generated: **6 / 12**
 - Area 04 — F001 generated, archived, spatial check PASS, creator review pending.
 - Area 05 — F001 generated, archived, spatial check PASS, creator review pending.
 - Area 06 — F001 generated, archived, spatial check PASS, creator review pending.
-- Areas 07–12 — pending final locked reference generation.
+- Area 07 — F001 generated, archived, spatial check PASS, creator review pending.
+- Areas 08–12 — pending final locked reference generation.
