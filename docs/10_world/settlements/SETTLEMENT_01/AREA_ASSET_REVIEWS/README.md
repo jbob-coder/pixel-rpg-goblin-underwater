@@ -44,3 +44,20 @@ Each review must distinguish:
 - COLLISION_BUILDING;
 - GAMEPLAY_SPECIFIC;
 - REJECT_FROM_REFERENCE.
+
+
+## Completion status
+
+Technical asset extraction is now complete for **12 / 12 areas**.
+
+For every area:
+- archived R001 reference inspected;
+- reusable vs new assets classified;
+- collision classes assigned;
+- primary model-sheet contracts created;
+- R001 retained as concept reference only.
+
+Final spatial-image pass remains pending.
+
+All final area images must use:
+`../AREA_12_PLAN/FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`.
