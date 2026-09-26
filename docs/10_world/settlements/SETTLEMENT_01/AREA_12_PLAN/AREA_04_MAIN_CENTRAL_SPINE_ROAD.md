@@ -217,3 +217,47 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but visually read as a bare road diagram rather than the settlement's primary circulation/landmark corridor.
+
+Reference ID:
+`FINAL_REF_SET01_A04_F002`
+
+Artifact:
+- filename: `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F002_LOCKED.png`
+- dimensions: 768×1920
+- bytes: 15,639
+- SHA-256: `9086c1d865c2ced758a6711aaf5c7dbe56ca7e669b5459cd7198c62049eb408d`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_04_MAIN_CENTRAL_SPINE_ROAD_F002_LOCKED.png`
+- Library file ID: `libfile_a9afa198e7808191a4d4e95347b63f6f`
+- backing file ID: `file_000000004ac881f68c9c6d36de8283b1`
+
+F002 preserves:
+- north-up orientation;
+- X -4..+4 Main Hunter Spine corridor;
+- central cross street at Z 0;
+- north/south gate-threshold relationships;
+- frontage buildings remain outside the road corridor;
+- props remain on shoulders.
+
+F002 improves:
+- long-road visual rhythm;
+- side-frontage depth;
+- wayfinding;
+- benches/lantern cadence;
+- side-branch readability;
+- pixel-art environmental detail.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
