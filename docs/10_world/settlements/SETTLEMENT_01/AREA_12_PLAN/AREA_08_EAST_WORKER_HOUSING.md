@@ -1,4 +1,4 @@
-# Area 08 — East Work Frontage / Worker Court
+# Area 08 — East Work Frontage / Worker Passage
 
 Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
 Parent section: `SET01_S04`  
@@ -23,7 +23,7 @@ Adding two 6×5 m worker houses would overlap the approved work-district parcels
 
 ## Final physical role
 
-Area 08 is now the **East Work Frontage / Worker Court**.
+Area 08 is now the **East Work Frontage / Worker Passage**.
 
 Locked frame:
 - X +14..+20.5
@@ -36,13 +36,13 @@ It is a connective, mostly open area between:
 
 ## Functions
 
-- worker idle/rest space;
 - frontage circulation;
-- small shared bench;
-- tool/coat/storage edge props;
-- one modest green/tree pocket if space allows;
+- short worker idle/rest pockets at building edges;
+- shift-change passage;
+- flush tool/coat/storage edge props;
 - lanterns;
-- social/shift-change anchors;
+- wayfinding;
+- no tree or freestanding bench unless a measured frontage pocket proves enough clearance;
 - no new permanent residence buildings.
 
 ## Fixed circulation
@@ -66,12 +66,11 @@ The lane remains physically clear.
 ## Props
 
 Allowed:
-- bench;
 - lantern;
-- small tool/coat rack;
-- small crate/storage edge;
-- one tree/green accent;
-- wayfinding sign.
+- wall-edge tool/coat rack;
+- small flush crate/storage edge;
+- wayfinding sign;
+- optional narrow wall bench only if measured clearance remains >=1.5 m.
 
 Not allowed:
 - residence buildings;
