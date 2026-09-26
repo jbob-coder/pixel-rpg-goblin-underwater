@@ -161,3 +161,45 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was visually too flat and weak as the settlement's primary arrival landmark.
+
+Reference ID:
+`FINAL_REF_SET01_A01_F002`
+
+Artifact:
+- filename: `AREA_01_SOUTH_ARRIVAL_GATE_F002_LOCKED.png`
+- dimensions: 1260×900
+- bytes: 11,048
+- SHA-256: `1a479dda88a525f9e8f5ca635db285a99843b0abef4074a3e02948932ba28a57`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_01_SOUTH_ARRIVAL_GATE_F002_LOCKED.png`
+- Library file ID: `libfile_7235023bbebc81919f292949c2562be4`
+- backing file ID: `file_00000000f45081f695afd1374d2c917f`
+
+F002 preserves:
+- north-up orientation;
+- fixed Gatehouse W and Watch E sides;
+- 8 m central gate corridor;
+- Main Spine continuation;
+- prop exclusion from the gate opening.
+
+F002 improves:
+- gate hierarchy;
+- arrival landmark silhouette;
+- pixel-art depth;
+- open-gate readability;
+- first-person landmark language.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
