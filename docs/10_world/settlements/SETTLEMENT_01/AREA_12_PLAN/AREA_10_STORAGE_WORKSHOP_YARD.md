@@ -1,6 +1,6 @@
 # Area 10 — Storage / Workshop Yard
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S04`  
 Area ID: `SET01_A10_STORAGE_WORKSHOP_YARD`
 
@@ -180,3 +180,53 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too diagram-like for the storage/work-support district.
+
+Reference ID:
+`FINAL_REF_SET01_A10_F002`
+
+Artifact:
+- filename: `AREA_10_STORAGE_WORKSHOP_YARD_F002_LOCKED.png`
+- dimensions: 630×1860
+- bytes: 11,374
+- SHA-256: `11b6b61e269ad3c67cebca8797fe415204cb38c41e3eb5cf240dcbb932b09b44`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_10_STORAGE_WORKSHOP_YARD_F002_LOCKED.png`
+- Library file ID: `libfile_45154eda501081918983f283c0edce7b`
+- backing file ID: `file_00000000dbc881f681d452c0defa498e`
+
+F002 preserves:
+- north-up orientation;
+- frame X +20.5..+30 / Z -14..+14;
+- Work Canopy remains north at center +24.5,-9.5;
+- Smith remains centered between the two work pockets at +24.5,0;
+- Work Storage remains south at center +24.5,+9.5;
+- east service alley remains readable;
+- north and south pockets remain distinct;
+- carts/materials stay inside their intended work zones.
+
+F002 improves:
+- open-canopy readability;
+- storage/loading identity;
+- ore/firewood/material staging;
+- cart/loading pockets;
+- worker activity;
+- service-alley continuity;
+- pixel-art depth.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
