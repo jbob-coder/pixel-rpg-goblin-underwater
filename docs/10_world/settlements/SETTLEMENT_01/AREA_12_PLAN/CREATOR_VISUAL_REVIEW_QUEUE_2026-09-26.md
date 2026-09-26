@@ -49,7 +49,7 @@ Spatial coordinates remain owned by the master blueprint even when art is revise
 | 09 | Smithy & Craft Quarter | `AREA_09_SMITHY_CRAFT_QUARTER_F002_LOCKED.png` | `libfile_5b049d4da204819194cf231331c38774` | PASS | PENDING |
 | 10 | Storage / Workshop Yard | `AREA_10_STORAGE_WORKSHOP_YARD_F002_LOCKED.png` | `libfile_45154eda501081918983f283c0edce7b` | PASS | PENDING |
 | 11 | North Hunter Staging Ground | `AREA_11_NORTH_HUNTER_STAGING_GROUND_F002_LOCKED.png` | `libfile_a35941b0c6e481918dcd8b44ebabe2c5` | PASS | PENDING |
-| 12 | North Watch Gate & Trail Exit | `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F001_LOCKED.png` | `libfile_fcb3ef306ffc8191a82587516f55b698` | PASS | PENDING |
+| 12 | North Watch Gate & Trail Exit | `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F002_LOCKED.png` | `libfile_6ef94a9865708191a47e95f95d367b79` | PASS | PENDING |
 
 Library folder:
 
@@ -230,3 +230,30 @@ Current creator-review target:
 `AREA_11_NORTH_HUNTER_STAGING_GROUND_F002_LOCKED.png`
 
 No creator approval is inferred from the revision.
+
+
+## Area 12 revision note
+
+F001 remains archived.
+
+F002 was generated after technical art review found F001 too bare for the final settlement-to-wilderness threshold.
+
+Current creator-review target:
+`AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F002_LOCKED.png`
+
+No creator approval is inferred from the revision.
+
+
+## Technical-art revision pass complete
+
+Current creator-review targets now use F002 for **12 / 12 areas**.
+
+Technical art disposition:
+- F001 references remain archived for provenance;
+- F002 is preferred for creator review across all twelve areas;
+- all F002 revisions preserve their spatial-lock constraints;
+- no creator approval is inferred;
+- runtime implementation remains separate.
+
+Next gate:
+creator reviews the twelve F002 references one area at a time.
