@@ -1,3 +1,7 @@
+> **SUPERSEDED DUPLICATE PLAN — 2026-09-26**
+>
+> This earlier Area 03 planning draft is retained for provenance only. Current Area 03 authority is `AREA_03_CARAVAN_VISITOR_STAGING.md`, which contains the accepted R001 reference, asset-review/model-sheet links, and F001 position-locked reference. Do not use this duplicate file as current status or naming authority.
+
 # Area 03 — Caravan Yard / Visitor Staging
 
 Status: PLAN_READY / REFERENCE GENERATION NEXT  
