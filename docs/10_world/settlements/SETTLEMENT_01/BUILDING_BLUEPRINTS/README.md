@@ -27,6 +27,18 @@ The enterable smith remains the strongest runtime example for:
 - stable entrance/use anchors;
 - first-person roof handling.
 
+## Visual reference specifications
+
+`VISUAL_REFERENCE_SHEETS/`
+
+Current ready-for-generation specs:
+
+- Community Hall / Local Lodge
+- Residence Type A
+- South Gatehouse / Arrival Complex
+
+These sheets convert the geometric building blueprints into controlled art-reference requirements without allowing generated imagery to redefine dimensions, collision, anchors or gameplay ownership.
+
 ## Common building contract
 
 Every important building blueprint must define:
