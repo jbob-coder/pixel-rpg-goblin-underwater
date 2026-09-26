@@ -37,7 +37,7 @@ func _run() -> void:
 	var layout_validation: Dictionary = LAYOUT.validate_contract()
 	_check("G00 layout contract remains valid", bool(layout_validation.get("success", false)), str(layout_validation.get("errors", [])))
 
-	var area_defs: Dictionary = LAYOUT.get_area_definitions()
+	var area_defs: Dictionary = LAYOUT.get_area_specs()
 	var a08: Dictionary = area_defs.get("SET01_A08_EAST_WORK_FRONTAGE", {}) as Dictionary
 	_check("A08 remains S04-owned", String(a08.get("parent_section_id", "")) == "SET01_S04")
 	_check("A08 retains one declared bounds part", (a08.get("bounds_parts", []) as Array).size() == 1)
