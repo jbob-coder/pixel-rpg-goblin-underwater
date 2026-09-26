@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG SPATIAL STATUS — 2026-09-25**
+>
+> The original “NO GRAYBOX RUNTIME IMPLEMENTATION” and downstream-validator status below are historical. Region-01 graybox/runtime/static validation was implemented and tested after this file's original checkpoint.
+>
+> More importantly, the old first-slice coordinate framework is **not current compact-world transform authority**. Current first-person compact-world positions/collision come from live `game/scripts/presentation/pixel_rpg/world_*_001.gd` source and tests. Retain this package for measurement vocabulary, legacy Region-01 provenance, and spatial-design principles; do not transplant its absolute coordinates into current-world persistence or combat without an explicit adapter.
+
 # 10_world/spatial — Coordinate and Dimension Authority
 
 Status: ACTIVE FIRST-SLICE SPATIAL DESIGN PACKAGE / MAJOR COORDINATES + HUNT-01 BUILD APPLICATION RECORDED / NO GRAYBOX RUNTIME IMPLEMENTATION

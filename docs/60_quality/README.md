@@ -1,74 +1,97 @@
 # 60_quality — Verification, Performance, Debug and Creator Quality
 
-Status: ACTIVE QUALITY PACKAGE / HUNT-01 MANIFEST STATIC VERIFIED / PHONE RETEST ACTIVE
-Last reconciled: 2026-09-04
+Status: ACTIVE QUALITY MAP / CURRENT CANONICAL CI + HISTORICAL HUNT-01/STAGE-1 EVIDENCE  
+Last reconciled: 2026-09-25
 
 ## Purpose
 
-Own executable validation, test fixtures, regression evidence, performance budgets/device ledgers and bounded debug/creator quality requirements.
+Own quality/verification protocols, evidence vocabulary, performance/testing guidance, and historical QA references.
 
-## Hunt-01 manifest static validation
-
-Owner contract:
-`../10_world/regions/REGION_01/FIRST_SLICE_HUNT01_GRAYBOX_VALIDATION_SPECIFICATION.md`.
-
-Executable package:
-`../../tests/quality/hunt01/`.
+## Current canonical automated verification
 
 Workflow:
-`.github/workflows/hunt01-graybox-manifest-static.yml`.
 
-Workflow run:
-`33830978945` SUCCESS.
+`.github/workflows/pixel-rpg-ci.yml`
 
-Result:
-- 13/13 MANIFEST_STATIC rules PASS;
-- 0 errors;
-- 0 warnings;
-- invalid fixture/mutation correctly rejected with 5 errors;
-- observation ramp measured 6.607 m;
-- segment grades 15.2% / 15.38%.
+Current automated layers include:
 
-`HUNT01_GRAYBOX_MANIFEST_STATIC_VALIDATOR_IMPLEMENTED = YES`
-`HUNT01_GRAYBOX_MANIFEST_STATIC_VERIFIED = YES / 13_OF_13`.
+- Python static/preflight tests;
+- Godot import/parse;
+- AppShell smoke;
+- all discovered `game/tests/*_test.gd`;
+- Android debug export;
+- APK integrity;
+- SHA-256;
+- byte-size recording;
+- evidence/artifact upload.
 
-Higher levels remain:
-`SCENE_STATIC_FUTURE = NOT_EXECUTED`
-`RUNTIME_FUTURE = NOT_EXECUTED`
-`PHONE_FUTURE = NOT_EXECUTED`.
+## Current test locations
 
-## Stage-1 control/camera QA
+Godot runtime/regression:
 
-User phone feedback generated one repair pass.
+`game/tests/`
 
-Repair commit:
-`02459116216d3ac75ddd3d90c80f32bcbaa9662b`.
+Static/preflight:
 
-Dedicated headless regression:
-`.github/workflows/stage1-control-camera-feedback.yml`.
+- `tests/quality/hunt01/`;
+- `tests/quality/pixel_rpg/`;
+- `probes/android_stage1/tests/`.
 
-Run:
-`33831517381` SUCCESS.
+The current canonical GDScript discovery loop runs `game/tests/*_test.gd`.
 
-Checks include:
-- 115° first-person FOV;
-- first-person response lower than aerial at same Look Speed;
-- held off-center joystick basis remains stable;
-- same-finger neutral crossing recaptures current Hunter heading;
-- up after neutral follows recaptured heading;
-- reset clears touch state.
+Do not assume `ci/stage1/*.gd` is a current canonical gate unless current invocation is proven.
 
-Full Android build run:
-`33831517331` SUCCESS.
+## Historical QA evidence
 
-Phone acceptance remains required for the corrected feel.
+This package may reference older:
 
-## Verification law
+- Hunt-01 manifest/static verification;
+- Stage-1 control/camera tests;
+- Galaxy A03s probe evidence;
+- older workflow IDs.
 
-- static PASS is not scene PASS;
-- headless PASS is not phone PASS;
-- compile/APK PASS is not performance PASS;
-- direct user/device evidence may verify the exact behavior observed, but must not be generalized beyond it.
+Those results remain valid only for the exact revisions/device evidence they identified.
 
-Exact current quality action:
-`STAGE1_FINAL_GALAXY_A03S_CONTROL_CAMERA_RETEST`.
+They are not the current project baseline.
+
+## Evidence law
+
+Keep separate:
+
+- DESIGNED;
+- IMPLEMENTED;
+- STATIC_VERIFIED;
+- HEADLESS_VERIFIED;
+- ANDROID_BUILD_VERIFIED;
+- PHONE_RUNTIME_VERIFIED;
+- VISUAL_QUALITY_VERIFIED;
+- PERFORMANCE_VERIFIED.
+
+A passing Android build does not prove:
+
+- touch feel;
+- safe areas;
+- first-person composition;
+- no black screen on the target phone;
+- sustained FPS;
+- heat;
+- lifecycle behavior;
+- installed footprint.
+
+## Current runtime reference
+
+Audited implementation baseline from the repository scan:
+
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`
+
+Canonical run:
+
+`36082533109` — SUCCESS.
+
+This remains automated/build evidence only.
+
+## Quality ownership
+
+Quality documentation may define acceptance protocols.
+
+Actual verification status comes from current logs/workflows/device evidence.

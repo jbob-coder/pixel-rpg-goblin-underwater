@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG ENCOUNTER STATUS — 2026-09-25**
+>
+> This package remains valid Region-01 encounter-trigger runtime provenance. The phrase `existing aerial/first-person production camera path` below refers to an older presentation checkpoint and is not current camera authority.
+>
+> Current Pixel RPG presentation is first-person. Region-01 encounter staging remains a tested legacy integration path; current compact-world encounter/combat work must adapt physical current-world state without restoring aerial/third-person camera ownership or legacy coordinate authority.
+
 # Hunt-01 Encounter Trigger Runtime
 
 Purpose: bridge completed Region-01 tracking into the first same-location tactical encounter without implementing attack resolution.

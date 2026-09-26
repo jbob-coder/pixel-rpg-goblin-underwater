@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG MONSTER-01 STATUS — 2026-09-25**
+>
+> This file contains valuable Mudcrest design/content authority, but several runtime-status statements below are historical. Current source has progressed beyond anatomy-only runtime: Mudcrest Head Sweep and Tail Sweep attack runtime descendants, wound/contact classification, generic status integration, tracking/encounter continuity, current-world targeting, and Combat Bridge bootstrap are implemented/tested.
+>
+> Still incomplete: structural crack/break/sever thresholds, actual detachment, broad final move set, full current-world attack integration, Berserk runtime, complete defeat/escape/reacquisition behavior, harvest/inventory/crafting integration, and final balance.
+>
+> Use `game/scripts/gameplay/monsters/monster_01/`, current combat/status owners, current tests, and the relationship map for exact implementation status. Preserve stable species/content IDs and the finite-harvest/anatomy design rules below unless a current owner explicitly changes them.
+
 # MONSTER_01 — Mudcrest Raker
 
 Status: SELECTED FIRST-MONSTER PROTOTYPE DESIGN / ANATOMY-INTEGRITY RUNTIME BUILD VERIFIED / ATTACK + BERSERK + HARVEST PACKETS RECORDED / DISPLAY NAME PROVISIONAL

@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG STATUS NOTE — 2026-09-25**
+>
+> This planning contract predates implemented Godot production source and is historical. Statements such as “no source implemented” and “engine selection remains open” are superseded.
+>
+> Preserve its reusable engineering laws: gameplay truth in domain owners, presentation requests/renders rather than mutates, save migration discipline, and bounded performance/test ownership. Current code layout and implementation status must be read from live `game/`, tests, and the repository map.
+
 # Unnamed Hunt RPG — Development Reference
 
 Status: PLANNING CONTRACT / NO SOURCE IMPLEMENTED

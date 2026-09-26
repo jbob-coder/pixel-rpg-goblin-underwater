@@ -1,0 +1,234 @@
+# Area 12 — North Watch Gate & Trail Exit
+
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Parent section: `SET01_S05`  
+Area ID: `SET01_A12_NORTH_WATCH_GATE_TRAIL_EXIT`
+
+## Purpose
+
+Area 12 is the final settlement threshold before the external hunt route.
+
+Functions:
+- guarded north exit;
+- warning threshold;
+- trail connection;
+- watch presence;
+- final settlement-to-wilderness transition.
+
+## Gate geometry
+
+Planning target:
+- 8 m clear opening;
+- center on settlement north axis;
+- route continues directly into external trail.
+
+## Composition
+
+Standalone pixel-art gate/exit scene only.
+
+Show:
+- rugged north gate;
+- modest watch structure;
+- wall/fence transition;
+- warning sign/banner;
+- lanterns;
+- narrow trail extending into trees/rocks;
+- one supply cache element;
+- sparse guards/hunters.
+
+Do not show:
+- civilian carts/arrival identity;
+- huge fortress;
+- entire settlement;
+- market/civic props.
+
+## Visual identity
+
+Area 12 should feel:
+- more rugged than Area 01;
+- more dangerous;
+- more weathered;
+- less ceremonial;
+- clearly connected to wilderness.
+
+## Trail transition
+
+Beyond gate:
+- road narrows;
+- settlement props reduce quickly;
+- trees/rocks/vegetation increase;
+- trail remains readable.
+
+## NPC density
+
+Reference:
+- 2–5 figures maximum.
+
+## Anchors
+
+Planned:
+- `A12_NorthGateCenterAnchor`
+- `A12_WardenAnchor`
+- `A12_WatchAnchor`
+- `A12_WarningAnchor`
+- `A12_TrailConnectorAnchor`
+- `A12_ReturnAnchor`
+- `A12_Connector_A11`
+
+## Collision
+
+- gate opening remains physically clear;
+- wall/gate side modules own collision;
+- watch building follows building blueprint;
+- trail floor remains continuous.
+
+## Image brief
+
+Generate only Area 12.
+
+Desired view:
+- high 3/4 deliberate pixel art;
+- rugged 8 m gate opening;
+- trail visible beyond;
+- watch/support structure;
+- strong settlement→wilderness transition;
+- no full map/infographic.
+
+## Acceptance checklist
+
+Approve only if:
+- exit direction obvious;
+- trail readable beyond gate;
+- gate feels distinct from South Gate;
+- not fortress-scale;
+- opening visually clear;
+- genuine pixel art.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A12_NORTH_WATCH_GATE_TRAIL_EXIT_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_R001.png`
+- dimensions: 1152×768
+- bytes: 9,048
+- SHA-256: `72d1d8f941886a21809e8e148f3212b38593d010a34fe0eba4768de9758291f0`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_R001.png`
+- Library file ID: `libfile_5ccb9754dd288191ab6e1084513dab9b`
+- backing file ID: `file_00000000201481f6a656aa53c22ef1e5`
+
+Disposition:
+- accepted as current Area 12 pixel-art reference;
+- 8 m gate opening, trail connector and collision remain blueprint authority.
+
+
+## Technical asset review / model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_12/`
+
+Final-reference placement authority:
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+Current state:
+- R001 concept reference preserved;
+- technical asset review complete;
+- primary model-sheet contracts ready;
+- final position-locked reference still requires regeneration;
+- runtime implementation not started;
+- device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A12_F001`
+
+Artifact:
+- filename: `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F001_LOCKED.png`
+- dimensions: 1524×396
+- bytes: 6,708
+- SHA-256: `ab54e9407e556418e4234f1ea0593ca40f0ee16c71c1651f15c390055a5534cd`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F001_LOCKED.png`
+- Library file ID: `libfile_fcb3ef306ffc8191a82587516f55b698`
+- backing file ID: `file_00000000d23481f6a7cf1ccec5eb623a`
+
+Spatial validation:
+- north = image top;
+- frame uses X -30..+30 / Z -36..-23;
+- Hunter Watch remains fixed at center -19,-27;
+- Supply Cache remains fixed at center +19,-27;
+- North Gate remains centered at X 0 / Z -35;
+- 8 m gate opening remains clear;
+- Area 11 return route remains south/bottom;
+- trail continues north/top;
+- settlement props reduce while vegetation/rock cues increase north of the gate.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too bare for the final settlement-to-wilderness threshold.
+
+Reference ID:
+`FINAL_REF_SET01_A12_F002`
+
+Artifact:
+- filename: `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F002_LOCKED.png`
+- dimensions: 1280×460
+- bytes: 7,393
+- SHA-256: `36fae596fce289f79bab5e4d354250274cf8b2d0d1429adba9da7153285aeeb2`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_F002_LOCKED.png`
+- Library file ID: `libfile_6ef94a9865708191a47e95f95d367b79`
+- backing file ID: `file_0000000057cc81f696ababfb86b96eca`
+
+F002 preserves:
+- north-up orientation;
+- frame X -30..+30 / Z -36..-23;
+- Hunter Watch fixed at -19,-27;
+- Supply Cache fixed at +19,-27;
+- North Gate fixed at X 0 / Z -35;
+- 8 m central gate opening remains clear;
+- Area 11 return route remains open south/bottom;
+- trail continues north/top;
+- vegetation/rock density increases beyond the gate.
+
+F002 improves:
+- north-gate threshold identity;
+- watch/supply silhouette;
+- warning banners/signage;
+- settlement-wall transition;
+- trail/wilderness readability;
+- lantern and sparse hunter/support presence;
+- pixel-art depth without fortress-scale drift.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.

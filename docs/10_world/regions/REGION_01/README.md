@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG REGION-01 STATUS — 2026-09-25**
+>
+> This file preserves exact Region-01/Hunt-01 production evidence from the 2026-09-04 checkpoint. Its recorded SHAs, workflow IDs, dimensions, phone-retest wording, and “exact next package work” remain historical evidence for that checkpoint.
+>
+> Region 01 is still real/tested code and useful deterministic-domain/integration provenance, but it is **not the current application boot scene or current compact-world spatial authority**. Current production boot is the first-person Pixel RPG prototype. Current runtime status includes tracking evidence, encounter triggering, deterministic combat/anatomy/status descendants beyond several “next work” statements below.
+>
+> Use live `game/` source/tests and the current repository relationship map before promoting any Region-01 coordinate or next-action statement into current work.
+
 # REGION_01 — First Hunting Region
 
 Status: PRODUCTION HUNT-01 GRAYBOX IMPLEMENTED / STATIC + HEADLESS + ANDROID BUILD VERIFIED / PHONE RETEST REQUIRED

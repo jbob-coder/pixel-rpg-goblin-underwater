@@ -1,118 +1,121 @@
 # 00_project — Project Governance
 
-Status: ACTIVE GOVERNANCE PACKAGE / STAGE 1 PROBE AUTHORIZED / PRODUCTION DOMAIN IMPLEMENTATION PHONE-GATED
-Last reconciled: 2026-09-03
+Status: ACTIVE GOVERNANCE PACKAGE / MIGRATION-RECONCILED  
+Last reconciled: 2026-09-25
+
+Production repository: `jbob-coder/pixel-rpg-goblin-underwater`  
+Production branch: `main`  
+Documentation reconciliation branch: `documentation`
 
 ## Purpose
 
-Own package-oriented project governance: authority/read order, readiness classification, project-wide status snapshots and change discipline.
+This package owns project-level governance and navigation:
 
-Belongs here:
-- authority/read-order guides;
-- project scope and identity;
-- design quality/readiness gates;
-- decision classification;
-- global dependency/ownership maps;
-- project-wide change protocol;
-- dated project status reports clearly marked as snapshots.
+- current authority/read order;
+- repository/location maps;
+- project scope/identity;
+- readiness/evidence classification;
+- dependency/ownership maps;
+- dated status snapshots;
+- documentation reconciliation records;
+- global change discipline.
 
-Does **not** belong here:
-- one Region's terrain layout;
-- one Monster's anatomy;
-- one weapon's stats;
-- engine-specific source documentation;
-- art reference images.
+It does not own one Region's geometry, one Monster's anatomy, one combat rule, one asset's technical details, or runtime source implementation.
 
-## Mandatory pre-work operating contract
+## Current pre-work contract
 
-Root authority:
-`/EVOLVE_ALIGNMENT.md`.
+Before implementation work:
 
-**Read the current repository copy of EVOLVE before every bounded design, documentation, asset, implementation, debugging or verification pass.**
-
-Do not rely on a remembered EVOLVE state.
-
-After EVOLVE:
-1. read current handoff/startup/index;
-2. verify relevant current source/package;
-3. identify exactly one bounded piece;
-4. execute the EVOLVE loop;
-5. read back saved state before advancing.
+1. fetch live production `main`;
+2. record exact HEAD;
+3. read `START_HERE_NEW_CHAT.md`;
+4. use the repository map/master scan to locate the owner;
+5. read exact source/tests;
+6. inspect the current GitHub issue;
+7. make one bounded change;
+8. run focused + required regression gates;
+9. use exact same-SHA CI/build evidence;
+10. read back the result.
 
 ## Current package authorities
 
-Build readiness:
-`BUILD_READINESS_GATE_MATRIX.md`.
+Primary current navigation:
 
-Saved user-requested status report:
-`PROJECT_STATUS_REPORT_2026-09-03.md`.
+- `PIXEL_RPG_REPOSITORY_WHERE_IS_WHAT_MAP_2026-09-25.md`;
+- `PIXEL_RPG_REPOSITORY_SCAN_MASTER_REFERENCE_2026-09-25.md`;
+- `PIXEL_RPG_SYSTEM_RELATIONSHIP_AND_FLOW_MAP_2026-09-25.md` — runtime owner/adapter/presentation/test/build relationship map;
+- `DOCUMENTATION_BRANCH_STATUS_2026-09-25.md`.
+- `DOCUMENTATION_PRE_MERGE_AUDIT_2026-09-25.md` — pre-merge snapshot/checklist; not merge authorization.
 
-The status report is a dated review snapshot. It must not become a competing live-state owner. Exact current work belongs in EVOLVE.
+Classification/navigation:
+
+- `ROOT_DOCUMENT_CLASSIFICATION_INDEX_2026-09-25.md` — classifies root authority/design/history documents;
+- `../70_handoff/HANDOFF_CLASSIFICATION_INDEX_2026-09-25.md` — classifies every historical handoff by current relevance.
+
+Migration audit:
+
+`../00_authority/PENDING_CORROBORATION_AUDIT_2026-09-24.md`
+
+Historical project snapshots remain useful only for the exact period/revision they describe.
 
 ## Current implementation distinction
 
-Current root EVOLVE states:
-`IMPLEMENTATION_AUTHORIZED = YES`
-for Stage-1 probe/bounded development work.
+Production Godot project:
 
-Production game-domain implementation remains:
-`PRODUCTION_DOMAIN_IMPLEMENTATION = BLOCKED_BY_ENGINE_PHONE_GATE`.
+`game/`
 
-This distinction replaces older stale language that described all implementation as not authorized.
+Current boot:
 
-## Current engine/device truth
+`game/project.godot`
+→ app shell
+→ current first-person prototype.
 
-Candidate:
-Godot 4.7 family / CI 4.7.2 stable / GDScript / GL Compatibility/OpenGL3 / Galaxy A03s / stable 30 FPS representative-scene minimum.
+The old Stage-1 engine-selection/probe period is historical. Godot 4.7.2 is already the active production engine/build baseline.
 
-Automated Stage-1 lineage has passed:
-- static 154/154;
-- Monster collision 8/8;
-- boundary 12/12;
-- view continuity 17/17;
-- lifecycle 47/47;
-- performance telemetry 20/20;
-- Godot parse/smoke;
-- Android debug export/APK integrity/artifact upload.
+## Current runtime verification reference
 
-Still unresolved:
-`ENGINE_PHONE_PROBE_VERIFIED = NO`
-`PERFORMANCE_VERIFIED = NO`
-`FINAL_ENGINE_SELECTED = NO`.
+Audited runtime SHA:
 
-Phone blocker:
-`GALAXY_A03S_DEVICE_EVIDENCE_REQUIRED_FOR_STAGE1_PHONE_GATE`.
+`7e9f37071a3634dee98db1d1040ecc1c57e13d3a`
 
-## Current build-readiness direction
+Canonical workflow:
 
-Recorded design/integration now includes:
-- combat/outcome baseline;
-- Monster 01;
-- Harvest/Inventory/Craft/Smith;
-- Persistence;
-- shared world coordinates/dimensions;
-- Region 01 Hunt-01 tracking->encounter integration;
-- Hunt-01 graybox geometry specification.
+`36082533109` — SUCCESS
 
-Current next non-phone build-enabling artifact:
-`FIRST_SLICE_REGION01_HUNT01_GRAYBOX_BUILD_MANIFEST_AND_VALIDATION_SPECIFICATION`.
+This does not establish physical-device acceptance.
 
-Read EVOLVE for the exact current scope before starting it.
+## Current work register
 
-## Root authorities
+Master issue:
+- #20.
 
-Current root authorities remain authoritative according to scope, especially:
-- `/README.md`;
-- `/START_HERE_NEW_CHAT.md`;
-- `/DOCUMENTATION_INDEX.md`;
-- `/DESIGN_QUALITY_GATES_AND_DEPENDENCY_MATRIX.md`;
-- `/EVOLVE_ALIGNMENT.md`;
-- `/PROJECT_HANDOFF.md`.
+Important active tracks:
+- #1 prototype decomposition;
+- #2 geometry/collision ownership;
+- #9 player/touch/camera separation;
+- #21 documentation migration cleanup.
 
-Engine/device authority:
-`../50_technical/ENGINE_ANDROID_PROBE_DECISION.md`.
+## Historical files in this package
 
-Current isolated probe source:
-`/probes/android_stage1/`.
+The following are retained snapshots/history and are not current master authority:
 
-Do not duplicate/migrate root authorities here without a dedicated link-safe migration pass.
+- `PROJECT_STATUS_REPORT_2026-09-03.md`;
+- `PIXEL_RPG_MASTER_WORK_REGISTER_2026-09-21.md`;
+- older build-readiness records where current-language has been superseded.
+
+Do not delete useful historical evidence. Label it clearly.
+
+## Documentation branch law
+
+Use `documentation` only for documentation reconciliation.
+
+A docs-only commit does not create a new runtime verification state.
+
+Before merging documentation:
+
+1. re-fetch production `main`;
+2. compare `main...documentation`;
+3. confirm only documentation paths changed;
+4. corroborate current-state claims against live source/tests/issues;
+5. reconcile any new production commits;
+6. merge only verified documentation updates.

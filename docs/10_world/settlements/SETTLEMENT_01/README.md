@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG SETTLEMENT-01 STATUS — 2026-09-25**
+>
+> The large `X -100..+100 / Z -10..+250` blueprint and `NO GRAYBOX IMPLEMENTATION` language below are historical first-slice planning records. Current production already contains a compact first-person settlement/graybox with street, market, generic buildings, Gate Warden, gate/props, enterable smith, and north trail.
+>
+> Current approved rebuild direction is issue #4's five-section settlement. The current planning report adopts a **provisional 60 × 70 m** settlement envelope with a 7–8 m main spine, 4.5–5 m secondary streets, and 2.5–3 m service alleys. Exact runtime section bounds remain unimplemented until #3/#4 convert the plan into stable section definitions/connectors.
+>
+> Current report: `CURRENT_SETTLEMENT_ASSET_AND_BUILDOUT_REPORT_2026-09-25.md`
+
 # SETTLEMENT_01 — First Frontier Hunter Settlement
 
 Status: ACTIVE FIRST-SETTLEMENT PACKAGE / SMITH SERVICE + PROTOTYPE SPATIAL ANCHORS RECORDED / NO GRAYBOX IMPLEMENTATION
@@ -15,6 +23,18 @@ Shared coordinate/dimension owner:
 
 Concrete spatial registry:
 `/docs/10_world/spatial/FIRST_SLICE_SPATIAL_COORDINATE_REGISTRY.md`.
+
+## Layered settlement blueprint
+
+Master blueprint:
+
+`SETTLEMENT_01_MASTER_LAYERED_BLUEPRINT_2026-09-25.md`
+
+Layer package:
+
+`BLUEPRINT_LAYERS/`
+
+The package defines the provisional 60×70 m settlement in 13 layers: coordinates, sections, streets, parcels, interiors, props/corners, NPC/services, collision/navigation, streaming ownership, minimap/wayfinding, art/photo asset queue, performance/LOD, and migration sequencing.
 
 ## Current first-slice service authority
 
@@ -74,3 +94,15 @@ Settlement 01 owns local service/route application. Shared spatial coordinates/d
 `SETTLEMENT_01_SPATIAL_TARGETS_RECORDED = YES`
 `SETTLEMENT_01_GRAYBOX_IMPLEMENTED = NO`
 `SETTLEMENT_01_RUNTIME_VERIFIED = NO`.
+
+## Runtime graybox implementation plan
+
+`SETTLEMENT_01_RUNTIME_GRAYBOX_IMPLEMENTATION_PLAN_2026-09-26.md`
+
+This converts the locked 12-area settlement into bounded runtime passes G00–G17 while preserving:
+- first-person authority;
+- current Smith functionality;
+- explicit collision ownership;
+- stable section/area/building IDs;
+- one-pass-at-a-time migration;
+- separate Android/device acceptance.

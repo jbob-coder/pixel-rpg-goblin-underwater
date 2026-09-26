@@ -1,3 +1,11 @@
+> **CURRENT PIXEL RPG ASSET STATUS — 2026-09-25**
+>
+> This file describes the 2026-09-04 stylized primitive-kit checkpoint. Its `grounded stylized / illustrated realism`, `non-pixel presentation`, Drive-lane state, and “final 3D exports unavailable” language are historical and do **not** override current Pixel RPG presentation.
+>
+> Current presentation authority is first-person pixel-styled real 3D. Current runtime assets now include canonical first-person hands, Pack 010 concept-derived materials, Pack 011 direct concept-photo PNGs, expanded starting-area assets, Gate Warden/Mudcrest presentation, and enterable-smith details.
+>
+> The useful boundary below remains valid: telegraph/art scenes are presentation-only unless a separate gameplay/collision owner explicitly says otherwise.
+
 # Production Stylized Asset Kit
 
 Status: FIRST IMPLEMENTED VISUAL KIT / PRIMITIVE-MESH PRODUCTION PLACEHOLDERS / FIRST COMBAT TELEGRAPH ASSET ADDED

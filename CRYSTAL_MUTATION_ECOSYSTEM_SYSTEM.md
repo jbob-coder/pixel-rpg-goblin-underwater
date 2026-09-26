@@ -1,3 +1,9 @@
+> **CURRENT PIXEL RPG CRYSTAL/MUTATION NOTE — 2026-09-25**
+>
+> This file is design/world-system provenance, not evidence of a fully implemented current crystal-life-force, mutation, elemental, or ecosystem simulation runtime. Its concepts may remain intended world/gameplay direction where not superseded, but implementation must be proven from current source/tests/issues before being claimed.
+>
+> Preserve the useful separation between intrinsic crystal identity, mutable runtime reserve/condition, deterministic desperation behavior, and bounded mutation rules if/when those systems are implemented.
+
 # Unnamed Hunt RPG — Crystal Life-Force, Mutation and Ecosystem System
 
 Status: CORE DESIGN DECISION + EXPANSION PLAN / NO IMPLEMENTATION
