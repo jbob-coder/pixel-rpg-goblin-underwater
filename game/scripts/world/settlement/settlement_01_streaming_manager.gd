@@ -132,9 +132,14 @@ func set_current_section(section_id: String, probable_next_section_id := "") -> 
 	return _state_result(true)
 
 func get_desired_loaded_section_ids(
-	current_section_id := _current_section_id,
-	probable_next_section_id := _probable_next_section_id
+	current_section_id := "",
+	probable_next_section_id := "__USE_CURRENT__"
 ) -> Array[String]:
+	if current_section_id.is_empty():
+		current_section_id = _current_section_id
+	if probable_next_section_id == "__USE_CURRENT__":
+		probable_next_section_id = _probable_next_section_id
+
 	var result: Array[String] = []
 	if not _configured or not _instances.has(current_section_id):
 		return result
