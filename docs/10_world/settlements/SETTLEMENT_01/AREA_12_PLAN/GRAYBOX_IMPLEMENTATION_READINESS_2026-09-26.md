@@ -165,3 +165,26 @@ Current status remains:
 
 not:
 `SETTLEMENT RUNTIME IMPLEMENTED`.
+
+
+## F002 visual-reference clarification
+
+The F001 set remains sufficient as spatial-lock evidence and provenance.
+
+A later technical-art pass produced **F002 current creator-review targets for all 12 areas**.
+
+This does not change graybox geometry readiness because graybox authority comes from:
+- the master 60×70 m blueprint;
+- section/area coordinate locks;
+- fixed building parcels;
+- connector records;
+- collision/navigation contracts;
+- model-sheet dimensions.
+
+Current visual state:
+- F002 creator-review targets: **12 / 12**
+- creator-final approvals: **0 / 12**
+- graybox geometry readiness: unchanged / ready for bounded implementation-prep slices
+- final art promotion: still blocked on creator review
+
+Do not delay primitive graybox/data-schema work merely because final facade/prop art remains pending.
