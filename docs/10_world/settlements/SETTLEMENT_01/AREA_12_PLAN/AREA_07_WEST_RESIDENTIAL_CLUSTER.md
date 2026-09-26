@@ -1,6 +1,6 @@
 # Area 07 — West Residential Cluster
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S03`  
 Area ID: `SET01_A07_WEST_RESIDENTIAL_CLUSTER`
 
@@ -157,3 +157,38 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A07_F001`
+
+Artifact:
+- filename: `AREA_07_WEST_RESIDENTIAL_CLUSTER_F001_LOCKED.png`
+- dimensions: 660×1092
+- bytes: 7,385
+- SHA-256: `6aa89680506dd155375b3a60037da16162864550af0cd1923495dc8f79b4583d`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_07_WEST_RESIDENTIAL_CLUSTER_F001_LOCKED.png`
+- Library file ID: `libfile_86d731ea32fc8191b399bc2ee082d36c`
+- backing file ID: `file_000000008cac81f682cafebc716e8225`
+
+Spatial validation:
+- north = image top;
+- full relation frame uses X -30..-14 / Z -14..+14;
+- W02 remains at center -24.5,-10;
+- Community Hall remains at center -24.5,0 between the residences;
+- W01 remains at center -24.5,+10;
+- all three east-facing approaches connect toward the fixed West Frontage Lane;
+- no residential building was moved into the Hall parcel or road lane.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
