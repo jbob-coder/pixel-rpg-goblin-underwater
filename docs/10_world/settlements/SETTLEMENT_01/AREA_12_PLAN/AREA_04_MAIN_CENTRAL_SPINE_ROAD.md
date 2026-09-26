@@ -1,6 +1,6 @@
 # Area 04 — Main Central Spine Road
 
-Status: REFERENCE_GENERATED / REVIEW PENDING  
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
 Parent relationship: shared connector infrastructure  
 Area ID: `SET01_A04_MAIN_CENTRAL_SPINE`
 
@@ -160,3 +160,23 @@ Persisted Library archive:
 Disposition:
 - accepted as current Area 04 pixel-art reference;
 - road widths and connector geometry remain blueprint authority.
+
+
+## Technical asset review / model sheets
+
+Technical asset review:
+`../AREA_ASSET_REVIEWS/AREA_04_MAIN_CENTRAL_SPINE_ROAD_ASSET_REVIEW.md`
+
+Model-sheet package:
+`../MODEL_SHEETS/AREA_04/`
+
+Final-reference placement authority:
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+Current state:
+- R001 concept reference preserved;
+- technical asset review complete;
+- primary model-sheet contracts ready;
+- final position-locked reference still requires regeneration;
+- runtime implementation not started;
+- device visual verification not started.
