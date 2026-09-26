@@ -1,6 +1,6 @@
 # Area 04 — Main Central Spine Road
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent relationship: shared connector infrastructure  
 Area ID: `SET01_A04_MAIN_CENTRAL_SPINE`
 
@@ -139,3 +139,24 @@ Approve only if:
 - image is not mistaken for a plaza;
 - no excessive prop density;
 - deliberate pixel-art style.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A04_MAIN_CENTRAL_SPINE_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_04_MAIN_CENTRAL_SPINE_ROAD_R001.png`
+- dimensions: 1152×768
+- bytes: 9,688
+- SHA-256: `0be02d5640aac5293738bcc4db2b8f09d795e31b699e8367fdb8942564967442`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_04_MAIN_CENTRAL_SPINE_ROAD_R001.png`
+- Library file ID: `libfile_19a66f2318a48191a67d3585c113a31d`
+- backing file ID: `file_000000004e2881f6b32937f0d4bc8c8e`
+
+Disposition:
+- accepted as current Area 04 pixel-art reference;
+- road widths and connector geometry remain blueprint authority.
