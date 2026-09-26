@@ -1,3 +1,10 @@
+## Current control documents
+
+- `FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md` — locked orientation, parcels, roads and final-reference placement authority.
+- `AREA_REFERENCE_REGISTER_2026-09-25.md` — canonical 12-area reference/provenance register.
+- `CREATOR_VISUAL_REVIEW_QUEUE_2026-09-26.md` — one-area-at-a-time creator art approval gate.
+- `GRAYBOX_IMPLEMENTATION_READINESS_2026-09-26.md` — what engineering may implement before final art approval and what remains blocked.
+
 # Settlement 01 — 12-Area Master Plan
 
 Status: PROVISIONAL SUB-AREA PLAN / DOCUMENTATION AUTHORITY  
