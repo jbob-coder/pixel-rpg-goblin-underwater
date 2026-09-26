@@ -102,7 +102,7 @@ func _run() -> void:
 	_check("SectionInstance starts unloaded", not instance.is_loaded())
 	instance.set_loaded(true)
 	_check("SectionInstance can represent lifecycle state without world mutation", instance.is_loaded())
-	_check("SectionInstance is data-only RefCounted, not a scene Node", not (instance is Node))
+	_check("SectionInstance is data-only RefCounted with no scene-tree parent API", instance is RefCounted and not instance.has_method("get_parent"))
 
 	var invalid := SECTION_INSTANCE.new()
 	var invalid_result: Dictionary = invalid.configure({})
