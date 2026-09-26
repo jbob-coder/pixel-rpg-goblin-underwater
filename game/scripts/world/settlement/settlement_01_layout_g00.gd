@@ -417,25 +417,27 @@ static func validate_contract() -> Dictionary:
 		var ownership := String(area.get("ownership", ""))
 		var parent_section_id := String(area.get("parent_section_id", ""))
 		if ownership == OWNERSHIP_SECTION_SUBAREA:
-			if not SECTION_SPECS.has(parent_section_id):
+			if parent_section_id.is_empty():
+				errors.append("section-owned area has empty parent: %s" % area_id)
+			elif not SECTION_SPECS.has(parent_section_id):
 				errors.append("area references unknown parent section: %s -> %s" % [area_id, parent_section_id])
-		elif parent_section_id.is_empty():
-			errors.append("section-owned area has empty parent: %s" % area_id)
-		elif area.has("traversed_section_ids"):
-			errors.append("section-owned area declares shared traversal: %s" % area_id)
-		elif area.get("placement_bounds", []).is_empty():
-			errors.append("area has no placement bounds: %s" % area_id)
-		else:
-			var parent_bounds := (SECTION_SPECS[parent_section_id] as Dictionary).get("bounds", {}) as Dictionary
-			for bounds_variant in area.get("placement_bounds", []):
-				var bounds := bounds_variant as Dictionary
-				if not _bounds_valid(bounds):
-					errors.append("area has invalid placement bounds: %s" % area_id)
-				elif not _bounds_inside(bounds, parent_bounds):
-					errors.append("area placement escapes parent section: %s" % area_id)
+			elif area.has("traversed_section_ids"):
+				errors.append("section-owned area declares shared traversal: %s" % area_id)
+			elif area.get("placement_bounds", []).is_empty():
+				errors.append("area has no placement bounds: %s" % area_id)
+			else:
+				var parent_bounds := (SECTION_SPECS[parent_section_id] as Dictionary).get("bounds", {}) as Dictionary
+				for bounds_variant in area.get("placement_bounds", []):
+					var bounds := bounds_variant as Dictionary
+					if not _bounds_valid(bounds):
+						errors.append("area has invalid placement bounds: %s" % area_id)
+					elif not _bounds_inside(bounds, parent_bounds):
+						errors.append("area placement escapes parent section: %s" % area_id)
 		elif ownership == OWNERSHIP_SHARED_INFRASTRUCTURE:
 			if not parent_section_id.is_empty():
 				errors.append("shared area must not claim one parent section: %s" % area_id)
+			if area.get("placement_bounds", []).is_empty():
+				errors.append("shared area has no placement bounds: %s" % area_id)
 			for traversed_variant in area.get("traversed_section_ids", []):
 				var traversed_id := String(traversed_variant)
 				if not SECTION_SPECS.has(traversed_id):
