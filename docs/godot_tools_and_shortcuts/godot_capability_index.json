@@ -1,0 +1,569 @@
+{
+  "schema": "pixel_rpg.godot_capability_index.v1",
+  "researched_at": "2026-09-26",
+  "repository": "jbob-coder/pixel-rpg-goblin-underwater",
+  "branch": "godot-tools-and-shortcuts",
+  "baseline_commit": "3eb07c3905e803e7ea7ab0eef9486c6a59c9be7b",
+  "engine": {
+    "project_feature": "4.7",
+    "ci_version": "4.7.2",
+    "language": "GDScript",
+    "rendering_method": "gl_compatibility",
+    "viewport_design_size": [
+      1600,
+      720
+    ],
+    "android_frame_pacing": true
+  },
+  "evidence_labels": {
+    "CONFIRMED_PROJECT_USE": "Present in inspected Pixel RPG code or project configuration.",
+    "CONFIRMED_PROJECT_TOOLING": "Present in inspected CI, export, or development configuration.",
+    "GODOT_4_7_AVAILABLE": "Available in the official Godot 4.7 documentation, not necessarily implemented by Pixel RPG.",
+    "PROPOSED_PATTERN": "A future design option; not implemented merely because it is catalogued.",
+    "UNKNOWN": "Not verified yet."
+  },
+  "authority_order": [
+    "current target branch files and commit",
+    "game/project.godot",
+    "game/export_presets.cfg",
+    "current scenes and scripts",
+    "current tests",
+    "current CI workflow",
+    "docs/godot_tools_and_shortcuts",
+    "official Godot 4.7 documentation"
+  ],
+  "capabilities": [
+    {
+      "id": "gdscript",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "Object",
+        "RefCounted",
+        "Node",
+        "Resource"
+      ],
+      "key_features": [
+        "typed GDScript",
+        "class_name",
+        "preload",
+        "@onready",
+        "signals",
+        "groups",
+        "await",
+        "deferred calls",
+        "tool scripts",
+        "RPC annotations"
+      ],
+      "project_examples": [
+        "game/scripts/presentation/pixel_rpg/first_person_camera_math_001.gd",
+        "game/scripts/presentation/pixel_rpg/player_motor_001.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/scripting/index.html"
+      ]
+    },
+    {
+      "id": "scenes_and_nodes",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "Node",
+        "SceneTree",
+        "PackedScene",
+        "Node3D"
+      ],
+      "key_features": [
+        "scene instancing",
+        "scene switching",
+        "runtime node construction",
+        "lifecycle callbacks",
+        "groups"
+      ],
+      "project_examples": [
+        "game/scenes/app_shell.tscn",
+        "game/scripts/app_shell.gd",
+        "game/scenes/prototypes/pixel_rpg_prototype_001.tscn"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/getting_started/step_by_step/nodes_and_scenes.html"
+      ]
+    },
+    {
+      "id": "resources_and_loading",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "Resource",
+        "PackedScene",
+        "ResourceLoader",
+        "ResourceSaver"
+      ],
+      "key_features": [
+        "preload",
+        "runtime load",
+        "threaded background loading",
+        "resource saving",
+        "custom Resources"
+      ],
+      "project_examples": [
+        "game/scripts/app_shell.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/scripting/resources.html",
+        "https://docs.godotengine.org/en/4.7/tutorials/io/background_loading.html"
+      ]
+    },
+    {
+      "id": "input_and_touch",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "Input",
+        "InputMap",
+        "InputEventScreenTouch",
+        "InputEventScreenDrag",
+        "InputEventMouseMotion"
+      ],
+      "key_features": [
+        "multi-touch ownership",
+        "mouse look",
+        "keyboard fallback",
+        "action mapping",
+        "handled input"
+      ],
+      "project_examples": [
+        "game/scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd",
+        "game/scripts/presentation/pixel_rpg/touch_input_state_001.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/inputs/input_examples.html"
+      ]
+    },
+    {
+      "id": "first_person_camera",
+      "status": [
+        "CONFIRMED_PROJECT_USE"
+      ],
+      "key_classes": [
+        "Camera3D",
+        "Node3D",
+        "Basis"
+      ],
+      "key_features": [
+        "yaw/pitch pivots",
+        "pitch clamp",
+        "camera-relative movement",
+        "direct first-person camera"
+      ],
+      "project_examples": [
+        "game/scripts/presentation/pixel_rpg/first_person_camera_state_001.gd",
+        "game/scripts/presentation/pixel_rpg/first_person_camera_math_001.gd",
+        "game/tests/pixel_rpg_first_person_realignment_runtime_test.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/classes/class_camera3d.html"
+      ]
+    },
+    {
+      "id": "physics_3d",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "CharacterBody3D",
+        "StaticBody3D",
+        "RigidBody3D",
+        "AnimatableBody3D",
+        "Area3D",
+        "CollisionShape3D",
+        "RayCast3D",
+        "ShapeCast3D",
+        "PhysicsDirectSpaceState3D"
+      ],
+      "key_features": [
+        "move_and_slide",
+        "floor detection",
+        "collision layers/masks",
+        "ray queries",
+        "shape queries",
+        "trigger areas"
+      ],
+      "project_examples": [
+        "game/scripts/presentation/pixel_rpg/player_motor_001.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/classes/class_characterbody3d.html",
+        "https://docs.godotengine.org/en/4.7/tutorials/physics/ray-casting.html"
+      ]
+    },
+    {
+      "id": "rendering",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "MeshInstance3D",
+        "StandardMaterial3D",
+        "ShaderMaterial",
+        "RenderingServer",
+        "SubViewport"
+      ],
+      "key_features": [
+        "GL Compatibility",
+        "materials",
+        "spatial shaders",
+        "runtime geometry",
+        "render-to-texture"
+      ],
+      "project_examples": [
+        "game/project.godot",
+        "game/scenes/prototypes/pixel_rpg_prototype_001.tscn"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/engine_details/architecture/internal_rendering_architecture.html",
+        "https://docs.godotengine.org/en/4.7/tutorials/shaders/shader_reference/spatial_shader.html"
+      ]
+    },
+    {
+      "id": "performance_and_world_scale",
+      "status": [
+        "GODOT_4_7_AVAILABLE",
+        "PROPOSED_PATTERN"
+      ],
+      "key_classes": [
+        "MultiMesh",
+        "MultiMeshInstance3D",
+        "GeometryInstance3D",
+        "OccluderInstance3D",
+        "Performance",
+        "RenderingServer"
+      ],
+      "key_features": [
+        "MultiMesh",
+        "visibility ranges",
+        "HLOD",
+        "occlusion culling",
+        "profiling",
+        "world chunking"
+      ],
+      "project_examples": [
+        "game/scripts/world/settlement/settlement_01_layout_contract.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/performance/using_multimesh.html",
+        "https://docs.godotengine.org/en/4.7/classes/class_performance.html"
+      ]
+    },
+    {
+      "id": "animation",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "AnimationPlayer",
+        "AnimationTree",
+        "Skeleton3D",
+        "BoneAttachment3D",
+        "Tween"
+      ],
+      "key_features": [
+        "property tracks",
+        "state machines",
+        "blend spaces",
+        "root motion",
+        "skeletal animation",
+        "procedural tweening"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/animation/index.html"
+      ]
+    },
+    {
+      "id": "navigation",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "NavigationAgent3D",
+        "NavigationRegion3D",
+        "NavigationMesh",
+        "NavigationObstacle3D",
+        "NavigationLink3D",
+        "NavigationServer3D",
+        "AStar3D"
+      ],
+      "key_features": [
+        "navmesh pathfinding",
+        "avoidance",
+        "links",
+        "runtime baking",
+        "server queries",
+        "graph pathfinding"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/navigation/index.html"
+      ]
+    },
+    {
+      "id": "ui",
+      "status": [
+        "CONFIRMED_PROJECT_USE",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "Control",
+        "Container",
+        "PanelContainer",
+        "Button",
+        "Label",
+        "HSlider",
+        "OptionButton",
+        "Theme",
+        "CanvasLayer",
+        "DisplayServer"
+      ],
+      "key_features": [
+        "anchors/offsets",
+        "containers",
+        "themes",
+        "safe areas",
+        "touch HUD"
+      ],
+      "project_examples": [
+        "game/scripts/presentation/pixel_rpg/pixel_rpg_prototype_001.gd"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/ui/index.html"
+      ]
+    },
+    {
+      "id": "audio",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "AudioStreamPlayer",
+        "AudioStreamPlayer3D",
+        "AudioServer"
+      ],
+      "key_features": [
+        "music/SFX",
+        "positional sound",
+        "audio buses",
+        "effects"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/classes/class_audioserver.html"
+      ]
+    },
+    {
+      "id": "data_io_and_save",
+      "status": [
+        "GODOT_4_7_AVAILABLE",
+        "PROPOSED_PATTERN"
+      ],
+      "key_classes": [
+        "FileAccess",
+        "DirAccess",
+        "JSON",
+        "ConfigFile",
+        "ResourceSaver"
+      ],
+      "key_features": [
+        "user:// saves",
+        "settings",
+        "JSON",
+        "schema migration",
+        "resource saves"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/io/saving_games.html"
+      ]
+    },
+    {
+      "id": "threading",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "Thread",
+        "Mutex",
+        "Semaphore",
+        "WorkerThreadPool"
+      ],
+      "key_features": [
+        "worker tasks",
+        "CPU background work",
+        "main-thread SceneTree mutation requirement",
+        "thread-safe server constraints"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/performance/thread_safe_apis.html",
+        "https://docs.godotengine.org/en/4.7/tutorials/performance/using_multiple_threads.html"
+      ]
+    },
+    {
+      "id": "networking",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "MultiplayerAPI",
+        "ENetMultiplayerPeer",
+        "HTTPRequest",
+        "HTTPClient",
+        "PacketPeerUDP",
+        "TCPServer"
+      ],
+      "key_features": [
+        "RPC",
+        "authority",
+        "ENet",
+        "HTTP",
+        "TCP",
+        "UDP",
+        "WebSocket/WebRTC availability"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/networking/high_level_multiplayer.html"
+      ]
+    },
+    {
+      "id": "command_line_and_debug",
+      "status": [
+        "CONFIRMED_PROJECT_TOOLING",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "EngineDebugger",
+        "Performance"
+      ],
+      "key_features": [
+        "headless",
+        "verbose",
+        "script",
+        "check-only",
+        "import",
+        "export-debug",
+        "export-release",
+        "debug collision/navigation",
+        "profiling",
+        "LSP",
+        "DAP",
+        "API dumps",
+        "benchmark"
+      ],
+      "project_examples": [
+        ".github/workflows/pixel-rpg-ci.yml"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/editor/command_line_tutorial.html"
+      ]
+    },
+    {
+      "id": "android_export",
+      "status": [
+        "CONFIRMED_PROJECT_TOOLING",
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "DisplayServer",
+        "OS"
+      ],
+      "key_features": [
+        "debug APK",
+        "export presets",
+        "ARMv7",
+        "ARM64",
+        "safe area",
+        "frame pacing",
+        "ETC2/ASTC"
+      ],
+      "project_examples": [
+        "game/export_presets.cfg",
+        ".github/workflows/pixel-rpg-ci.yml",
+        "game/project.godot"
+      ],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/export/exporting_for_android.html"
+      ]
+    },
+    {
+      "id": "editor_extensions",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "EditorPlugin",
+        "EditorScript",
+        "EditorInspectorPlugin",
+        "EditorNode3DGizmoPlugin",
+        "EditorImportPlugin"
+      ],
+      "key_features": [
+        "tool scripts",
+        "custom docks",
+        "inspectors",
+        "3D gizmos",
+        "importers",
+        "editor automation"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/tutorials/plugins/editor/index.html"
+      ]
+    },
+    {
+      "id": "gdextension",
+      "status": [
+        "GODOT_4_7_AVAILABLE"
+      ],
+      "key_classes": [
+        "GDExtension"
+      ],
+      "key_features": [
+        "native extensions",
+        "extension API dumps",
+        "validation",
+        "platform native integration"
+      ],
+      "project_examples": [],
+      "docs": [
+        "https://docs.godotengine.org/en/4.7/classes/class_gdextension.html",
+        "https://docs.godotengine.org/en/4.7/tutorials/editor/command_line_tutorial.html"
+      ]
+    }
+  ],
+  "documents": [
+    "README.md",
+    "PROJECT_PROFILE_AND_CODE_MAP.md",
+    "AI_AGENT_GODOT_OPERATING_RULES.md",
+    "GDSCRIPT_CODE_REFERENCE.md",
+    "SCENES_NODES_RESOURCES_SIGNALS.md",
+    "INPUT_CAMERA_PHYSICS_3D.md",
+    "RENDERING_PERFORMANCE_WORLD.md",
+    "ANIMATION_NAVIGATION_UI_AUDIO.md",
+    "DATA_IO_LOADING_THREADS_NETWORKING.md",
+    "EDITOR_DEBUG_CLI_SHORTCUTS_AUTOMATION.md",
+    "ANDROID_EXPORT_MOBILE.md",
+    "EDITOR_EXTENSIONS_GDEXTENSION.md",
+    "OFFICIAL_GODOT_4_7_REFERENCE_INDEX.md"
+  ]
+}
