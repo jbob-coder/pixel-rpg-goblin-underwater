@@ -126,9 +126,10 @@ static func ensure_joint_chain(
 				errors.append("failed to add bone: %s" % target_name)
 				continue
 			skeleton.set_bone_parent(bone_index, parent_index)
+			var rest_offset: Vector3 = offsets[joint_name]
 			skeleton.set_bone_rest(
 				bone_index,
-				Transform3D(Basis.IDENTITY, offsets[joint_name] as Vector3)
+				Transform3D(Basis.IDENTITY, rest_offset)
 			)
 			created.append(target_name)
 		elif skeleton.get_bone_parent(bone_index) != parent_index:
