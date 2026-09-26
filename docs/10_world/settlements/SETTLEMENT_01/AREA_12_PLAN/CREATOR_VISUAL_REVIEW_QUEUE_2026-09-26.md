@@ -38,7 +38,7 @@ Spatial coordinates remain owned by the master blueprint even when art is revise
 
 | Area | Name | Final reference | Library ID | Spatial | Creator |
 |---|---|---|---|---|---|
-| 01 | South Arrival Gate | `AREA_01_SOUTH_ARRIVAL_GATE_F001_LOCKED.png` | `libfile_4cd0010b75b48191af53be76338799dd` | PASS | PENDING |
+| 01 | South Arrival Gate | `AREA_01_SOUTH_ARRIVAL_GATE_F002_LOCKED.png` | `libfile_7235023bbebc81919f292949c2562be4` | PASS | PENDING |
 | 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY_F001_LOCKED.png` | `libfile_bcd1f43499908191a798027f74ca176e` | PASS | PENDING |
 | 03 | Caravan Yard / Visitor Staging | `AREA_03_CARAVAN_VISITOR_STAGING_F001_LOCKED.png` | `libfile_4000ab4f8b688191bbc00d05db6c9513` | PASS | PENDING |
 | 04 | Main Central Spine Road | `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F001_LOCKED.png` | `libfile_bfacf733c100819181584a5e7875d3fd` | PASS | PENDING |
@@ -98,3 +98,15 @@ Creator visual approval:
 
 Runtime implementation from final references:
 **NOT STARTED**
+
+
+## Area 01 revision note
+
+F001 remains archived.
+
+F002 was generated after technical art review found F001 too flat/weak as the primary arrival landmark.
+
+Current creator-review target:
+`AREA_01_SOUTH_ARRIVAL_GATE_F002_LOCKED.png`
+
+No creator approval is inferred from the revision.
