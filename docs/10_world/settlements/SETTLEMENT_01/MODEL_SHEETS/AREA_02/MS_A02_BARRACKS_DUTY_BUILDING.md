@@ -6,7 +6,7 @@ Asset ID: `SET01_A02_BARRACKS_DUTY`
 ## Target dimensions
 
 Footprint:
-- about 8×6 m
+- 7×6 m (locked to master Arrival Guard/Barracks parcel)
 
 Wall height:
 - about 3.2–3.6 m
@@ -59,3 +59,13 @@ Less imposing than gatehouse/watch.
 ## Graybox readiness
 
 `READY`
+
+
+## Parcel authority
+
+Fixed world parcel:
+- center X -20 / Z +23
+- footprint 7×6 m
+- bounds X -23.5..-16.5 / Z +20..+26
+
+This supersedes the earlier approximate 8×6 m note. Final references and runtime graybox must use the 7×6 m locked parcel.
