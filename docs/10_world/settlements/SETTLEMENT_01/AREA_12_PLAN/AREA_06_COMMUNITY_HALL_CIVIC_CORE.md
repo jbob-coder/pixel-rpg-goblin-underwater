@@ -1,6 +1,6 @@
 # Area 06 — Community Hall / Civic Core
 
-Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
+Status: FINAL_REFERENCE_GENERATED / F002 CURRENT REVIEW TARGET / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S03`  
 Area ID: `SET01_A06_COMMUNITY_CIVIC_CORE`
 
@@ -205,3 +205,52 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but was too flat and weak as the settlement's civic landmark.
+
+Reference ID:
+`FINAL_REF_SET01_A06_F002`
+
+Artifact:
+- filename: `AREA_06_COMMUNITY_HALL_CIVIC_CORE_F002_LOCKED.png`
+- dimensions: 1278×990
+- bytes: 11,049
+- SHA-256: `1495a4c62038226252a808b5a1bdb3da60251647fbdf9866b6fd70a03051fdc2`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_06_COMMUNITY_HALL_CIVIC_CORE_F002_LOCKED.png`
+- Library file ID: `libfile_b4e5cac777b881919c9245c5cc0f7277`
+- backing file ID: `file_00000000ac9881f6b83678225ea72f73`
+
+F002 preserves:
+- north-up orientation;
+- frame X -30..-14 / Z -6..+6;
+- Community Hall fixed at center -24.5,0;
+- hall footprint remains 8×10 m;
+- east-facing doorway remains toward the frontage lane;
+- West Frontage Lane remains on the east/right side;
+- approximately 2 m frontage clearance is retained;
+- notice board, benches, lanterns, civic tree and NPCs stay outside the doorway path and lane.
+
+F002 improves:
+- Community Hall silhouette;
+- civic identity;
+- roof/timber/stone readability;
+- frontage/courtyard depth;
+- first-person entrance visibility;
+- controlled social detail.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Technical art review:
+`F002 PREFERRED OVER F001`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
