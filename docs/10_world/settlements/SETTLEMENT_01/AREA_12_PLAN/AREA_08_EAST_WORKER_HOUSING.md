@@ -1,6 +1,6 @@
 # Area 08 — East Work Frontage / Worker Passage
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S04`  
 Area ID: `SET01_A08_EAST_WORK_FRONTAGE`
 
@@ -132,3 +132,39 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A08_F001`
+
+Artifact:
+- filename: `AREA_08_EAST_WORK_FRONTAGE_PASSAGE_F001_LOCKED.png`
+- dimensions: 396×1428
+- bytes: 6,167
+- SHA-256: `23dd95d62a4b2fea7f533d9a2b9b8478f495860aa25ccac96ea6a8cfb89e8ae6`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_08_EAST_WORK_FRONTAGE_PASSAGE_F001_LOCKED.png`
+- Library file ID: `libfile_938f7952b3b08191b42740721cf00b4d`
+- backing file ID: `file_00000000438c81f6aff450d1f3e38cbf`
+
+Spatial validation:
+- north = image top;
+- frame uses X +14..+20.5 / Z -14..+14;
+- East Frontage Lane occupies X +14..+18.5;
+- remaining east apron is only about 2 m inside this frame;
+- no residence building is present;
+- only flush tool/storage/shift props occupy the apron;
+- west connector to Area 05 and east connectors to Areas 09/10 remain readable;
+- north/south passage remains open.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
