@@ -41,7 +41,9 @@ Width:
 - edges Z -2.5..+2.5
 
 Run:
-- west residential frontage to east work frontage
+- X -20..+20 m
+- connects the west/east frontage lanes through the plaza
+- deliberately stops before the Community Hall and smith building footprints
 
 Purpose:
 - direct local/work connection
@@ -53,7 +55,7 @@ ID:
 `SET01_LANE_WEST`
 
 Center:
-- X -17.5
+- X -16.25
 
 Width:
 - 4.5 m
@@ -64,7 +66,7 @@ Run:
 Purpose:
 - Community Hall/residence frontage
 - local pedestrian movement
-- separates buildings from central plaza boundary
+- creates about 2 m clearance between the lane edge and Community Hall frontage
 
 ## East Work Frontage Lane
 
@@ -72,7 +74,7 @@ ID:
 `SET01_LANE_EAST`
 
 Center:
-- X +17.5
+- X +16.25
 
 Width:
 - 4.5 m
@@ -83,6 +85,7 @@ Run:
 Purpose:
 - smith/storage/work frontage
 - cart/material circulation
+- creates about 2.5–2.7 m clearance to the current planned work-building front edges
 
 ## Rear service alleys
 
@@ -141,3 +144,17 @@ S05:
 - packed hunter route transitioning into trail
 
 Art changes must not alter collision authority without an explicit collision change.
+
+
+## Geometric conflict check
+
+The parcel/street geometry was checked against the provisional building rectangles.
+
+Result after correction:
+- no planned building overlaps the 8 m Main Hunter Spine;
+- no planned building-to-building footprint overlaps were found;
+- the Central Cross Street terminates at X ±20 m so it does not cut through Community Hall or Smith;
+- west frontage lane edge is approximately X -18.5 m, leaving about 2 m to Community Hall east wall;
+- east frontage lane edge is approximately X +18.5 m, leaving about 2.7 m to Smith west wall.
+
+These are documentation geometry checks only, not physics/runtime verification.
