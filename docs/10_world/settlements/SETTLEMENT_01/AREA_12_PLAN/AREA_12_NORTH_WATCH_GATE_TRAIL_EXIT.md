@@ -1,6 +1,6 @@
 # Area 12 — North Watch Gate & Trail Exit
 
-Status: PLAN_READY / REFERENCE GENERATION NEXT  
+Status: REFERENCE_GENERATED / REVIEW PENDING  
 Parent section: `SET01_S05`  
 Area ID: `SET01_A12_NORTH_WATCH_GATE_TRAIL_EXIT`
 
@@ -103,3 +103,24 @@ Approve only if:
 - not fortress-scale;
 - opening visually clear;
 - genuine pixel art.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A12_NORTH_WATCH_GATE_TRAIL_EXIT_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_R001.png`
+- dimensions: 1152×768
+- bytes: 9,048
+- SHA-256: `72d1d8f941886a21809e8e148f3212b38593d010a34fe0eba4768de9758291f0`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_12_NORTH_WATCH_GATE_TRAIL_EXIT_R001.png`
+- Library file ID: `libfile_5ccb9754dd288191ab6e1084513dab9b`
+- backing file ID: `file_00000000201481f6a656aa53c22ef1e5`
+
+Disposition:
+- accepted as current Area 12 pixel-art reference;
+- 8 m gate opening, trail connector and collision remain blueprint authority.
