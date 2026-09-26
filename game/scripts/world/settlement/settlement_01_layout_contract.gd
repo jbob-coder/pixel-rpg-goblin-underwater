@@ -508,7 +508,7 @@ static func _connected_section_ids(start_id: String) -> Dictionary:
 
 	var pending: Array[String] = [start_id]
 	while not pending.is_empty():
-		var current_id := pending.pop_front()
+		var current_id := String(pending.pop_front())
 		if seen.has(current_id):
 			continue
 		seen[current_id] = true
