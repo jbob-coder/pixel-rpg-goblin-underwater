@@ -1,6 +1,6 @@
 # Area 09 — Smithy & Craft Quarter
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S04`  
 Area ID: `SET01_A09_SMITHY_CRAFT_QUARTER`
 
@@ -156,3 +156,38 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A09_F001`
+
+Artifact:
+- filename: `AREA_09_SMITHY_CRAFT_QUARTER_F001_LOCKED.png`
+- dimensions: 597×624
+- bytes: 4,654
+- SHA-256: `077c802d2aca2c61f654919f9cdb74cd38a68d3c277e4aca5ded32d4c5352ad3`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_09_SMITHY_CRAFT_QUARTER_F001_LOCKED.png`
+- Library file ID: `libfile_49f0b232fe948191b3fa618a6710e7ee`
+- backing file ID: `file_0000000043a081f68f693571c0c7264a`
+
+Spatial validation:
+- north = image top;
+- frame uses X +20.5..+30 / Z -5..+5;
+- Smith remains fixed at center +24.5,0;
+- Smith footprint remains 6.6×6.4 m;
+- west-facing entrance remains on the Area 08/frontage side;
+- no duplicate forge building is introduced;
+- anvil, worktable, rack and material piles remain outside the building footprint and do not block the entrance.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
