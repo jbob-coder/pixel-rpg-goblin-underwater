@@ -1,6 +1,6 @@
 # Area 02 — Gate Barracks & Security
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY
+Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
 Parent section: `SET01_S01`  
 Area ID: `SET01_A02_GATE_BARRACKS_SECURITY`
 
@@ -261,3 +261,12 @@ Current state:
 - primary model-sheet contracts ready;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final-reference placement authority
+
+`FINAL_AREA_REFERENCE_SPATIAL_LOCK_2026-09-26.md`
+
+The archived R001 image remains a concept/asset reference.
+
+A later final reference must be regenerated against the locked coordinates, orientation, neighbor edges, streets and building parcels before runtime placement is approved.
