@@ -1,6 +1,6 @@
 # Area 11 — North Hunter Staging Ground
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S05`  
 Area ID: `SET01_A11_NORTH_HUNTER_STAGING`
 
@@ -148,3 +148,37 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A11_F001`
+
+Artifact:
+- filename: `AREA_11_NORTH_HUNTER_STAGING_GROUND_F001_LOCKED.png`
+- dimensions: 1524×300
+- bytes: 4,810
+- SHA-256: `a1c35a967580295ab9465c618f3a5547f11111377d239bf89952e2e866f3d95e`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_11_NORTH_HUNTER_STAGING_GROUND_F001_LOCKED.png`
+- Library file ID: `libfile_ff02079a24688191b47ba502f3aced34`
+- backing file ID: `file_00000000cbf081f69a74eb5acd2159a2`
+
+Spatial validation:
+- north = image top;
+- frame uses X -30..+30 / Z -23..-14;
+- Main Spine remains clear at X -4..+4;
+- bounty board, prep racks, benches and supplies remain outside the central route;
+- route to Area 12 remains visible at the north/top edge;
+- no permanent building or market stall was introduced.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
