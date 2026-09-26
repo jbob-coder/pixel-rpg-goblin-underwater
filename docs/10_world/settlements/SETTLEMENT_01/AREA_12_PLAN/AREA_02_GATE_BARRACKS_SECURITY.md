@@ -224,3 +224,24 @@ Refine before runtime:
 - preserve the main-road clearance.
 
 Earlier full-settlement infographic outputs are explicitly rejected and are not part of Area 02 asset authority.
+
+
+## Accepted reference artifact
+
+Reference ID:
+`REF_SET01_A02_GATE_BARRACKS_SECURITY_R001`
+
+Accepted pixel-art artifact:
+- source file: `AREA_02_GATE_BARRACKS_SECURITY_R001.png`
+- dimensions: 1152×768
+- bytes: 9,014
+- SHA-256: `b62d64add0f57be79696a2e0347fbc21dbe4aebd04bfe1115ca23e95700c9600`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Area References/AREA_02_GATE_BARRACKS_SECURITY_R001(1).png`
+- Library file ID: `libfile_d2a27ef9c0fc8191ba8661ea42a46c58`
+- backing file ID: `file_00000000b3a481f6a066d4bd6aa395d6`
+
+Disposition:
+- accepted as the current Area 02 pixel-art reference;
+- previous whole-settlement image-generation drifts remain rejected and are not Area 02 references.
