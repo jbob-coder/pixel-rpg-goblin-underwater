@@ -111,7 +111,13 @@ func _run() -> void:
 	var prototype := PROTOTYPE_SCENE.instantiate()
 	_check("current prototype still instantiates", prototype != null)
 	if prototype != null:
-		var hunter := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/Hunter") as CharacterBody3D
+		var authored_hunter := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/Hunter") as CharacterBody3D
+		_check("current Hunter authored spawn remains unchanged", authored_hunter != null and _vec3_equal(authored_hunter.position, Vector3(0.0, 0.9, 13.0)), str(authored_hunter.position) if authored_hunter != null else "missing")
+
+		# World geometry is assembled in the prototype's _ready(). Add it to the
+		# tree, then inspect immediately before advancing a physics frame so this
+		# isolation gate does not conflate world-build parity with gravity settling.
+		root.add_child(prototype)
 		var geometry := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/WorldGeometry") as Node3D
 		var current_ground := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/WorldGeometry/Ground") as StaticBody3D
 		var current_street := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/WorldGeometry/Street") as Node3D
@@ -119,8 +125,7 @@ func _run() -> void:
 		var current_smith := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/WorldGeometry/WorldPack004EnterableSmith") as Node3D
 		var current_gate := prototype.get_node_or_null("WorldDisplay/WorldViewport/World/WorldGeometry/WorldPack001Gate") as Node3D
 
-		_check("current Hunter authored spawn remains unchanged", hunter != null and _vec3_equal(hunter.position, Vector3(0.0, 0.9, 13.0)), str(hunter.position) if hunter != null else "missing")
-		_check("current WorldGeometry remains present", geometry != null)
+		_check("current WorldGeometry remains present after _ready world build", geometry != null)
 		_check("current production Ground position remains unchanged", current_ground != null and _vec3_equal(current_ground.position, Vector3(0.0, -0.35, -18.0)), str(current_ground.position) if current_ground != null else "missing")
 		if current_ground != null:
 			var current_ground_mesh := _find_mesh(current_ground)
