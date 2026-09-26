@@ -123,11 +123,11 @@ static func _add_lane(parent: Node3D) -> MeshInstance3D:
 
 static func _add_edge_props(parent: Node3D) -> Array[MeshInstance3D]:
 	var props: Array[MeshInstance3D] = []
-	props.append(_box(parent, "ShiftBenchNorth", Vector3(19.55, 0.42, -8.5), Vector3(1.20, 0.84, 2.20), WOOD_MID))
+	props.append(_box(parent, "ShiftBenchNorth", Vector3(19.65, 0.42, -8.5), Vector3(1.20, 0.84, 2.20), WOOD_MID))
 	props.append(_box(parent, "SharedToolRack", Vector3(19.70, 0.85, 0.0), Vector3(0.90, 1.70, 2.00), WOOD_DARK))
-	props.append(_box(parent, "ShiftBenchSouth", Vector3(19.55, 0.42, 8.5), Vector3(1.20, 0.84, 2.20), WOOD_MID))
-	props.append(_box(parent, "ToolCrateNorth", Vector3(19.55, 0.38, -5.3), Vector3(1.10, 0.76, 1.10), WORK_ACCENT))
-	props.append(_box(parent, "ToolCrateSouth", Vector3(19.55, 0.38, 5.3), Vector3(1.10, 0.76, 1.10), WORK_ACCENT))
+	props.append(_box(parent, "ShiftBenchSouth", Vector3(19.65, 0.42, 8.5), Vector3(1.20, 0.84, 2.20), WOOD_MID))
+	props.append(_box(parent, "ToolCrateNorth", Vector3(19.60, 0.38, -5.3), Vector3(1.00, 0.76, 1.00), WORK_ACCENT))
+	props.append(_box(parent, "ToolCrateSouth", Vector3(19.60, 0.38, 5.3), Vector3(1.00, 0.76, 1.00), WORK_ACCENT))
 	props.append(_box(parent, "WorkDistrictSign", Vector3(19.65, 1.25, 11.4), Vector3(0.18, 2.50, 1.40), METAL))
 	return props
 
