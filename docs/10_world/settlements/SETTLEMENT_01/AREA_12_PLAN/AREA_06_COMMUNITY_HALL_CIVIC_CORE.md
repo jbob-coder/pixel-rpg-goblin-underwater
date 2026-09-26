@@ -1,6 +1,6 @@
 # Area 06 — Community Hall / Civic Core
 
-Status: TECHNICAL_REFERENCE_REVIEWED / MODEL_SHEET_READY / FINAL REFERENCE REGEN REQUIRED
+Status: FINAL_REFERENCE_GENERATED / SPATIAL_CHECK_PASS / CREATOR REVIEW PENDING
 Parent section: `SET01_S03`  
 Area ID: `SET01_A06_COMMUNITY_CIVIC_CORE`
 
@@ -169,3 +169,39 @@ Current state:
 - final position-locked reference still requires regeneration;
 - runtime implementation not started;
 - device visual verification not started.
+
+
+## Final position-locked reference F001
+
+Reference ID:
+`FINAL_REF_SET01_A06_F001`
+
+Artifact:
+- filename: `AREA_06_COMMUNITY_HALL_CIVIC_CORE_F001_LOCKED.png`
+- dimensions: 852×660
+- bytes: 5,919
+- SHA-256: `3bd272b112af7ab0898e6597dee3ffdfd9b27304b78139dfde3c3f6e121ef614`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_06_COMMUNITY_HALL_CIVIC_CORE_F001_LOCKED.png`
+- Library file ID: `libfile_9355a08b2aec819180cf433f516e4842`
+- backing file ID: `file_00000000c25881f69ad2a98c1ee6cdf4`
+
+Spatial validation:
+- north = image top;
+- frame uses X -30..-14 / Z -6..+6;
+- Community Hall fixed at center -24.5,0;
+- hall footprint fixed at 8×10 m;
+- east-facing doorway preserved;
+- West Frontage Lane fixed at X -18.5..-14;
+- approximately 2 m frontage clearance remains between hall and lane;
+- notice board, benches, tree and lanterns do not block the door or connector.
+
+Disposition:
+`SPATIAL_CHECK_PASS`
+
+Creator visual approval:
+`PENDING`
+
+Runtime implementation:
+`NOT STARTED`
