@@ -1,6 +1,6 @@
 # Settlement 01 — 12-Area Reference Register
 
-Status: TECHNICAL EXTRACTION COMPLETE / FINAL SPATIAL REFERENCES COMPLETE / CREATOR REVIEW PENDING  
+Status: TECHNICAL EXTRACTION COMPLETE / F002 ART REVISION PASS COMPLETE / CREATOR REVIEW PENDING  
 Created: 2026-09-25
 
 This register is the single lookup table for the twelve separately generated Settlement 01 area references.
@@ -152,3 +152,22 @@ The F001 set is now the spatially controlled visual-reference layer.
 
 Next gate:
 creator/art review may accept or request revisions per area. Runtime graybox/build work must still use the master coordinates, model-sheet contracts, collision rules and section ownership; an image alone never becomes runtime authority.
+
+
+## F002 technical-art revision status
+
+Technical art review found the original F001 set spatially valid but visually too flat/diagram-like in several areas.
+
+A dedicated F002 pass was completed while preserving every area's spatial lock.
+
+Current creator-review state:
+- **12 / 12 areas have F002 current review targets**;
+- **12 / 12 F001 references remain archived for provenance**;
+- **12 / 12 F002 references preserve the locked orientation/parcel/connector rules**;
+- **0 / 12 creator-final approvals recorded**;
+- runtime implementation remains not started from the visual-reference layer.
+
+The authoritative current creator-review filenames and Library IDs live in:
+`CREATOR_VISUAL_REVIEW_QUEUE_2026-09-26.md`.
+
+F002 changes are visual/art-quality revisions only. Coordinate, building, collision and connector authority remain owned by the master blueprint and spatial-lock documents.
