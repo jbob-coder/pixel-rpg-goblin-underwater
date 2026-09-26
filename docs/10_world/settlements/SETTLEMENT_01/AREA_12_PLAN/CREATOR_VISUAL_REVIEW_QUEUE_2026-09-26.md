@@ -40,7 +40,7 @@ Spatial coordinates remain owned by the master blueprint even when art is revise
 |---|---|---|---|---|---|
 | 01 | South Arrival Gate | `AREA_01_SOUTH_ARRIVAL_GATE_F003_LOCKED.png` | `libfile_964e9734c40881919c95fbe7cee361fe` | PASS | PENDING |
 | 02 | Gate Barracks & Security | `AREA_02_GATE_BARRACKS_SECURITY_F003_LOCKED.png` | `libfile_5f0e0e7535e08191976e15a8c36c9c60` | PASS | PENDING |
-| 03 | Caravan Yard / Visitor Staging | `AREA_03_CARAVAN_VISITOR_STAGING_F002_LOCKED.png` | `libfile_026839b1bdb081919c5ad3aae3541173` | PASS | PENDING |
+| 03 | Caravan Yard / Visitor Staging | `AREA_03_CARAVAN_VISITOR_STAGING_F003_LOCKED.png` | `libfile_eeb9c35a348c8191843fbe57b59f345e` | PASS | PENDING |
 | 04 | Main Central Spine Road | `AREA_04_MAIN_CENTRAL_SPINE_ROAD_F002_LOCKED.png` | `libfile_a9afa198e7808191a4d4e95347b63f6f` | PASS | PENDING |
 | 05 | Central Market Plaza | `AREA_05_CENTRAL_MARKET_PLAZA_F002_LOCKED.png` | `libfile_8d693400146881918fbda73d9ad3d58a` | PASS | PENDING |
 | 06 | Community Hall / Civic Core | `AREA_06_COMMUNITY_HALL_CIVIC_CORE_F002_LOCKED.png` | `libfile_b4e5cac777b881919c9245c5cc0f7277` | PASS | PENDING |
@@ -138,12 +138,18 @@ No creator approval is inferred from the revision.
 
 ## Area 03 revision note
 
-F001 remains archived.
+F001 and F002 remain archived.
 
-F002 was generated after technical art review found F001 too flat/under-detailed.
+F003 was generated after direct visual review found F002 still too sparse/diagram-like for the intended logistics-yard art quality.
 
 Current creator-review target:
-`AREA_03_CARAVAN_VISITOR_STAGING_F002_LOCKED.png`
+`AREA_03_CARAVAN_VISITOR_STAGING_F003_LOCKED.png`
+
+Library ID:
+`libfile_eeb9c35a348c8191843fbe57b59f345e`
+
+Technical recommendation:
+`REVIEW_F003`
 
 No creator approval is inferred from the revision.
 
@@ -258,7 +264,7 @@ No creator approval is inferred from the revision.
 
 ## Technical-art revision pass complete
 
-Current creator-review targets use **Areas 01–02 F003 + Areas 03–12 F002**.
+Current creator-review targets use **Areas 01–03 F003 + Areas 04–12 F002**.
 
 Technical art disposition:
 - F001 references remain archived for provenance;
