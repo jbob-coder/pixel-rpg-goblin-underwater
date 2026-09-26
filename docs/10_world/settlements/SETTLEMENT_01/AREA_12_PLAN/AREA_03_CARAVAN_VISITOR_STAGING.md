@@ -234,3 +234,45 @@ Creator visual approval:
 
 Runtime implementation:
 `NOT STARTED`
+
+
+## Creator-review revision F002
+
+Reason:
+- F001 passed spatial checks but remained too flat and under-detailed for the desired caravan/logistics identity.
+
+Reference ID:
+`FINAL_REF_SET01_A03_F002`
+
+Artifact:
+- filename: `AREA_03_CARAVAN_VISITOR_STAGING_F002_LOCKED.png`
+- dimensions: 1260×900
+- bytes: 10,615
+- SHA-256: `5ec85e08721ec2327cd52d00007933cabf6a47e538bbe10bd203b5d7d09e999c`
+
+Persisted Library archive:
+- path: `/Pixel RPG/Settlement 01/Final Area References/AREA_03_CARAVAN_VISITOR_STAGING_F002_LOCKED.png`
+- Library file ID: `libfile_026839b1bdb081919c5ad3aae3541173`
+- backing file ID: `file_000000005ed481f686284274ca91dfab`
+
+F002 preserves:
+- north-up orientation;
+- Arrival Storage remains the primary building mass;
+- west connector toward Area 01/Main Spine remains clear;
+- north connector remains clear;
+- cart/awning/trough staging remains outside connector lanes.
+
+F002 improves:
+- caravan-yard readability;
+- cart staging;
+- registration/wayfinding;
+- supply/water identity;
+- pixel-art depth and density.
+
+Spatial status:
+`SPATIAL_CHECK_PASS_BY_CONSTRUCTION`
+
+Creator final visual approval:
+`PENDING`
+
+F001 remains archived for provenance.
